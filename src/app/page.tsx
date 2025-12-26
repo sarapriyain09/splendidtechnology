@@ -235,14 +235,24 @@ export default function Home() {
         <div className="mx-auto w-full max-w-6xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-center text-3xl font-bold text-[#0b3d91]">Contact</h2>
           <p className="mt-4 text-sm text-black/70">
-            Email:{" "}
-            <a className="text-[#0b3d91] hover:underline" href="mailto:info@splendidtechnology.co.uk">
-              info@splendidtechnology.co.uk
-            </a>
-            {" "} | Phone:{" "}
-            <a className="text-[#0b3d91] hover:underline" href="tel:+447721952967">
-              +44 7721952967
-            </a>
+            <span className="inline-flex flex-col items-center gap-1 sm:flex-row sm:gap-0">
+              <span>
+                Email:{" "}
+                <a
+                  className="text-[#0b3d91] hover:underline"
+                  href="mailto:info@splendidtechnology.co.uk"
+                >
+                  info@splendidtechnology.co.uk
+                </a>
+              </span>
+              <span className="hidden sm:inline">&nbsp;|&nbsp;</span>
+              <span>
+                Phone:{" "}
+                <a className="text-[#0b3d91] hover:underline" href="tel:+447721952967">
+                  +44 7721952967
+                </a>
+              </span>
+            </span>
           </p>
           <div className="mt-8">
             <Link

@@ -11,11 +11,11 @@ const links = [
 export function SiteHeader() {
   return (
     <header className="bg-[#0b3d91] text-white">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-4 py-5 sm:px-6 lg:px-8">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-4 px-4 py-5 sm:flex-row sm:items-center sm:gap-6 sm:px-6 lg:px-8">
         <Link href="/" className="text-lg font-bold tracking-tight">
           Splendid Technology
         </Link>
-        <nav className="flex flex-wrap items-center justify-end gap-x-5 gap-y-2">
+        <nav className="flex flex-wrap items-center justify-start gap-x-4 gap-y-2 sm:justify-end sm:gap-x-5">
           {links.map((link) => (
             <Link
               key={link.href}

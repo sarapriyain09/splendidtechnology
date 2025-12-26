@@ -20,18 +20,23 @@ export function SiteFooter() {
             Contact
           </a>
         </p>
-        <p className="mt-2">
-          Email:{" "}
-          <a
-            className="text-[#0b3d91] hover:underline"
-            href="mailto:info@splendidtechnology.co.uk"
-          >
-            info@splendidtechnology.co.uk
-          </a>{" "}
-          | Phone:{" "}
-          <a className="text-[#0b3d91] hover:underline" href="tel:+447721952967">
-            +44 7721952967
-          </a>
+        <p className="mt-2 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-center sm:gap-0">
+          <span>
+            Email:{" "}
+            <a
+              className="text-[#0b3d91] hover:underline"
+              href="mailto:info@splendidtechnology.co.uk"
+            >
+              info@splendidtechnology.co.uk
+            </a>
+          </span>
+          <span className="hidden sm:inline">&nbsp;|&nbsp;</span>
+          <span>
+            Phone:{" "}
+            <a className="text-[#0b3d91] hover:underline" href="tel:+447721952967">
+              +44 7721952967
+            </a>
+          </span>
         </p>
         <p className="mt-2">
           <a className="text-[#0b3d91] hover:underline" href="#">
