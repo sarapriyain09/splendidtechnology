@@ -94,7 +94,7 @@ export default function ServicesPage() {
         ))}
       </div>
 
-      <section className="space-y-5">
+      <section id="godaddy-products" className="space-y-5 scroll-mt-24">
         <div className="space-y-2">
           <h2 className="text-2xl font-semibold tracking-tight">GoDaddy Products</h2>
           <p className="max-w-2xl text-sm leading-6 text-black/70">
