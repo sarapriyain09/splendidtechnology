@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const services = [
@@ -32,18 +33,21 @@ const projects = [
     title: "Home-Kitchen UK",
     description: "E-commerce kitchen supplies — mobile-first design, shopping cart.",
     href: "#",
+    imageSrc: "/images/portfolio/portfolio-01.jpg",
   },
   {
     title: "MendForWorks",
     description:
       "Workforce management & booking system — dashboard, multi-user login.",
     href: "#",
+    imageSrc: "/images/portfolio/portfolio-02.jpg",
   },
   {
     title: "Kodi Supermarket",
     description:
       "Online supermarket catalog — booking/order system integrated.",
     href: "#",
+    imageSrc: "/images/portfolio/portfolio-03.jpg",
   },
 ];
 
@@ -87,7 +91,16 @@ export default function Home() {
                   key={project.title}
                   className="rounded-2xl border border-black/10 bg-white p-3"
                 >
-                  <div className="aspect-video w-full rounded-xl bg-black/5" />
+                  <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black/5">
+                    <Image
+                      src={project.imageSrc}
+                      alt={`${project.title} screenshot`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 33vw"
+                      priority
+                    />
+                  </div>
                   <p className="mt-2 text-xs font-medium text-black/70">
                     {project.title}
                   </p>
@@ -168,7 +181,15 @@ export default function Home() {
               href={project.href}
               className="group rounded-2xl border border-black/10 bg-white p-5 hover:bg-black/[.02]"
             >
-              <div className="aspect-video w-full rounded-xl bg-black/5" />
+              <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black/5">
+                <Image
+                  src={project.imageSrc}
+                  alt={`${project.title} screenshot`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                />
+              </div>
               <h3 className="mt-4 text-lg font-semibold">{project.title}</h3>
               <p className="mt-2 text-sm leading-6 text-black/70">
                 {project.description}
