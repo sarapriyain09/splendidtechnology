@@ -69,7 +69,7 @@ const godaddyProducts = [
 
 export default function ServicesPage() {
   return (
-    <div className="space-y-10">
+    <div className="mx-auto w-full max-w-6xl space-y-10 px-4 py-10 sm:px-6 lg:px-8">
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Services</h1>
         <p className="max-w-2xl text-sm leading-6 text-black/70">
