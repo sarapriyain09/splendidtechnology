@@ -32,7 +32,11 @@ export function SiteFooter() {
                 info@splendidtechnology.co.uk
               </a>
             </p>
-            <p>+44 XXXXX XXXXX</p>
+            <p>
+              <a className="hover:text-black" href="tel:+447721952967">
+                +44 7721952967
+              </a>
+            </p>
           </div>
         </div>
       </div>
