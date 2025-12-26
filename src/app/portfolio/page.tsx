@@ -10,21 +10,21 @@ const projects = [
     title: "Home-Kitchen UK",
     description: "E-commerce kitchen supplies — mobile-first design, shopping cart.",
     href: "#",
-    imageSrc: "/images/portfolio/portfolio-01.jpg",
+    imageSrc: "/images/projects/portfolio-01.jpg",
   },
   {
     title: "MendForWorks",
     description:
       "Workforce management & booking system — dashboard, multi-user login.",
     href: "#",
-    imageSrc: "/images/portfolio/portfolio-02.jpg",
+    imageSrc: "/images/projects/portfolio-02.jpg",
   },
   {
     title: "Kodi Supermarket",
     description:
       "Online supermarket catalog — booking/order system integrated.",
     href: "#",
-    imageSrc: "/images/portfolio/portfolio-03.jpg",
+    imageSrc: "/images/projects/portfolio-03.jpg",
   },
 ];
 

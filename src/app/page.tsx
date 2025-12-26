@@ -33,34 +33,43 @@ const projects = [
     title: "Home-Kitchen UK",
     description: "E-commerce kitchen supplies — mobile-first design, shopping cart.",
     href: "#",
-    imageSrc: "/images/portfolio/portfolio-01.jpg",
+    imageSrc: "/images/projects/portfolio-01.jpg",
   },
   {
     title: "MendForWorks",
     description:
       "Workforce management & booking system — dashboard, multi-user login.",
     href: "#",
-    imageSrc: "/images/portfolio/portfolio-02.jpg",
+    imageSrc: "/images/projects/portfolio-02.jpg",
   },
   {
     title: "Kodi Supermarket",
     description:
       "Online supermarket catalog — booking/order system integrated.",
     href: "#",
-    imageSrc: "/images/portfolio/portfolio-03.jpg",
+    imageSrc: "/images/projects/portfolio-03.jpg",
   },
 ];
 
 export default function Home() {
   return (
     <div className="space-y-16">
-      <section className="rounded-2xl border border-black/10 bg-gradient-to-b from-blue-50 to-white px-6 py-12 sm:px-10">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="space-y-5">
+      <section className="relative overflow-hidden rounded-2xl border border-black/10">
+        <Image
+          src="/images/hero/hero.jpg"
+          alt="Splendid Technology banner"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-black/15" />
+        <div className="relative px-6 py-14 sm:px-10 sm:py-16">
+          <div className="max-w-2xl space-y-5 text-white">
             <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
               Get More Customers with a Professional Website & Web App
             </h1>
-            <p className="text-pretty text-base leading-7 text-black/70">
+            <p className="text-pretty text-base leading-7 text-white/85">
               We help small businesses and startups in the UK grow with
               mobile-friendly websites, booking systems, dashboards, and MVP
               platforms.
@@ -73,39 +82,11 @@ export default function Home() {
                 Get Your Free Website Review
               </Link>
               <Link
-                className="inline-flex h-11 items-center justify-center rounded-full border border-black/15 bg-white px-5 text-sm font-medium hover:bg-black/[.03]"
+                className="inline-flex h-11 items-center justify-center rounded-full border border-white/30 bg-white/10 px-5 text-sm font-medium text-white hover:bg-white/15"
                 href="/portfolio"
               >
                 View Example Projects
               </Link>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <p className="text-sm font-medium text-black/70">
-              Hero visual: replace with real project screenshots
-            </p>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {projects.map((project) => (
-                <div
-                  key={project.title}
-                  className="rounded-2xl border border-black/10 bg-white p-3"
-                >
-                  <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black/5">
-                    <Image
-                      src={project.imageSrc}
-                      alt={`${project.title} screenshot`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 100vw, 33vw"
-                      priority
-                    />
-                  </div>
-                  <p className="mt-2 text-xs font-medium text-black/70">
-                    {project.title}
-                  </p>
-                </div>
-              ))}
             </div>
           </div>
         </div>
