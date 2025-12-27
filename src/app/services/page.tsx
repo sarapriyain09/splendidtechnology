@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const metadata = {
   title: "Services | Splendid Technology",
 };
@@ -65,6 +67,14 @@ const godaddyProducts = [
     description: "Business email and productivity apps.",
     href: "https://www.thesplendidweb.com/products/microsoft-365?plid=596699",
   },
+  {
+    title: "JWeller Shopify Theme",
+    description:
+      "Premium Shopify Online Store 2.0 theme scaffold for jewellery brands.",
+    href: "/contact",
+    ctaLabel: "Contact us to purchase",
+    detailsHref: "/products/jweller-shopify-theme",
+  },
 ];
 
 export default function ServicesPage() {
@@ -96,30 +106,46 @@ export default function ServicesPage() {
 
       <section id="godaddy-products" className="space-y-5 scroll-mt-24">
         <div className="space-y-2">
-          <h2 className="text-2xl font-semibold tracking-tight">GoDaddy Products</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">Products</h2>
           <p className="max-w-2xl text-sm leading-6 text-black/70">
-            We also sell GoDaddy products via our storefront. Use the links below
-            to purchase domains, hosting, SSL, and more.
+            GoDaddy products via our storefront, plus our own deliverables. Use the
+            links below to purchase domains, hosting, SSL, and more.
           </p>
         </div>
 
         <div className="grid gap-4 lg:grid-cols-3">
           {godaddyProducts.map((product) => (
-            <a
+            <div
               key={product.title}
-              href={product.href}
-              target="_blank"
-              rel="noopener noreferrer"
               className="group rounded-2xl border border-black/10 bg-white p-6 hover:bg-black/[.02]"
             >
               <h3 className="text-lg font-semibold">{product.title}</h3>
               <p className="mt-2 text-sm leading-6 text-black/70">
                 {product.description}
               </p>
-              <p className="mt-3 text-sm font-medium text-blue-700 group-hover:underline">
-                Open product page
-              </p>
-            </a>
+              <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium">
+                {product.href.startsWith("/") ? (
+                  <Link className="text-blue-700 hover:underline" href={product.href}>
+                    {"ctaLabel" in product ? product.ctaLabel : "Open product page"}
+                  </Link>
+                ) : (
+                  <a
+                    className="text-blue-700 hover:underline"
+                    href={product.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Open product page
+                  </a>
+                )}
+
+                {"detailsHref" in product && product.detailsHref ? (
+                  <Link className="text-blue-700 hover:underline" href={product.detailsHref}>
+                    More details
+                  </Link>
+                ) : null}
+              </div>
+            </div>
           ))}
         </div>
       </section>
