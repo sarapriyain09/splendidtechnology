@@ -8,25 +8,34 @@ export default function AboutPage() {
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">About</h1>
         <p className="max-w-2xl text-sm leading-6 text-black/70">
-          Add your company background, values, and experience here. Keep it
-          concise and focused on what outcomes you deliver.
+          Splendid Technology builds custom, scalable, production-ready software
+          for startups, small businesses, and growing teams.
         </p>
       </header>
 
       <section className="rounded-2xl border border-black/10 bg-white p-6">
         <h2 className="text-lg font-semibold">What we do</h2>
         <p className="mt-2 text-sm leading-6 text-black/70">
-          We partner with teams to design, build, and run software systems.
-          Typical engagements include new product builds, re-platforming,
-          improving delivery pipelines, and ongoing support.
+          We design and build web applications, e-commerce platforms, automation
+          systems, and AI integrations — with a focus on reliability,
+          performance, and long-term maintainability.
+        </p>
+      </section>
+
+      <section className="rounded-2xl border border-black/10 bg-white p-6">
+        <h2 className="text-lg font-semibold">CodLearn & Splendid Technology</h2>
+        <p className="mt-2 text-sm leading-6 text-black/70">
+          CodLearn is our AI-powered platform for idea generation, learning, and
+          rapid prototyping. Splendid Technology is the execution partner that
+          takes validated prototypes and delivers production-ready systems.
         </p>
       </section>
 
       <section className="rounded-2xl border border-black/10 bg-white p-6">
         <h2 className="text-lg font-semibold">How we work</h2>
         <p className="mt-2 text-sm leading-6 text-black/70">
-          Clear scope, short feedback loops, and documentation that keeps your
-          team unblocked.
+          Fast kickoff, clear scope, short feedback loops, and deployment-ready
+          delivery — with documentation that keeps your team unblocked.
         </p>
       </section>
     </div>

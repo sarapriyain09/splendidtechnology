@@ -9,21 +9,21 @@ const projects = [
   {
     title: "Home-Kitchen UK",
     description: "E-commerce kitchen supplies — mobile-first design, shopping cart.",
-    href: "#",
+    href: "https://home-kitchen.uk/",
     imageSrc: "/images/projects/homekitchen.png",
   },
   {
     title: "MendForWorks",
     description:
-      "Workforce management & booking system — dashboard, multi-user login.",
-    href: "#",
-    imageSrc: "/images/projects/mendforworks.png",
+      "Mentor–mentee connection platform — profiles, matching, and secure user access.",
+    href: "https://www.mendforworks.com/",
+    imageSrc: "/images/projects/mendforworks.jpg",
   },
   {
     title: "Kodi Supermarket",
     description:
       "Online supermarket catalog — booking/order system integrated.",
-    href: "#",
+    href: "https://kodisupermarket.co.uk/",
     imageSrc: "/images/projects/kodisupermarket.png",
   },
 ];
@@ -34,8 +34,7 @@ export default function PortfolioPage() {
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Portfolio</h1>
         <p className="max-w-2xl text-sm leading-6 text-black/70">
-          A few recent projects. Replace the placeholders with real links and
-          screenshots.
+          A few recent projects across e-commerce and custom platforms.
         </p>
       </header>
 
@@ -70,7 +69,7 @@ export default function PortfolioPage() {
         className="inline-flex h-11 items-center justify-center rounded-full bg-blue-600 px-5 text-sm font-medium text-white hover:bg-blue-700"
         href="/contact"
       >
-        Request Free Website Review
+        Get a Custom App Built
       </Link>
     </div>
   );

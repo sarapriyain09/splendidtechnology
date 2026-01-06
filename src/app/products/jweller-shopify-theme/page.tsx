@@ -11,7 +11,8 @@ export default function JWellerShopifyThemeDetailsPage() {
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">JWeller Shopify Theme</h1>
         <p className="max-w-2xl text-sm leading-6 text-black/70">
-          Premium Shopify Online Store 2.0 theme scaffold for jewellery brands.
+          Premium Shopify Online Store 2.0 theme scaffold for jewellery brands —
+          a strong foundation for a production-ready storefront.
         </p>
       </header>
 
@@ -45,7 +46,7 @@ export default function JWellerShopifyThemeDetailsPage() {
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">Purchase</h2>
         <p className="max-w-2xl text-sm leading-6 text-black/70">
-          Contact us for pricing and to purchase this theme.
+          Contact us for pricing, purchase, and optional customization.
         </p>
         <div className="flex flex-wrap gap-3">
           <Link

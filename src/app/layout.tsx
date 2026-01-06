@@ -13,7 +13,8 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: "Splendid Technology",
-  description: "Technology services and consulting.",
+  description:
+    "Custom web apps, e-commerce, automation, and AI integrations — from CodLearn prototypes to production-ready delivery.",
 };
 
 export default function RootLayout({

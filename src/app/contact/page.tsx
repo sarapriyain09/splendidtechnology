@@ -10,15 +10,16 @@ export default function ContactPage() {
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Contact</h1>
         <p className="max-w-2xl text-sm leading-6 text-black/70">
-          Send a message and we’ll respond as soon as possible.
+          Tell us what you want to build. If you started with CodLearn, share
+          your prototype or notes — we can take it to production.
         </p>
       </header>
 
       <section className="rounded-2xl border border-black/10 bg-white p-6">
         <ContactForm />
         <p className="mt-6 text-xs leading-5 text-black/60">
-          Note: this starter form stores nothing and only logs submissions on
-          the server. Connect an email provider later if you want real delivery.
+          Tip: include your goals, timeline, and any links (CodLearn, docs, or
+          examples) so we can scope accurately.
         </p>
       </section>
     </div>

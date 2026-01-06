@@ -1,29 +1,44 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const CODLEARN_URL = "https://www.codlearn.com/app/";
+
 const services = [
   {
-    title: "Small Business Websites",
+    title: "Web Applications",
     items: [
-      "Mobile-friendly",
-      "Booking forms & Google Maps",
-      "Fast-loading, optimised for enquiries",
+      "Custom dashboards & portals",
+      "SaaS platforms & internal tools",
+      "User authentication & role management",
+      "Secure backend APIs",
+      "Tech: React, Next.js, FastAPI, Node.js, PostgreSQL",
     ],
   },
   {
-    title: "Startup MVPs & Web Apps",
+    title: "E-Commerce Solutions",
     items: [
-      "Launch your idea quickly",
-      "Dashboards, auth, membership/booking systems",
-      "MVP for validation",
+      "Custom e-commerce websites",
+      "Shopify & headless commerce",
+      "Payment integration (Stripe, PayPal)",
+      "Order, inventory & customer management",
     ],
   },
   {
-    title: "Advanced Platforms & Client Portals",
+    title: "Automation & Integrations",
     items: [
-      "Mentor–mentee platforms, membership portals",
-      "Custom dashboards, scalable design",
-      "Secure, user-friendly",
+      "Business process automation",
+      "CRM & lead automation",
+      "API integrations (payments, email, analytics)",
+      "n8n / workflow automation",
+    ],
+  },
+  {
+    title: "AI Integrations",
+    items: [
+      "AI-powered content generation",
+      "Chatbots & copilots",
+      "AI-assisted dashboards",
+      "Custom integrations using modern LLMs",
     ],
   },
 ];
@@ -38,9 +53,9 @@ const projects = [
   {
     title: "MendForWorks",
     description:
-      "Workforce management & booking system — dashboard, multi-user login.",
+      "Mentor–mentee connection platform — profiles, matching, and secure user access.",
     href: "https://www.mendforworks.com/",
-    imageSrc: "/images/projects/mendforworks.png",
+    imageSrc: "/images/projects/mendforworks.jpg",
   },
   {
     title: "Kodi Supermarket",
@@ -58,19 +73,33 @@ export default function Home() {
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-10 px-4 py-16 sm:px-6 lg:flex-row lg:px-8 lg:py-20">
           <div className="w-full max-w-2xl space-y-6">
             <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-              Get More Customers with a Professional Website & Web App
+              Custom Web Apps, E-Commerce & AI-Powered Solutions
             </h1>
             <p className="text-pretty text-lg text-white/90">
-              We help small businesses and startups in the UK grow with
-              mobile-friendly websites, booking systems, dashboards, and MVP
-              platforms.
+              We design and build scalable web applications, e-commerce platforms,
+              automation systems, and AI integrations for startups, small
+              businesses, and growing teams.
             </p>
-            <Link
-              className="inline-flex items-center justify-center rounded-md bg-[#ffc107] px-6 py-3 font-bold text-[#0b3d91] transition-colors hover:bg-[#e6b800]"
-              href="/#contact"
-            >
-              Get Your Free Website Review
-            </Link>
+            <p className="text-pretty text-sm text-white/85">
+              From rapid prototypes created with CodLearn to fully custom,
+              production-ready systems — we take ideas all the way to deployment.
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Link
+                className="inline-flex items-center justify-center rounded-md bg-[#ffc107] px-6 py-3 font-bold text-[#0b3d91] transition-colors hover:bg-[#e6b800]"
+                href="/#contact"
+              >
+                Get a Custom App Built
+              </Link>
+              <a
+                className="inline-flex items-center justify-center rounded-md border border-white/40 px-6 py-3 font-bold text-white transition-colors hover:bg-white/10"
+                href={CODLEARN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Explore CodLearn (Prototype Faster)
+              </a>
+            </div>
           </div>
 
           <div className="w-full max-w-xl">
@@ -88,12 +117,61 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl bg-[#f7f7f7] p-8">
+            <h2 className="text-2xl font-bold text-[#0b3d91]">
+              From Idea to Production — Faster
+            </h2>
+            <p className="mt-4 max-w-3xl text-sm leading-6 text-black/70">
+              We use our own AI-powered platform, CodLearn, to rapidly prototype
+              and validate ideas before building them professionally.
+            </p>
+            <p className="mt-4 text-sm font-bold text-[#0b3d91]">
+              What this means for you:
+            </p>
+            <ul className="mt-3 grid gap-2 text-sm text-black/70 sm:grid-cols-2">
+              {[
+                "Faster project kickoff",
+                "Clear scope before development",
+                "Reduced cost and rework",
+                "Better alignment between idea and final product",
+              ].map((item) => (
+                <li key={item} className="flex gap-2">
+                  <span className="font-bold text-[#0b3d91]">✔</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 text-sm text-black/70">
+              Have an idea? Start with CodLearn or let us build it for you.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                className="inline-flex items-center justify-center rounded-md bg-[#0b3d91] px-6 py-3 font-bold text-white transition-colors hover:bg-[#08306f]"
+                href={CODLEARN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Start with CodLearn
+              </a>
+              <Link
+                className="inline-flex items-center justify-center rounded-md bg-[#ffc107] px-6 py-3 font-bold text-[#0b3d91] transition-colors hover:bg-[#e6b800]"
+                href="/#contact"
+              >
+                Let Splendid Build It
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="services" className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-3xl font-bold text-[#0b3d91]">
             Our Services
           </h2>
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
               <div
                 key={service.title}
@@ -113,6 +191,33 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-center text-3xl font-bold text-[#0b3d91]">
+            We Work With
+          </h2>
+          <div className="mt-8 grid gap-6 text-center sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              "Small & medium businesses",
+              "Startups & founders",
+              "Educators & platforms",
+              "Agencies needing white-label delivery",
+            ].map((item) => (
+              <div
+                key={item}
+                className="rounded-xl bg-[#f7f7f7] p-6 text-sm text-black/70"
+              >
+                <p className="font-bold text-[#0b3d91]">{item}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-black/70">
+            If CodLearn helps you generate the idea, we help you deliver it
+            professionally.
+          </p>
         </div>
       </section>
 
@@ -186,21 +291,23 @@ export default function Home() {
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             <div className="rounded-xl bg-[#f7f7f7] p-8 text-center">
               <h3 className="mb-3 text-lg font-bold text-[#0b3d91]">
-                1. Free Website Review
+                1. Discovery & Scope
               </h3>
-              <p className="text-sm text-black/70">We assess your site or idea.</p>
+              <p className="text-sm text-black/70">
+                We clarify goals, users, and requirements (including CodLearn prototypes).
+              </p>
             </div>
             <div className="rounded-xl bg-[#f7f7f7] p-8 text-center">
               <h3 className="mb-3 text-lg font-bold text-[#0b3d91]">
                 2. Build & Launch
               </h3>
-              <p className="text-sm text-black/70">Develop & launch your project.</p>
+              <p className="text-sm text-black/70">We build, test, and deploy your system.</p>
             </div>
             <div className="rounded-xl bg-[#f7f7f7] p-8 text-center">
               <h3 className="mb-3 text-lg font-bold text-[#0b3d91]">
                 3. Grow & Support
               </h3>
-              <p className="text-sm text-black/70">Ongoing help & optimisation.</p>
+              <p className="text-sm text-black/70">Ongoing improvements, support, and scaling.</p>
             </div>
           </div>
 
@@ -209,8 +316,42 @@ export default function Home() {
               className="inline-flex items-center justify-center rounded-md bg-[#ffc107] px-6 py-3 font-bold text-[#0b3d91] transition-colors hover:bg-[#e6b800]"
               href="/#contact"
             >
-              Start Your Free Review Today
+              Get a Custom App Built
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-black/10 bg-white p-8">
+            <h2 className="text-2xl font-bold text-[#0b3d91]">
+              Used CodLearn? We Can Take It Further
+            </h2>
+            <p className="mt-4 max-w-3xl text-sm leading-6 text-black/70">
+              If you created a project using CodLearn and want custom features,
+              better performance, production deployment, or long-term support,
+              our team at Splendid Technology can convert your CodLearn project
+              into a fully supported business solution.
+            </p>
+            <ul className="mt-4 grid gap-2 text-sm text-black/70 sm:grid-cols-2">
+              {["Custom features", "Better performance", "Production deployment", "Long-term support"].map(
+                (item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="font-bold text-[#0b3d91]">✔</span>
+                    <span>{item}</span>
+                  </li>
+                )
+              )}
+            </ul>
+            <div className="mt-6">
+              <Link
+                className="inline-flex items-center justify-center rounded-md bg-[#ffc107] px-6 py-3 font-bold text-[#0b3d91] transition-colors hover:bg-[#e6b800]"
+                href="/#contact"
+              >
+                Continue with Splendid Technology
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -219,14 +360,14 @@ export default function Home() {
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold">Ready to Grow Your Business Online?</h2>
           <p className="mt-4 text-lg text-white/90">
-            Get a professional website or MVP web app that brings real enquiries
-            and customers.
+            Get a production-ready web app, e-commerce platform, automation, or AI
+            integration built for real users.
           </p>
           <Link
             className="mt-8 inline-flex items-center justify-center rounded-md bg-[#ffc107] px-6 py-3 font-bold text-[#0b3d91] transition-colors hover:bg-[#e6b800]"
             href="/#contact"
           >
-            Request Free Website Review
+            Get a Custom App Built
           </Link>
         </div>
       </section>

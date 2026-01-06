@@ -6,27 +6,31 @@ export const metadata = {
 
 const services = [
   {
-    title: "Web Development",
+    title: "Web Applications",
     bullets: [
-      "Landing pages and marketing sites",
-      "Web apps with Next.js",
-      "Performance, accessibility, SEO fundamentals",
+      "Custom dashboards & portals",
+      "SaaS platforms & internal tools",
+      "User authentication & role management",
+      "Secure backend APIs",
+      "Tech: React, Next.js, FastAPI, Node.js, PostgreSQL",
     ],
   },
   {
-    title: "Cloud & DevOps",
+    title: "E-Commerce Solutions",
     bullets: [
-      "Vercel deployments and environments",
-      "CI/CD pipelines",
-      "Observability and incident readiness",
+      "Custom e-commerce websites",
+      "Shopify & headless commerce",
+      "Payment integration (Stripe, PayPal)",
+      "Order, inventory & customer management",
     ],
   },
   {
-    title: "Engineering Consulting",
+    title: "Automation, Integrations & AI",
     bullets: [
-      "Architecture reviews",
-      "Codebase modernization",
-      "Team enablement and delivery support",
+      "Business process automation (including n8n workflows)",
+      "CRM & lead automation",
+      "API integrations (payments, email, analytics)",
+      "AI integrations: chatbots, copilots, and AI-assisted dashboards",
     ],
   },
 ];
@@ -83,8 +87,8 @@ export default function ServicesPage() {
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Services</h1>
         <p className="max-w-2xl text-sm leading-6 text-black/70">
-          Replace these service descriptions with your real offerings, pricing
-          model, and case studies.
+          CodLearn helps with idea generation, learning, and rapid prototyping.
+          Splendid Technology delivers custom, scalable, production-ready systems.
         </p>
       </header>
 
@@ -110,6 +114,12 @@ export default function ServicesPage() {
           <p className="max-w-2xl text-sm leading-6 text-black/70">
             GoDaddy products via our storefront, plus our own deliverables. Use the
             links below to purchase domains, hosting, SSL, and more.
+          </p>
+          <p className="max-w-2xl text-sm leading-6 text-black/70">
+            If you need something beyond off-the-shelf products — a custom web app,
+            e-commerce build, automation, or AI integration — contact Splendid
+            Technology. If you’re still shaping the idea, start with CodLearn and we
+            can take it to production.
           </p>
         </div>
 
