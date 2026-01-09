@@ -78,6 +78,7 @@ If you later add environment variables (email provider keys, etc.), configure th
 ## Notes
 
 - The contact form currently logs submissions on the server and returns success; it does not send email yet.
+- The chat window posts to `/api/chat`. To forward chat messages into your CRM, set `CRM_WEBHOOK_URL`.
 
 ## Learn More
 
