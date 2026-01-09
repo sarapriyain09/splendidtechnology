@@ -2,6 +2,38 @@ Splendid Technology website (starter build) using Next.js + Tailwind.
 
 ## Getting Started
 
+## First-time install (new user)
+
+### Prerequisites
+
+- **Node.js**: install the current **LTS** release (recommended). After installing, restart your terminal.
+- **npm**: comes with Node.js.
+
+To verify:
+
+```bash
+node --version
+npm --version
+```
+
+### Install + run locally
+
+1. Download/clone this project.
+2. Open a terminal in this folder (the folder that contains `package.json`).
+3. Install dependencies and start the dev server:
+
+```bash
+npm install
+npm run dev
+```
+
+Then open http://localhost:3000
+
+### Common first-time issues
+
+- **“node is not recognized” / “npm is not recognized” (Windows)**: Node.js is not installed or your terminal hasn’t been restarted since install.
+- **Port 3000 already in use**: stop the other app using the port, or run `npm run dev -- -p 3001`.
+
 From this folder:
 
 ```bash

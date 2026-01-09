@@ -1,26 +1,23 @@
-type WhatsAppChatButtonProps = {
+type ChatButtonProps = {
   phoneNumber: string;
   message?: string;
 };
 
-function toWaMeNumber(phoneNumber: string): string {
-  // WhatsApp wa.me expects digits only, including country code.
+function toChatNumber(phoneNumber: string): string {
+  // wa.me expects digits only, including country code.
   return phoneNumber.replace(/\D/g, "");
 }
 
-function buildWhatsAppUrl(phoneNumber: string, message?: string): string {
-  const waNumber = toWaMeNumber(phoneNumber);
+function buildChatUrl(phoneNumber: string, message?: string): string {
+  const waNumber = toChatNumber(phoneNumber);
   const base = `https://wa.me/${waNumber}`;
 
   if (!message) return base;
   return `${base}?text=${encodeURIComponent(message)}`;
 }
 
-export function WhatsAppChatButton({
-  phoneNumber,
-  message,
-}: WhatsAppChatButtonProps) {
-  const href = buildWhatsAppUrl(phoneNumber, message);
+export function ChatButton({ phoneNumber, message }: ChatButtonProps) {
+  const href = buildChatUrl(phoneNumber, message);
 
   return (
     <a

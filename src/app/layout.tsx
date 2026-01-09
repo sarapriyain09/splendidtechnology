@@ -3,7 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { WhatsAppChatButton } from "@/components/WhatsAppChatButton";
+import { ChatButton } from "@/components/ChatButton";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -28,7 +28,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="w-full">{children}</main>
         <SiteFooter />
-        <WhatsAppChatButton
+        <ChatButton
           phoneNumber={"+447721952967"}
           message={"Welcome to Splendid Technology, contact for any question?"}
         />
