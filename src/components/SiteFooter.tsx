@@ -18,6 +18,10 @@ export function SiteFooter() {
             Portfolio
           </Link>{" "}
           |{" "}
+          <Link className="text-[#0b3d91] hover:underline" href="/blog">
+            Blog
+          </Link>{" "}
+          |{" "}
           <Link className="text-[#0b3d91] hover:underline" href="/#contact">
             Contact
           </Link>

@@ -12,9 +12,42 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Splendid Technology",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  title: {
+    default: "Splendid Technology",
+    template: "%s | Splendid Technology",
+  },
   description:
-    "Custom web apps, e-commerce, automation, and AI integrations — from CodLearn prototypes to production-ready delivery.",
+    "UK web development company building custom web apps, e-commerce, automation, and AI integrations — from prototype to production-ready delivery.",
+  keywords: [
+    "web development company uk",
+    "custom web development uk",
+    "web app development uk",
+    "ecommerce website development uk",
+    "ai integration services uk",
+    "business automation services uk",
+    "web developers leicester",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    title: "Splendid Technology",
+    description:
+      "UK web development company building custom web apps, e-commerce, automation, and AI integrations.",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Splendid Technology",
+    description:
+      "UK web development company building custom web apps, e-commerce, automation, and AI integrations.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

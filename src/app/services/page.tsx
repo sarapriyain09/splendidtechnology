@@ -1,7 +1,22 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Services | Splendid Technology",
+export const metadata: Metadata = {
+  title: "Custom Web Development Services (UK)",
+  description:
+    "Custom web development in the UK: web apps, e-commerce builds, automation, and AI integration services from Splendid Technology.",
+  keywords: [
+    "website development services uk",
+    "custom web development uk",
+    "web app development uk",
+    "ecommerce website development uk",
+    "ai integration services uk",
+    "business automation services uk",
+    "workflow automation uk",
+  ],
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 const services = [

@@ -1,5 +1,89 @@
 Splendid Technology website (starter build) using Next.js + Tailwind.
 
+## SEO keyword strategy (UK + Leicester)
+
+This is a practical keyword set designed for UK intent + service intent + quick wins.
+
+- 90-day content calendar: see `docs/seo/90-day-content-calendar.md`
+
+### High-intent core keywords (use on Home, Services, Contact)
+
+- web development company uk
+- website development services uk
+- custom web development uk
+- web app development uk
+- ecommerce website development uk
+- ai integration services uk
+- automation services for small business uk
+- startup web development uk
+- affordable web development uk
+
+### Service-specific keywords (use in service page sections + headings)
+
+Web & app development
+
+- custom web app development uk
+- react web development uk
+- fastapi backend development uk
+- scalable web applications uk
+
+E-commerce
+
+- ecommerce website developer uk
+- shopify website development uk
+- custom ecommerce solutions uk
+- online store development uk
+
+AI & automation
+
+- ai powered web applications uk
+- business automation services uk
+- workflow automation uk
+- ai tools for small business uk
+
+### Local SEO keywords (add to copy + location sections)
+
+- web development company leicester
+- web developers leicester uk
+- website development leicester
+- ecommerce developer leicester
+- ai automation services leicester
+
+### Blog keywords (1/week, 800–1200 words)
+
+- how much does a website cost in uk
+- how to build ecommerce website uk
+- web app vs website differences
+- benefits of ai automation for business
+- best tech stack for startups
+- how to automate small business operations
+
+### Long-tail conversion keywords
+
+- small business web development uk
+- startup friendly web development uk
+- affordable ecommerce developer uk
+- custom ai tools for startups
+- white label web development uk
+
+### Page → primary keyword mapping
+
+| Page | Primary keyword |
+| --- | --- |
+| Home | web development company uk |
+| Services | custom web development uk |
+| Services (Web Apps section) | web app development uk |
+| Services (E-commerce section) | ecommerce website development uk |
+| Services (AI/Automation section) | ai integration services uk |
+| Contact | website developers leicester |
+
+### Implementation checklist
+
+1. Use 1 primary keyword per page.
+2. Include it naturally in: title tag, H1, first paragraph, meta description, image alt text.
+3. Internally link blog posts to relevant service sections.
+4. Set `NEXT_PUBLIC_SITE_URL` in production (used for canonical/sitemap URLs).
+
 ## Getting Started
 
 ## First-time install (new user)

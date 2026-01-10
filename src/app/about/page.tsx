@@ -1,5 +1,12 @@
-export const metadata = {
-  title: "About | Splendid Technology",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Splendid Technology",
+  description:
+    "Learn how Splendid Technology delivers custom web development, e-commerce builds, automation, and AI integrations for UK businesses.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {

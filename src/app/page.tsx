@@ -1,7 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 const CODLEARN_URL = "https://www.codlearn.com/app/";
+
+export const metadata: Metadata = {
+  title: "Web Development & AI Automation Company in the UK",
+  description:
+    "Splendid Technology is a UK web development company (Leicester) building custom web apps, e-commerce websites, automation, and AI integrations for startups and small businesses.",
+  keywords: [
+    "web development company uk",
+    "custom web development uk",
+    "web app development uk",
+    "ecommerce website development uk",
+    "ai integration services uk",
+    "automation services for small business uk",
+    "web developers leicester uk",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+};
 
 const services = [
   {
@@ -76,9 +95,9 @@ export default function Home() {
               Custom Web Apps, E-Commerce & AI-Powered Solutions
             </h1>
             <p className="text-pretty text-lg text-white/90">
-              We design and build scalable web applications, e-commerce platforms,
-              automation systems, and AI integrations for startups, small
-              businesses, and growing teams.
+              We&apos;re a UK web development company (Leicester) building scalable web
+              applications, e-commerce platforms, automation systems, and AI
+              integrations for startups, small businesses, and growing teams.
             </p>
             <p className="text-pretty text-sm text-white/85">
               From rapid prototypes created with CodLearn to fully custom,
@@ -106,7 +125,7 @@ export default function Home() {
             <div className="overflow-hidden rounded-xl">
               <Image
                 src="/images/hero/hero.jpg"
-                alt="Example sites"
+                alt="Web development projects and e-commerce builds"
                 width={900}
                 height={600}
                 priority
