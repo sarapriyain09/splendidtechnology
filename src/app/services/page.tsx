@@ -174,6 +174,19 @@ export default function ServicesPage() {
           ))}
         </div>
       </section>
+
+      <section className="rounded-2xl border border-black/10 bg-white p-6">
+        <h2 className="text-lg font-semibold">Areas we serve</h2>
+        <p className="mt-2 text-sm leading-6 text-black/70">
+          We work UK-wide remotely (and locally in Leicester). Browse our major UK
+          city pages for a quick overview.
+        </p>
+        <div className="mt-4">
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/locations">
+            View UK locations
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

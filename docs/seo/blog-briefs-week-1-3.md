@@ -75,6 +75,8 @@ If you want a clear, fixed scope and realistic timeline, contact Splendid Techno
 
 **Primary keyword:** web app vs website differences
 
+Full draft (ready to publish): see `docs/seo/draft-week-2-web-app-vs-website.md`
+
 **Suggested slug:** `/blog/web-app-vs-website`
 
 **Meta title (≤ 60 chars):** Web App vs Website: Differences, Costs, and When to Build

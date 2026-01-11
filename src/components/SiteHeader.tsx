@@ -5,6 +5,7 @@ const links = [
   { href: "/#services", label: "Services" },
   { href: "/#portfolio", label: "Portfolio" },
   { href: "/blog", label: "Blog" },
+  { href: "/locations", label: "Locations" },
   { href: "/services#godaddy-products", label: "Products" },
   { href: "/#contact", label: "Contact" },
 ];
