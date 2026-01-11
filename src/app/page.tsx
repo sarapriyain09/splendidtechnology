@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { getAllBlogPosts } from "@/lib/blog";
 
 const CODLEARN_URL = "https://www.codlearn.com/app/";
 
@@ -86,6 +87,8 @@ const projects = [
 ];
 
 export default function Home() {
+  const latestPosts = getAllBlogPosts().slice(0, 2);
+
   return (
     <div className="w-full">
       <section className="bg-[#0b3d91] text-white">
@@ -297,6 +300,54 @@ export default function Home() {
                   </a>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <h2 className="text-3xl font-bold text-[#0b3d91]">Latest from the Blog</h2>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-black/70">
+                Practical guides on UK web development costs, ecommerce, automation,
+                and AI integrations.
+              </p>
+            </div>
+            <Link className="text-sm font-medium text-blue-700 hover:underline" href="/blog">
+              View all posts
+            </Link>
+          </div>
+
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            {latestPosts.map((post) => (
+              <article
+                key={post.slug}
+                className="rounded-2xl border border-black/10 bg-white p-6"
+              >
+                <p className="text-xs text-black/60">
+                  {new Date(post.date).toLocaleDateString("en-GB", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                  })}
+                </p>
+                <h3 className="mt-2 text-lg font-semibold">
+                  <Link className="hover:underline" href={`/blog/${post.slug}`}>
+                    {post.title}
+                  </Link>
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-black/70">{post.description}</p>
+                <div className="mt-4">
+                  <Link
+                    className="text-sm font-medium text-blue-700 hover:underline"
+                    href={`/blog/${post.slug}`}
+                  >
+                    Read post
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
         </div>
