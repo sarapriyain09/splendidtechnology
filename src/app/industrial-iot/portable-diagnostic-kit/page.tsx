@@ -99,7 +99,7 @@ const pricingTiers = [
   {
     tier: "Starter",
     name: "Motor Inspection Kit",
-    price: "£2,500",
+    price: "£5,000",
     description: "Entry-level professional diagnostic solution for maintenance teams.",
     includes: [
       "Vibration sensor (accelerometer)",
@@ -114,7 +114,7 @@ const pricingTiers = [
   {
     tier: "Professional",
     name: "Predictive Maintenance Kit",
-    price: "£6,000",
+    price: "£10,000",
     description: "Full commercial-grade predictive maintenance system.",
     includes: [
       "FFT vibration analysis",
