@@ -8,6 +8,7 @@ const links = [
   { href: "/blog", label: "Blog" },
   { href: "/locations", label: "Locations" },
   { href: "/services#godaddy-products", label: "Products" },
+  { href: "/about", label: "About" },
   { href: "/#contact", label: "Contact" },
 ];
 
