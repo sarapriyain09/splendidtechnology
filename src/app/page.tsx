@@ -6,9 +6,9 @@ import { getAllBlogPosts } from "@/lib/blog";
 const CODLEARN_URL = "https://www.codlearn.com/app/";
 
 export const metadata: Metadata = {
-  title: "Web Development & AI Automation Company in the UK",
+  title: "Web Development, AI Automation & Industrial IoT | UK",
   description:
-    "Splendid Technology is a UK web development company (Leicester) building custom web apps, e-commerce websites, automation, and AI integrations for startups and small businesses.",
+    "Splendid Technology is a UK technology company (Leicester) building custom web apps, e-commerce, AI integrations, and Industrial IoT / smart monitoring solutions for businesses and manufacturers.",
   keywords: [
     "web development company uk",
     "custom web development uk",
@@ -17,6 +17,10 @@ export const metadata: Metadata = {
     "ai integration services uk",
     "automation services for small business uk",
     "web developers leicester uk",
+    "industrial iot uk",
+    "smart motor monitoring uk",
+    "predictive maintenance uk",
+    "industry 4.0 solutions uk sme",
   ],
   alternates: {
     canonical: "/",
@@ -59,6 +63,15 @@ const services = [
       "Chatbots & copilots",
       "AI-assisted dashboards",
       "Custom integrations using modern LLMs",
+    ],
+  },
+  {
+    title: "Industrial IoT & Monitoring",
+    items: [
+      "Real-time motor health monitoring",
+      "Predictive maintenance systems",
+      "Edge monitoring & live dashboards",
+      "Industry 4.0 solutions for SMEs",
     ],
   },
 ];
@@ -193,7 +206,7 @@ export default function Home() {
           <h2 className="text-center text-3xl font-bold text-[#0b3d91]">
             Our Services
           </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {services.map((service) => (
               <div
                 key={service.title}
@@ -216,17 +229,66 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Industrial IoT Banner ── */}
+      <section className="bg-[#0b1f3a] px-4 py-14 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-6xl">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-xl space-y-4">
+              <p className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-green-400">
+                New — Industrial Division
+              </p>
+              <h2 className="text-3xl font-bold text-white">
+                Industrial IoT &amp; Smart Motor Monitoring
+              </h2>
+              <p className="text-base leading-7 text-white/70">
+                We now help UK manufacturers reduce downtime and predict equipment
+                failures before they happen — with affordable smart monitoring
+                solutions built for SMEs.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/industrial-iot"
+                  className="inline-block rounded-lg bg-green-500 px-6 py-3 text-sm font-semibold text-white hover:bg-green-600"
+                >
+                  Explore Industrial IoT
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-block rounded-lg border border-white/40 px-6 py-3 text-sm font-semibold text-white hover:border-white hover:bg-white/10"
+                >
+                  Book a Free Pilot
+                </Link>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-3 lg:w-72">
+              {[
+                { icon: "⏱️", label: "Reduce Downtime" },
+                { icon: "📊", label: "Real-time Visibility" },
+                { icon: "💰", label: "Lower Maintenance Cost" },
+                { icon: "🧠", label: "Predictive Maintenance" },
+              ].map((b) => (
+                <div key={b.label} className="flex flex-col items-center gap-1 rounded-xl bg-white/10 p-4 text-center">
+                  <span className="text-2xl">{b.icon}</span>
+                  <span className="text-xs font-medium text-white">{b.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center text-3xl font-bold text-[#0b3d91]">
             We Work With
           </h2>
-          <div className="mt-8 grid gap-6 text-center sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-6 text-center sm:grid-cols-2 lg:grid-cols-5">
             {[
               "Small & medium businesses",
               "Startups & founders",
               "Educators & platforms",
               "Agencies needing white-label delivery",
+              "Manufacturers & industrial SMEs",
             ].map((item) => (
               <div
                 key={item}
@@ -237,8 +299,8 @@ export default function Home() {
             ))}
           </div>
           <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-black/70">
-            If CodLearn helps you generate the idea, we help you deliver it
-            professionally.
+            Whether you're a startup, SME, or manufacturer — we build technology
+            that works for your business.
           </p>
         </div>
       </section>

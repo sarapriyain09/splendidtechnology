@@ -14,6 +14,10 @@ export function SiteFooter() {
             Services
           </Link>{" "}
           |{" "}
+          <Link className="text-[#0b3d91] hover:underline" href="/industrial-iot">
+            Industrial IoT
+          </Link>{" "}
+          |{" "}
           <Link className="text-[#0b3d91] hover:underline" href="/#portfolio">
             Portfolio
           </Link>{" "}
