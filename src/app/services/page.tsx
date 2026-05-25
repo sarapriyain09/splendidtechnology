@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Custom Web Development Services (UK)",
+  title: "Web Development, AI Automation & Industrial IoT Services (UK)",
   description:
-    "Custom web development in the UK: web apps, e-commerce builds, automation, and AI integration services from Splendid Technology.",
+    "Custom web development, AI automation, and Industrial IoT services for UK businesses. Smart motor inspection kits, predictive maintenance, e-commerce, and workflow automation from Splendid Technology.",
   keywords: [
     "website development services uk",
     "custom web development uk",
@@ -13,6 +13,10 @@ export const metadata: Metadata = {
     "ai integration services uk",
     "business automation services uk",
     "workflow automation uk",
+    "industrial iot services uk",
+    "smart motor inspection service uk",
+    "predictive maintenance uk",
+    "motor diagnostic kit uk",
   ],
   alternates: {
     canonical: "/services",
@@ -46,6 +50,17 @@ const services = [
       "CRM & lead automation",
       "API integrations (payments, email, analytics)",
       "AI integrations: chatbots, copilots, and AI-assisted dashboards",
+    ],
+  },
+  {
+    title: "Industrial IoT & Smart Monitoring",
+    bullets: [
+      "Portable motor health inspection service",
+      "Predictive maintenance & condition monitoring",
+      "Vibration FFT & current signature analysis",
+      "Smart sensor integration & edge computing",
+      "Cloud dashboards & maintenance reporting",
+      "Industry 4.0 solutions for UK SMEs",
     ],
   },
 ];
@@ -94,6 +109,14 @@ const godaddyProducts = [
     ctaLabel: "Contact us to purchase",
     detailsHref: "/products/jweller-shopify-theme",
   },
+  {
+    title: "Smart Motor Reliability Inspection Kit",
+    description:
+      "Professional portable motor diagnostic solution with FFT vibration analysis, current signature analysis, health scoring, and predictive maintenance alerts — in a rugged carry case. Available as inspection service, pilot package, rental, or outright purchase.",
+    href: "/industrial-iot/portable-diagnostic-kit",
+    ctaLabel: "Book an Inspection",
+    detailsHref: "/industrial-iot/portable-diagnostic-kit",
+  },
 ];
 
 export default function ServicesPage() {
@@ -107,7 +130,7 @@ export default function ServicesPage() {
         </p>
       </header>
 
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {services.map((service) => (
           <section
             key={service.title}
@@ -122,7 +145,38 @@ export default function ServicesPage() {
           </section>
         ))}
       </div>
-
+      {/* ── Industrial IoT Callout ── */}
+      <div className="rounded-2xl bg-[#0b1f3a] px-6 py-8 sm:px-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-green-400">
+              Industrial IoT Division
+            </p>
+            <h2 className="text-xl font-bold text-white">
+              Smart Motor Inspection &amp; Predictive Maintenance
+            </h2>
+            <p className="mt-2 max-w-xl text-sm leading-6 text-white/65">
+              Prevent costly motor failures with our portable diagnostic kit — FFT vibration analysis,
+              current signature analysis, health scoring, and cloud dashboards. Available as an
+              on-site inspection service, pilot programme, or outright kit purchase.
+            </p>
+          </div>
+          <div className="flex shrink-0 flex-wrap gap-3">
+            <Link
+              href="/industrial-iot/portable-diagnostic-kit"
+              className="inline-block rounded-lg bg-green-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-green-600"
+            >
+              Book an Inspection →
+            </Link>
+            <Link
+              href="/industrial-iot"
+              className="inline-block rounded-lg border border-white/30 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10"
+            >
+              View IoT Services
+            </Link>
+          </div>
+        </div>
+      </div>
       <section id="godaddy-products" className="space-y-5 scroll-mt-24">
         <div className="space-y-2">
           <h2 className="text-2xl font-semibold tracking-tight">Products</h2>
