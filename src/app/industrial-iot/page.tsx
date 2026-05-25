@@ -55,6 +55,13 @@ const services = [
       "Affordable smart factory visibility for UK SMEs. We design and deliver edge monitoring, dashboards, and automation tools sized for your business.",
     href: "/industrial-iot/industry-40-solutions",
   },
+  {
+    title: "Portable Motor Diagnostic Kit",
+    description:
+      "Our flagship product — a rugged carry-case inspection kit with FFT vibration analysis, current signature analysis, and predictive health scoring for field maintenance teams.",
+    href: "/industrial-iot/portable-diagnostic-kit",
+    highlight: true,
+  },
 ];
 
 const whyPoints = [
@@ -159,19 +166,34 @@ export default function IndustrialIoTPage() {
       <section id="solutions" className="scroll-mt-4 bg-gray-50 px-4 py-14 sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl space-y-6">
           <h2 className="text-2xl font-bold text-[#0b1f3a]">Our Solutions</h2>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
               <div
                 key={service.title}
-                className="flex flex-col rounded-2xl border border-black/10 bg-white p-6 transition-shadow hover:shadow-md"
+                className={`flex flex-col rounded-2xl border p-6 transition-shadow hover:shadow-md ${
+                  service.highlight
+                    ? "border-green-400 bg-[#0b1f3a] text-white"
+                    : "border-black/10 bg-white"
+                }`}
               >
-                <h3 className="text-lg font-bold text-[#0b1f3a]">{service.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-6 text-black/65">
+                {service.highlight && (
+                  <span className="mb-3 inline-block self-start rounded-full bg-green-500 px-2.5 py-0.5 text-xs font-semibold text-white">
+                    Flagship
+                  </span>
+                )}
+                <h3 className={`text-lg font-bold ${service.highlight ? "text-white" : "text-[#0b1f3a]"}`}>
+                  {service.title}
+                </h3>
+                <p className={`mt-2 flex-1 text-sm leading-6 ${service.highlight ? "text-white/70" : "text-black/65"}`}>
                   {service.description}
                 </p>
                 <Link
                   href={service.href}
-                  className="mt-5 inline-block rounded-lg bg-[#0b1f3a] px-4 py-2 text-center text-sm font-semibold text-white hover:bg-[#0b3d91]"
+                  className={`mt-5 inline-block rounded-lg px-4 py-2 text-center text-sm font-semibold ${
+                    service.highlight
+                      ? "bg-green-500 text-white hover:bg-green-600"
+                      : "bg-[#0b1f3a] text-white hover:bg-[#0b3d91]"
+                  }`}
                 >
                   Learn More →
                 </Link>
