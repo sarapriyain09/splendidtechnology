@@ -75,7 +75,7 @@ export function SiteHeader() {
               href="/contact"
               className="rounded bg-green-600 px-3 py-1 text-xs font-bold text-white hover:bg-green-700"
             >
-              Book a Pilot
+              Contact
             </Link>
           </div>
         </nav>

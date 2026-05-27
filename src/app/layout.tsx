@@ -74,6 +74,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="w-full">{children}</main>
         <SiteFooter />
+        <ChatWidget />
         <WhatsAppButton />
       </body>
     </html>
