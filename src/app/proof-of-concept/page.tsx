@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -278,26 +279,43 @@ export default function ProofOfConceptPage() {
         </div>
       </section>
 
-      {/* Dashboard screenshots placeholder */}
+      {/* Dashboard screenshots */}
       <section className="mt-12">
         <h2 className="text-xl font-bold text-[#0b1f3a]">Dashboard Visualisation</h2>
         <p className="mt-1 text-sm text-black/55">
           Live sensor data visualised at the edge (Grafana) and in the cloud (AWS CloudWatch).
         </p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {[
-            { label: "Local Edge Dashboard (Grafana OSS)", sub: "Offline-capable · MQTT status · Buffer queue · System health" },
-            { label: "AWS CloudWatch Dashboard", sub: "30s refresh · Temp · Humidity · Pressure · Vibration · Alarms" },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="flex min-h-[160px] flex-col items-center justify-center rounded-xl border-2 border-dashed border-black/15 bg-[#f7f7f7] p-6 text-center"
-            >
-              <p className="text-sm font-semibold text-[#0b1f3a]">{item.label}</p>
-              <p className="mt-1 text-xs text-black/50">{item.sub}</p>
-              <p className="mt-3 text-[10px] text-black/30">[ Screenshot — coming soon ]</p>
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          <div className="rounded-xl border border-black/10 bg-white overflow-hidden">
+            <div className="relative w-full aspect-video">
+              <Image
+                src="/images/industrial-iot/grafana-local.png"
+                alt="Local Edge Dashboard — Grafana OSS showing Temperature, Vibration, RPM and Pressure panels in offline mode"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
             </div>
-          ))}
+            <div className="px-5 py-4">
+              <p className="text-sm font-semibold text-[#0b1f3a]">Local Edge Dashboard (Grafana OSS)</p>
+              <p className="mt-1 text-xs text-black/50">Offline-capable · Temperature · Vibration · RPM · Pressure</p>
+            </div>
+          </div>
+          <div className="rounded-xl border border-black/10 bg-white overflow-hidden">
+            <div className="relative w-full aspect-video">
+              <Image
+                src="/images/industrial-iot/aws-chart.png"
+                alt="AWS CloudWatch Dashboard showing sensor-app telemetry with Temperature, Pressure, Vibration, RPM, Fault Count and Live Gauges panels"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+            </div>
+            <div className="px-5 py-4">
+              <p className="text-sm font-semibold text-[#0b1f3a]">AWS CloudWatch Dashboard</p>
+              <p className="mt-1 text-xs text-black/50">30s refresh · Temp · Pressure · Vibration · RPM · Fault Count · Live Gauges</p>
+            </div>
+          </div>
         </div>
       </section>
 
