@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
 type ContactPayload = {
   name: string;
@@ -9,6 +10,8 @@ type ContactPayload = {
 function isValidEmail(value: string) {
   return /^\S+@\S+\.\S+$/.test(value);
 }
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => null)) as Partial<ContactPayload> | null;
@@ -25,12 +28,25 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Please enter a valid email." }, { status: 400 });
   }
 
-  // Placeholder: wire this up to email/CRM (e.g. Resend, SendGrid, HubSpot) later.
-  console.log("Contact submission", {
-    name,
-    email,
-    messagePreview: message.slice(0, 200),
+  const { error } = await resend.emails.send({
+    from: "Splendid Technology Website <noreply@splendidtechnology.co.uk>",
+    to: ["info@splendidtechnology.co.uk"],
+    replyTo: email,
+    subject: `New contact from ${name}`,
+    text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+    html: `
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+      <hr />
+      <p><strong>Message:</strong></p>
+      <p>${message.replace(/\n/g, "<br />")}</p>
+    `,
   });
+
+  if (error) {
+    console.error("Resend error (contact):", error);
+    return NextResponse.json({ error: "Failed to send message. Please try again." }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true });
 }

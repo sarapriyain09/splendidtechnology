@@ -1,4 +1,7 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 type ChatPayload = {
   name: string;
@@ -37,35 +40,48 @@ export async function POST(request: Request) {
     receivedAt: new Date().toISOString(),
   };
 
-  const webhookUrl = process.env.CRM_WEBHOOK_URL;
+  // Send email notification via Resend
+  const { error: emailError } = await resend.emails.send({
+    from: "Splendid Technology Website <noreply@splendidtechnology.co.uk>",
+    to: ["info@splendidtechnology.co.uk"],
+    ...(email ? { replyTo: email } : {}),
+    subject: `New chat message${name ? ` from ${name}` : ""}`,
+    text: [
+      name ? `Name: ${name}` : null,
+      email ? `Email: ${email}` : null,
+      pageUrl ? `Page: ${pageUrl}` : null,
+      `\nMessage:\n${message}`,
+    ]
+      .filter(Boolean)
+      .join("\n"),
+    html: `
+      ${name ? `<p><strong>Name:</strong> ${name}</p>` : ""}
+      ${email ? `<p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>` : ""}
+      ${pageUrl ? `<p><strong>Page:</strong> ${pageUrl}</p>` : ""}
+      <hr />
+      <p><strong>Message:</strong></p>
+      <p>${message.replace(/\n/g, "<br />")}</p>
+    `,
+  });
 
+  if (emailError) {
+    console.error("Resend error (chat):", emailError);
+    return NextResponse.json({ error: "Message received, but notification failed." }, { status: 500 });
+  }
+
+  // Also forward to CRM webhook if configured
+  const webhookUrl = process.env.CRM_WEBHOOK_URL;
   if (webhookUrl) {
     try {
-      const response = await fetch(webhookUrl, {
+      await fetch(webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payloadForCrm),
       });
-
-      if (!response.ok) {
-        return NextResponse.json(
-          { error: "Chat received, but CRM forwarding failed." },
-          { status: 502 },
-        );
-      }
     } catch {
-      return NextResponse.json(
-        { error: "Chat received, but CRM forwarding failed." },
-        { status: 502 },
-      );
+      // Non-fatal — email already sent
+      console.error("CRM webhook forwarding failed.");
     }
-  } else {
-    console.log("Chat message", {
-      name,
-      email,
-      messagePreview: message.slice(0, 200),
-      pageUrl,
-    });
   }
 
   return NextResponse.json({ ok: true });
