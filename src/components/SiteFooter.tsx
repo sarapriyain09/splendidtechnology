@@ -90,11 +90,15 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-white/10 pt-6 sm:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 sm:flex-row">
           <p className="text-xs text-white/40">
             &copy; {new Date().getFullYear()} Splendid Technology Ltd. Registered in England &amp; Wales.
           </p>
-          <p className="text-xs text-white/40">Leicester, UK &mdash; Industrial IoT &amp; AI Business Improvement</p>
+          <div className="flex flex-wrap items-center gap-4">
+            <a href="/privacy-policy" className="text-xs text-white/40 hover:text-white">Privacy Policy</a>
+            <a href="/cookie-policy" className="text-xs text-white/40 hover:text-white">Cookie Policy</a>
+            <span className="text-xs text-white/30">Leicester, UK</span>
+          </div>
         </div>
 
       </div>
