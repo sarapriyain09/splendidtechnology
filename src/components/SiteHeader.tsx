@@ -1,4 +1,5 @@
-﻿import Link from "next/link";
+﻿import Image from "next/image";
+import Link from "next/link";
 
 const iotLinks = [
   { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring" },
@@ -14,9 +15,18 @@ export function SiteHeader() {
 
         {/* Top bar */}
         <div className="flex items-center justify-between border-b border-white/10 py-3">
-          <Link href="/" className="flex flex-col leading-tight">
-            <span className="text-base font-bold tracking-tight text-white">Splendid Technology</span>
-            <span className="text-[10px] font-medium uppercase tracking-widest text-white/50">Industrial IoT &amp; Process Automation</span>
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/images/industrial-iot/logo_Splendid PNG.png"
+              alt="Splendid Technology"
+              width={360}
+              height={144}
+              className="h-36 w-auto object-contain"
+              priority
+            />
+            <span className="text-[10px] font-medium uppercase tracking-widest text-white/50 hidden sm:block">
+              Industrial IoT &amp; Process Automation
+            </span>
           </Link>
           <a
             href="mailto:info@splendidtechnology.co.uk"

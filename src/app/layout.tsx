@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ChatWidget } from "@/components/ChatWidget";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -73,7 +74,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="w-full">{children}</main>
         <SiteFooter />
-        <ChatWidget />
+        <WhatsAppButton />
       </body>
     </html>
   );
