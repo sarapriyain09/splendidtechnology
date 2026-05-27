@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Splendid Technology | Industrial IoT & AI Business Improvement",
+  title: "About Splendid Technology | Industrial IoT & Smart Reliability Engineering",
   description:
-    "Splendid Technology is a UK engineering technology company (Leicester) specialising in industrial IoT, smart motor monitoring, predictive maintenance, and AI-powered business process improvement for manufacturers.",
+    "Splendid Technology Ltd (Leicester, UK) delivers Industrial IoT, smart motor monitoring, predictive maintenance, and AI-powered business process improvement for industrial SMEs and maintenance teams.",
   alternates: {
     canonical: "/about",
   },
@@ -25,37 +25,112 @@ const keySkills = [
 export default function AboutPage() {
   return (
     <div className="mx-auto w-full max-w-6xl space-y-8 px-4 py-10 sm:px-6 lg:px-8">
+      {/* Page header */}
       <header className="space-y-3">
-        <h1 className="text-3xl font-semibold tracking-tight">About</h1>
-        <p className="max-w-2xl text-sm leading-6 text-black/70">
-          Splendid Technology builds custom, scalable, production-ready software
-          for startups, small businesses, and growing teams.
+        <p className="text-xs font-bold uppercase tracking-widest text-[#0b1f3a]/50">About Us</p>
+        <h1 className="text-3xl font-bold tracking-tight text-[#0b1f3a]">Splendid Technology Ltd</h1>
+        <p className="max-w-2xl text-sm leading-7 text-black/70">
+          Splendid Technology Ltd provides Industrial IoT, smart motor monitoring, and predictive
+          maintenance solutions for industrial SMEs and maintenance teams. We combine practical motor
+          engineering expertise with modern Industry 4.0 technologies — including edge computing,
+          real-time condition monitoring, predictive diagnostics, and intelligent analytics — to help
+          improve reliability and reduce unexpected downtime.
         </p>
       </header>
 
+      {/* What We Do */}
       <section className="rounded-2xl border border-black/10 bg-white p-6">
-        <h2 className="text-lg font-semibold">What we do</h2>
+        <h2 className="text-lg font-semibold text-[#0b1f3a]">What We Do</h2>
         <p className="mt-2 text-sm leading-6 text-black/70">
-          We design and build web applications, e-commerce platforms, automation
-          systems, and AI integrations — with a focus on reliability,
-          performance, and long-term maintainability.
+          We design and develop smart industrial monitoring and predictive maintenance solutions
+          focused on rotating machines and motor-driven systems. Our solutions include:
+        </p>
+        <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+          {[
+            "Smart motor condition monitoring",
+            "Predictive maintenance systems",
+            "Portable diagnostic and inspection kits",
+            "FFT vibration analysis",
+            "Current Signature Analysis (CSA)",
+            "Online insulation health indicators",
+            "Edge-cloud Industrial IoT platforms",
+            "Real-time dashboards and maintenance analytics",
+            "Digital twin–based operational monitoring",
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-2 text-sm text-black/70">
+              <span className="mt-0.5 shrink-0 font-bold text-green-600">✔</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 text-sm text-black/55">
+          Our systems are designed to support industrial operations with practical, scalable, and
+          affordable Industry 4.0 solutions.
         </p>
       </section>
 
+      {/* Our Approach */}
       <section className="rounded-2xl border border-black/10 bg-white p-6">
-        <h2 className="text-lg font-semibold">CodLearn & Splendid Technology</h2>
-        <p className="mt-2 text-sm leading-6 text-black/70">
-          CodLearn is our AI-powered platform for idea generation, learning, and
-          rapid prototyping. Splendid Technology is the execution partner that
-          takes validated prototypes and delivers production-ready systems.
+        <h2 className="text-lg font-semibold text-[#0b1f3a]">Our Approach</h2>
+        <p className="mt-2 text-sm leading-7 text-black/70">
+          We focus on practical engineering-driven solutions rather than generic software platforms.
+          By combining decades of motor engineering, testing, troubleshooting, and reliability
+          experience with Industrial IoT technologies, we help organisations improve maintenance
+          visibility, identify developing issues earlier, and support smarter operational
+          decision-making.
         </p>
       </section>
 
+      {/* Industry 4.0 & Smart Reliability */}
+      <section className="rounded-2xl border border-[#0b1f3a]/10 bg-[#0b1f3a] p-6 text-white">
+        <h2 className="text-lg font-semibold text-green-400">Industry 4.0 &amp; Smart Reliability</h2>
+        <p className="mt-2 text-sm leading-7 text-white/80">
+          Splendid Technology is developing next-generation smart reliability solutions that integrate:
+        </p>
+        <ul className="mt-3 space-y-1">
+          {[
+            "Edge analytics",
+            "Predictive diagnostics",
+            "AI-assisted maintenance insights",
+            "Digital twin concepts",
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-2 text-sm text-white/70">
+              <span className="mt-0.5 shrink-0 text-green-400">→</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 text-sm leading-7 text-white/70">
+          Our long-term vision is to enable affordable and scalable predictive maintenance
+          technologies for SMEs through portable inspection systems, intelligent monitoring
+          platforms, and practical Industry 4.0 adoption.
+        </p>
+      </section>
+
+      {/* How We Work */}
       <section className="rounded-2xl border border-black/10 bg-white p-6">
-        <h2 className="text-lg font-semibold">How we work</h2>
-        <p className="mt-2 text-sm leading-6 text-black/70">
-          Fast kickoff, clear scope, short feedback loops, and deployment-ready
-          delivery — with documentation that keeps your team unblocked.
+        <h2 className="text-lg font-semibold text-[#0b1f3a]">How We Work</h2>
+        <p className="mt-2 text-sm leading-7 text-black/70">
+          We work closely with customers to understand operational challenges, reliability concerns,
+          and maintenance requirements before designing practical monitoring and diagnostic solutions.
+          Our approach emphasises:
+        </p>
+        <ul className="mt-4 space-y-2">
+          {[
+            "Rapid pilot deployment",
+            "Practical implementation",
+            "Clear technical visibility",
+            "Scalable architecture",
+            "Long-term maintainability",
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-2 text-sm text-black/70">
+              <span className="mt-0.5 shrink-0 font-bold text-[#0b1f3a]">✔</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 text-sm leading-6 text-black/55">
+          We focus on delivering engineering-driven solutions that provide measurable operational value.
         </p>
       </section>
 
@@ -65,7 +140,7 @@ export default function AboutPage() {
           <div className="flex-1 space-y-3">
             <div>
               <span className="text-xs font-semibold uppercase tracking-widest text-[#0b3d91]/60">
-                The Expert Behind the Technology
+                Founder &amp; Lead Engineer
               </span>
               <h2 className="mt-1 text-2xl font-bold text-[#0b3d91]">
                 Saravanan Rajagopalan
@@ -122,10 +197,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Members */}
+      {/* Team */}
       <div>
-        <h2 className="text-lg font-semibold">Meet the Team</h2>
-        <p className="mt-1 text-sm text-black/50">The people who build and grow Splendid Technology.</p>
+        <h2 className="text-lg font-semibold text-[#0b1f3a]">The Team</h2>
+        <p className="mt-1 text-sm text-black/50">The engineers and specialists behind Splendid Technology.</p>
       </div>
 
       {/* Shiva — Software Expert */}
