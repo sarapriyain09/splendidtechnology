@@ -1,246 +1,262 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Web Development, AI Automation & Industrial IoT Services (UK)",
+  title: "AI Business Process Automation for Industrial Operations | UK",
   description:
-    "Custom web development, AI automation, and Industrial IoT services for UK businesses. Smart motor inspection kits, predictive maintenance, e-commerce, and workflow automation from Splendid Technology.",
+    "Splendid Technology delivers AI-powered business process automation for UK manufacturers and industrial SMEs — maintenance reporting, work order automation, operational dashboards, and intelligent workflow tools.",
   keywords: [
-    "website development services uk",
-    "custom web development uk",
-    "web app development uk",
-    "ecommerce website development uk",
-    "ai integration services uk",
-    "business automation services uk",
-    "workflow automation uk",
-    "industrial iot services uk",
-    "smart motor inspection service uk",
-    "predictive maintenance uk",
-    "motor diagnostic kit uk",
+    "ai business process automation uk",
+    "industrial process automation uk",
+    "maintenance reporting automation uk",
+    "operational dashboard software uk",
+    "work order automation uk",
+    "ai workflow automation manufacturers uk",
+    "business process improvement uk manufacturers",
+    "digital operations management uk",
   ],
   alternates: {
     canonical: "/services",
   },
 };
 
-const services = [
+const automationServices = [
   {
-    title: "Web Applications",
+    icon: "📋",
+    title: "Automated Maintenance Reporting",
+    description:
+      "Eliminate manual report writing. AI captures data from your monitoring systems and generates structured maintenance reports automatically — ready for your team before the shift ends.",
     bullets: [
-      "Custom dashboards & portals",
-      "SaaS platforms & internal tools",
-      "User authentication & role management",
-      "Secure backend APIs",
-      "Tech: React, Next.js, FastAPI, Node.js, PostgreSQL",
+      "Auto-generated shift and daily reports",
+      "Connected to IoT sensor data",
+      "Email and dashboard delivery",
+      "PDF export for compliance records",
     ],
   },
   {
-    title: "E-Commerce Solutions",
+    icon: "📅",
+    title: "Work Order & Scheduling Automation",
+    description:
+      "When a sensor flags an anomaly, a work order is created automatically. No manual entry, no delays — the right technician gets the right job at the right time.",
     bullets: [
-      "Custom e-commerce websites",
-      "Shopify & headless commerce",
-      "Payment integration (Stripe, PayPal)",
-      "Order, inventory & customer management",
+      "Trigger-based work order creation",
+      "Priority scoring by severity",
+      "Technician assignment & notification",
+      "Integration with maintenance calendars",
     ],
   },
   {
-    title: "Automation, Integrations & AI",
+    icon: "📈",
+    title: "Operational KPI Dashboards",
+    description:
+      "A single pane of glass for your operations. Live dashboards show uptime, fault trends, maintenance costs, and team performance — giving management real data to make real decisions.",
     bullets: [
-      "Business process automation (including n8n workflows)",
-      "CRM & lead automation",
-      "API integrations (payments, email, analytics)",
-      "AI integrations: chatbots, copilots, and AI-assisted dashboards",
+      "Live uptime and downtime tracking",
+      "Maintenance cost analysis",
+      "Asset health trending over time",
+      "Role-based views for management vs. engineers",
     ],
   },
   {
-    title: "Industrial IoT & Smart Monitoring",
+    icon: "📱",
+    title: "Digital Data Capture & Forms",
+    description:
+      "Replace paper inspection sheets and manual data entry with smart digital forms. Data flows directly into your systems — accurate, immediate, and searchable.",
     bullets: [
-      "Portable motor health inspection service",
-      "Predictive maintenance & condition monitoring",
-      "Vibration FFT & current signature analysis",
-      "Smart sensor integration & edge computing",
-      "Cloud dashboards & maintenance reporting",
-      "Industry 4.0 solutions for UK SMEs",
+      "Mobile-first inspection forms",
+      "Photo and signature capture",
+      "Auto-sync to central database",
+      "Instant audit trail & compliance logging",
+    ],
+  },
+  {
+    icon: "🔔",
+    title: "Smart Alerting & Escalation",
+    description:
+      "The right alert, to the right person, at the right time. Configurable thresholds trigger notifications across SMS, email, or your existing systems — with escalation rules if issues go unresolved.",
+    bullets: [
+      "Multi-channel alert delivery",
+      "Configurable severity thresholds",
+      "Escalation chains if unacknowledged",
+      "Integrated with IoT sensor data",
+    ],
+  },
+  {
+    icon: "🔄",
+    title: "Workflow & Process Integration",
+    description:
+      "Connect your monitoring systems, ERP, and operational tools into one automated workflow. Reduce data silos, remove double entry, and keep every system in sync.",
+    bullets: [
+      "n8n and API-based integrations",
+      "ERP and CMMS connectivity",
+      "Automated data validation",
+      "Custom workflow design",
     ],
   },
 ];
 
-const godaddyProducts = [
-  {
-    title: "Domain Registration",
-    description: "Search and register a domain for your business.",
-    href: "https://www.thesplendidweb.com/products/domain-registration?plid=596699",
-  },
-  {
-    title: "Domain Transfer",
-    description: "Move an existing domain to our GoDaddy storefront.",
-    href: "https://www.thesplendidweb.com/products/domain-transfer?plid=596699",
-  },
-  {
-    title: "Website Builder",
-    description: "Create a basic website quickly with templates and hosting.",
-    href: "https://www.thesplendidweb.com/products/website-builder?plid=596699",
-  },
-  {
-    title: "Managed WordPress",
-    description: "WordPress hosting for business sites and blogs.",
-    href: "https://www.thesplendidweb.com/products/wordpress?plid=596699",
-  },
-  {
-    title: "cPanel Hosting",
-    description: "Traditional hosting with cPanel access.",
-    href: "https://www.thesplendidweb.com/products/cpanel?plid=596699",
-  },
-  {
-    title: "SSL Certificates",
-    description: "HTTPS for your website and customer trust signals.",
-    href: "https://www.thesplendidweb.com/products/ssl?plid=596699",
-  },
-  {
-    title: "Microsoft 365",
-    description: "Business email and productivity apps.",
-    href: "https://www.thesplendidweb.com/products/microsoft-365?plid=596699",
-  },
-  {
-    title: "JWeller Shopify Theme",
-    description:
-      "Premium Shopify Online Store 2.0 theme scaffold for jewellery brands.",
-    href: "/contact",
-    ctaLabel: "Contact us to purchase",
-    detailsHref: "/products/jweller-shopify-theme",
-  },
-  {
-    title: "Smart Motor Reliability Inspection Kit",
-    description:
-      "Professional portable motor diagnostic solution with FFT vibration analysis, current signature analysis, health scoring, and predictive maintenance alerts — in a rugged carry case. Available as inspection service, pilot package, rental, or outright purchase.",
-    href: "/industrial-iot/portable-diagnostic-kit",
-    ctaLabel: "Book an Inspection",
-    detailsHref: "/industrial-iot/portable-diagnostic-kit",
-  },
+const useCases = [
+  { label: "Automated fault-to-work-order in under 60 seconds" },
+  { label: "Shift handover reports generated while engineers are still on-site" },
+  { label: "Management receives daily plant health summary every morning at 7am" },
+  { label: "Inspection teams capture data on mobile — no paperwork, no re-entry" },
+  { label: "Finance receives automated monthly maintenance cost reports" },
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="mx-auto w-full max-w-6xl space-y-10 px-4 py-10 sm:px-6 lg:px-8">
-      <header className="space-y-3">
-        <h1 className="text-3xl font-semibold tracking-tight">Services</h1>
-        <p className="max-w-2xl text-sm leading-6 text-black/70">
-          CodLearn helps with idea generation, learning, and rapid prototyping.
-          Splendid Technology delivers custom, scalable, production-ready systems.
-        </p>
-      </header>
+    <div className="w-full">
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {services.map((service) => (
-          <section
-            key={service.title}
-            className="rounded-2xl border border-black/10 bg-white p-6"
-          >
-            <h2 className="text-lg font-semibold">{service.title}</h2>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-black/70">
-              {service.bullets.map((bullet) => (
-                <li key={bullet}>{bullet}</li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
-      {/* ── Industrial IoT Callout ── */}
-      <div className="rounded-2xl bg-[#0b1f3a] px-6 py-8 sm:px-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-green-400">
-              Industrial IoT Division
-            </p>
-            <h2 className="text-xl font-bold text-white">
-              Smart Motor Inspection &amp; Predictive Maintenance
-            </h2>
-            <p className="mt-2 max-w-xl text-sm leading-6 text-white/65">
-              Prevent costly motor failures with our portable diagnostic kit — FFT vibration analysis,
-              current signature analysis, health scoring, and cloud dashboards. Available as an
-              on-site inspection service, pilot programme, or outright kit purchase.
-            </p>
-          </div>
-          <div className="flex shrink-0 flex-wrap gap-3">
+      {/* Hero */}
+      <section className="bg-[#0b1f3a] px-4 py-16 text-white sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-6xl">
+          <p className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-white/70">
+            Business Process Improvement
+          </p>
+          <h1 className="mt-4 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">
+            AI Business Process Automation
+          </h1>
+          <p className="mt-4 max-w-2xl text-pretty text-lg leading-7 text-white/80">
+            Beyond monitoring hardware — we automate the business processes around your
+            industrial operations. Reporting, work orders, dashboards, and data capture.
+            All connected. All automated.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4">
             <Link
-              href="/industrial-iot/portable-diagnostic-kit"
-              className="inline-block rounded-lg bg-green-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-green-600"
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-lg bg-green-600 px-7 py-3 font-bold text-white hover:bg-green-700"
             >
-              Book an Inspection →
+              Book a Discovery Call
             </Link>
             <Link
               href="/industrial-iot"
-              className="inline-block rounded-lg border border-white/30 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10"
+              className="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-3 font-bold text-white hover:bg-white/10"
             >
-              View IoT Services
+              See Our IoT Solutions
             </Link>
           </div>
         </div>
-      </div>
-      <section id="godaddy-products" className="space-y-5 scroll-mt-24">
-        <div className="space-y-2">
-          <h2 className="text-2xl font-semibold tracking-tight">Products</h2>
-          <p className="max-w-2xl text-sm leading-6 text-black/70">
-            GoDaddy products via our storefront, plus our own deliverables. Use the
-            links below to purchase domains, hosting, SSL, and more.
+      </section>
+
+      {/* Automation Services Grid */}
+      <section className="py-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">What We Automate</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
+            Every automation we build is designed to remove manual bottlenecks from your
+            industrial operations — saving time, reducing errors, and giving your team
+            better data.
           </p>
-          <p className="max-w-2xl text-sm leading-6 text-black/70">
-            If you need something beyond off-the-shelf products — a custom web app,
-            e-commerce build, automation, or AI integration — contact Splendid
-            Technology. If you’re still shaping the idea, start with CodLearn and we
-            can take it to production.
-          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {automationServices.map((s) => (
+              <div key={s.title} className="rounded-2xl border border-black/10 bg-white p-6">
+                <span className="text-3xl">{s.icon}</span>
+                <h3 className="mt-3 text-lg font-bold text-[#0b1f3a]">{s.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-black/60">{s.description}</p>
+                <ul className="mt-4 space-y-1.5">
+                  {s.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2 text-sm text-black/70">
+                      <span className="mt-0.5 font-bold text-green-600">✔</span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
+      </section>
 
-        <div className="grid gap-4 lg:grid-cols-3">
-          {godaddyProducts.map((product) => (
-            <div
-              key={product.title}
-              className="group rounded-2xl border border-black/10 bg-white p-6 hover:bg-black/[.02]"
-            >
-              <h3 className="text-lg font-semibold">{product.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-black/70">
-                {product.description}
-              </p>
-              <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium">
-                {product.href.startsWith("/") ? (
-                  <Link className="text-blue-700 hover:underline" href={product.href}>
-                    {"ctaLabel" in product ? product.ctaLabel : "Open product page"}
-                  </Link>
-                ) : (
-                  <a
-                    className="text-blue-700 hover:underline"
-                    href={product.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+      {/* Real-World Use Cases */}
+      <section className="bg-[#f7f7f7] py-14">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-[#0b1f3a]">Real-World Use Cases</h2>
+          <p className="mt-2 text-sm text-black/60">What our automation looks like in practice on the plant floor:</p>
+          <ul className="mt-6 space-y-3">
+            {useCases.map((u) => (
+              <li key={u.label} className="flex items-start gap-3 rounded-xl border border-black/10 bg-white px-5 py-4">
+                <span className="mt-0.5 text-green-600 font-bold text-lg">→</span>
+                <span className="text-sm leading-6 text-black/70">{u.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Connected to IoT */}
+      <section className="py-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl bg-[#0b1f3a] p-8 lg:p-10">
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-xl">
+                <p className="text-xs font-bold uppercase tracking-widest text-green-400">Better Together</p>
+                <h2 className="mt-2 text-2xl font-bold text-white">
+                  Paired with Industrial IoT Monitoring
+                </h2>
+                <p className="mt-3 text-sm leading-6 text-white/70">
+                  Our AI automation services are most powerful when connected to our
+                  industrial IoT monitoring solutions. Sensor data drives automated
+                  reports, alerts trigger automated work orders, and dashboards show the
+                  complete picture — from motor health to maintenance cost.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Link
+                    href="/industrial-iot"
+                    className="inline-flex items-center justify-center rounded-lg bg-green-600 px-6 py-3 text-sm font-bold text-white hover:bg-green-700"
                   >
-                    Open product page
-                  </a>
-                )}
-
-                {"detailsHref" in product && product.detailsHref ? (
-                  <Link className="text-blue-700 hover:underline" href={product.detailsHref}>
-                    More details
+                    Explore Industrial IoT
                   </Link>
-                ) : null}
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-lg border border-white/30 px-6 py-3 text-sm font-bold text-white hover:bg-white/10"
+                  >
+                    Book a Free Consultation
+                  </Link>
+                </div>
+              </div>
+              <div className="grid w-full max-w-xs grid-cols-1 gap-3 lg:w-auto">
+                {[
+                  "Smart Motor Monitoring",
+                  "Predictive Maintenance",
+                  "Portable Diagnostic Kit",
+                  "Industry 4.0 Solutions",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3">
+                    <span className="text-green-400 font-bold">→</span>
+                    <span className="text-sm font-medium text-white/80">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
-      <section className="rounded-2xl border border-black/10 bg-white p-6">
-        <h2 className="text-lg font-semibold">Areas we serve</h2>
-        <p className="mt-2 text-sm leading-6 text-black/70">
-          We work UK-wide remotely (and locally in Leicester). Browse our major UK
-          city pages for a quick overview.
-        </p>
-        <div className="mt-4">
-          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/locations">
-            View UK locations
-          </Link>
+      {/* CTA */}
+      <section className="bg-[#f7f7f7] py-14 text-center">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Ready to Automate Your Operations?</h2>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-black/60">
+            We start with a discovery call to understand your current processes, then
+            design and build automation that fits your operation — not a generic template.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-lg bg-[#0b1f3a] px-8 py-3 font-bold text-white hover:bg-[#0b3d91]"
+            >
+              Book a Discovery Call
+            </Link>
+            <Link
+              href="/industrial-iot"
+              className="inline-flex items-center justify-center rounded-lg border border-[#0b1f3a]/30 px-8 py-3 font-bold text-[#0b1f3a] hover:bg-[#0b1f3a]/5"
+            >
+              See Our IoT Solutions
+            </Link>
+          </div>
         </div>
       </section>
+
     </div>
   );
 }

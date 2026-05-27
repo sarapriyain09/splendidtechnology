@@ -3,9 +3,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Industrial IoT & Smart Monitoring Solutions | Splendid Technology",
+  title: "Industrial IoT & Predictive Maintenance | Splendid Technology UK",
   description:
-    "Splendid Technology delivers smart motor monitoring, predictive maintenance, and Industry 4.0 solutions for UK manufacturers and SMEs. Reduce downtime. Increase visibility.",
+    "Splendid Technology delivers smart motor monitoring, predictive maintenance, Industry 4.0 solutions, and AI business process automation for UK manufacturers and industrial SMEs. Reduce downtime. Increase visibility.",
   keywords: [
     "industrial iot uk",
     "smart motor monitoring uk",
@@ -79,18 +79,19 @@ export default function IndustrialIoTPage() {
       <section className="bg-[#0b1f3a] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="w-full max-w-xl">
-            <p className="mb-4 inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-green-400">
-              /industrial-iot
+            <p className="mb-4 inline-block rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-green-400">
+              Splendid Technology — Industrial Division
             </p>
             <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
-              Industrial IoT &amp; Smart Monitoring Solutions
+              Industrial IoT &amp; Smart Reliability Engineering
             </h1>
             <p className="mt-4 text-lg font-semibold text-green-400">
-              Smart Insights. Reliable Operations. Better Performance.
+              Purpose-built for UK manufacturers. Not adapted from web tools.
             </p>
             <p className="mt-3 text-base leading-7 text-white/70">
-              We help SMEs transform operations with intelligent monitoring, predictive
-              maintenance and data-driven decisions.
+              We design and deliver smart motor monitoring, predictive maintenance, and
+              Industry 4.0 solutions that reduce downtime and protect your assets —
+              built by specialists who understand industrial reliability.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link

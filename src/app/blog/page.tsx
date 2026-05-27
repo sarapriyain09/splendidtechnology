@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Industrial IoT & AI Automation Insights | Splendid Technology Blog",
   description:
-    "Practical guides on UK web development costs, web apps vs websites, ecommerce, automation, and AI integrations.",
+    "Practical guides on industrial IoT, smart motor monitoring, predictive maintenance, AI business process automation, and operational improvement for UK manufacturers.",
   alternates: {
     canonical: "/blog",
   },
@@ -17,10 +17,10 @@ export default function BlogIndexPage() {
   return (
     <div className="mx-auto w-full max-w-6xl space-y-10 px-4 py-10 sm:px-6 lg:px-8">
       <header className="space-y-3">
-        <h1 className="text-3xl font-semibold tracking-tight">Blog</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">Industrial IoT &amp; Automation Insights</h1>
         <p className="max-w-2xl text-sm leading-6 text-black/70">
-          Practical guides on web development, ecommerce, automation, and AI—UK
-          focused.
+          Practical guides on smart motor monitoring, predictive maintenance, AI
+          business process automation, and operational improvement — for UK manufacturers.
         </p>
       </header>
 

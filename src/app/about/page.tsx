@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Splendid Technology",
+  title: "About Splendid Technology | Industrial IoT & AI Business Improvement",
   description:
-    "Learn how Splendid Technology delivers custom web development, e-commerce builds, automation, and AI integrations for UK businesses.",
+    "Splendid Technology is a UK engineering technology company (Leicester) specialising in industrial IoT, smart motor monitoring, predictive maintenance, and AI-powered business process improvement for manufacturers.",
   alternates: {
     canonical: "/about",
   },

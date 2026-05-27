@@ -1,81 +1,102 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-[#f0f0f0]">
-      <div className="mx-auto w-full max-w-6xl px-4 py-8 text-center text-sm text-black/70 sm:px-6 lg:px-8">
-        <p>
-          © {new Date().getFullYear()} Splendid Technology |{" "}
-          <Link className="text-[#0b3d91] hover:underline" href="/">
-            Home
-          </Link>{" "}
-          |{" "}
-          <Link className="text-[#0b3d91] hover:underline" href="/#services">
-            Services
-          </Link>{" "}
-          |{" "}
-          <Link className="text-[#0b3d91] hover:underline" href="/industrial-iot">
-            Industrial IoT
-          </Link>{" "}
-          |{" "}
-          <Link className="text-[#0b3d91] hover:underline" href="/#portfolio">
-            Portfolio
-          </Link>{" "}
-          |{" "}
-          <Link className="text-[#0b3d91] hover:underline" href="/blog">
-            Blog
-          </Link>{" "}
-          |{" "}
-          <Link className="text-[#0b3d91] hover:underline" href="/#contact">
-            Contact
-          </Link>
-        </p>
-        <p className="mt-2 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-center sm:gap-0">
-          <span>
-            Email:{" "}
-            <a
-              className="text-[#0b3d91] hover:underline"
-              href="mailto:info@splendidtechnology.co.uk"
-            >
-              info@splendidtechnology.co.uk
-            </a>
-          </span>
-          <span className="hidden sm:inline">&nbsp;|&nbsp;</span>
-          <span>
-            Phone:{" "}
-            <a className="text-[#0b3d91] hover:underline" href="tel:+447721952967">
-              +44 7721952967
-            </a>
-          </span>
-        </p>
-        <p className="mt-2">
-          <a className="text-[#0b3d91] hover:underline" href="#">
-            LinkedIn
-          </a>{" "}
-          |{" "}
-          <a className="text-[#0b3d91] hover:underline" href="#">
-            Facebook
-          </a>{" "}
-          |{" "}
-          <a className="text-[#0b3d91] hover:underline" href="#">
-            Instagram
-          </a>
-        </p>
-        <p className="mt-3 text-xs text-black/70">
-          <span className="font-semibold text-black/80">Innovation Partner:</span>{" "}
-          <a
-            className="text-[#0b3d91] hover:underline"
-            href="https://www.codlearn.com/app/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            CodLearn
-          </a>
-          {" "}
-          <span className="text-black/60">
-            — Idea generation · Rapid prototyping · Learning-first AI tools
-          </span>
-        </p>
+    <footer className="bg-[#0b1f3a] text-white">
+      <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="flex flex-col leading-tight">
+              <span className="text-base font-bold text-white">Splendid Technology</span>
+              <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">Industrial IoT &amp; Business Improvement</span>
+            </Link>
+            <p className="mt-3 text-xs leading-5 text-white/50">
+              A UK engineering technology company (Leicester) delivering smart monitoring,
+              predictive maintenance, and AI-powered business process improvement for
+              manufacturers and industrial SMEs.
+            </p>
+            <p className="mt-4 text-xs text-white/50">
+              <a className="hover:text-white" href="mailto:info@splendidtechnology.co.uk">
+                info@splendidtechnology.co.uk
+              </a>
+            </p>
+            <p className="mt-1 text-xs text-white/50">
+              <a className="hover:text-white" href="tel:+447721952967">
+                +44 7721 952967
+              </a>
+            </p>
+          </div>
+
+          {/* Industrial IoT Solutions */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Industrial IoT</h3>
+            <ul className="mt-3 space-y-2">
+              {[
+                { href: "/industrial-iot", label: "Overview" },
+                { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring" },
+                { href: "/industrial-iot/predictive-maintenance", label: "Predictive Maintenance" },
+                { href: "/industrial-iot/portable-diagnostic-kit", label: "Portable Diagnostic Kit" },
+                { href: "/industrial-iot/industry-40-solutions", label: "Industry 4.0 Solutions" },
+              ].map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-xs text-white/60 hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Business Improvement */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-white/50">Business Improvement</h3>
+            <ul className="mt-3 space-y-2">
+              {[
+                { href: "/services", label: "AI Process Automation" },
+                { href: "/blog", label: "Insights & Guides" },
+              ].map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-xs text-white/60 hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-white/40">Company</h3>
+            <ul className="mt-3 space-y-2">
+              {[
+                { href: "/about", label: "About" },
+                { href: "/contact", label: "Contact & Book a Pilot" },
+              ].map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-xs text-white/60 hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 flex gap-3">
+              <a href="#" className="text-xs text-white/50 hover:text-white">LinkedIn</a>
+              <a href="#" className="text-xs text-white/50 hover:text-white">Facebook</a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-white/10 pt-6 sm:flex-row">
+          <p className="text-xs text-white/40">
+            &copy; {new Date().getFullYear()} Splendid Technology Ltd. Registered in England &amp; Wales.
+          </p>
+          <p className="text-xs text-white/40">Leicester, UK &mdash; Industrial IoT &amp; AI Business Improvement</p>
+        </div>
+
       </div>
     </footer>
   );

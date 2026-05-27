@@ -1,34 +1,67 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/#services", label: "Services" },
-  { href: "/industrial-iot", label: "Industrial IoT" },
-  { href: "/#portfolio", label: "Portfolio" },
-  { href: "/blog", label: "Blog" },
-  { href: "/locations", label: "Locations" },
-  { href: "/services#godaddy-products", label: "Products" },
-  { href: "/about", label: "About" },
-  { href: "/#contact", label: "Contact" },
+const iotLinks = [
+  { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring" },
+  { href: "/industrial-iot/predictive-maintenance", label: "Predictive Maintenance" },
+  { href: "/industrial-iot/portable-diagnostic-kit", label: "Portable Diagnostic Kit" },
+  { href: "/industrial-iot/industry-40-solutions", label: "Industry 4.0" },
 ];
 
 export function SiteHeader() {
   return (
-    <header className="bg-[#0b3d91] text-white">
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-4 px-4 py-5 sm:flex-row sm:items-center sm:gap-6 sm:px-6 lg:px-8">
-        <Link href="/" className="text-lg font-bold tracking-tight">
-          Splendid Technology
-        </Link>
-        <nav className="flex flex-wrap items-center justify-start gap-x-4 gap-y-2 sm:justify-end sm:gap-x-5">
-          {links.map((link) => (
+    <header className="bg-[#0b1f3a] text-white">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+
+        {/* Top bar */}
+        <div className="flex items-center justify-between border-b border-white/10 py-3">
+          <Link href="/" className="flex flex-col leading-tight">
+            <span className="text-base font-bold tracking-tight text-white">Splendid Technology</span>
+            <span className="text-[10px] font-medium uppercase tracking-widest text-white/50">Industrial IoT &amp; Business Improvement</span>
+          </Link>
+          <a
+            href="mailto:info@splendidtechnology.co.uk"
+            className="hidden text-xs text-white/60 hover:text-white sm:block"
+          >
+            info@splendidtechnology.co.uk
+          </a>
+        </div>
+
+        {/* Main nav */}
+        <nav className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 py-2">
+          <div className="flex flex-wrap items-center gap-x-1 gap-y-1">
             <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-white/95 hover:text-white"
+              href="/industrial-iot"
+              className="rounded bg-green-700/30 px-2 py-1 text-xs font-bold uppercase tracking-wide text-green-400 hover:bg-green-700/50"
             >
-              {link.label}
+              Industrial IoT
             </Link>
-          ))}
+            {iotLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-2 py-1 text-xs text-white/70 hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center gap-x-1 gap-y-1">
+            <Link href="/services" className="px-2 py-1 text-xs text-white/70 hover:text-white">
+              AI Automation
+            </Link>
+            <Link href="/blog" className="px-2 py-1 text-xs text-white/70 hover:text-white">
+              Blog
+            </Link>
+            <Link href="/about" className="px-2 py-1 text-xs text-white/70 hover:text-white">
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className="rounded bg-green-600 px-3 py-1 text-xs font-bold text-white hover:bg-green-700"
+            >
+              Book a Pilot
+            </Link>
+          </div>
         </nav>
       </div>
     </header>
