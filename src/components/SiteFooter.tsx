@@ -89,8 +89,15 @@ export function SiteFooter() {
           </div>
         </div>
 
+        {/* Monitoring Disclaimer */}
+        <div className="mt-10 rounded-lg border border-white/10 bg-white/5 px-5 py-4">
+          <p className="text-[11px] leading-5 text-white/40">
+            <strong className="text-white/50">Disclaimer:</strong> Monitoring insights and predictive maintenance recommendations provided by Splendid Technology Ltd are intended to support maintenance decision-making and should not replace standard engineering inspections, operational procedures, or established safety practices.
+          </p>
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 sm:flex-row">
+        <div className="mt-6 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 sm:flex-row">
           <p className="text-xs text-white/40">
             &copy; {new Date().getFullYear()} Splendid Technology Ltd. Registered in England &amp; Wales.
           </p>

@@ -69,7 +69,21 @@ const sections = [
     ],
   },
   {
-    heading: "6. Who We Share Your Data With",
+    heading: "6. Industrial IoT & Monitoring Activities",
+    body: [
+      "As part of our Industrial IoT services, we may collect and process operational data from equipment installed at your site during pilot engagements and live deployments. This section explains how that data is handled.",
+    ],
+    bullets: [
+      "Machine operational data: vibration, temperature, current draw, and other sensor readings captured from monitored equipment",
+      "Predictive maintenance analytics: processed data used to generate condition scores, fault indicators, and maintenance recommendations",
+      "Cloud dashboard data: aggregated operational metrics transmitted to secure cloud platforms for analysis and reporting",
+      "Pilot engagement data: data collected during agreed trial periods, retained only for the duration of the pilot unless extended by mutual agreement",
+      "Site contact data: names and contact details of site personnel involved in the installation or review of monitoring systems",
+    ],
+    note: "Monitoring insights and predictive maintenance recommendations are intended to support maintenance decision-making and should not replace standard engineering inspections, operational procedures, or safety practices. All operational data is processed under a contractual agreement with your organisation and is not shared with third parties without your consent.",
+  },
+  {
+    heading: "7. Who We Share Your Data With",
     body: [
       "We do not sell your personal data. We may share it with trusted third parties only where necessary:",
     ],
@@ -83,13 +97,13 @@ const sections = [
     note: "All third-party processors are required to handle your data securely and in accordance with UK GDPR.",
   },
   {
-    heading: "7. International Data Transfers",
+    heading: "8. International Data Transfers",
     body: [
       "Some of our third-party service providers may process data outside the UK. Where this occurs, we ensure appropriate safeguards are in place — such as adequacy decisions, standard contractual clauses, or equivalent protections — as required by UK GDPR.",
     ],
   },
   {
-    heading: "8. How Long We Keep Your Data",
+    heading: "9. How Long We Keep Your Data",
     body: [
       "We retain personal data only for as long as necessary for the purpose it was collected:",
     ],
@@ -100,7 +114,7 @@ const sections = [
     ],
   },
   {
-    heading: "9. Your Rights Under UK GDPR",
+    heading: "10. Your Rights Under UK GDPR",
     body: [
       "As a UK data subject, you have the following rights:",
     ],
@@ -116,14 +130,14 @@ const sections = [
     note: "To exercise any of these rights, contact us at info@splendidtechnology.co.uk. We will respond within one calendar month.",
   },
   {
-    heading: "10. Keeping Your Data Secure",
+    heading: "11. Keeping Your Data Secure",
     body: [
       "We take appropriate technical and organisational measures to protect your personal data against unauthorised access, loss, or disclosure. These include encrypted communications, access controls, and secure data storage.",
       "In the event of a data breach that is likely to result in a risk to your rights and freedoms, we will notify the ICO within 72 hours and you as required by law.",
     ],
   },
   {
-    heading: "11. Complaints",
+    heading: "12. Complaints",
     body: [
       "If you believe we have not handled your personal data lawfully, you have the right to lodge a complaint with the UK's supervisory authority:",
       "Information Commissioner's Office (ICO) | ico.org.uk | 0303 123 1113",
@@ -131,7 +145,7 @@ const sections = [
     ],
   },
   {
-    heading: "12. Changes to This Policy",
+    heading: "13. Changes to This Policy",
     body: [
       "We may update this Privacy Policy from time to time. The date at the top of this page reflects the most recent revision. Significant changes will be communicated via our website.",
     ],
