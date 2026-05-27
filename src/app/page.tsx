@@ -21,6 +21,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  openGraph: {
+    type: "website",
+    title: "Splendid Technology | Industrial IoT & Process Automation",
+    description:
+      "Smart motor monitoring, predictive maintenance, and AI-powered process automation for UK manufacturers and industrial SMEs. Based in Leicester.",
+    url: "https://www.splendidtechnology.co.uk/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Splendid Technology | Industrial IoT & Process Automation",
+    description:
+      "Smart motor monitoring, predictive maintenance, and AI-powered process automation for UK manufacturers and industrial SMEs. Based in Leicester.",
+  },
 };
 
 const solutions = [

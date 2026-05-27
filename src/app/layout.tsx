@@ -24,35 +24,37 @@ function getSiteUrl(): string {
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Splendid Technology",
+    default: "Splendid Technology | Industrial IoT & Process Automation",
     template: "%s | Splendid Technology",
   },
   description:
-    "UK web development company building custom web apps, e-commerce, automation, and AI integrations — from prototype to production-ready delivery.",
+    "Splendid Technology Ltd — Industrial IoT, smart motor monitoring, predictive maintenance, and AI-powered process automation for UK manufacturers and industrial SMEs. Based in Leicester.",
   keywords: [
-    "web development company uk",
-    "custom web development uk",
-    "web app development uk",
-    "ecommerce website development uk",
-    "ai integration services uk",
-    "business automation services uk",
-    "web developers leicester",
+    "industrial iot uk",
+    "smart motor monitoring uk",
+    "predictive maintenance uk",
+    "industry 4.0 solutions uk",
+    "motor condition monitoring leicester",
+    "ai process automation uk",
+    "industrial iot leicester",
+    "motor diagnostic kit uk",
+    "smart factory solutions uk",
   ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
-    title: "Splendid Technology",
+    title: "Splendid Technology | Industrial IoT & Process Automation",
     description:
-      "UK web development company building custom web apps, e-commerce, automation, and AI integrations.",
+      "Smart motor monitoring, predictive maintenance, and AI-powered process automation for UK manufacturers. Based in Leicester.",
     url: "/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Splendid Technology",
+    title: "Splendid Technology | Industrial IoT & Process Automation",
     description:
-      "UK web development company building custom web apps, e-commerce, automation, and AI integrations.",
+      "Smart motor monitoring, predictive maintenance, and AI-powered process automation for UK manufacturers. Based in Leicester.",
   },
   robots: {
     index: true,
