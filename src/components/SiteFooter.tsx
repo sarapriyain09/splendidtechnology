@@ -18,7 +18,10 @@ export function SiteFooter() {
               predictive maintenance, and AI-powered business process improvement for
               manufacturers and industrial SMEs.
             </p>
-            <p className="mt-4 text-xs text-white/50">
+            <p className="mt-3 text-xs text-white/40">
+              36 Glazebrook Road, Leicester, LE3 9NT
+            </p>
+            <p className="mt-2 text-xs text-white/50">
               <a className="hover:text-white" href="mailto:info@splendidtechnology.co.uk">
                 info@splendidtechnology.co.uk
               </a>
@@ -99,7 +102,7 @@ export function SiteFooter() {
         {/* Bottom bar */}
         <div className="mt-6 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 sm:flex-row">
           <p className="text-xs text-white/40">
-            &copy; {new Date().getFullYear()} Splendid Technology Ltd. Registered in England &amp; Wales.
+            &copy; {new Date().getFullYear()} Splendid Technology Ltd. Registered in England &amp; Wales. Company No. 17245651
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <a href="/privacy-policy" className="text-xs text-white/40 hover:text-white">Privacy Policy</a>

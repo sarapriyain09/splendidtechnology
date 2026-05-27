@@ -220,7 +220,8 @@ export default function CookiePolicyPage() {
           </p>
           <div className="mt-3 rounded-xl border border-black/10 bg-white px-5 py-4 text-sm text-black/70">
             <p><strong className="text-[#0b1f3a]">Splendid Technology Ltd</strong></p>
-            <p className="mt-1">Leicester, England</p>
+            <p className="mt-1">36 Glazebrook Road, Leicester, LE3 9NT</p>
+            <p className="mt-1">Company No. 17245651 (Registered in England &amp; Wales)</p>
             <p className="mt-1">
               <a className="text-[#0b1f3a] underline hover:text-[#0b3d91]" href="mailto:info@splendidtechnology.co.uk">
                 info@splendidtechnology.co.uk

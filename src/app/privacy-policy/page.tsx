@@ -199,8 +199,10 @@ export default function PrivacyPolicyPage() {
 
       <footer className="mt-12 border-t border-black/10 pt-8 text-sm text-black/50">
         <p>
-          <strong className="text-black/70">Data Controller:</strong> Splendid Technology Ltd, Leicester, England
+          <strong className="text-black/70">Data Controller:</strong> Splendid Technology Ltd
         </p>
+        <p className="mt-1">36 Glazebrook Road, Leicester, LE3 9NT, England</p>
+        <p className="mt-1">Company No. 17245651 (Registered in England &amp; Wales)</p>
         <p className="mt-1">
           <strong className="text-black/70">Contact:</strong>{" "}
           <a className="text-[#0b1f3a] hover:underline" href="mailto:info@splendidtechnology.co.uk">
