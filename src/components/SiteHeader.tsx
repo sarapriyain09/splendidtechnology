@@ -16,7 +16,7 @@ export function SiteHeader() {
         <div className="flex items-center justify-between border-b border-white/10 py-3">
           <Link href="/" className="flex flex-col leading-tight">
             <span className="text-base font-bold tracking-tight text-white">Splendid Technology</span>
-            <span className="text-[10px] font-medium uppercase tracking-widest text-white/50">Industrial IoT &amp; Business Improvement</span>
+            <span className="text-[10px] font-medium uppercase tracking-widest text-white/50">Industrial IoT &amp; Process Automation</span>
           </Link>
           <a
             href="mailto:info@splendidtechnology.co.uk"

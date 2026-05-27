@@ -11,7 +11,7 @@ export function SiteFooter() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex flex-col leading-tight">
               <span className="text-base font-bold text-white">Splendid Technology</span>
-              <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">Industrial IoT &amp; Business Improvement</span>
+              <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">Industrial IoT &amp; Process Automation</span>
             </Link>
             <p className="mt-3 text-xs leading-5 text-white/50">
               A UK engineering technology company (Leicester) delivering smart monitoring,
