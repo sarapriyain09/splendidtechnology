@@ -49,6 +49,12 @@ export function SiteHeader() {
             <Link href="/services" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               AI Automation
             </Link>
+            <Link
+              href="/proof-of-concept"
+              className="rounded border border-amber-400/30 px-2 py-1 text-xs font-semibold text-amber-400 hover:border-amber-400/60"
+            >
+              Innovation Lab
+            </Link>
             <Link href="/blog" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Blog
             </Link>

@@ -76,6 +76,7 @@ export function SiteFooter() {
             <ul className="mt-3 space-y-2">
               {[
                 { href: "/about", label: "About" },
+                { href: "/proof-of-concept", label: "Innovation Lab" },
                 { href: "/contact", label: "Contact & Book a Pilot" },
               ].map((l) => (
                 <li key={l.href}>
