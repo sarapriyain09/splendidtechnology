@@ -21,6 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: `${base}/`, lastModified },
+    { url: `${base}/industrial-iot/reliability-study`, lastModified },
+    { url: `${base}/tools/mtbf`, lastModified },
     { url: `${base}/services`, lastModified },
     { url: `${base}/portfolio`, lastModified },
     { url: `${base}/about`, lastModified },

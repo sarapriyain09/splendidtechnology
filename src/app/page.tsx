@@ -71,6 +71,14 @@ const solutions = [
     tag: "Industrial IoT",
   },
   {
+    title: "MTBF Tool — Launching Soon",
+    description:
+      "Track failures across motors, pumps, fans, compressors and more. Calculate MTBF automatically and optimise maintenance intervals. Join the early access waitlist.",
+    href: "/tools/mtbf",
+    icon: "⏱️",
+    tag: "Reliability Software",
+  },
+  {
     title: "AI Business Process Automation",
     description:
       "Eliminate repetitive manual work and human error with intelligent workflow automation. From data capture to reporting — fully automated.",

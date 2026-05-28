@@ -6,6 +6,8 @@ const iotLinks = [
   { href: "/industrial-iot/predictive-maintenance", label: "Predictive Maintenance" },
   { href: "/industrial-iot/portable-diagnostic-kit", label: "Portable Diagnostic Kit" },
   { href: "/industrial-iot/industry-40-solutions", label: "Industry 4.0" },
+  { href: "/industrial-iot/reliability-study", label: "Reliability Study" },
+  // covers motors, pumps, fans, compressors, HVAC and any rotating system
 ];
 
 export function SiteHeader() {
@@ -58,6 +60,12 @@ export function SiteHeader() {
           <div className="flex flex-wrap items-center gap-x-1 gap-y-1">
             <Link href="/services" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               AI Automation
+            </Link>
+            <Link
+              href="/tools/mtbf"
+              className="rounded border border-amber-400/40 bg-amber-400/10 px-2 py-1 text-xs font-semibold text-amber-400 hover:border-amber-400/70"
+            >
+              MTBF Tool <span className="ml-1 text-[9px] font-bold uppercase tracking-wide opacity-70">Soon</span>
             </Link>
             <Link
               href="/proof-of-concept"
