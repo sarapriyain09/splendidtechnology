@@ -40,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/tools/mtbf`, lastModified },
     { url: `${base}/portfolio`, lastModified },
     { url: `${base}/about`, lastModified },
+    { url: `${base}/pricing`, lastModified },
     { url: `${base}/contact`, lastModified },
     { url: `${base}/blog`, lastModified },
     { url: `${base}/locations`, lastModified },

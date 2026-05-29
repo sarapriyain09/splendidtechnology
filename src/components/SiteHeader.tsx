@@ -111,6 +111,9 @@ export function SiteHeader() {
             <Link href="/about" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               About
             </Link>
+            <Link href="/pricing" className="px-2 py-1 text-xs text-white/70 hover:text-white">
+              Pricing
+            </Link>
           </div>
           <div className="flex items-center gap-x-2">
             <Link
@@ -160,6 +163,7 @@ export function SiteHeader() {
                 { href: "/portfolio", label: "Portfolio" },
                 { href: "/blog", label: "Blog" },
                 { href: "/about", label: "About" },
+                { href: "/pricing", label: "Pricing" },
                 { href: "/tools/mtbf", label: "MTBF Tool" },
               ].map((item) => (
                 <Link
