@@ -20,8 +20,8 @@ export default function JWellerShopifyThemeDetailsPage() {
         <h2 className="text-xl font-semibold">Preview</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {[
-            { src: "/images/projects/them1.png", alt: "JWeller theme preview 1" },
-            { src: "/images/projects/them2.png", alt: "JWeller theme preview 2" },
+            { src: "/images/projects/them1.svg", alt: "JWeller theme preview 1" },
+            { src: "/images/projects/them2.svg", alt: "JWeller theme preview 2" },
           ].map((img) => (
             <div
               key={img.src}
