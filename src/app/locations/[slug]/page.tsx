@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllLocations, getLocationBySlug } from "@/lib/locations";
 
@@ -23,19 +23,86 @@ export async function generateMetadata({
     };
   }
 
-  const title = `Web Development in ${loc.name} (UK) — Websites, Web Apps, Automation`;
-  const description = `Web development services for ${loc.name} businesses: websites, web apps, ecommerce, and automation. Serving ${loc.name} and nearby areas like ${loc.nearby.join(", ")}.`;
+  type CityMeta = { title: string; description: string; keywords: string[] };
+
+  const cityMeta: Record<string, CityMeta> = {
+    leicester: {
+      title: "Web Developer Leicester | Software & SaaS Development | Splendid Technology",
+      description:
+        "Splendid Technology — Leicester-based web developer, software developer, and SaaS specialist. Custom web applications, business websites, and managed hosting for SMEs across the UK.",
+      keywords: [
+        "web developer Leicester",
+        "software developer Leicester",
+        "SaaS development UK",
+        "custom web applications UK",
+        "website hosting for SMEs",
+        "web development company Leicester",
+        "web app development Leicester",
+        "bespoke software Leicester",
+        "small business web developer UK",
+        "custom software development Leicestershire",
+      ],
+    },
+    birmingham: {
+      title: "Web Developer Birmingham | Custom Web Apps & SaaS | Splendid Technology",
+      description:
+        "Splendid Technology builds custom web applications, SaaS platforms, and business websites for Birmingham SMEs. Software developer and web app specialist serving the West Midlands.",
+      keywords: [
+        "web developer Birmingham",
+        "software developer Birmingham",
+        "SaaS development Birmingham",
+        "custom web applications Birmingham",
+        "web development company Birmingham",
+        "web app development West Midlands",
+        "bespoke software Birmingham",
+        "small business website Birmingham",
+        "website hosting for SMEs UK",
+        "custom software development West Midlands",
+      ],
+    },
+    london: {
+      title: "Web Developer London | Custom Web Apps & SaaS Development | Splendid Technology",
+      description:
+        "Splendid Technology delivers custom web applications, SaaS platforms, and business websites for London businesses. Affordable UK web developer and software specialist serving London SMEs.",
+      keywords: [
+        "web developer London",
+        "software developer London",
+        "SaaS development London",
+        "custom web applications London",
+        "web development company London",
+        "web app development UK",
+        "bespoke software London",
+        "small business website London",
+        "website hosting for SMEs UK",
+        "custom software development London",
+      ],
+    },
+  };
+
+  const featured = cityMeta[loc.slug];
+
+  const title = featured
+    ? featured.title
+    : `Web Development in ${loc.name} (UK) — Websites, Web Apps, Automation`;
+
+  const description = featured
+    ? featured.description
+    : `Web development services for ${loc.name} businesses: websites, web apps, ecommerce, and automation. Serving ${loc.name} and nearby areas like ${loc.nearby.join(", ")}.`;
+
+  const keywords = featured
+    ? featured.keywords
+    : [
+        `web development ${loc.name}`,
+        `website development ${loc.name}`,
+        `web app development ${loc.name}`,
+        "custom web development uk",
+        "web development company uk",
+      ];
 
   return {
     title,
     description,
-    keywords: [
-      `web development ${loc.name}`,
-      `website development ${loc.name}`,
-      `web app development ${loc.name}`,
-      "custom web development uk",
-      "web development company uk",
-    ],
+    keywords,
     alternates: {
       canonical: `/locations/${loc.slug}`,
     },
@@ -62,6 +129,7 @@ export default async function LocationPage({
   }
 
   const isLeicester = loc.slug === "leicester";
+  const isFeaturedCity = ["leicester", "birmingham", "london"].includes(loc.slug);
   const popularSlugs = [
     "london",
     "birmingham",
@@ -81,34 +149,56 @@ export default async function LocationPage({
     (l) => popularSlugs.includes(l.slug) && l.slug !== loc.slug
   );
 
+  const cityIntro: Record<string, { heading: string; para: string }> = {
+    leicester: {
+      heading: "Web developer & software specialist in Leicester",
+      para: "Splendid Technology is Leicester-based. We build custom web applications, SaaS platforms, and managed business websites for SMEs across Leicester and Leicestershire — and we can meet locally when needed.",
+    },
+    birmingham: {
+      heading: "Web developer & software specialist serving Birmingham",
+      para: "We build custom web applications, SaaS platforms, and business websites for Birmingham SMEs and West Midlands businesses. Delivered remotely with UK-based support and transparent pricing.",
+    },
+    london: {
+      heading: "Web developer & software specialist serving London",
+      para: "We build custom web applications, SaaS platforms, and business websites for London businesses — without London agency prices. Delivered remotely with UK-based support and a clear process.",
+    },
+  };
+
+  const intro = cityIntro[loc.slug] ?? {
+    heading: `Web development for ${loc.name}`,
+    para: `We build fast, maintainable websites, web apps, ecommerce stores, and automations for ${loc.name} businesses. ${isLeicester ? "We're Leicester-based and can also meet locally when needed." : "We deliver projects remotely across the UK."}`,
+  };
+
   return (
     <div className="mx-auto w-full max-w-3xl space-y-8 px-4 py-10 sm:px-6 lg:px-8">
       <header className="space-y-3">
-        <p className="text-xs text-black/60">UK-wide delivery • Remote-first</p>
-        <h1 className="text-3xl font-semibold tracking-tight">
-          Web development for {loc.name}
-        </h1>
-        <p className="text-sm leading-6 text-black/70">
-          We build fast, maintainable websites, web apps, ecommerce stores, and
-          automations for {loc.name} businesses. {isLeicester
-            ? "We’re Leicester-based and can also meet locally when needed."
-            : "We deliver projects remotely across the UK."}
+        <p className="text-xs text-black/60">
+          UK-wide delivery &bull; Remote-first{isLeicester ? " \u2022 Leicester office" : ""}
         </p>
+        <h1 className="text-3xl font-semibold tracking-tight">{intro.heading}</h1>
+        <p className="text-sm leading-6 text-black/70">{intro.para}</p>
         <div className="flex flex-wrap gap-3 pt-1">
-          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services">
-            Services
-          </Link>
-          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/portfolio">
-            Portfolio
-          </Link>
-          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/contact">
-            Contact
-          </Link>
-          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/locations">
-            All locations
-          </Link>
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services">Services</Link>
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/portfolio">Portfolio</Link>
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/contact">Contact</Link>
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/locations">All locations</Link>
         </div>
       </header>
+
+      {isFeaturedCity && (
+        <section className="grid gap-4 sm:grid-cols-3">
+          {[
+            { label: "Web Developer", desc: `Custom websites & web apps for ${loc.name} businesses` },
+            { label: "Software Developer", desc: "Bespoke software, SaaS & automation platforms" },
+            { label: "SME Hosting", desc: "Managed domain, cloud hosting & SSL — fully handled" },
+          ].map((card) => (
+            <div key={card.label} className="rounded-xl border border-black/10 bg-white p-4">
+              <p className="text-xs font-bold uppercase tracking-widest text-green-600">{card.label}</p>
+              <p className="mt-1 text-sm text-black/70">{card.desc}</p>
+            </div>
+          ))}
+        </section>
+      )}
 
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">Areas near {loc.name}</h2>
@@ -118,14 +208,32 @@ export default async function LocationPage({
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold">What we build</h2>
+        <h2 className="text-xl font-semibold">What we build for {loc.name} businesses</h2>
         <ul className="list-disc space-y-2 pl-5 text-sm text-black/70">
-          <li>Marketing websites that convert (SEO-ready, fast, mobile-first).</li>
-          <li>Web apps with accounts, dashboards, and role-based access.</li>
-          <li>Ecommerce builds (Shopify or custom) with clean tracking.</li>
-          <li>Automation and integrations (CRM, email, payments, reporting).</li>
+          <li><strong>Custom web applications</strong> — portals, dashboards, and SaaS tools with user accounts and role-based access.</li>
+          <li><strong>Business websites</strong> — fast, SEO-ready, mobile-first sites with managed hosting and SSL included.</li>
+          <li><strong>SaaS development</strong> — multi-tenant platforms with subscription billing, analytics, and API integrations.</li>
+          <li><strong>Ecommerce</strong> — Shopify builds or fully custom stores with payment processing and inventory management.</li>
+          <li><strong>Automation &amp; integrations</strong> — connect your CRM, email, payments, and reporting tools.</li>
         </ul>
       </section>
+
+      {isFeaturedCity && (
+        <section className="space-y-3">
+          <h2 className="text-xl font-semibold">Why choose a specialist over a local agency?</h2>
+          <p className="text-sm leading-6 text-black/70">
+            Many {loc.name} web agencies outsource development or rely on page-builders with hidden limitations.
+            Splendid Technology builds everything in-house using modern frameworks (Next.js, React, Node.js)
+            — giving you a faster site, cleaner code, and a team that understands what they built.
+          </p>
+          <ul className="list-disc space-y-2 pl-5 text-sm text-black/70">
+            <li>Transparent fixed-price quotes — no surprise invoices.</li>
+            <li>Managed hosting with domain registration and SSL included.</li>
+            <li>IoT, reliability engineering, and software products if you ever need them.</li>
+            <li>UK-based team with clear communication throughout.</li>
+          </ul>
+        </section>
+      )}
 
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">A simple delivery approach</h2>
@@ -161,7 +269,7 @@ export default async function LocationPage({
         <h2 className="text-lg font-semibold">Get a quote for {loc.name}</h2>
         <p className="mt-2 text-sm leading-6 text-black/70">
           Share your goals, required pages/features, and any examples you like.
-          We’ll respond with a realistic scope, timeline, and estimate.
+          We'll respond with a realistic scope, timeline, and estimate.
         </p>
         <div className="mt-4">
           <Link

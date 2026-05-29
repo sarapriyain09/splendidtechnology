@@ -6,13 +6,20 @@ export const metadata: Metadata = {
   description:
     "Professional Web & App Development for UK businesses — business websites, SaaS applications, customer portals, mobile apps, API integrations, and AI-powered solutions. Based in Leicester.",
   keywords: [
+    "web developer Leicester",
+    "software developer Leicester",
+    "web developer Birmingham",
+    "web developer London",
+    "SaaS development UK",
+    "custom web applications UK",
+    "website hosting for SMEs",
     "web app development uk",
     "saas development uk",
     "business website development leicester",
     "customer portal development uk",
     "mobile app development uk",
     "api development uk",
-    "ai integration development uk",
+    "bespoke software development uk",
     "cloud solution development uk",
   ],
   alternates: {
