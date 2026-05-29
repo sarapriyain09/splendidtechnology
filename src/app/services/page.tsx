@@ -1,106 +1,98 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Business Process Automation for Industrial Operations | UK",
+  title: "Services | Web & App Development, IoT, Reliability Engineering | Splendid Technology",
   description:
-    "Splendid Technology delivers AI-powered business process automation for UK manufacturers and industrial SMEs — maintenance reporting, work order automation, operational dashboards, and intelligent workflow tools.",
+    "Splendid Technology delivers Web & App Development, Industrial IoT Solutions, Reliability Engineering, and custom Software Development for UK SMEs and industrial businesses.",
   keywords: [
-    "ai business process automation uk",
-    "industrial process automation uk",
-    "maintenance reporting automation uk",
-    "operational dashboard software uk",
-    "work order automation uk",
-    "ai workflow automation manufacturers uk",
-    "business process improvement uk manufacturers",
-    "digital operations management uk",
+    "web app development uk",
+    "industrial iot solutions uk",
+    "reliability engineering services uk",
+    "software development leicester",
+    "saas development uk",
+    "custom business software uk",
+    "mtbf fmea reliability uk",
+    "iot condition monitoring uk",
   ],
   alternates: {
     canonical: "/services",
   },
 };
 
-const automationServices = [
+const serviceAreas = [
   {
-    icon: "📋",
-    title: "Automated Maintenance Reporting",
+    icon: "💻",
+    label: "Development",
+    title: "Web & App Development",
     description:
-      "Eliminate manual report writing. AI captures data from your monitoring systems and generates structured maintenance reports automatically — ready for your team before the shift ends.",
+      "Business websites, SaaS applications, customer portals, mobile apps, API integrations, and cloud solutions — built for performance, security, and growth.",
     bullets: [
-      "Auto-generated shift and daily reports",
-      "Connected to IoT sensor data",
-      "Email and dashboard delivery",
-      "PDF export for compliance records",
+      "Business websites & landing pages",
+      "SaaS application development",
+      "Customer portals & dashboards",
+      "Mobile apps (iOS & Android)",
+      "API development & integrations",
+      "AI integrations & automations",
     ],
+    href: "/services/web-app-development",
+    cta: "Web & App Services",
+    highlight: true,
   },
   {
-    icon: "📅",
-    title: "Work Order & Scheduling Automation",
+    icon: "📡",
+    label: "Industrial IoT",
+    title: "IoT & Condition Monitoring",
     description:
-      "When a sensor flags an anomaly, a work order is created automatically. No manual entry, no delays — the right technician gets the right job at the right time.",
+      "Motor health monitoring, vibration analysis, energy monitoring, industrial IoT dashboards, and digital twins — designed for UK manufacturers and engineers.",
     bullets: [
-      "Trigger-based work order creation",
-      "Priority scoring by severity",
-      "Technician assignment & notification",
-      "Integration with maintenance calendars",
+      "Motor health & vibration monitoring",
+      "Energy consumption monitoring",
+      "Industrial IoT dashboards",
+      "Digital twins & asset models",
+      "Predictive maintenance systems",
+      "Portable diagnostic kits",
     ],
+    href: "/services/iot-solutions",
+    cta: "IoT Solutions",
+    highlight: false,
   },
   {
-    icon: "📈",
-    title: "Operational KPI Dashboards",
+    icon: "⚙️",
+    label: "Engineering",
+    title: "Reliability Engineering",
     description:
-      "A single pane of glass for your operations. Live dashboards show uptime, fault trends, maintenance costs, and team performance — giving management real data to make real decisions.",
+      "MTBF analysis, FMEA/FMECA studies, RAM analysis, RCM, and asset performance analytics — evidence-based reliability for engineering teams.",
     bullets: [
-      "Live uptime and downtime tracking",
-      "Maintenance cost analysis",
-      "Asset health trending over time",
-      "Role-based views for management vs. engineers",
+      "MTBF analysis & calculations",
+      "FMEA / FMECA studies",
+      "RAM (Reliability, Availability, Maintainability)",
+      "RCM — Reliability Centred Maintenance",
+      "Asset performance analytics",
+      "Maintenance interval optimisation",
     ],
+    href: "/services/reliability-engineering",
+    cta: "Reliability Engineering",
+    highlight: false,
   },
   {
-    icon: "📱",
-    title: "Digital Data Capture & Forms",
+    icon: "🖥️",
+    label: "Software",
+    title: "Software Development",
     description:
-      "Replace paper inspection sheets and manual data entry with smart digital forms. Data flows directly into your systems — accurate, immediate, and searchable.",
+      "Custom business software, SME accounting systems, asset management, ERP modules, and workflow tools — built around how your business actually works.",
     bullets: [
-      "Mobile-first inspection forms",
-      "Photo and signature capture",
-      "Auto-sync to central database",
-      "Instant audit trail & compliance logging",
+      "Custom business software",
+      "SME accounting & finance tools",
+      "Asset management systems",
+      "ERP modules & integrations",
+      "Workflow automation tools",
+      "Data reporting & analytics",
     ],
+    href: "/services/software-development",
+    cta: "Software Development",
+    highlight: false,
   },
-  {
-    icon: "🔔",
-    title: "Smart Alerting & Escalation",
-    description:
-      "The right alert, to the right person, at the right time. Configurable thresholds trigger notifications across SMS, email, or your existing systems — with escalation rules if issues go unresolved.",
-    bullets: [
-      "Multi-channel alert delivery",
-      "Configurable severity thresholds",
-      "Escalation chains if unacknowledged",
-      "Integrated with IoT sensor data",
-    ],
-  },
-  {
-    icon: "🔄",
-    title: "Workflow & Process Integration",
-    description:
-      "Connect your monitoring systems, ERP, and operational tools into one automated workflow. Reduce data silos, remove double entry, and keep every system in sync.",
-    bullets: [
-      "n8n and API-based integrations",
-      "ERP and CMMS connectivity",
-      "Automated data validation",
-      "Custom workflow design",
-    ],
-  },
-];
-
-const useCases = [
-  { label: "Automated fault-to-work-order in under 60 seconds" },
-  { label: "Shift handover reports generated while engineers are still on-site" },
-  { label: "Management receives daily plant health summary every morning at 7am" },
-  { label: "Inspection teams capture data on mobile — no paperwork, no re-entry" },
-  { label: "Finance receives automated monthly maintenance cost reports" },
 ];
 
 export default function ServicesPage() {
@@ -110,148 +102,122 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="bg-[#0b1f3a] px-4 py-16 text-white sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl">
-          <p className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-white/70">
-            Business Process Improvement
+          <p className="inline-block rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-green-400">
+            Splendid Technology &mdash; Services
           </p>
           <h1 className="mt-4 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-            AI Business Process Automation
+            Four Service Areas. One Technology Partner.
           </h1>
           <p className="mt-4 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-            Beyond monitoring hardware — we automate the business processes around your
-            industrial operations. Reporting, work orders, dashboards, and data capture.
-            All connected. All automated.
+            From building your web application to monitoring your industrial plant &mdash;
+            Splendid Technology delivers Web &amp; App Development, IoT Solutions,
+            Reliability Engineering, and custom Software for UK businesses.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-lg bg-green-600 px-7 py-3 font-bold text-white hover:bg-green-700"
             >
-              Book a Discovery Call
+              Book a Free Consultation
             </Link>
             <Link
-              href="/industrial-iot"
+              href="/products"
               className="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-3 font-bold text-white hover:bg-white/10"
             >
-              See Our IoT Solutions
+              View Our Products
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Automation Services Grid */}
+      {/* Service Areas Grid */}
       <section className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">What We Automate</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Our Service Areas</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Every automation we build is designed to remove manual bottlenecks from your
-            industrial operations — saving time, reducing errors, and giving your team
-            better data.
+            Each service area is a focused discipline &mdash; delivered by specialists, not generalists.
           </p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {automationServices.map((s) => (
-              <div key={s.title} className="rounded-2xl border border-black/10 bg-white p-6">
-                <span className="text-3xl">{s.icon}</span>
-                <h3 className="mt-3 text-lg font-bold text-[#0b1f3a]">{s.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-black/60">{s.description}</p>
-                <ul className="mt-4 space-y-1.5">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+            {serviceAreas.map((s) => (
+              <div
+                key={s.title}
+                className={`flex flex-col rounded-2xl border p-7 ${
+                  s.highlight ? "border-green-400 bg-[#0b1f3a] text-white" : "border-black/10 bg-white"
+                }`}
+              >
+                <div className="flex items-start justify-between">
+                  <span className="text-3xl">{s.icon}</span>
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+                      s.highlight ? "bg-green-500/20 text-green-300" : "bg-[#0b1f3a]/10 text-[#0b1f3a]/60"
+                    }`}
+                  >
+                    {s.label}
+                  </span>
+                </div>
+                <h3 className={`mt-4 text-xl font-bold ${s.highlight ? "text-white" : "text-[#0b1f3a]"}`}>
+                  {s.title}
+                </h3>
+                <p className={`mt-2 text-sm leading-6 ${s.highlight ? "text-white/70" : "text-black/60"}`}>
+                  {s.description}
+                </p>
+                <ul className="mt-4 flex-1 space-y-1.5">
                   {s.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-sm text-black/70">
-                      <span className="mt-0.5 font-bold text-green-600">✔</span>
+                    <li
+                      key={b}
+                      className={`flex items-start gap-2 text-sm ${s.highlight ? "text-white/70" : "text-black/70"}`}
+                    >
+                      <span className="mt-0.5 font-bold text-green-500">&#10004;</span>
                       {b}
                     </li>
                   ))}
                 </ul>
+                <Link
+                  href={s.href}
+                  className={`mt-6 inline-flex items-center gap-1 text-sm font-semibold ${
+                    s.highlight ? "text-green-400 hover:text-green-300" : "text-[#0b1f3a] hover:text-green-700"
+                  }`}
+                >
+                  Learn more about {s.cta} &rarr;
+                </Link>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Real-World Use Cases */}
-      <section className="bg-[#f7f7f7] py-14">
-        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#0b1f3a]">Real-World Use Cases</h2>
-          <p className="mt-2 text-sm text-black/60">What our automation looks like in practice on the plant floor:</p>
-          <ul className="mt-6 space-y-3">
-            {useCases.map((u) => (
-              <li key={u.label} className="flex items-start gap-3 rounded-xl border border-black/10 bg-white px-5 py-4">
-                <span className="mt-0.5 text-green-600 font-bold text-lg">→</span>
-                <span className="text-sm leading-6 text-black/70">{u.label}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Connected to IoT */}
-      <section className="py-16">
-        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl bg-[#0b1f3a] p-8 lg:p-10">
-            <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-              <div className="max-w-xl">
-                <p className="text-xs font-bold uppercase tracking-widest text-green-400">Better Together</p>
-                <h2 className="mt-2 text-2xl font-bold text-white">
-                  Paired with Industrial IoT Monitoring
-                </h2>
-                <p className="mt-3 text-sm leading-6 text-white/70">
-                  Our AI automation services are most powerful when connected to our
-                  industrial IoT monitoring solutions. Sensor data drives automated
-                  reports, alerts trigger automated work orders, and dashboards show the
-                  complete picture — from motor health to maintenance cost.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <Link
-                    href="/industrial-iot"
-                    className="inline-flex items-center justify-center rounded-lg bg-green-600 px-6 py-3 text-sm font-bold text-white hover:bg-green-700"
-                  >
-                    Explore Industrial IoT
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center rounded-lg border border-white/30 px-6 py-3 text-sm font-bold text-white hover:bg-white/10"
-                  >
-                    Book a Free Consultation
-                  </Link>
-                </div>
-              </div>
-              <div className="grid w-full max-w-xs grid-cols-1 gap-3 lg:w-auto">
-                {[
-                  "Smart Motor Monitoring",
-                  "Predictive Maintenance",
-                  "Portable Diagnostic Kit",
-                  "Industry 4.0 Solutions",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3">
-                    <span className="text-green-400 font-bold">→</span>
-                    <span className="text-sm font-medium text-white/80">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+      {/* Positioning strip */}
+      <section className="bg-[#0b1f3a] px-4 py-14 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-6xl text-center">
+          <p className="text-xs font-bold uppercase tracking-widest text-green-400">Our Promise</p>
+          <blockquote className="mx-auto mt-4 max-w-3xl text-xl font-semibold leading-8 text-white">
+            &ldquo;Splendid Technology delivers Web Applications, SaaS Platforms, Industrial IoT
+            Solutions, Reliability Engineering Software, and Digital Transformation Services for
+            SMEs and industrial businesses.&rdquo;
+          </blockquote>
         </div>
       </section>
 
       {/* CTA */}
       <section className="bg-[#f7f7f7] py-14 text-center">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Ready to Automate Your Operations?</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Not sure which service fits?</h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-black/60">
-            We start with a discovery call to understand your current processes, then
-            design and build automation that fits your operation — not a generic template.
+            Book a free 30-minute consultation and we&apos;ll help you identify exactly which
+            combination of services will generate the best return for your business.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-lg bg-[#0b1f3a] px-8 py-3 font-bold text-white hover:bg-[#0b3d91]"
             >
-              Book a Discovery Call
+              Book a Free Consultation
             </Link>
             <Link
-              href="/industrial-iot"
+              href="/products"
               className="inline-flex items-center justify-center rounded-lg border border-[#0b1f3a]/30 px-8 py-3 font-bold text-[#0b1f3a] hover:bg-[#0b1f3a]/5"
             >
-              See Our IoT Solutions
+              Browse Our Products
             </Link>
           </div>
         </div>

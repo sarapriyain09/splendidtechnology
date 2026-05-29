@@ -21,9 +21,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: `${base}/`, lastModified },
+    // Services
+    { url: `${base}/services`, lastModified },
+    { url: `${base}/services/web-app-development`, lastModified },
+    { url: `${base}/services/iot-solutions`, lastModified },
+    { url: `${base}/services/reliability-engineering`, lastModified },
+    { url: `${base}/services/software-development`, lastModified },
+    // Products
+    { url: `${base}/products`, lastModified },
+    { url: `${base}/products/splendid-accounting`, lastModified },
+    { url: `${base}/products/splendid-reliability`, lastModified },
+    { url: `${base}/products/splendid-monitor`, lastModified },
+    { url: `${base}/products/splendid-asset-manager`, lastModified },
+    // Industries & other
+    { url: `${base}/industries`, lastModified },
+    { url: `${base}/industrial-iot`, lastModified },
     { url: `${base}/industrial-iot/reliability-study`, lastModified },
     { url: `${base}/tools/mtbf`, lastModified },
-    { url: `${base}/services`, lastModified },
     { url: `${base}/portfolio`, lastModified },
     { url: `${base}/about`, lastModified },
     { url: `${base}/contact`, lastModified },
