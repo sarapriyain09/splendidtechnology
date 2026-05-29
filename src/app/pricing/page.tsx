@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Pricing | Splendid Technology",
   description:
-    "Transparent 'starting from' pricing for web development, custom web applications, SaaS development, and ongoing support. IoT and reliability engineering solutions priced on enquiry.",
+    "Transparent website and web app pricing for UK traders and businesses. Starter websites from £599, Business websites from £1,299, and monthly care plans from £29/month. Includes domain registration, hosting, and maintenance.",
   alternates: {
     canonical: "/pricing",
   },
@@ -13,28 +13,33 @@ export const metadata: Metadata = {
 const webTiers = [
   {
     name: "Starter Website",
-    from: "£750",
-    desc: "Perfect for small businesses, sole traders, and professionals who need a clean, fast online presence.",
+    from: "£599",
+    desc: "Ideal for electricians, plumbers, builders, consultants, and sole traders who need a professional online presence fast.",
     features: [
-      "Up to 5 pages",
-      "Mobile responsive design",
-      "Contact form",
-      "Basic on-page SEO",
-      "2-week delivery",
+      "3–5 pages (Home, About, Services, Contact, etc.)",
+      "Mobile-friendly responsive design",
+      "Contact form & Google Maps",
+      "WhatsApp button",
+      "Domain registration included",
+      "Hosted on Vercel (fast & reliable)",
+      "SSL certificate",
     ],
     cta: "Get a Quote",
     highlight: false,
   },
   {
     name: "Business Website",
-    from: "£1,500",
-    desc: "For growing businesses that need a content-rich, SEO-optimised site with a blog and analytics.",
+    from: "£1,299",
+    desc: "For growing businesses that need a content-rich, SEO-optimised site with a blog, gallery, and lead capture.",
     features: [
-      "Up to 15 pages",
-      "Content management system",
+      "5–15 pages",
+      "SEO setup & on-page optimisation",
+      "Gallery & portfolio section",
       "Blog & news section",
+      "Lead capture & enquiry forms",
       "Google Analytics setup",
-      "Full SEO configuration",
+      "Domain registration included",
+      "Hosted on Vercel",
     ],
     cta: "Get a Quote",
     highlight: true,
@@ -49,6 +54,8 @@ const webTiers = [
       "Product & inventory management",
       "Order & customer management",
       "Mobile-first checkout",
+      "Domain registration included",
+      "Hosted on Vercel",
     ],
     cta: "Get a Quote",
     highlight: false,
@@ -86,19 +93,37 @@ const appTiers = [
 
 const supportTiers = [
   {
-    name: "Essential",
+    name: "Website Care Plan",
+    price: "£29/mo",
+    features: [
+      "Hosting on Vercel",
+      "SSL certificate",
+      "Security & software updates",
+      "Monthly backup",
+      "Email support",
+    ],
+  },
+  {
+    name: "Business Care Plan",
+    price: "£59/mo",
+    features: [
+      "Everything in Website Care",
+      "Content updates (up to 30 min/month)",
+      "Uptime monitoring",
+      "Performance checks",
+      "Priority support",
+    ],
+  },
+  {
+    name: "Premium Care Plan",
     price: "£99/mo",
-    features: ["Security updates", "Uptime monitoring", "Monthly backups", "Email support"],
-  },
-  {
-    name: "Professional",
-    price: "£199/mo",
-    features: ["Everything in Essential", "Content updates (2hr/mo)", "Performance reviews", "Priority support"],
-  },
-  {
-    name: "Business",
-    price: "£299/mo",
-    features: ["Everything in Professional", "Development hours (4hr/mo)", "SEO monitoring", "Dedicated account manager"],
+    features: [
+      "Everything in Business Care",
+      "Monthly SEO checks",
+      "Multiple content changes",
+      "Analytics review",
+      "Dedicated account manager",
+    ],
   },
 ];
 
@@ -119,11 +144,12 @@ export default function PricingPage() {
           {/* Quick summary strip */}
           <div className="mt-10 flex flex-wrap gap-4">
             {[
-              { label: "Website Development", from: "From £750" },
+              { label: "Starter Website", from: "From £599" },
+              { label: "Business Website", from: "From £1,299" },
               { label: "E-Commerce", from: "From £2,500" },
               { label: "Custom Web Apps", from: "From £5,000" },
               { label: "SaaS Development", from: "From £10,000" },
-              { label: "Support & Maintenance", from: "From £99/mo" },
+              { label: "Website Care Plan", from: "From £29/mo" },
             ].map((item) => (
               <div key={item.label} className="rounded-xl border border-white/10 bg-white/5 px-5 py-3">
                 <p className="text-xs text-slate-400">{item.label}</p>
@@ -138,7 +164,7 @@ export default function PricingPage() {
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
         <h2 className="text-2xl font-bold text-[#0b1f3a]">Website Development</h2>
         <p className="mt-2 text-sm text-slate-500">
-          All websites are built with Next.js, fully mobile responsive, and deployed to fast global CDN infrastructure.
+          We handle everything end-to-end &mdash; domain registration, hosting on Vercel, SSL certificate, and ongoing maintenance. You don&rsquo;t need to deal with GoDaddy or any hosting provider yourself.
         </p>
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
           {webTiers.map((tier) => (
@@ -227,9 +253,9 @@ export default function PricingPage() {
 
       {/* Support */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-[#0b1f3a]">Ongoing Support &amp; Maintenance</h2>
+        <h2 className="text-2xl font-bold text-[#0b1f3a]">Monthly Website Care Plans</h2>
         <p className="mt-2 text-sm text-slate-500">
-          Keep your website or web app secure, up to date, and performing &mdash; without managing it yourself.
+          All care plans include hosting, SSL, and security updates as standard. Add content changes, SEO monitoring, and priority support as your business grows. Recurring revenue example: 20 customers on the Business Care Plan = £1,180/month.
         </p>
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
           {supportTiers.map((tier, i) => (
