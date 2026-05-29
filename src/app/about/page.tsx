@@ -1,13 +1,37 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Splendid Technology | Industrial IoT & Smart Reliability Engineering",
+  title: "About Splendid Technology | Web Apps, IoT, Reliability & Software",
   description:
-    "Splendid Technology Ltd (Leicester, UK) delivers Industrial IoT, smart motor monitoring, predictive maintenance, and AI-powered business process improvement for industrial SMEs and maintenance teams.",
+    "Splendid Technology Ltd (Leicester, UK) — a four-pillar technology company delivering Web & App Development, Industrial IoT Solutions, Reliability Engineering, and SaaS Software Products for UK businesses.",
   alternates: {
     canonical: "/about",
   },
 };
+
+const pillars = [
+  {
+    title: "Web & App Development",
+    desc: "Custom websites, SaaS platforms, customer portals, and API integrations — built with Next.js, React, and modern cloud infrastructure.",
+    href: "/services/web-app-development",
+  },
+  {
+    title: "IoT & Condition Monitoring",
+    desc: "Edge-to-cloud industrial monitoring for motors, energy systems, and rotating machinery — real-time dashboards, vibration analysis, and predictive alerts.",
+    href: "/services/iot-solutions",
+  },
+  {
+    title: "Reliability Engineering",
+    desc: "MTBF calculations, FMEA/FMECA, RAM studies, RCM, and maintenance interval optimisation — grounded in 25+ years of real engineering practice.",
+    href: "/services/reliability-engineering",
+  },
+  {
+    title: "Software & SaaS Products",
+    desc: "Purpose-built software for engineering businesses: Splendid Accounting, Splendid Reliability, Splendid Monitor, and Splendid Asset Manager.",
+    href: "/products",
+  },
+];
 
 const keySkills = [
   "MV Motor & Generator Design (1MW–400MW)",
@@ -24,117 +48,94 @@ const keySkills = [
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto w-full max-w-6xl space-y-8 px-4 py-10 sm:px-6 lg:px-8">
-      {/* Page header */}
-      <header className="space-y-3">
-        <p className="text-xs font-bold uppercase tracking-widest text-[#0b1f3a]/50">About Us</p>
-        <h1 className="text-3xl font-bold tracking-tight text-[#0b1f3a]">Splendid Technology Ltd</h1>
-        <p className="max-w-2xl text-sm leading-7 text-black/70">
-          Splendid Technology Ltd provides Industrial IoT, smart motor monitoring, and predictive
-          maintenance solutions for industrial SMEs and maintenance teams. We combine practical motor
-          engineering expertise with modern Industry 4.0 technologies — including edge computing,
-          real-time condition monitoring, predictive diagnostics, and intelligent analytics — to help
-          improve reliability and reduce unexpected downtime.
-        </p>
-      </header>
+    <div className="bg-white">
 
-      {/* What We Do */}
-      <section className="rounded-2xl border border-black/10 bg-white p-6">
-        <h2 className="text-lg font-semibold text-[#0b1f3a]">What We Do</h2>
-        <p className="mt-2 text-sm leading-6 text-black/70">
-          We design and develop smart industrial monitoring and predictive maintenance solutions
-          focused on rotating machines and motor-driven systems. Our solutions include:
-        </p>
-        <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-          {[
-            "Smart motor condition monitoring",
-            "Predictive maintenance systems",
-            "Portable diagnostic and inspection kits",
-            "FFT vibration analysis",
-            "Current Signature Analysis (CSA)",
-            "Online insulation health indicators",
-            "Edge-cloud Industrial IoT platforms",
-            "Real-time dashboards and maintenance analytics",
-            "Digital twin–based operational monitoring",
-          ].map((item) => (
-            <li key={item} className="flex items-start gap-2 text-sm text-black/70">
-              <span className="mt-0.5 shrink-0 font-bold text-green-600">✔</span>
-              {item}
-            </li>
+      {/* Hero */}
+      <section className="bg-[#0b1f3a] py-16 text-white">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">About Us</p>
+          <h1 className="text-4xl font-bold leading-tight sm:text-5xl">Splendid Technology Ltd</h1>
+          <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
+            A Leicester-based technology company delivering Web Applications, Industrial IoT Solutions,
+            Reliability Engineering Services, and SaaS Software Products for UK businesses and
+            industrial organisations.
+          </p>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-400">
+            We combine 25+ years of deep engineering domain expertise with modern software
+            development to solve real problems &mdash; from building customer-facing web apps to
+            monitoring motor health on the factory floor.
+          </p>
+        </div>
+      </section>
+
+      {/* 4 Pillars */}
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+        <h2 className="text-2xl font-bold text-[#0b1f3a]">What We Do</h2>
+        <p className="mt-2 text-sm text-slate-500">Four service areas. One technology partner.</p>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+          {pillars.map((pillar) => (
+            <Link
+              key={pillar.title}
+              href={pillar.href}
+              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:border-green-400 hover:shadow-md"
+            >
+              <h3 className="font-semibold text-[#0b1f3a] group-hover:text-green-700">{pillar.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{pillar.desc}</p>
+              <span className="mt-4 inline-block text-xs font-medium text-green-600 group-hover:underline">
+                Learn more &rarr;
+              </span>
+            </Link>
           ))}
-        </ul>
-        <p className="mt-4 text-sm text-black/55">
-          Our systems are designed to support industrial operations with practical, scalable, and
-          affordable Industry 4.0 solutions.
-        </p>
+        </div>
       </section>
 
       {/* Our Approach */}
-      <section className="rounded-2xl border border-black/10 bg-white p-6">
-        <h2 className="text-lg font-semibold text-[#0b1f3a]">Our Approach</h2>
-        <p className="mt-2 text-sm leading-7 text-black/70">
-          We focus on practical engineering-driven solutions rather than generic software platforms.
-          By combining decades of motor engineering, testing, troubleshooting, and reliability
-          experience with Industrial IoT technologies, we help organisations improve maintenance
-          visibility, identify developing issues earlier, and support smarter operational
-          decision-making.
-        </p>
+      <section className="bg-slate-50 py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div>
+              <h2 className="text-2xl font-bold text-[#0b1f3a]">Our Approach</h2>
+              <p className="mt-4 text-sm leading-7 text-slate-600">
+                We focus on practical, engineering-driven solutions rather than generic platforms.
+                Every project starts with understanding the real operational challenge &mdash; then
+                we apply the right technology to solve it, whether that&rsquo;s a web app, an IoT
+                sensor network, a reliability study, or a piece of custom software.
+              </p>
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                Our team spans electrical engineering, software engineering, and business development
+                &mdash; giving us end-to-end capability from hardware-level monitoring to
+                customer-facing SaaS products.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-[#0b1f3a]">How We Work</h2>
+              <ul className="mt-4 space-y-3">
+                {[
+                  "Rapid pilot deployment — prove value fast",
+                  "Practical implementation — no over-engineering",
+                  "Clear technical visibility at every stage",
+                  "Scalable architecture — grows with your business",
+                  "Long-term maintainability — built to last",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
+                    <span className="mt-0.5 text-green-500">&#10003;</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Industry 4.0 & Smart Reliability */}
-      <section className="rounded-2xl border border-[#0b1f3a]/10 bg-[#0b1f3a] p-6 text-white">
-        <h2 className="text-lg font-semibold text-green-400">Industry 4.0 &amp; Smart Reliability</h2>
-        <p className="mt-2 text-sm leading-7 text-white/80">
-          Splendid Technology is developing next-generation smart reliability solutions that integrate:
-        </p>
-        <ul className="mt-3 space-y-1">
-          {[
-            "Edge analytics",
-            "Predictive diagnostics",
-            "AI-assisted maintenance insights",
-            "Digital twin concepts",
-          ].map((item) => (
-            <li key={item} className="flex items-start gap-2 text-sm text-white/70">
-              <span className="mt-0.5 shrink-0 text-green-400">→</span>
-              {item}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-4 text-sm leading-7 text-white/70">
-          Our long-term vision is to enable affordable and scalable predictive maintenance
-          technologies for SMEs through portable inspection systems, intelligent monitoring
-          platforms, and practical Industry 4.0 adoption.
-        </p>
-      </section>
+      {/* Team heading */}
+      <div className="mx-auto max-w-6xl px-4 pb-4 pt-14 sm:px-6 lg:px-8">
+        <h2 className="text-2xl font-bold text-[#0b1f3a]">The Team</h2>
+        <p className="mt-1 text-sm text-slate-500">The engineers and specialists behind Splendid Technology.</p>
+      </div>
 
-      {/* How We Work */}
-      <section className="rounded-2xl border border-black/10 bg-white p-6">
-        <h2 className="text-lg font-semibold text-[#0b1f3a]">How We Work</h2>
-        <p className="mt-2 text-sm leading-7 text-black/70">
-          We work closely with customers to understand operational challenges, reliability concerns,
-          and maintenance requirements before designing practical monitoring and diagnostic solutions.
-          Our approach emphasises:
-        </p>
-        <ul className="mt-4 space-y-2">
-          {[
-            "Rapid pilot deployment",
-            "Practical implementation",
-            "Clear technical visibility",
-            "Scalable architecture",
-            "Long-term maintainability",
-          ].map((item) => (
-            <li key={item} className="flex items-start gap-2 text-sm text-black/70">
-              <span className="mt-0.5 shrink-0 font-bold text-[#0b1f3a]">✔</span>
-              {item}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-4 text-sm leading-6 text-black/55">
-          We focus on delivering engineering-driven solutions that provide measurable operational value.
-        </p>
-      </section>
+      <div className="mx-auto max-w-6xl space-y-8 px-4 pb-16 sm:px-6 lg:px-8">
 
-      {/* Expert Profile */}
       <section className="rounded-2xl border border-[#0b3d91]/20 bg-white p-6">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-10">
           <div className="flex-1 space-y-3">
@@ -382,6 +383,34 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      </div>{/* end team wrapper */}
+
+      {/* CTA */}
+      <section className="bg-[#0b1f3a] py-16 text-white">
+        <div className="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold">Work with us</h2>
+          <p className="mt-3 text-slate-300">
+            Whether you need a web app, an IoT monitoring system, a reliability study, or bespoke
+            software &mdash; we&rsquo;d love to hear about your project.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link
+              href="/contact"
+              className="rounded-full bg-green-600 px-7 py-3 text-sm font-semibold text-white hover:bg-green-700"
+            >
+              Get in Touch
+            </Link>
+            <Link
+              href="/services"
+              className="rounded-full border border-white px-7 py-3 text-sm font-semibold text-white hover:bg-white/10"
+            >
+              Explore Services
+            </Link>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }
