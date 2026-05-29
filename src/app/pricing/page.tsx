@@ -21,7 +21,7 @@ const webTiers = [
       "Contact form & Google Maps",
       "WhatsApp button",
       "Domain registration included",
-      "Hosted on Vercel (fast & reliable)",
+      "Fast, reliable cloud hosting",
       "SSL certificate",
     ],
     cta: "Get a Quote",
@@ -39,7 +39,7 @@ const webTiers = [
       "Lead capture & enquiry forms",
       "Google Analytics setup",
       "Domain registration included",
-      "Hosted on Vercel",
+      "Fast, reliable cloud hosting",
     ],
     cta: "Get a Quote",
     highlight: true,
@@ -55,7 +55,7 @@ const webTiers = [
       "Order & customer management",
       "Mobile-first checkout",
       "Domain registration included",
-      "Hosted on Vercel",
+      "Fast, reliable cloud hosting",
     ],
     cta: "Get a Quote",
     highlight: false,
@@ -72,7 +72,7 @@ const appTiers = [
       "Database design & integration",
       "Reporting & data dashboards",
       "Third-party API integrations",
-      "Cloud deployment (Vercel / AWS)",
+      "Cloud deployment & hosting",
     ],
     badge: null,
   },
@@ -96,7 +96,7 @@ const supportTiers = [
     name: "Website Care Plan",
     price: "£29/mo",
     features: [
-      "Hosting on Vercel",
+      "Hosting & cloud infrastructure",
       "SSL certificate",
       "Security & software updates",
       "Monthly backup",
@@ -164,7 +164,7 @@ export default function PricingPage() {
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
         <h2 className="text-2xl font-bold text-[#0b1f3a]">Website Development</h2>
         <p className="mt-2 text-sm text-slate-500">
-          We handle everything end-to-end &mdash; domain registration, hosting on Vercel, SSL certificate, and ongoing maintenance. You don&rsquo;t need to deal with GoDaddy or any hosting provider yourself.
+          We handle everything end-to-end &mdash; domain registration, cloud hosting, SSL certificate, and ongoing maintenance. You don&rsquo;t need to deal with any hosting provider yourself.
         </p>
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
           {webTiers.map((tier) => (

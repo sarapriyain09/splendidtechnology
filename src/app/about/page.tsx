@@ -109,7 +109,7 @@ export default function AboutPage() {
               <p className="mt-3 text-sm leading-7 text-slate-600">
                 For website clients, we handle <strong>everything</strong> &mdash; domain registration,
                 hosting, SSL certificates, and ongoing maintenance &mdash; so you never have to deal
-                with GoDaddy or any hosting provider yourself.
+                with any hosting provider yourself.
               </p>
             </div>
             <div>
