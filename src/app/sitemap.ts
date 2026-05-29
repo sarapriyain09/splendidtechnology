@@ -33,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/products/splendid-reliability`, lastModified },
     { url: `${base}/products/splendid-monitor`, lastModified },
     { url: `${base}/products/splendid-asset-manager`, lastModified },
+    { url: `${base}/products/motor-health-monitoring-kit`, lastModified },
     // Industries & other
     { url: `${base}/industries`, lastModified },
     { url: `${base}/industrial-iot`, lastModified },

@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Products | Splendid Accounting, Reliability, Monitor & Asset Manager | Splendid Technology",
+  title: "Products | Splendid Technology",
   description:
-    "Splendid Technology SaaS products — Splendid Accounting for SMEs, Splendid Reliability for MTBF tracking, Splendid Monitor for industrial IoT, and Splendid Asset Manager for engineering ERP.",
+    "Splendid Technology products — Splendid Accounting, Splendid Reliability, Splendid Monitor, Splendid Asset Manager, and the Motor Health Monitoring Kit for industrial SMEs.",
   keywords: [
     "splendid accounting software",
     "splendid reliability software",
@@ -92,6 +92,24 @@ const products = [
       "Integrates with Splendid Accounting",
     ],
     href: "/products/splendid-asset-manager",
+  },
+  {
+    icon: "🔧",
+    label: "Hardware",
+    title: "Motor Health Monitoring Kit",
+    tagline: "Portable motor diagnostic kit for industrial SMEs",
+    description:
+      "A portable, affordable diagnostic kit for assessing the health of industrial motors, pumps, fans, and rotating machinery — without a permanent installation. Vibration analysis, current signature, temperature, and insulation health in one kit.",
+    status: "In Development",
+    statusColor: "amber",
+    bullets: [
+      "Vibration analysis (FFT)",
+      "Current Signature Analysis (MCSA)",
+      "Temperature monitoring",
+      "Insulation health indicator",
+      "Portable dashboard & auto-reports",
+    ],
+    href: "/products/motor-health-monitoring-kit",
   },
 ];
 
