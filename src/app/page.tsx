@@ -92,6 +92,14 @@ const solutions = [
     tag: "Reliability Software",
   },
   {
+    title: "Splendid CRM",
+    description:
+      "Custom Sales CRM for UK SMEs — manage leads, track your pipeline, automate follow-ups, and close more deals. Built around your process.",
+    href: "/services/sales-crm",
+    icon: "🎯",
+    tag: "SaaS Product",
+  },
+  {
     title: "AI Business Process Automation",
     description:
       "Eliminate repetitive manual work and human error with intelligent workflow automation. From data capture to reporting — fully automated.",
@@ -107,6 +115,7 @@ const benefits = [
   { icon: "⚙️", title: "Reliability Engineering", body: "Evidence-based MTBF, FMEA and RAM analysis to extend asset life." },
   { icon: "📊", title: "Splendid Accounting", body: "SME accounting software with asset and job costing built in." },
   { icon: "🖥️", title: "Splendid Monitor", body: "Industrial IoT dashboards and digital twins for operational visibility." },
+  { icon: "🎯", title: "Splendid CRM", body: "Custom Sales CRM — leads, pipeline, follow-ups, and reporting built for UK teams." },
   { icon: "🤖", title: "AI Integrations", body: "Intelligent workflow automation and AI-powered business processes." },
 ];
 

@@ -2,8 +2,8 @@
 title: "Custom Web Applications for UK SMEs: What They Cost, What They Do, and When You Need One"
 slug: "custom-web-applications-uk-sme-guide"
 date: "2026-05-29"
-excerpt: "A practical guide for UK small businesses on custom web applications — including SaaS development, hosting options, and how to choose the right web developer in Leicester, Birmingham, or London."
-tags: ["Web Development", "SaaS", "Custom Software", "SME", "UK Business"]
+description: "A practical guide for UK small businesses on custom web applications — including SaaS development, hosting options, and how to choose the right web developer in Leicester, Birmingham, or London."
+keywords: ["Web Development", "SaaS", "Custom Software", "SME", "UK Business"]
 ---
 
 # Custom Web Applications for UK SMEs: A Practical Guide
