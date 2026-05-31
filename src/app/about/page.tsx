@@ -34,16 +34,17 @@ const pillars = [
 ];
 
 const keySkills = [
-  "MV Motor & Generator Design (1MW–400MW)",
-  "Predictive Maintenance & Condition Monitoring",
-  "Electromagnetic & Mechanical Design",
-  "Instrumentation Design & ATEX Certification",
-  "Industrial IoT & Industry 4.0 Solutions",
-  "Engineering Operations & Project Management",
-  "Root Cause Analysis & Failure Diagnostics",
-  "LEAN, ISO 9000 & Six Sigma (Green Belt)",
-  "New Product Development & Team Leadership",
-  "3D/2D CAD: IDEAS / UG / ProE / Creo",
+  "Business Development & Client Engagement",
+  "Digital Transformation Strategy",
+  "Web Application Development",
+  "CRM & Business Systems",
+  "IoT Solutions & Smart Devices",
+  "Process Automation",
+  "Workflow Optimisation",
+  "Cloud Hosting & Infrastructure",
+  "AI-Powered Business Solutions",
+  "Technical Architecture & Solution Design",
+  "Project Delivery & Product Development",
 ];
 
 export default function AboutPage() {
@@ -148,30 +149,26 @@ export default function AboutPage() {
           <div className="flex-1 space-y-3">
             <div>
               <span className="text-xs font-semibold uppercase tracking-widest text-[#0b3d91]/60">
-                Founder &amp; Lead Engineer
+                Founder &amp; Digital Solutions Lead
               </span>
               <h2 className="mt-1 text-2xl font-bold text-[#0b3d91]">
-                Saravanan Rajagopalan
+                Raja Saravanan
               </h2>
               <p className="text-sm font-medium text-black/60">
-                Engineering Manager — Leicester, United Kingdom
+                Founder &amp; Digital Solutions Lead — Splendid Technology, Leicester, UK
               </p>
               <a href="mailto:raja@splendidtechnology.co.uk" className="text-xs text-[#0b3d91] hover:underline">raja@splendidtechnology.co.uk</a>
             </div>
             <p className="text-sm leading-6 text-black/70">
-              With over 25 years of engineering experience spanning motor and
-              generator design, application engineering, and Industrial IoT,
-              Saravanan brings deep technical credibility to every project
-              Splendid Technology undertakes. His career spans global
-              organisations including GE Power Conversion and Baker Hughes
-              (Brush Power Generation), with specialisation in Medium Voltage
-              rotating machines from 1MW to 400MW.
+              Driving business growth through digital transformation, web solutions, IoT systems,
+              and process automation. Combining technical expertise with customer-focused business
+              development to help SMEs improve efficiency, automate operations, and accelerate
+              growth through innovative technology solutions.
             </p>
             <p className="text-sm leading-6 text-black/70">
-              This real-world domain expertise — in predictive maintenance,
-              condition monitoring, instrumentation design, and Industry 4.0 —
-              directly informs the Industrial IoT and smart monitoring solutions
-              we deliver to manufacturers and engineers across the UK.
+              With over 25 years of engineering experience spanning motor and generator design,
+              application engineering, and Industrial IoT, Raja brings deep technical credibility
+              and real-world domain expertise to every client engagement.
             </p>
             <div className="flex flex-wrap gap-2 pt-1">
               {[
@@ -212,30 +209,27 @@ export default function AboutPage() {
         <p className="mt-1 text-sm text-black/50">The engineers and specialists behind Splendid Technology.</p>
       </div>
 
-      {/* Shiva — Software Expert */}
+      {/* Shiva — Technical Delivery Manager */}
       <section className="rounded-2xl border border-[#0b3d91]/20 bg-white p-6">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-10">
           <div className="flex-1 space-y-3">
             <div>
               <span className="text-xs font-semibold uppercase tracking-widest text-[#0b3d91]/60">
-                Software Expert
+                Technical Delivery Manager
               </span>
               <h2 className="mt-1 text-2xl font-bold text-[#0b3d91]">
                 Shiva Prakash Saravanan
               </h2>
               <p className="text-sm font-medium text-black/60">
-                Software Engineer · Cloud & AI — Leicester, UK
+                Technical Delivery Manager — Splendid Technology, Leicester, UK
               </p>
               <a href="mailto:shiva@splendidtechnology.co.uk" className="text-xs text-[#0b3d91] hover:underline">shiva@splendidtechnology.co.uk</a>
             </div>
             <p className="text-sm leading-6 text-black/70">
-              MSc Advanced Computer Science student at the University of Leicester,
-              specialising in cloud-native systems, distributed computing, and
-              AI-driven optimisation. With 2+ years of production software
-              engineering experience at Phumber India Private Ltd and hands-on
-              projects in Kubernetes, AI scheduling, and system design, Shiva is
-              the technical builder behind live Splendid Technology platforms
-              including CodLearn and MendForWorks.
+              Responsible for the successful delivery of client projects, including website
+              development, hosting, deployment, maintenance, and technical support. Works
+              closely with clients and the business development team to translate requirements
+              into reliable, secure, and scalable digital solutions.
             </p>
             <div className="flex flex-wrap gap-2 pt-1">
               {[
@@ -258,14 +252,18 @@ export default function AboutPage() {
             <h3 className="text-sm font-semibold text-[#0b3d91]">Key Skills</h3>
             <ul className="mt-3 space-y-2">
               {[
-                "Python, C++, Java",
-                "Kubernetes, Docker, Vercel, Render",
-                "MongoDB, REST APIs",
-                "Microservices & Distributed Systems",
-                "AI / ML — LSTM, RL algorithms",
-                "System Design & UML",
-                "Git, GitHub, GitHub Copilot",
-                "Cloud-native performance optimisation",
+                "Website Development",
+                "Technical Project Delivery",
+                "Web Hosting",
+                "Deployment & Release Management",
+                "Technical Support",
+                "System Administration",
+                "Cloud Hosting",
+                "Website Maintenance",
+                "Application Troubleshooting",
+                "Performance Optimisation",
+                "Security & SSL Management",
+                "Client Support",
               ].map((skill) => (
                 <li key={skill} className="flex items-start gap-2 text-xs text-black/70">
                   <span className="mt-0.5 shrink-0 font-bold text-[#0b3d91]">✔</span>
@@ -307,29 +305,27 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Arun — Business Development */}
+      {/* Arun — Business Development Manager */}
       <section className="rounded-2xl border border-[#0b3d91]/20 bg-white p-6">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-10">
           <div className="flex-1 space-y-3">
             <div>
               <span className="text-xs font-semibold uppercase tracking-widest text-[#0b3d91]/60">
-                Business Development
+                Business Development Manager
               </span>
               <h2 className="mt-1 text-2xl font-bold text-[#0b3d91]">
                 Arun Prakash Rajagopalan Saravanan
               </h2>
               <p className="text-sm font-medium text-black/60">
-                Supply Chain & Operations · International Business — Leicester, UK
+                Business Development Manager — Splendid Technology, Leicester, UK
               </p>
               <a href="mailto:arun@splendidtechnology.co.uk" className="text-xs text-[#0b3d91] hover:underline">arun@splendidtechnology.co.uk</a>
             </div>
             <p className="text-sm leading-6 text-black/70">
-              MSc International Business student at the University of Leicester,
-              specialising in supply chain, logistics, operations, and
-              sustainability. Arun brings structured analytical thinking and
-              cross-functional communication skills to Splendid Technology&apos;s
-              business development efforts — connecting technical solutions to
-              client needs, markets, and growth opportunities.
+              Responsible for lead generation, prospect research, CRM management, customer
+              engagement, quotation preparation, and supporting business growth initiatives.
+              Focused on identifying opportunities, understanding customer requirements,
+              nurturing prospects, and helping convert enquiries into business opportunities.
             </p>
             <div className="flex flex-wrap gap-2 pt-1">
               {[
@@ -353,12 +349,12 @@ export default function AboutPage() {
             <h3 className="text-sm font-semibold text-[#0b3d91]">Key Skills</h3>
             <ul className="mt-3 space-y-2">
               {[
-                "Supply Chain Operations & Logistics",
-                "Inventory Management & Demand Planning",
-                "Process Improvement & Operational Efficiency",
-                "Data Analysis (Excel — Pivot Tables, VLOOKUP)",
-                "Risk Assessment & Mitigation",
-                "Sustainability in Supply Chains",
+                "Lead Generation & Pipeline Management",
+                "CRM (In-house) — Leads, Quotes & Follow-ups",
+                "Segment-wise Customer Research & Analysis",
+                "Prospect Engagement & Conversion",
+                "Quote Preparation & Proposal Writing",
+                "Market Mapping & Competitor Analysis",
                 "Cross-functional Collaboration",
                 "Market Entry & Strategic Analysis",
               ].map((skill) => (
