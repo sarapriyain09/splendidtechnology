@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Pricing | Splendid Technology",
   description:
-    "Transparent website and web app pricing for UK traders and businesses. Starter websites from £599, Business websites from £1,299, and monthly care plans from £29/month. Includes domain registration, hosting, and maintenance.",
+    "Affordable website pricing for UK tradespeople and small businesses. Starter websites from £199, monthly care plans from £15/month. Includes domain, hosting, SSL, and ongoing maintenance.",
   alternates: {
     canonical: "/pricing",
   },
@@ -13,49 +13,44 @@ export const metadata: Metadata = {
 const webTiers = [
   {
     name: "Starter Website",
-    from: "£599",
-    desc: "Ideal for electricians, plumbers, builders, consultants, and sole traders who need a professional online presence fast.",
+    from: "£199",
+    desc: "Perfect for sole traders, electricians, plumbers, and builders who need a professional online presence quickly.",
     features: [
-      "3–5 pages (Home, About, Services, Contact, etc.)",
+      "3–5 pages (Home, About, Services, Contact)",
       "Mobile-friendly responsive design",
       "Contact form & Google Maps",
-      "WhatsApp button",
+      "WhatsApp integration",
       "Domain registration included",
-      "Fast, reliable cloud hosting",
-      "SSL certificate",
     ],
     cta: "Get a Quote",
     highlight: false,
   },
   {
     name: "Business Website",
-    from: "£1,299",
-    desc: "For growing businesses that need a content-rich, SEO-optimised site with a blog, gallery, and lead capture.",
+    from: "£399",
+    desc: "For established tradespeople and small businesses that need more pages, a gallery, and lead capture.",
     features: [
-      "5–15 pages",
-      "SEO setup & on-page optimisation",
+      "Up to 10 pages",
       "Gallery & portfolio section",
-      "Blog & news section",
       "Lead capture & enquiry forms",
       "Google Analytics setup",
+      "WhatsApp integration",
       "Domain registration included",
-      "Fast, reliable cloud hosting",
     ],
     cta: "Get a Quote",
     highlight: true,
   },
   {
-    name: "E-Commerce Website",
-    from: "£2,500",
-    desc: "Sell online with a fully managed store, payment gateway, and order management built in.",
+    name: "Professional Website",
+    from: "£599",
+    desc: "A fully optimised site with SEO, blog, and everything you need to grow your online presence.",
     features: [
-      "Online product catalogue",
-      "Payment gateway integration",
-      "Product & inventory management",
-      "Order & customer management",
-      "Mobile-first checkout",
+      "Up to 15 pages",
+      "SEO setup & on-page optimisation",
+      "Blog & news section",
+      "Google Analytics & Search Console",
+      "WhatsApp integration",
       "Domain registration included",
-      "Fast, reliable cloud hosting",
     ],
     cta: "Get a Quote",
     highlight: false,
@@ -93,36 +88,33 @@ const appTiers = [
 
 const supportTiers = [
   {
-    name: "Website Care Plan",
-    price: "£29/mo",
+    name: "Monthly Care Plan",
+    price: "£15/mo",
     features: [
       "Hosting & cloud infrastructure",
       "SSL certificate",
-      "Security & software updates",
-      "Monthly backup",
-      "Email support",
+      "Security updates",
+      "Monthly backups",
+      "Uptime monitoring",
     ],
   },
   {
     name: "Business Care Plan",
-    price: "£59/mo",
+    price: "£29/mo",
     features: [
-      "Everything in Website Care",
+      "Everything in Monthly Care",
       "Content updates (up to 30 min/month)",
-      "Uptime monitoring",
-      "Performance checks",
       "Priority support",
     ],
   },
   {
-    name: "Premium Care Plan",
-    price: "£99/mo",
+    name: "Growth Care Plan",
+    price: "£49/mo",
     features: [
       "Everything in Business Care",
       "Monthly SEO checks",
-      "Multiple content changes",
-      "Analytics review",
-      "Dedicated account manager",
+      "Google Business Profile support",
+      "Up to 1 hour of changes/month",
     ],
   },
 ];
@@ -144,12 +136,12 @@ export default function PricingPage() {
           {/* Quick summary strip */}
           <div className="mt-10 flex flex-wrap gap-4">
             {[
-              { label: "Starter Website", from: "From £599" },
-              { label: "Business Website", from: "From £1,299" },
-              { label: "E-Commerce", from: "From £2,500" },
+              { label: "Starter Website", from: "From £199" },
+              { label: "Business Website", from: "From £399" },
+              { label: "Professional Website", from: "From £599" },
               { label: "Custom Web Apps", from: "From £5,000" },
               { label: "SaaS Development", from: "From £10,000" },
-              { label: "Website Care Plan", from: "From £29/mo" },
+              { label: "Monthly Care Plan", from: "From £15/mo" },
             ].map((item) => (
               <div key={item.label} className="rounded-xl border border-white/10 bg-white/5 px-5 py-3">
                 <p className="text-xs text-slate-400">{item.label}</p>
@@ -162,9 +154,9 @@ export default function PricingPage() {
 
       {/* Web Development */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-[#0b1f3a]">Website Development</h2>
+        <h2 className="text-2xl font-bold text-[#0b1f3a]">Website Setup</h2>
         <p className="mt-2 text-sm text-slate-500">
-          We handle everything end-to-end &mdash; domain registration, cloud hosting, SSL certificate, and ongoing maintenance. You don&rsquo;t need to deal with any hosting provider yourself.
+          One-time setup fee. We handle everything &mdash; domain registration, cloud hosting, SSL certificate, and ongoing maintenance. No technical knowledge needed.
         </p>
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
           {webTiers.map((tier) => (
@@ -213,6 +205,49 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* All-in-One Bundle */}
+      <section className="bg-green-50 py-14">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-xs font-semibold uppercase tracking-widest text-green-600">Best Value</p>
+          <h2 className="mt-2 text-2xl font-bold text-[#0b1f3a] sm:text-3xl">Professional Website</h2>
+          <div className="mt-2 flex items-baseline justify-center gap-2">
+            <span className="text-4xl font-extrabold text-[#0b1f3a]">£199</span>
+            <span className="text-lg text-slate-500">setup</span>
+            <span className="text-2xl font-bold text-slate-400">+</span>
+            <span className="text-4xl font-extrabold text-green-600">£19</span>
+            <span className="text-lg text-slate-500">/month</span>
+          </div>
+          <p className="mt-3 text-sm text-slate-500 max-w-xl mx-auto">
+            Low upfront cost, everything included. The easiest way to get your business online and keep it running.
+          </p>
+          <ul className="mt-8 inline-grid grid-cols-1 gap-3 text-left sm:grid-cols-2">
+            {[
+              "3–5 Pages",
+              "Mobile Friendly",
+              "Contact Form & Google Maps",
+              "WhatsApp Integration",
+              "Domain Included",
+              "Hosting Included",
+              "SSL Certificate",
+              "Ongoing Maintenance & Security Updates",
+            ].map((f) => (
+              <li key={f} className="flex items-center gap-2 text-sm font-medium text-slate-700">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 text-white text-xs font-bold">&#10003;</span>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8">
+            <Link
+              href="/contact"
+              className="inline-block rounded-full bg-green-600 px-8 py-3 text-sm font-semibold text-white hover:bg-green-700"
+            >
+              Get Started Today
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Custom Apps & SaaS */}
       <section className="bg-slate-50 py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -253,9 +288,9 @@ export default function PricingPage() {
 
       {/* Support */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-[#0b1f3a]">Monthly Website Care Plans</h2>
+        <h2 className="text-2xl font-bold text-[#0b1f3a]">Monthly Care Plans</h2>
         <p className="mt-2 text-sm text-slate-500">
-          All care plans include hosting, SSL, and security updates as standard. Add content changes, SEO monitoring, and priority support as your business grows. Recurring revenue example: 20 customers on the Business Care Plan = £1,180/month.
+          Keep your website secure, fast, and up to date. All plans include hosting, SSL, and security updates. Feels like paying for a utility &mdash; and keeps your site running perfectly all year.
         </p>
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
           {supportTiers.map((tier, i) => (

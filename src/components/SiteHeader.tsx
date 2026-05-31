@@ -12,6 +12,7 @@ const services = [
 ];
 
 const products = [
+  { href: "/products/expapp-money-planner", label: "ExpApp — Money Planner", desc: "Free household budget & net worth tracker" },
   { href: "/products/splendid-accounting", label: "Splendid Accounting", desc: "SME accounting & finance software" },
   { href: "/products/splendid-reliability", label: "Splendid Reliability", desc: "MTBF calculations & reliability tracking" },
   { href: "/products/splendid-monitor", label: "Splendid Monitor", desc: "Industrial IoT dashboards" },
