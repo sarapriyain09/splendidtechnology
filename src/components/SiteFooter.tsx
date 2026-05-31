@@ -108,6 +108,7 @@ export function SiteFooter() {
           <div className="flex flex-wrap items-center gap-4">
             <a href="/privacy-policy" className="text-xs text-white/40 hover:text-white">Privacy Policy</a>
             <a href="/cookie-policy" className="text-xs text-white/40 hover:text-white">Cookie Policy</a>
+            <a href="https://expapp.co.uk" className="text-xs text-white/40 hover:text-white" target="_blank" rel="noopener noreferrer">ExpApp</a>
             <span className="text-xs text-white/30">Leicester, UK</span>
           </div>
         </div>

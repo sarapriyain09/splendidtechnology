@@ -22,7 +22,26 @@ export const metadata: Metadata = {
 
 const products = [
   {
-    icon: "📊",
+    icon: "�",
+    label: "Free App",
+    title: "ExpApp — Money Planner",
+    tagline: "Free household budget & net worth tracker",
+    description:
+      "A free web app for managing your household finances. Track monthly income, expenses, and EMI repayments — and see your net worth at a glance. No subscription, no complexity, free forever.",
+    status: "Free",
+    statusColor: "green",
+    bullets: [
+      "Monthly budget planner",
+      "Net worth tracker",
+      "EMI & loan repayment tracking",
+      "Monthly expense history",
+      "Secure free accounts",
+    ],
+    href: "/products/expapp-money-planner",
+    external: "https://expapp.co.uk",
+  },
+  {
+    icon: "�📊",
     label: "Accounting",
     title: "Splendid Accounting",
     tagline: "SME accounting & finance software",
@@ -130,11 +149,11 @@ export default function ProductsPage() {
             Splendid Technology — Products
           </p>
           <h1 className="mt-4 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-            Software Products Built for Engineering Businesses
+            Software Products Built for Real People and Engineering Businesses
           </h1>
           <p className="mt-4 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-            Four SaaS products covering accounting, reliability engineering, industrial IoT,
-            and asset management — designed specifically for SMEs and engineering businesses.
+            From a free household budget planner to industrial IoT dashboards — our products
+            cover personal finance, accounting, reliability engineering, and asset management.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
@@ -158,8 +177,7 @@ export default function ProductsPage() {
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-[#0b1f3a]">Our Product Suite</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Products that integrate with each other — accounting connects to asset management,
-            reliability connects to IoT monitoring.
+            ExpApp is free and live today. Our engineering products integrate with each other — accounting connects to asset management, reliability connects to IoT monitoring.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {products.map((p) => (
@@ -191,6 +209,16 @@ export default function ProductsPage() {
                 >
                   Learn more &rarr;
                 </Link>
+                {"external" in p && (
+                  <a
+                    href={(p as { external: string }).external}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-green-700 hover:text-green-900"
+                  >
+                    Open App &rarr;
+                  </a>
+                )}
               </div>
             ))}
           </div>
