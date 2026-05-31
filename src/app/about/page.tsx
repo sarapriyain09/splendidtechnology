@@ -156,6 +156,7 @@ export default function AboutPage() {
               <p className="text-sm font-medium text-black/60">
                 Engineering Manager — Leicester, United Kingdom
               </p>
+              <a href="mailto:raja@splendidtechnology.co.uk" className="text-xs text-[#0b3d91] hover:underline">raja@splendidtechnology.co.uk</a>
             </div>
             <p className="text-sm leading-6 text-black/70">
               With over 25 years of engineering experience spanning motor and
@@ -225,6 +226,7 @@ export default function AboutPage() {
               <p className="text-sm font-medium text-black/60">
                 Software Engineer · Cloud & AI — Leicester, UK
               </p>
+              <a href="mailto:shiva@splendidtechnology.co.uk" className="text-xs text-[#0b3d91] hover:underline">shiva@splendidtechnology.co.uk</a>
             </div>
             <p className="text-sm leading-6 text-black/70">
               MSc Advanced Computer Science student at the University of Leicester,
@@ -319,6 +321,7 @@ export default function AboutPage() {
               <p className="text-sm font-medium text-black/60">
                 Supply Chain & Operations · International Business — Leicester, UK
               </p>
+              <a href="mailto:arun@splendidtechnology.co.uk" className="text-xs text-[#0b3d91] hover:underline">arun@splendidtechnology.co.uk</a>
             </div>
             <p className="text-sm leading-6 text-black/70">
               MSc International Business student at the University of Leicester,
