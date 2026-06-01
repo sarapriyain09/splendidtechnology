@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import QRCode from "react-qr-code";
 
 export const metadata: Metadata = {
   title: "About Splendid Technology | Web Apps, IoT, Reliability & Software",
@@ -391,6 +392,32 @@ export default function AboutPage() {
       </section>
 
       </div>{/* end team wrapper */}
+
+      {/* QR Code */}
+      <section className="py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center gap-6 rounded-2xl border border-slate-200 bg-slate-50 px-8 py-10 text-center sm:flex-row sm:text-left">
+            <div className="shrink-0 rounded-xl bg-white p-4 shadow-sm">
+              <QRCode
+                value="https://splendidtechnology.co.uk"
+                size={140}
+                fgColor="#0b1f3a"
+                bgColor="#ffffff"
+              />
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-green-600">Quick Access</p>
+              <h2 className="mt-1 text-2xl font-bold text-[#0b1f3a]">Scan to Visit Our Website</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                Point your phone camera at the QR code to open{" "}
+                <span className="font-medium text-[#0b1f3a]">splendidtechnology.co.uk</span>{" "}
+                instantly &mdash; no typing required.
+              </p>
+              <p className="mt-1 text-xs text-slate-400">splendidtechnology.co.uk</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="bg-[#0b1f3a] py-16 text-white">
