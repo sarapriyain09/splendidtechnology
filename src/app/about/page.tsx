@@ -173,8 +173,6 @@ export default function AboutPage() {
               Engineering Technology leader with 25+ years of expertise spanning Medium Voltage
               motor &amp; generator design, application engineering, condition monitoring, and
               reliability engineering for Oil &amp; Gas, Marine, Metal, and Mining industries globally.
-              Currently Lead System Engineer at Brush Power Generation (Baker Hughes), responsible
-              for new product development of generators for gas turbine, LNG, and offshore applications.
             </p>
             <p className="text-sm leading-6 text-black/70">
               At Splendid Technology, Raja combines this deep industrial expertise with modern
