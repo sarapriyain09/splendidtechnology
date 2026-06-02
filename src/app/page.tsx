@@ -3,81 +3,99 @@ import type { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Web Apps, IoT Solutions, Reliability Engineering & Software | Splendid Technology UK",
+  title: "Industrial IoT, Reliability Engineering & Engineering Solutions | Splendid Technology UK",
   description:
-    "Splendid Technology delivers Web Applications, SaaS Platforms, Industrial IoT Solutions, Reliability Engineering Software, and Digital Transformation Services for SMEs and industrial businesses across the UK.",
+    "Splendid Technology delivers Industrial IoT, Predictive Maintenance, Reliability Engineering, CAD Design, FEA Analysis, and Software Automation for UK manufacturers and engineering businesses.",
   keywords: [
-    "web developer Leicester",
-    "software developer Leicester",
-    "web developer Birmingham",
-    "web developer London",
-    "SaaS development UK",
-    "custom web applications UK",
-    "website hosting for SMEs",
-    "web app development uk",
     "industrial iot uk",
-    "reliability engineering software uk",
-    "smart motor monitoring uk",
     "predictive maintenance uk",
+    "reliability engineering uk",
+    "condition monitoring uk",
+    "smart motor monitoring uk",
+    "cad design uk",
+    "fea analysis uk",
+    "engineering design leicester",
+    "manufacturing solutions uk",
+    "reverse engineering uk",
+    "crm software uk",
     "business software development leicester",
-    "digital transformation sme uk",
-    "splendid accounting software",
+    "digital transformation manufacturer uk",
+    "splendid technology",
   ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
-    title: "Splendid Technology | Web Apps, IoT & Reliability Software",
+    title: "Splendid Technology | Industrial IoT, Reliability Engineering & Solutions",
     description:
-      "Web Applications, SaaS Platforms, Industrial IoT Solutions and Reliability Engineering Software for UK SMEs and industrial businesses. Based in Leicester.",
+      "Industrial IoT, Predictive Maintenance, Reliability Engineering, CAD Design & Software Automation for UK manufacturers.",
     url: "https://www.splendidtechnology.co.uk/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Splendid Technology | Web Apps, IoT & Reliability Software",
+    title: "Splendid Technology | Industrial IoT, Reliability Engineering & Solutions",
     description:
-      "Web Applications, SaaS Platforms, Industrial IoT Solutions and Reliability Engineering Software for UK SMEs and industrial businesses. Based in Leicester.",
+      "Industrial IoT, Predictive Maintenance, Reliability Engineering, CAD Design & Software Automation for UK manufacturers.",
   },
 };
 
 const solutions = [
   {
-    title: "Web & App Development",
+    title: "Industrial IoT & Reliability",
     description:
-      "Business websites, SaaS applications, customer portals, mobile apps, and API integrations — built for performance and growth.",
-    href: "/services/web-app-development",
-    icon: "💻",
-    tag: "Development",
+      "Smart motor health monitoring, predictive maintenance, vibration analysis, condition monitoring, and reliability engineering — built for UK manufacturers.",
+    href: "/services/iot-solutions",
+    icon: "📡",
+    tag: "Strategic Growth",
     highlight: true,
   },
   {
-    title: "IoT & Condition Monitoring",
+    title: "Engineering & Manufacturing",
     description:
-      "Real-time motor health, vibration monitoring, energy tracking, and industrial IoT dashboards for UK manufacturers.",
-    href: "/services/iot-solutions",
-    icon: "📡",
-    tag: "Industrial IoT",
+      "3D CAD design, FEA analysis, CFD simulation, reverse engineering, rapid prototyping, and manufacturing support for engineering businesses.",
+    href: "/services/engineering-manufacturing",
+    icon: "🔩",
+    tag: "Near-Term Revenue",
+    highlight: true,
   },
   {
-    title: "Reliability Engineering",
+    title: "Software & Automation",
     description:
-      "MTBF analysis, FMEA/FMECA, RAM studies, and asset performance analytics — evidence-based engineering decisions.",
-    href: "/services/reliability-engineering",
-    icon: "⚙️",
-    tag: "Engineering",
-  },
-  {
-    title: "Splendid Accounting",
-    description:
-      "Purpose-built accounting software for SMEs. Asset accounting, job costing, and engineering business ERP.",
-    href: "/products/splendid-accounting",
-    icon: "📊",
-    tag: "SaaS Product",
+      "Custom CRM systems, web applications, SaaS platforms, AI process automation, customer portals, and business dashboards.",
+    href: "/services/software-development",
+    icon: "💻",
+    tag: "Recurring Revenue",
+    highlight: false,
   },
   {
     title: "Splendid Monitor",
     description:
+      "Industrial IoT dashboards, digital twins, and predictive alerts for motors, pumps, fans, and rotating plant.",
+    href: "/products/splendid-monitor",
+    icon: "🖥️",
+    tag: "SaaS Product",
+    highlight: false,
+  },
+  {
+    title: "Splendid Reliability",
+    description:
+      "Track failures, calculate MTBF automatically, and optimise maintenance intervals across all your assets.",
+    href: "/products/splendid-reliability",
+    icon: "⏱️",
+    tag: "Reliability Software",
+    highlight: false,
+  },
+  {
+    title: "Splendid CRM",
+    description:
+      "Custom Sales CRM for UK SMEs — manage leads, track your pipeline, automate follow-ups, and close more deals. Built around your process.",
+    href: "/services/sales-crm",
+    icon: "🎯",
+    tag: "SaaS Product",
+    highlight: false,
+  },
+];
       "Industrial IoT dashboards, digital twins, and predictive alerts for motors, pumps, fans, and rotating plant.",
     href: "/products/splendid-monitor",
     icon: "🖥️",
@@ -110,13 +128,12 @@ const solutions = [
 ];
 
 const benefits = [
-  { icon: "💻", title: "Web & App Development", body: "From business websites to full SaaS platforms — fast delivery, clean code." },
-  { icon: "📡", title: "IoT & Monitoring", body: "Real-time condition monitoring for motors, pumps, fans, and industrial plant." },
-  { icon: "⚙️", title: "Reliability Engineering", body: "Evidence-based MTBF, FMEA and RAM analysis to extend asset life." },
-  { icon: "📊", title: "Splendid Accounting", body: "SME accounting software with asset and job costing built in." },
-  { icon: "🖥️", title: "Splendid Monitor", body: "Industrial IoT dashboards and digital twins for operational visibility." },
-  { icon: "🎯", title: "Splendid CRM", body: "Custom Sales CRM — leads, pipeline, follow-ups, and reporting built for UK teams." },
-  { icon: "🤖", title: "AI Integrations", body: "Intelligent workflow automation and AI-powered business processes." },
+  { icon: "�", title: "Industrial IoT & Monitoring", body: "Real-time condition monitoring for motors, pumps, fans, and rotating industrial plant." },
+  { icon: "🔩", title: "Engineering & Manufacturing", body: "CAD design, FEA, CFD, reverse engineering, and rapid prototyping for engineering businesses." },
+  { icon: "⚙️", title: "Reliability Engineering", body: "Evidence-based MTBF, FMEA and RAM analysis to extend asset life and reduce downtime." },
+  { icon: "💻", title: "Web & App Development", body: "From business websites to full SaaS platforms — fast delivery, clean code, UK team." },
+  { icon: "🎯", title: "CRM & Sales Automation", body: "Custom CRM systems — leads, pipeline, follow-ups, and reporting built for UK businesses." },
+  { icon: "🤖", title: "AI Process Automation", body: "Intelligent workflow automation and AI-powered business processes for manufacturers." },
 ];
 
 export default function Home() {
@@ -133,12 +150,11 @@ export default function Home() {
               Splendid Technology Ltd &mdash; Leicester, UK
             </p>
             <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Web Apps, IoT&nbsp;&amp; Reliability Software for UK Business
+              Industrial IoT, Reliability&nbsp;&amp; Engineering Solutions for UK Manufacturers
             </h1>
             <p className="mt-5 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-              Splendid Technology delivers Web Applications, SaaS Platforms, Industrial IoT
-              Solutions, Reliability Engineering Software, and Digital Transformation Services
-              for SMEs and industrial businesses.
+              Helping manufacturers improve reliability, productivity, and innovation through
+              Industrial IoT, predictive maintenance, engineering design, and software automation.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -161,10 +177,10 @@ export default function Home() {
       {/* ── Solutions Grid ── */}
       <section id="solutions" className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">What We Deliver</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Three Revenue Engines. One Partner.</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Four revenue streams — Web &amp; App Development, Industrial IoT, Reliability
-            Engineering, and SaaS Products — designed to help UK businesses grow and operate smarter.
+            Industrial IoT &amp; Predictive Maintenance for strategic growth — Engineering &amp; Manufacturing
+            Services for immediate revenue — Software &amp; Automation for recurring income.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {solutions.map((s) => (
@@ -204,11 +220,11 @@ export default function Home() {
       <section className="bg-[#0b1f3a] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl">
           <h2 className="text-center text-3xl font-bold text-white">
-            Four Ways We Help Your Business
+            Three Ways We Help UK Manufacturers
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-center text-sm text-white/60">
-            Web development that generates revenue today, IoT and reliability tools that
-            protect your assets, and SaaS products that scale with you.
+            Industrial IoT that protects your assets, engineering services that generate revenue now,
+            and software automation that scales with you.
           </p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {benefits.map((b) => (
@@ -287,10 +303,10 @@ export default function Home() {
           </h2>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { heading: "Engineering Specialists", body: "Not a web agency — an engineering technology company with deep industrial expertise." },
-              { heading: "Built for SMEs", body: "Affordable, scalable solutions sized for UK manufacturers — not enterprise-only pricing." },
+              { heading: "Engineering Technology Partner", body: "Not a web agency — an engineering technology company with deep industrial IoT and manufacturing expertise." },
+              { heading: "Three Service Pillars", body: "Industrial IoT for long-term growth, engineering services for cash flow now, software automation for recurring revenue." },
               { heading: "UK-Based & Reliable", body: "Leicester-based team. On-site pilots, local support, and end-to-end project delivery." },
-              { heading: "Results-Driven", body: "Every engagement is measured by reduced downtime, lower cost, and better operational data." },
+              { heading: "Results-Driven", body: "Every engagement is measured by reduced downtime, lower manufacturing cost, and better operational data." },
             ].map((item) => (
               <div key={item.heading} className="rounded-xl border border-black/10 bg-white p-6">
                 <h3 className="font-bold text-[#0b1f3a]">{item.heading}</h3>

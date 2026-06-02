@@ -3,11 +3,31 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const services = [
-  { href: "/services/web-app-development", label: "Web & App Development", desc: "Websites, SaaS apps, portals & APIs" },
+type NavItem =
+  | { href: string; label: string; desc: string; isLabel?: false }
+  | { isLabel: true; label: string; href?: never; desc?: never };
+
+const iotItems: NavItem[] = [
+  { isLabel: true, label: "Industrial IoT & Reliability" },
   { href: "/services/iot-solutions", label: "IoT & Condition Monitoring", desc: "Motor health, vibration & energy monitoring" },
-  { href: "/proof-of-concept", label: "IoT Proof of Concept", desc: "Live Raspberry Pi + AWS demo platform" },
+  { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring", desc: "Real-time motor health & predictive alerts" },
   { href: "/services/reliability-engineering", label: "Reliability Engineering", desc: "MTBF, FMEA, RAM & RCM studies" },
+  { href: "/proof-of-concept", label: "IoT Proof of Concept", desc: "Live Raspberry Pi + AWS demo platform" },
+];
+
+const engineeringItems: NavItem[] = [
+  { isLabel: true, label: "Engineering & Manufacturing" },
+  { href: "/services/engineering-manufacturing", label: "CAD Design & Drawings", desc: "3D product design, assemblies & manufacturing drawings" },
+  { href: "/services/engineering-manufacturing#fea", label: "FEA & Structural Analysis", desc: "Finite element analysis & simulation" },
+  { href: "/services/engineering-manufacturing#cfd", label: "CFD Analysis", desc: "Computational fluid dynamics" },
+  { href: "/services/engineering-manufacturing#reverse", label: "Reverse Engineering", desc: "Legacy component recreation & modification" },
+  { href: "/services/engineering-manufacturing#prototyping", label: "Rapid Prototyping", desc: "Prototype design, validation & DFM" },
+];
+
+const softwareItems: NavItem[] = [
+  { isLabel: true, label: "Software & Automation" },
+  { href: "/services/web-app-development", label: "Web & App Development", desc: "Websites, SaaS apps, portals & APIs" },
+  { href: "/services/sales-crm", label: "CRM Systems", desc: "Custom Sales CRM for UK businesses" },
   { href: "/services/software-development", label: "Software Development", desc: "Custom business & enterprise software" },
 ];
 
@@ -21,7 +41,7 @@ const products = [
   { href: "/services/sales-crm", label: "Splendid CRM", desc: "Custom Sales CRM for UK businesses" },
 ];
 
-function DropdownMenu({ label, href, items }: { label: string; href: string; items: { href: string; label: string; desc: string }[] }) {
+function DropdownMenu({ label, href, items }: { label: string; href: string; items: NavItem[] }) {
   return (
     <div className="group relative">
       <Link
@@ -34,16 +54,22 @@ function DropdownMenu({ label, href, items }: { label: string; href: string; ite
         </svg>
       </Link>
       <div className="invisible absolute left-0 top-full z-50 mt-1 w-72 rounded-xl border border-white/10 bg-[#0b1f3a] py-2 opacity-0 shadow-2xl transition-all duration-150 group-hover:visible group-hover:opacity-100">
-        {items.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="block px-4 py-3 hover:bg-white/5"
-          >
-            <span className="block text-xs font-semibold text-white">{item.label}</span>
-            <span className="mt-0.5 block text-[10px] text-white/50">{item.desc}</span>
-          </Link>
-        ))}
+        {items.map((item, i) =>
+          item.isLabel ? (
+            <p key={i} className="px-4 pb-1 pt-3 text-[9px] font-bold uppercase tracking-widest text-green-400/80 first:pt-2">
+              {item.label}
+            </p>
+          ) : (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="block px-4 py-2.5 hover:bg-white/5"
+            >
+              <span className="block text-xs font-semibold text-white">{item.label}</span>
+              <span className="mt-0.5 block text-[10px] text-white/50">{item.desc}</span>
+            </Link>
+          )
+        )}
       </div>
     </div>
   );
@@ -68,7 +94,7 @@ export function SiteHeader() {
               priority
             />
             <span className="hidden text-[10px] font-medium uppercase tracking-widest text-white/50 sm:block">
-              Web Apps · IoT · Reliability · Software
+              Industrial IoT · Engineering · Software &amp; Automation
             </span>
           </Link>
           <div className="flex items-center gap-3">
@@ -100,7 +126,9 @@ export function SiteHeader() {
         {/* Desktop nav */}
         <nav className="hidden items-center justify-between gap-x-1 py-2 lg:flex">
           <div className="flex items-center gap-x-1">
-            <DropdownMenu label="Services" href="/services" items={services} />
+            <DropdownMenu label="Industrial IoT" href="/services/iot-solutions" items={iotItems} />
+            <DropdownMenu label="Engineering" href="/services/engineering-manufacturing" items={engineeringItems} />
+            <DropdownMenu label="Software" href="/services/software-development" items={softwareItems} />
             <DropdownMenu label="Products" href="/products" items={products} />
             <Link href="/industries" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Industries
@@ -138,11 +166,33 @@ export function SiteHeader() {
         {mobileOpen && (
           <nav className="border-t border-white/10 py-4 lg:hidden">
             <div className="space-y-1">
-              <p className="px-2 pt-2 text-[10px] font-bold uppercase tracking-widest text-white/30">Services</p>
-              {services.map((item) => (
+              <p className="px-2 pt-2 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Industrial IoT & Reliability</p>
+              {iotItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={item.href!}
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Engineering & Manufacturing</p>
+              {engineeringItems.filter((i) => !i.isLabel).map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href!}
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Software & Automation</p>
+              {softwareItems.filter((i) => !i.isLabel).map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href!}
                   onClick={() => setMobileOpen(false)}
                   className="block px-2 py-2 text-sm text-white/80 hover:text-white"
                 >
