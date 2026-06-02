@@ -370,8 +370,8 @@ export default function Home() {
               info@splendidtechnology.co.uk
             </a>
             {"  |  "}
-            <a className="underline hover:text-white" href="tel:+447721952967">
-              +44 7721 952967
+            <a className="underline hover:text-white" href="tel:+447723144910">
+              +44 7723 144910
             </a>
           </p>
         </div>

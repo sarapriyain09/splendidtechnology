@@ -27,8 +27,8 @@ export function SiteFooter() {
               </a>
             </p>
             <p className="mt-1 text-xs text-white/50">
-              <a className="hover:text-white" href="tel:+447721952967">
-                +44 7721 952967
+              <a className="hover:text-white" href="tel:+447723144910">
+                +44 7723 144910
               </a>
             </p>
           </div>

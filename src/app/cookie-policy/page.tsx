@@ -228,8 +228,8 @@ export default function CookiePolicyPage() {
               </a>
             </p>
             <p className="mt-1">
-              <a className="text-[#0b1f3a] underline hover:text-[#0b3d91]" href="tel:+447721952967">
-                +44 7721 952967
+              <a className="text-[#0b1f3a] underline hover:text-[#0b3d91]" href="tel:+447723144910">
+                +44 7723 144910
               </a>
             </p>
           </div>

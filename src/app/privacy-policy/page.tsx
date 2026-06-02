@@ -15,7 +15,7 @@ const sections = [
     body: [
       "Splendid Technology Ltd is a technology company registered in England and Wales, based in Leicester, UK. We deliver Industrial IoT solutions, predictive maintenance systems, and AI-powered business process automation for manufacturers and industrial SMEs.",
       "For the purposes of UK data protection law, Splendid Technology Ltd is the data controller responsible for your personal data.",
-      "Contact: info@splendidtechnology.co.uk | +44 7721 952967",
+      "Contact: info@splendidtechnology.co.uk | +44 7723 144910",
     ],
   },
   {
@@ -209,8 +209,8 @@ export default function PrivacyPolicyPage() {
             info@splendidtechnology.co.uk
           </a>{" "}
           &nbsp;|&nbsp;{" "}
-          <a className="text-[#0b1f3a] hover:underline" href="tel:+447721952967">
-            +44 7721 952967
+          <a className="text-[#0b1f3a] hover:underline" href="tel:+447723144910">
+            +44 7723 144910
           </a>
         </p>
       </footer>
