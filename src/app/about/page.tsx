@@ -3,9 +3,9 @@ import Link from "next/link";
 import QRCode from "react-qr-code";
 
 export const metadata: Metadata = {
-  title: "About Splendid Technology | Web Apps, IoT, Reliability & Software",
+  title: "About Splendid Technology | Industrial IoT, Reliability Engineering & Software",
   description:
-    "Splendid Technology Ltd (Leicester, UK) — a four-pillar technology company delivering Web & App Development, Industrial IoT Solutions, Reliability Engineering, and SaaS Software Products for UK businesses.",
+    "Splendid Technology Ltd (Leicester, UK) — an Industrial Technology & Engineering Solutions company delivering Industrial IoT, Reliability Engineering, Engineering Design, and Software Automation for UK manufacturers and engineering businesses.",
   alternates: {
     canonical: "/about",
   },
@@ -13,39 +13,48 @@ export const metadata: Metadata = {
 
 const pillars = [
   {
-    title: "Web & App Development",
-    desc: "Custom websites, SaaS platforms, customer portals, and API integrations — built with Next.js, React, and modern cloud infrastructure.",
-    href: "/services/web-app-development",
-  },
-  {
-    title: "IoT & Condition Monitoring",
-    desc: "Edge-to-cloud industrial monitoring for motors, energy systems, and rotating machinery — real-time dashboards, vibration analysis, and predictive alerts.",
+    title: "Industrial IoT & Reliability",
+    desc: "Smart motor health monitoring, predictive maintenance, vibration analysis, condition monitoring, MTBF, FMEA/FMECA, and RAM studies — grounded in 25+ years of rotating machine expertise.",
     href: "/services/iot-solutions",
   },
   {
-    title: "Reliability Engineering",
-    desc: "MTBF calculations, FMEA/FMECA, RAM studies, RCM, and maintenance interval optimisation — grounded in 25+ years of real engineering practice.",
-    href: "/services/reliability-engineering",
+    title: "Engineering & Manufacturing",
+    desc: "3D CAD design, FEA structural analysis, CFD simulation, reverse engineering, rapid prototyping, and manufacturing support for UK engineering businesses.",
+    href: "/services/engineering-manufacturing",
   },
   {
-    title: "Software & SaaS Products",
-    desc: "Purpose-built software for engineering businesses: Splendid Accounting, Splendid Reliability, Splendid Monitor, and Splendid Asset Manager.",
-    href: "/products",
+    title: "Software & Automation",
+    desc: "Custom CRM systems, web applications, SaaS platforms, AI process automation, customer portals, and business dashboards — built with Next.js, React, and modern cloud infrastructure.",
+    href: "/services/software-development",
   },
 ];
 
 const keySkills = [
-  "Business Development & Client Engagement",
-  "Digital Transformation Strategy",
+  // Industrial IoT & Condition Monitoring
+  "Motor & Generator Health Monitoring (MV, HV)",
+  "Vibration Analysis & Root Cause Analysis",
+  "Predictive Maintenance Systems",
+  "Condition Monitoring (IoT Edge-to-Cloud)",
+  "Industrial Automation & SCADA",
+  // Reliability Engineering
+  "Reliability Engineering (MTBF, FMEA, RAM, RCM)",
+  "ISO 9000 Internal Auditor",
+  "Six Sigma Green Belt (GE)",
+  "Lean Management & Kaizen",
+  // Electrical & Mechanical Engineering
+  "MV/HV Induction & Synchronous Motor Design",
+  "MV Generator Design & Engineering",
+  "Electromagnetic Design (FEMM)",
+  "Instrumentation Design & ATEX Certification",
+  "3D CAD / 2D Drawing (IDEAS, UG, ProE, Creo)",
+  "BOM Creation & PLM (Teamcenter, SAP)",
+  "Reverse Engineering",
+  // Digital & Software
   "Web Application Development",
+  "IoT Dashboard Design",
   "CRM & Business Systems",
-  "IoT Solutions & Smart Devices",
-  "Process Automation",
-  "Workflow Optimisation",
-  "Cloud Hosting & Infrastructure",
-  "AI-Powered Business Solutions",
-  "Technical Architecture & Solution Design",
-  "Project Delivery & Product Development",
+  "AI Process Automation",
+  "Project & Engineering Management",
 ];
 
 export default function AboutPage() {
@@ -58,14 +67,14 @@ export default function AboutPage() {
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">About Us</p>
           <h1 className="text-4xl font-bold leading-tight sm:text-5xl">Splendid Technology Ltd</h1>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
-            A Leicester-based technology company delivering Web Applications, Industrial IoT Solutions,
-            Reliability Engineering Services, and SaaS Software Products for UK businesses and
-            industrial organisations.
+            An Industrial Technology &amp; Engineering Solutions company based in Leicester, UK —
+            delivering Industrial IoT, Predictive Maintenance, Reliability Engineering, Engineering
+            Design, and Software Automation for UK manufacturers and engineering businesses.
           </p>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-400">
-            We combine 25+ years of deep engineering domain expertise with modern software
-            development to solve real problems &mdash; from building customer-facing web apps to
-            monitoring motor health on the factory floor.
+            Founded on 25+ years of deep expertise in rotating machines, MV motor &amp; generator design,
+            condition monitoring, and reliability engineering — combined with modern software development
+            to solve real industrial problems.
           </p>
         </div>
       </section>
@@ -73,7 +82,7 @@ export default function AboutPage() {
       {/* 4 Pillars */}
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <h2 className="text-2xl font-bold text-[#0b1f3a]">What We Do</h2>
-        <p className="mt-2 text-sm text-slate-500">Four service areas. One technology partner.</p>
+        <p className="mt-2 text-sm text-slate-500">Three service pillars. One engineering technology partner.</p>
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           {pillars.map((pillar) => (
             <Link
@@ -150,34 +159,44 @@ export default function AboutPage() {
           <div className="flex-1 space-y-3">
             <div>
               <span className="text-xs font-semibold uppercase tracking-widest text-[#0b3d91]/60">
-                Founder &amp; Digital Solutions Lead
+                Founder &amp; Engineering Technology Lead
               </span>
               <h2 className="mt-1 text-2xl font-bold text-[#0b3d91]">
                 Raja Saravanan
               </h2>
               <p className="text-sm font-medium text-black/60">
-                Founder &amp; Digital Solutions Lead — Splendid Technology, Leicester, UK
+                Founder &amp; Engineering Technology Lead — Splendid Technology, Leicester, UK
               </p>
               <a href="mailto:raja@splendidtechnology.co.uk" className="text-xs text-[#0b3d91] hover:underline">raja@splendidtechnology.co.uk</a>
             </div>
             <p className="text-sm leading-6 text-black/70">
-              Driving business growth through digital transformation, web solutions, IoT systems,
-              and process automation. Combining technical expertise with customer-focused business
-              development to help SMEs improve efficiency, automate operations, and accelerate
-              growth through innovative technology solutions.
+              Engineering Technology leader with 25+ years of expertise spanning Medium Voltage
+              motor &amp; generator design, application engineering, condition monitoring, and
+              reliability engineering for Oil &amp; Gas, Marine, Metal, and Mining industries globally.
+              Currently Lead System Engineer at Brush Power Generation (Baker Hughes), responsible
+              for new product development of generators for gas turbine, LNG, and offshore applications.
             </p>
             <p className="text-sm leading-6 text-black/70">
-              With over 25 years of engineering experience spanning motor and generator design,
-              application engineering, and Industrial IoT, Raja brings deep technical credibility
-              and real-world domain expertise to every client engagement.
+              At Splendid Technology, Raja combines this deep industrial expertise with modern
+              web development, IoT, and software automation to build solutions that genuinely solve
+              manufacturing and engineering challenges — from smart motor health monitoring platforms
+              to custom CRM and business software.
+            </p>
+            <p className="text-sm leading-6 text-black/70">
+              Previously Senior Services Engineering Manager at GE Power Conversion, leading
+              rotating machine services for ASIA P&amp;L across motors and generators rated 1MW–400MW
+              for Oil &amp; Gas, Marine, Metal &amp; Mining customers.
             </p>
             <div className="flex flex-wrap gap-2 pt-1">
               {[
                 "MBA (Operations) — ICFAI University",
                 "BE Electrical & Electronics — Madurai Kamaraj University",
-                "ISO 9000 Internal Auditor",
-                "Six Sigma Green Belt (GE)",
-                "Training: Cranfield University & Nancy, France",
+                "ISO 9000:2001 Internal Auditor",
+                "Six Sigma Green Belt (GE Crotonville)",
+                "Instrumentation Design Training — Nancy, France",
+                "Electrical Design Training — Cranfield University, UK",
+                "MV Motor Design — Rotating Machines, Rugby, UK",
+                "Lean Management & Kaizen (GE)",
               ].map((cred) => (
                 <span
                   key={cred}
