@@ -282,6 +282,150 @@ export default function SalesCRMPage() {
         </div>
       </section>
 
+      {/* ── Pricing ── */}
+      <section id="pricing" className="py-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-green-600">Pricing</p>
+            <h2 className="mt-2 text-3xl font-bold text-[#0b1f3a]">Simple, Transparent CRM Pricing</h2>
+            <p className="mt-3 max-w-2xl mx-auto text-sm leading-6 text-black/60">
+              No per-seat fees. No surprise add-ons. Choose the plan that fits your business — or start with our launch offer.
+            </p>
+          </div>
+
+          {/* Plans */}
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            {/* Starter */}
+            <div className="flex flex-col rounded-2xl border border-black/10 bg-white p-7 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-widest text-black/40">Starter</p>
+              <p className="mt-3 text-4xl font-bold text-[#0b1f3a]">£9<span className="text-base font-normal text-black/40">/mo</span></p>
+              <p className="mt-1 text-xs text-black/40">Per account, billed monthly</p>
+              <ul className="mt-6 flex-1 space-y-2 text-sm text-black/70">
+                {["Up to 500 prospects","Lead management","Contact management","Notes & activities","Basic pipeline"].map((f) => (
+                  <li key={f} className="flex items-start gap-2"><span className="mt-0.5 font-bold text-green-600">✔</span>{f}</li>
+                ))}
+              </ul>
+              <p className="mt-6 text-xs font-semibold text-black/50 uppercase tracking-wide">Suitable for</p>
+              <ul className="mt-2 space-y-1 text-xs text-black/60">
+                {["Sole traders","Consultants","Small service businesses"].map((s) => (
+                  <li key={s} className="flex items-start gap-1"><span className="text-green-600">·</span>{s}</li>
+                ))}
+              </ul>
+              <Link href="/services/sales-crm/demo?plan=starter" className="mt-8 inline-flex items-center justify-center rounded-lg border border-black/20 px-5 py-2.5 text-sm font-bold text-[#0b1f3a] transition-colors hover:bg-black/5">
+                Request Free Demo
+              </Link>
+            </div>
+
+            {/* Professional */}
+            <div className="flex flex-col rounded-2xl border-2 border-green-500 bg-white p-7 shadow-lg relative">
+              <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-green-600 px-4 py-1 text-xs font-bold text-white">Recommended</span>
+              <p className="text-xs font-bold uppercase tracking-widest text-green-600">Professional</p>
+              <p className="mt-3 text-4xl font-bold text-[#0b1f3a]">£19<span className="text-base font-normal text-black/40">/mo</span></p>
+              <p className="mt-1 text-xs text-black/40">Per account, billed monthly</p>
+              <ul className="mt-6 flex-1 space-y-2 text-sm text-black/70">
+                {["Everything in Starter","Unlimited prospects","Opportunity tracking","Quote generation","Follow-up reminders","Dashboard & reports"].map((f) => (
+                  <li key={f} className="flex items-start gap-2"><span className="mt-0.5 font-bold text-green-600">✔</span>{f}</li>
+                ))}
+              </ul>
+              <p className="mt-6 text-xs font-semibold text-black/50 uppercase tracking-wide">Suitable for</p>
+              <ul className="mt-2 space-y-1 text-xs text-black/60">
+                {["Electricians","Plumbers","Accountants","Small manufacturers"].map((s) => (
+                  <li key={s} className="flex items-start gap-1"><span className="text-green-600">·</span>{s}</li>
+                ))}
+              </ul>
+              <Link href="/services/sales-crm/demo?plan=professional" className="mt-8 inline-flex items-center justify-center rounded-lg bg-green-600 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-green-700">
+                Request Free Demo
+              </Link>
+            </div>
+
+            {/* Business */}
+            <div className="flex flex-col rounded-2xl border border-black/10 bg-white p-7 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-widest text-black/40">Business</p>
+              <p className="mt-3 text-4xl font-bold text-[#0b1f3a]">£49<span className="text-base font-normal text-black/40">/mo</span></p>
+              <p className="mt-1 text-xs text-black/40">Per account, billed monthly</p>
+              <ul className="mt-6 flex-1 space-y-2 text-sm text-black/70">
+                {["Everything in Professional","Multi-user access","Team management","Custom fields","Lead assignment","Advanced reporting"].map((f) => (
+                  <li key={f} className="flex items-start gap-2"><span className="mt-0.5 font-bold text-green-600">✔</span>{f}</li>
+                ))}
+              </ul>
+              <p className="mt-6 text-xs font-semibold text-black/50 uppercase tracking-wide">Suitable for</p>
+              <ul className="mt-2 space-y-1 text-xs text-black/60">
+                {["Engineering firms","Manufacturing companies","Growing SMEs"].map((s) => (
+                  <li key={s} className="flex items-start gap-1"><span className="text-green-600">·</span>{s}</li>
+                ))}
+              </ul>
+              <Link href="/services/sales-crm/demo?plan=business" className="mt-8 inline-flex items-center justify-center rounded-lg border border-black/20 px-5 py-2.5 text-sm font-bold text-[#0b1f3a] transition-colors hover:bg-black/5">
+                Request Free Demo
+              </Link>
+            </div>
+          </div>
+
+          {/* Launch Offer */}
+          <div className="mt-10 rounded-2xl bg-[#0b1f3a] p-8 lg:p-10">
+            <div className="flex flex-wrap items-start gap-3">
+              <span className="inline-block rounded-full bg-yellow-400/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-yellow-400">Launch Offer — First 10 Customers</span>
+            </div>
+            <h3 className="mt-4 text-xl font-bold text-white">Get set up fast at a founder-friendly price</h3>
+            <p className="mt-2 text-sm text-white/60">We&apos;re offering early adopters a discounted setup package. Once we have 10 customers, this offer closes.</p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+                <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">Option A</p>
+                <p className="mt-2 text-2xl font-bold text-white">£99 <span className="text-sm font-normal text-white/50">setup</span> + £15<span className="text-sm font-normal text-white/50">/mo</span></p>
+                <ul className="mt-4 space-y-2 text-sm text-white/70">
+                  {["CRM setup & configuration","Data import from spreadsheets","Basic training session"].map((f) => (
+                    <li key={f} className="flex items-start gap-2"><span className="font-bold text-yellow-400">✔</span>{f}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+                <p className="text-xs font-bold uppercase tracking-widest text-yellow-400">Option B</p>
+                <p className="mt-2 text-2xl font-bold text-white">£149<span className="text-sm font-normal text-white/50">/year</span></p>
+                <p className="mt-1 text-xs text-white/40">Paid annually — best value</p>
+                <ul className="mt-4 space-y-2 text-sm text-white/70">
+                  {["Full Professional plan features","12 months included","Ideal for sole traders & small teams"].map((f) => (
+                    <li key={f} className="flex items-start gap-2"><span className="font-bold text-yellow-400">✔</span>{f}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <Link href="/services/sales-crm/demo?plan=launch-a" className="mt-6 inline-flex items-center justify-center rounded-lg bg-yellow-400 px-6 py-3 text-sm font-bold text-[#0b1f3a] transition-colors hover:bg-yellow-300">
+              Claim Launch Offer — Request Demo
+            </Link>
+          </div>
+
+          {/* Additional Services */}
+          <div className="mt-10">
+            <h3 className="text-lg font-bold text-[#0b1f3a]">Additional Services</h3>
+            <p className="mt-1 text-sm text-black/50">One-off services to get you up and running faster.</p>
+            <div className="mt-4 overflow-hidden rounded-2xl border border-black/10">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-black/10 bg-[#f7f7f7]">
+                    <th className="px-5 py-3 text-left font-semibold text-black/60">Service</th>
+                    <th className="px-5 py-3 text-right font-semibold text-black/60">Price</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-black/5 bg-white">
+                  {[
+                    { service: "CRM Setup & Training", price: "£99" },
+                    { service: "Data Import", price: "£49" },
+                    { service: "Custom Quote Template", price: "£99" },
+                    { service: "Custom Workflow", price: "£199+" },
+                    { service: "Website Integration", price: "£149" },
+                    { service: "Custom Development", price: "£500+" },
+                  ].map((row) => (
+                    <tr key={row.service}>
+                      <td className="px-5 py-3 text-black/70">{row.service}</td>
+                      <td className="px-5 py-3 text-right font-bold text-[#0b1f3a]">{row.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA Banner ── */}
       <section className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
