@@ -14,9 +14,9 @@ export function SiteFooter() {
               <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">Industrial IoT &amp; Process Automation</span>
             </Link>
             <p className="mt-3 text-xs leading-5 text-white/50">
-              A UK engineering technology company (Leicester) delivering smart monitoring,
-              predictive maintenance, and AI-powered business process improvement for
-              manufacturers and industrial SMEs.
+              CAD design, FEA analysis, CFD simulation, reverse engineering, and rapid prototyping
+              for UK engineering and manufacturing businesses. Positioned as your engineering
+              technology partner.
             </p>
             <p className="mt-3 text-xs text-white/40">
               36 Glazebrook Road, Leicester, LE3 9NT
@@ -33,16 +33,15 @@ export function SiteFooter() {
             </p>
           </div>
 
-          {/* Industrial IoT Solutions */}
+          {/* Industrial IoT & Reliability */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Industrial IoT</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Industrial IoT &amp; Reliability</h3>
             <ul className="mt-3 space-y-2">
               {[
-                { href: "/industrial-iot", label: "Overview" },
+                { href: "/services/iot-solutions", label: "IoT & Condition Monitoring" },
                 { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring" },
-                { href: "/industrial-iot/predictive-maintenance", label: "Predictive Maintenance" },
-                { href: "/industrial-iot/portable-diagnostic-kit", label: "Portable Diagnostic Kit" },
-                { href: "/industrial-iot/industry-40-solutions", label: "Industry 4.0 Solutions" },
+                { href: "/services/reliability-engineering", label: "Reliability Engineering" },
+                { href: "/proof-of-concept", label: "IoT Proof of Concept" },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
@@ -53,13 +52,16 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Business Improvement */}
+          {/* Engineering & Manufacturing */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-white/50">Business Improvement</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Engineering &amp; Manufacturing</h3>
             <ul className="mt-3 space-y-2">
               {[
-                { href: "/services", label: "AI Process Automation" },
-                { href: "/blog", label: "Insights & Guides" },
+                { href: "/services/engineering-manufacturing", label: "CAD Design & Drawings" },
+                { href: "/services/engineering-manufacturing#fea", label: "FEA & Structural Analysis" },
+                { href: "/services/engineering-manufacturing#cfd", label: "CFD Analysis" },
+                { href: "/services/engineering-manufacturing#reverse", label: "Reverse Engineering" },
+                { href: "/services/engineering-manufacturing#prototyping", label: "Rapid Prototyping" },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
@@ -70,14 +72,28 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Software & Automation + Company */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-white/40">Company</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Software &amp; Automation</h3>
+            <ul className="mt-3 space-y-2">
+              {[
+                { href: "/services/web-app-development", label: "Web & App Development" },
+                { href: "/services/sales-crm", label: "CRM Systems" },
+                { href: "/services/software-development", label: "Software Development" },
+              ].map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-xs text-white/60 hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h3 className="mt-6 text-xs font-bold uppercase tracking-widest text-white/40">Company</h3>
             <ul className="mt-3 space-y-2">
               {[
                 { href: "/about", label: "About" },
-                { href: "/proof-of-concept", label: "Innovation Lab" },
-                { href: "/contact", label: "Contact & Book a Pilot" },
+                { href: "/blog", label: "Insights & Guides" },
+                { href: "/contact", label: "Contact Us" },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">

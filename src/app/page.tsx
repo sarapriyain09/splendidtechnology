@@ -47,7 +47,7 @@ const solutions = [
       "Smart motor health monitoring, predictive maintenance, vibration analysis, condition monitoring, and reliability engineering — built for UK manufacturers.",
     href: "/services/iot-solutions",
     icon: "📡",
-    tag: "Strategic Growth",
+    tag: "Industrial IoT",
     highlight: true,
   },
   {
@@ -56,7 +56,7 @@ const solutions = [
       "3D CAD design, FEA analysis, CFD simulation, reverse engineering, rapid prototyping, and manufacturing support for engineering businesses.",
     href: "/services/engineering-manufacturing",
     icon: "🔩",
-    tag: "Near-Term Revenue",
+    tag: "Engineering Services",
     highlight: true,
   },
   {
@@ -65,7 +65,7 @@ const solutions = [
       "Custom CRM systems, web applications, SaaS platforms, AI process automation, customer portals, and business dashboards.",
     href: "/services/software-development",
     icon: "💻",
-    tag: "Recurring Revenue",
+    tag: "Software & Automation",
     highlight: false,
   },
   {
@@ -94,36 +94,6 @@ const solutions = [
     icon: "🎯",
     tag: "SaaS Product",
     highlight: false,
-  },
-];
-      "Industrial IoT dashboards, digital twins, and predictive alerts for motors, pumps, fans, and rotating plant.",
-    href: "/products/splendid-monitor",
-    icon: "🖥️",
-    tag: "SaaS Product",
-  },
-  {
-    title: "Splendid Reliability",
-    description:
-      "Track failures, calculate MTBF automatically, and optimise maintenance intervals across all your assets.",
-    href: "/products/splendid-reliability",
-    icon: "⏱️",
-    tag: "Reliability Software",
-  },
-  {
-    title: "Splendid CRM",
-    description:
-      "Custom Sales CRM for UK SMEs — manage leads, track your pipeline, automate follow-ups, and close more deals. Built around your process.",
-    href: "/services/sales-crm",
-    icon: "🎯",
-    tag: "SaaS Product",
-  },
-  {
-    title: "AI Business Process Automation",
-    description:
-      "Eliminate repetitive manual work and human error with intelligent workflow automation. From data capture to reporting — fully automated.",
-    href: "/services",
-    icon: "🤖",
-    tag: "Business Improvement",
   },
 ];
 
@@ -177,10 +147,9 @@ export default function Home() {
       {/* ── Solutions Grid ── */}
       <section id="solutions" className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Three Revenue Engines. One Partner.</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Three Core Capabilities. One Partner.</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Industrial IoT &amp; Predictive Maintenance for strategic growth — Engineering &amp; Manufacturing
-            Services for immediate revenue — Software &amp; Automation for recurring income.
+            Industrial IoT &amp; Predictive Maintenance — Engineering &amp; Manufacturing Services — Software &amp; Automation.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {solutions.map((s) => (
@@ -304,7 +273,7 @@ export default function Home() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { heading: "Engineering Technology Partner", body: "Not a web agency — an engineering technology company with deep industrial IoT and manufacturing expertise." },
-              { heading: "Three Service Pillars", body: "Industrial IoT for long-term growth, engineering services for cash flow now, software automation for recurring revenue." },
+              { heading: "Three Service Pillars", body: "Industrial IoT for predictive maintenance, engineering services for design and manufacturing, software automation for smarter operations." },
               { heading: "UK-Based & Reliable", body: "Leicester-based team. On-site pilots, local support, and end-to-end project delivery." },
               { heading: "Results-Driven", body: "Every engagement is measured by reduced downtime, lower manufacturing cost, and better operational data." },
             ].map((item) => (

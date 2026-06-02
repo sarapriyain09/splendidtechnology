@@ -80,22 +80,6 @@ const serviceAreas = [
     highlight: false,
   },
 ];
-    title: "Software Development",
-    description:
-      "Custom business software, SME accounting systems, asset management, ERP modules, and workflow tools — built around how your business actually works.",
-    bullets: [
-      "Custom business software",
-      "SME accounting & finance tools",
-      "Asset management systems",
-      "ERP modules & integrations",
-      "Workflow automation tools",
-      "Data reporting & analytics",
-    ],
-    href: "/services/software-development",
-    cta: "Software Development",
-    highlight: false,
-  },
-];
 
 export default function ServicesPage() {
   return (

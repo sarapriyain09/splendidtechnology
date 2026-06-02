@@ -141,7 +141,7 @@ export default function EngineeringManufacturingPage() {
           <p className="mt-4 max-w-2xl text-pretty text-lg leading-7 text-white/80">
             CAD design, FEA analysis, CFD simulation, reverse engineering, and rapid prototyping
             for UK engineering and manufacturing businesses. Positioned as your engineering
-            technology partner — not a drafting service.
+            technology partner.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
@@ -196,14 +196,13 @@ export default function EngineeringManufacturingPage() {
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {[
-                  { avoid: "Generic CAD drafting service", instead: "Engineering Technology Partner" },
-                  { avoid: "Cheap outsourcing company", instead: "Reliability & Product Development Partner" },
-                  { avoid: "One-off drawing jobs", instead: "Long-term engineering relationships" },
-                  { avoid: "Any industry, any job", instead: "Manufacturing & industrial focus" },
+                  "Engineering Technology Partner",
+                  "Reliability & Product Development Partner",
+                  "Long-term engineering relationships",
+                  "Manufacturing & industrial focus",
                 ].map((item) => (
-                  <div key={item.instead} className="rounded-xl border border-black/10 bg-[#f7f7f7] p-4">
-                    <p className="text-xs text-red-500/70 line-through">{item.avoid}</p>
-                    <p className="mt-1 text-xs font-semibold text-green-700">✔ {item.instead}</p>
+                  <div key={item} className="rounded-xl border border-black/10 bg-[#f7f7f7] p-4">
+                    <p className="text-xs font-semibold text-green-700">✔ {item}</p>
                   </div>
                 ))}
               </div>
