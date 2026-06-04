@@ -79,6 +79,7 @@ export function SiteFooter() {
                 { href: "/services/web-app-development", label: "Web Applications" },
                 { href: "/services/web-app-development#mobile", label: "Mobile Applications" },
                 { href: "/services/software-development#cloud", label: "Cloud Solutions" },
+                { href: "/products/splendid-erp-light", label: "Splendid ERP Light" },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">

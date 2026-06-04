@@ -49,6 +49,7 @@ const products = [
   { href: "/products/splendid-accounting", label: "Splendid Accounting", desc: "SME accounting & finance software" },
   { href: "/products/splendid-reliability", label: "Splendid Reliability", desc: "MTBF calculations & reliability tracking" },
   { href: "/products/splendid-monitor", label: "Splendid Monitor", desc: "Industrial IoT dashboards" },
+  { href: "/products/splendid-erp-light", label: "Splendid ERP Light", desc: "Simple ERP for UK SMEs" },
   { href: "/products/splendid-asset-manager", label: "Splendid Asset Manager", desc: "Asset performance & engineering ERP" },
   { href: "/products/motor-health-monitoring-kit", label: "Motor Health Monitoring Kit", desc: "Portable motor diagnostic kit" },
   { href: "/services/sales-crm", label: "Splendid CRM", desc: "Custom Sales CRM for UK businesses" },

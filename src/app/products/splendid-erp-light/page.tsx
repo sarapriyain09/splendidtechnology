@@ -99,25 +99,25 @@ const roadmap = [
 
 const pricing = [
   {
-    year: "Year 1",
+    year: "Phase 1",
     label: "Starter",
-    price: "£39–£99",
+    price: "£39",
     period: "/month",
     modules: ["CRM", "Quotations", "Invoicing", "Inventory"],
     highlight: false,
   },
   {
-    year: "Year 2",
+    year: "Phase 2",
     label: "Growth",
-    price: "£99–£199",
+    price: "£99",
     period: "/month",
     modules: ["Everything in Starter", "Procurement", "Dashboards", "Reporting"],
     highlight: true,
   },
   {
-    year: "Year 3",
+    year: "Phase 3",
     label: "Manufacturing",
-    price: "£299–£999",
+    price: "£299",
     period: "/month",
     modules: ["Everything in Growth", "Manufacturing", "BOM", "Industry 4.0"],
     highlight: false,
@@ -137,8 +137,8 @@ export default function SplendidERPLightPage() {
       {/* Hero */}
       <section className="bg-[#0b1f3a] px-4 py-16 text-white sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl">
-          <p className="inline-block rounded-full border border-blue-400/30 bg-blue-400/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-blue-400">
-            Product — In Development
+          <p className="inline-block rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-green-400">
+            Product — Live
           </p>
           <h1 className="mt-4 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">
             Splendid ERP Light
@@ -209,7 +209,7 @@ export default function SplendidERPLightPage() {
             ].map((item) => (
               <div key={item.label} className="rounded-2xl border border-black/10 bg-white p-5">
                 <span className="text-2xl">{item.icon}</span>
-                <p className="mt-3 text-sm font-semibold text-black/60 line-through">{item.label}</p>
+                <p className="mt-3 text-sm font-semibold text-black/60">{item.label}</p>
                 <p className="mt-1 text-sm font-bold text-green-700">{item.fix}</p>
               </div>
             ))}

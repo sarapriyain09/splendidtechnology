@@ -101,8 +101,8 @@ const products = [
     tagline: "Simple business management for UK SMEs",
     description:
       "CRM, quotations, invoicing, inventory, and procurement in one place — without the complexity of SAP or Oracle. Built for engineering companies, manufacturers, contractors, and growing UK SMEs.",
-    status: "In Development",
-    statusColor: "amber",
+    status: "Live",
+    statusColor: "green",
     bullets: [
       "CRM & sales pipeline",
       "Quotations & invoicing",
