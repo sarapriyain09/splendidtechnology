@@ -95,8 +95,26 @@ const products = [
     href: "/products/splendid-monitor",
   },
   {
-    icon: "🏗️",
+    icon: "�",
     label: "ERP",
+    title: "Splendid ERP Light",
+    tagline: "Simple business management for UK SMEs",
+    description:
+      "CRM, quotations, invoicing, inventory, and procurement in one place — without the complexity of SAP or Oracle. Built for engineering companies, manufacturers, contractors, and growing UK SMEs.",
+    status: "In Development",
+    statusColor: "amber",
+    bullets: [
+      "CRM & sales pipeline",
+      "Quotations & invoicing",
+      "Inventory & stock control",
+      "Procurement & suppliers",
+      "Live business dashboard",
+    ],
+    href: "/products/splendid-erp-light",
+  },
+  {
+    icon: "🏗️",
+    label: "Asset Management",
     title: "Splendid Asset Manager",
     tagline: "Asset performance & engineering ERP",
     description:
