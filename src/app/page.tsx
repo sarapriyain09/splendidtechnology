@@ -42,68 +42,50 @@ export const metadata: Metadata = {
 
 const solutions = [
   {
-    title: "Industrial IoT & Reliability",
+    title: "Industry 4.0 & Smart Manufacturing",
     description:
-      "Smart motor health monitoring, predictive maintenance, vibration analysis, condition monitoring, and reliability engineering — built for UK manufacturers.",
+      "Industrial IoT, smart motor monitoring, condition monitoring, predictive maintenance, reliability engineering, and IoT proof of concept — built for UK manufacturers.",
     href: "/services/iot-solutions",
     icon: "📡",
-    tag: "Industrial IoT",
+    tag: "Industry 4.0",
     highlight: true,
   },
   {
-    title: "Engineering & Manufacturing",
+    title: "Engineering & Product Development",
     description:
-      "3D CAD design, FEA analysis, CFD simulation, reverse engineering, rapid prototyping, and manufacturing support for engineering businesses.",
+      "CAD design & drawings, FEA & structural analysis, CFD analysis, reverse engineering, and rapid prototyping for UK engineering businesses.",
     href: "/services/engineering-manufacturing",
     icon: "🔩",
-    tag: "Engineering Services",
+    tag: "Engineering",
     highlight: true,
   },
   {
-    title: "Software & Automation",
+    title: "Digital Transformation & Automation",
     description:
-      "Custom CRM systems, web applications, SaaS platforms, AI process automation, customer portals, and business dashboards.",
+      "Process automation, business process digitalisation, workflow automation, data analytics & dashboards, and system integration.",
+    href: "/services/software-development",
+    icon: "⚙️",
+    tag: "Automation",
+    highlight: true,
+  },
+  {
+    title: "Software Solutions",
+    description:
+      "Custom CRM systems, bespoke software development, web applications, mobile applications, and cloud solutions for UK businesses.",
     href: "/services/software-development",
     icon: "💻",
-    tag: "Software & Automation",
-    highlight: false,
-  },
-  {
-    title: "Splendid Monitor",
-    description:
-      "Industrial IoT dashboards, digital twins, and predictive alerts for motors, pumps, fans, and rotating plant.",
-    href: "/products/splendid-monitor",
-    icon: "🖥️",
-    tag: "SaaS Product",
-    highlight: false,
-  },
-  {
-    title: "Splendid Reliability",
-    description:
-      "Track failures, calculate MTBF automatically, and optimise maintenance intervals across all your assets.",
-    href: "/products/splendid-reliability",
-    icon: "⏱️",
-    tag: "Reliability Software",
-    highlight: false,
-  },
-  {
-    title: "Splendid CRM",
-    description:
-      "Custom Sales CRM for UK SMEs — manage leads, track your pipeline, automate follow-ups, and close more deals. Built around your process.",
-    href: "/services/sales-crm",
-    icon: "🎯",
-    tag: "SaaS Product",
-    highlight: false,
+    tag: "Software",
+    highlight: true,
   },
 ];
 
 const benefits = [
-  { icon: "�", title: "Industrial IoT & Monitoring", body: "Real-time condition monitoring for motors, pumps, fans, and rotating industrial plant." },
-  { icon: "🔩", title: "Engineering & Manufacturing", body: "CAD design, FEA, CFD, reverse engineering, and rapid prototyping for engineering businesses." },
-  { icon: "⚙️", title: "Reliability Engineering", body: "Evidence-based MTBF, FMEA and RAM analysis to extend asset life and reduce downtime." },
-  { icon: "💻", title: "Web & App Development", body: "From business websites to full SaaS platforms — fast delivery, clean code, UK team." },
-  { icon: "🎯", title: "CRM & Sales Automation", body: "Custom CRM systems — leads, pipeline, follow-ups, and reporting built for UK businesses." },
-  { icon: "🤖", title: "AI Process Automation", body: "Intelligent workflow automation and AI-powered business processes for manufacturers." },
+  { icon: "📡", title: "Industrial IoT Solutions", body: "Real-time condition monitoring for motors, pumps, fans, and rotating industrial plant." },
+  { icon: "🔁", title: "Predictive Maintenance", body: "AI-driven failure prediction and maintenance scheduling to eliminate unplanned downtime." },
+  { icon: "🔩", title: "CAD, FEA & CFD", body: "3D CAD design, FEA structural analysis, CFD simulation, and rapid prototyping for engineers." },
+  { icon: "⚙️", title: "Process & Workflow Automation", body: "Digitalise business processes, automate workflows, and connect your operational systems." },
+  { icon: "📊", title: "Data Analytics & Dashboards", body: "Real-time KPI dashboards and data analytics that turn operational data into decisions." },
+  { icon: "💻", title: "Custom Software & CRM", body: "Bespoke CRM, web applications, mobile apps and cloud solutions built for UK businesses." },
 ];
 
 export default function Home() {
@@ -147,11 +129,11 @@ export default function Home() {
       {/* ── Solutions Grid ── */}
       <section id="solutions" className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Three Core Capabilities. One Partner.</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Four Pillars. One Technology Partner.</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Industrial IoT &amp; Predictive Maintenance — Engineering &amp; Manufacturing Services — Software &amp; Automation.
+            Industry 4.0 &amp; Smart Manufacturing — Engineering &amp; Product Development — Digital Transformation &amp; Automation — Software Solutions.
           </p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {solutions.map((s) => (
               <Link
                 key={s.title}
@@ -189,11 +171,11 @@ export default function Home() {
       <section className="bg-[#0b1f3a] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl">
           <h2 className="text-center text-3xl font-bold text-white">
-            Three Ways We Help UK Manufacturers
+            Four Ways We Help UK Manufacturers
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-center text-sm text-white/60">
-            Industrial IoT that protects your assets, engineering services that generate revenue now,
-            and software automation that scales with you.
+            Smart manufacturing that protects your assets, engineering services that bring products to life,
+            automation that digitalises your operations, and software that scales with you.
           </p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {benefits.map((b) => (
@@ -272,9 +254,9 @@ export default function Home() {
           </h2>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { heading: "Engineering Technology Partner", body: "Not a web agency — an engineering technology company with deep industrial IoT and manufacturing expertise." },
-              { heading: "Three Service Pillars", body: "Industrial IoT for predictive maintenance, engineering services for design and manufacturing, software automation for smarter operations." },
-              { heading: "UK-Based & Reliable", body: "Leicester-based team. On-site pilots, local support, and end-to-end project delivery." },
+              { heading: "Engineering Technology Partner", body: "Not a web agency — an engineering technology company with 25+ years of deep industrial IoT and manufacturing expertise." },
+              { heading: "Four Service Pillars", body: "Industry 4.0 & Smart Manufacturing, Engineering & Product Development, Digital Transformation & Automation, and Software Solutions." },
+              { heading: "UK-Based & Reliable", body: "Leicester-based team. On-site pilots, local support, and end-to-end project delivery across the UK." },
               { heading: "Results-Driven", body: "Every engagement is measured by reduced downtime, lower manufacturing cost, and better operational data." },
             ].map((item) => (
               <div key={item.heading} className="rounded-xl border border-black/10 bg-white p-6">

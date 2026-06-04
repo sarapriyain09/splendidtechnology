@@ -13,18 +13,23 @@ export const metadata: Metadata = {
 
 const pillars = [
   {
-    title: "Industrial IoT & Reliability",
-    desc: "Smart motor health monitoring, predictive maintenance, vibration analysis, condition monitoring, MTBF, FMEA/FMECA, and RAM studies — grounded in 25+ years of rotating machine expertise.",
+    title: "Industry 4.0 & Smart Manufacturing",
+    desc: "Industrial IoT, smart motor monitoring, condition monitoring, predictive maintenance, reliability engineering (MTBF, FMEA, RAM, RCM), and IoT proof of concept — grounded in 25+ years of rotating machine expertise.",
     href: "/services/iot-solutions",
   },
   {
-    title: "Engineering & Manufacturing",
-    desc: "3D CAD design, FEA structural analysis, CFD simulation, reverse engineering, rapid prototyping, and manufacturing support for UK engineering businesses.",
+    title: "Engineering & Product Development",
+    desc: "CAD design & drawings, FEA structural analysis, CFD simulation, reverse engineering, rapid prototyping, and manufacturing support for UK engineering businesses.",
     href: "/services/engineering-manufacturing",
   },
   {
-    title: "Software & Automation",
-    desc: "Custom CRM systems, web applications, SaaS platforms, AI process automation, customer portals, and business dashboards — built with Next.js, React, and modern cloud infrastructure.",
+    title: "Digital Transformation & Automation",
+    desc: "Process automation, business process digitalisation, workflow automation, data analytics & dashboards, and system integration — connecting ERP, CRM & IoT platforms.",
+    href: "/services/software-development",
+  },
+  {
+    title: "Software Solutions",
+    desc: "Custom CRM systems, bespoke software development, web applications, mobile applications, and cloud solutions — built with Next.js, React, and modern cloud infrastructure.",
     href: "/services/software-development",
   },
 ];
@@ -68,8 +73,8 @@ export default function AboutPage() {
           <h1 className="text-4xl font-bold leading-tight sm:text-5xl">Splendid Technology Ltd</h1>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
             An Industrial Technology &amp; Engineering Solutions company based in Leicester, UK —
-            delivering Industrial IoT, Predictive Maintenance, Reliability Engineering, Engineering
-            Design, and Software Automation for UK manufacturers and engineering businesses.
+            delivering Industry 4.0 &amp; Smart Manufacturing, Engineering &amp; Product Development,
+            Digital Transformation &amp; Automation, and Software Solutions for UK manufacturers and engineering businesses.
           </p>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-400">
             Founded on 25+ years of deep expertise in rotating machines, MV motor &amp; generator design,
@@ -82,7 +87,7 @@ export default function AboutPage() {
       {/* 4 Pillars */}
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <h2 className="text-2xl font-bold text-[#0b1f3a]">What We Do</h2>
-        <p className="mt-2 text-sm text-slate-500">Three service pillars. One engineering technology partner.</p>
+        <p className="mt-2 text-sm text-slate-500">Four service pillars. One engineering technology partner.</p>
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           {pillars.map((pillar) => (
             <Link
