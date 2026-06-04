@@ -2,15 +2,15 @@ import { ContactForm } from "./ContactForm";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact a UK Web Development Team (Leicester)",
+  title: "Contact Splendid Technology | UK-Wide Engineering & Software Solutions",
   description:
-    "Contact Splendid Technology in Leicester for UK web development, e-commerce websites, automation, and AI integrations. Get a fast, clear project estimate.",
+    "Contact Splendid Technology for Industry 4.0, engineering design, digital transformation, and software solutions across the UK. Get a fast, clear project estimate.",
   keywords: [
-    "web development company leicester",
-    "web developers leicester uk",
-    "website development leicester",
-    "ecommerce developer leicester",
-    "ai automation services leicester",
+    "engineering technology company uk",
+    "industrial iot solutions uk",
+    "software development company uk",
+    "digital transformation uk",
+    "process automation uk",
   ],
   alternates: {
     canonical: "/contact",
@@ -23,9 +23,7 @@ export default function ContactPage() {
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Contact</h1>
         <p className="max-w-2xl text-sm leading-6 text-black/70">
-          Tell us what you want to build. We&apos;re based in Leicester and work with
-          teams across the UK. If you started with CodLearn, share your
-          prototype or notes — we can take it to production.
+          Tell us what you want to build. We work with manufacturers and businesses across the entire UK. Share your goals, challenges, or early ideas — we&apos;ll help you scope the right solution.
         </p>
       </header>
 

@@ -123,7 +123,7 @@ export default function IndustriesPage() {
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-green-400">UK-Based</p>
-              <h2 className="mt-2 text-2xl font-bold text-white">Serving UK businesses from Leicester</h2>
+              <h2 className="mt-2 text-2xl font-bold text-white">Serving UK Manufacturers Nationwide</h2>
               <p className="mt-3 text-sm leading-6 text-white/70">
                 We&apos;re a UK-based technology company. We understand UK regulations, the MTD
                 requirements, UK manufacturing challenges, and the realities of running an
@@ -139,7 +139,7 @@ export default function IndustriesPage() {
               </div>
             </div>
             <div className="grid gap-3">
-              {["On-site visits and assessments available nationwide", "UK tax, VAT, and MTD compliance built in", "GDPR-compliant data handling as standard", "Leicester-based team with national reach"].map((point) => (
+              {["On-site visits and assessments available nationwide", "UK tax, VAT, and MTD compliance built in", "GDPR-compliant data handling as standard", "UK engineering team with nationwide reach"].map((point) => (
                 <div key={point} className="flex items-center gap-3 rounded-xl bg-white/5 px-5 py-4">
                   <span className="font-bold text-green-400">✔</span>
                   <span className="text-sm text-white/80">{point}</span>

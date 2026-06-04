@@ -5,7 +5,7 @@ import QRCode from "react-qr-code";
 export const metadata: Metadata = {
   title: "About Splendid Technology | Industrial IoT, Reliability Engineering & Software",
   description:
-    "Splendid Technology Ltd (Leicester, UK) — an Industrial Technology & Engineering Solutions company delivering Industrial IoT, Reliability Engineering, Engineering Design, and Software Automation for UK manufacturers and engineering businesses.",
+    "Splendid Technology Ltd — an Industrial Technology & Engineering Solutions company delivering Industry 4.0, Engineering & Product Development, Digital Transformation & Automation, and Software Solutions for UK manufacturers and engineering businesses.",
   alternates: {
     canonical: "/about",
   },
@@ -72,7 +72,7 @@ export default function AboutPage() {
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">About Us</p>
           <h1 className="text-4xl font-bold leading-tight sm:text-5xl">Splendid Technology Ltd</h1>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
-            An Industrial Technology &amp; Engineering Solutions company based in Leicester, UK —
+            An Industrial Technology &amp; Engineering Solutions company serving UK manufacturers nationwide —
             delivering Industry 4.0 &amp; Smart Manufacturing, Engineering &amp; Product Development,
             Digital Transformation &amp; Automation, and Software Solutions for UK manufacturers and engineering businesses.
           </p>
@@ -170,7 +170,7 @@ export default function AboutPage() {
                 Raja Saravanan
               </h2>
               <p className="text-sm font-medium text-black/60">
-                Founder &amp; Engineering Technology Lead — Splendid Technology, Leicester, UK
+                Founder &amp; Engineering Technology Lead — Splendid Technology, UK
               </p>
               <a href="mailto:raja@splendidtechnology.co.uk" className="text-xs text-[#0b3d91] hover:underline">raja@splendidtechnology.co.uk</a>
             </div>
@@ -244,7 +244,7 @@ export default function AboutPage() {
                 Shiva Prakash Saravanan
               </h2>
               <p className="text-sm font-medium text-black/60">
-                Technical Delivery Manager — Splendid Technology, Leicester, UK
+                Technical Delivery Manager — Splendid Technology, UK
               </p>
               <a href="mailto:shiva@splendidtechnology.co.uk" className="text-xs text-[#0b3d91] hover:underline">shiva@splendidtechnology.co.uk</a>
             </div>

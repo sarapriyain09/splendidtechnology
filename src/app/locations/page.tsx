@@ -21,7 +21,7 @@ export default function LocationsPage() {
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight">Locations</h1>
         <p className="max-w-3xl text-sm leading-6 text-black/70">
-          We work with UK businesses remotely (and locally in Leicester). Choose your
+          We work with UK businesses remotely across the entire country. Choose your
           city to see a short overview and the fastest way to scope a website, web
           app, ecommerce build, or automation.
         </p>

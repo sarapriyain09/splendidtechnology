@@ -209,7 +209,7 @@ export default function IndustrialIoTPage() {
         <div className="mx-auto w-full max-w-6xl rounded-2xl border border-[#0b3d91]/20 bg-[#0b1f3a]/5 p-8">
           <h2 className="text-xl font-bold text-[#0b1f3a]">Why Splendid Technology</h2>
           <p className="mt-3 max-w-2xl text-sm leading-7 text-black/70">
-            We are a UK software and technology company based in Leicester. We build
+            We are a UK engineering technology company serving manufacturers nationwide. We build
             custom systems — we don't sell generic off-the-shelf boxes. Our Industrial
             IoT solutions are designed around your specific equipment, workflows, and
             budget. We work with you from pilot to full production deployment.

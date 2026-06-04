@@ -29,15 +29,15 @@ export const metadata: Metadata = {
     template: "%s | Splendid Technology",
   },
   description:
-    "Splendid Technology Ltd — Industrial IoT, smart motor monitoring, predictive maintenance, and AI-powered process automation for UK manufacturers and industrial SMEs. Based in Leicester.",
+    "Splendid Technology Ltd — Industry 4.0, Engineering & Software Solutions for UK manufacturers. Smart motor monitoring, predictive maintenance, engineering design, and digital transformation — nationwide.",
   keywords: [
     "industrial iot uk",
     "smart motor monitoring uk",
     "predictive maintenance uk",
     "industry 4.0 solutions uk",
-    "motor condition monitoring leicester",
+    "motor condition monitoring uk",
     "ai process automation uk",
-    "industrial iot leicester",
+    "industrial iot solutions uk",
     "motor diagnostic kit uk",
     "smart factory solutions uk",
   ],
@@ -48,14 +48,14 @@ export const metadata: Metadata = {
     type: "website",
     title: "Splendid Technology | Industrial IoT & Process Automation",
     description:
-      "Smart motor monitoring, predictive maintenance, and AI-powered process automation for UK manufacturers. Based in Leicester.",
+      "Industry 4.0, Engineering & Software Solutions for UK manufacturers. Smart motor monitoring, predictive maintenance, engineering design, and digital transformation — nationwide.",
     url: "/",
   },
   twitter: {
     card: "summary_large_image",
     title: "Splendid Technology | Industrial IoT & Process Automation",
     description:
-      "Smart motor monitoring, predictive maintenance, and AI-powered process automation for UK manufacturers. Based in Leicester.",
+      "Industry 4.0, Engineering & Software Solutions for UK manufacturers. Smart motor monitoring, predictive maintenance, engineering design, and digital transformation — nationwide.",
   },
   robots: {
     index: true,
