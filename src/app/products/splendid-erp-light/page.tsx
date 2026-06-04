@@ -209,7 +209,7 @@ export default function SplendidERPLightPage() {
             ].map((item) => (
               <div key={item.label} className="rounded-2xl border border-black/10 bg-white p-5">
                 <span className="text-2xl">{item.icon}</span>
-                <p className="mt-3 text-sm font-semibold text-black/60">{item.label}</p>
+                <p className="mt-3 text-sm font-semibold text-black">{item.label}</p>
                 <p className="mt-1 text-sm font-bold text-green-700">{item.fix}</p>
               </div>
             ))}
