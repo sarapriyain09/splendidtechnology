@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Industrial IoT, Reliability Engineering & Engineering Solutions | Splendid Technology UK",
+  title: "Industry 4.0, Engineering & Software Solutions for UK Manufacturers | Splendid Technology",
   description:
-    "Splendid Technology delivers Industrial IoT, Predictive Maintenance, Reliability Engineering, CAD Design, FEA Analysis, and Software Automation for UK manufacturers and engineering businesses.",
+    "Splendid Technology delivers Industry 4.0 & Smart Manufacturing, Engineering & Product Development, Digital Transformation & Automation, and Software Solutions for UK manufacturers and engineering businesses.",
   keywords: [
     "industrial iot uk",
     "predictive maintenance uk",
@@ -27,16 +27,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Splendid Technology | Industrial IoT, Reliability Engineering & Solutions",
+    title: "Splendid Technology | Industry 4.0, Engineering & Software Solutions",
     description:
-      "Industrial IoT, Predictive Maintenance, Reliability Engineering, CAD Design & Software Automation for UK manufacturers.",
+      "Industry 4.0 & Smart Manufacturing, Engineering & Product Development, Digital Transformation & Automation, and Software Solutions for UK manufacturers.",
     url: "https://www.splendidtechnology.co.uk/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Splendid Technology | Industrial IoT, Reliability Engineering & Solutions",
+    title: "Splendid Technology | Industry 4.0, Engineering & Software Solutions",
     description:
-      "Industrial IoT, Predictive Maintenance, Reliability Engineering, CAD Design & Software Automation for UK manufacturers.",
+      "Industry 4.0 & Smart Manufacturing, Engineering & Product Development, Digital Transformation & Automation, and Software Solutions for UK manufacturers.",
   },
 };
 
@@ -102,11 +102,12 @@ export default function Home() {
               Splendid Technology Ltd &mdash; Leicester, UK
             </p>
             <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Industrial IoT, Reliability&nbsp;&amp; Engineering Solutions for UK Manufacturers
+              Industry 4.0, Engineering &amp; Software Solutions for UK Manufacturers
             </h1>
             <p className="mt-5 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-              Helping manufacturers improve reliability, productivity, and innovation through
-              Industrial IoT, predictive maintenance, engineering design, and software automation.
+              Helping UK manufacturers succeed through Smart Manufacturing &amp; Industrial IoT,
+              Engineering &amp; Product Development, Digital Transformation &amp; Automation,
+              and bespoke Software Solutions.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -197,21 +198,21 @@ export default function Home() {
           <div className="rounded-2xl bg-[#f7f7f7] p-8 lg:p-10">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-xl">
-                <p className="text-xs font-bold uppercase tracking-widest text-[#0b1f3a]/50">Business Process Improvement</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-[#0b1f3a]/50">Digital Transformation &amp; Automation</p>
                 <h2 className="mt-2 text-2xl font-bold text-[#0b1f3a]">
-                  AI Automation for Industrial Operations
+                  Automate, Digitalise &amp; Connect Your Operations
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-black/65">
-                  Beyond hardware monitoring — we also automate the business processes
-                  around your operations. Maintenance reporting, work order generation,
-                  data capture, and operational dashboards. All automated. All connected.
+                  Beyond hardware monitoring — we digitalise and automate the business processes
+                  around your operations. From workflow automation and data capture to
+                  management dashboards and system integration. All connected. All measurable.
                 </p>
                 <ul className="mt-5 space-y-2">
                   {[
                     "Automated maintenance reports & alerts",
-                    "AI-powered work order and scheduling",
-                    "Operational data capture & digital forms",
-                    "Management dashboards & KPI reporting",
+                    "Workflow automation & digital forms",
+                    "Data analytics & KPI dashboards",
+                    "ERP, CRM & IoT system integration",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-black/70">
                       <span className="mt-0.5 font-bold text-green-600">✔</span>
@@ -221,19 +222,19 @@ export default function Home() {
                 </ul>
                 <div className="mt-6">
                   <Link
-                    href="/services"
+                    href="/services/software-development"
                     className="inline-flex items-center justify-center rounded-lg bg-[#0b1f3a] px-6 py-3 font-bold text-white transition-colors hover:bg-[#0b3d91]"
                   >
-                    Explore AI Automation
+                    Explore Digital Transformation
                   </Link>
                 </div>
               </div>
               <div className="grid w-full max-w-xs grid-cols-1 gap-3 lg:w-auto">
                 {[
-                  { icon: "📋", label: "Maintenance Reports" },
-                  { icon: "📅", label: "Work Scheduling" },
-                  { icon: "📈", label: "KPI Dashboards" },
-                  { icon: "🔔", label: "Smart Alerts" },
+                  { icon: "⚙️", label: "Process Automation" },
+                  { icon: "📊", label: "Data Analytics" },
+                  { icon: "🔗", label: "System Integration" },
+                  { icon: "📱", label: "Digital Workflows" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3 rounded-xl border border-black/10 bg-white px-4 py-3">
                     <span className="text-xl">{item.icon}</span>
@@ -313,10 +314,10 @@ export default function Home() {
       {/* ── Contact CTA ── */}
       <section id="contact" className="bg-[#0b1f3a] py-16 text-center text-white">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold">Ready to Improve Your Operations?</h2>
+          <h2 className="text-3xl font-bold">Ready to Transform Your Operations?</h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-white/75">
-            Book a free site visit or pilot. We assess your equipment and show you exactly
-            what smart monitoring and AI automation can do for your business.
+            Book a free consultation. We assess your challenges and show you exactly
+            what our four-pillar approach can do for your business.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
