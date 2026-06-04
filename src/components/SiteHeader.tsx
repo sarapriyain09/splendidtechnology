@@ -8,15 +8,17 @@ type NavItem =
   | { isLabel: true; label: string; href?: never; desc?: never };
 
 const iotItems: NavItem[] = [
-  { isLabel: true, label: "Industrial IoT & Reliability" },
-  { href: "/services/iot-solutions", label: "IoT & Condition Monitoring", desc: "Motor health, vibration & energy monitoring" },
+  { isLabel: true, label: "Industry 4.0 & Smart Manufacturing" },
+  { href: "/services/iot-solutions", label: "Industrial IoT Solutions", desc: "IoT sensors, connectivity & industrial monitoring" },
   { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring", desc: "Real-time motor health & predictive alerts" },
+  { href: "/services/iot-solutions#condition-monitoring", label: "Condition Monitoring", desc: "Vibration, temperature & energy analysis" },
+  { href: "/industrial-iot/predictive-maintenance", label: "Predictive Maintenance", desc: "AI-driven failure prediction & maintenance scheduling" },
   { href: "/services/reliability-engineering", label: "Reliability Engineering", desc: "MTBF, FMEA, RAM & RCM studies" },
   { href: "/proof-of-concept", label: "IoT Proof of Concept", desc: "Live Raspberry Pi + AWS demo platform" },
 ];
 
 const engineeringItems: NavItem[] = [
-  { isLabel: true, label: "Engineering & Manufacturing" },
+  { isLabel: true, label: "Engineering & Product Development" },
   { href: "/services/engineering-manufacturing", label: "CAD Design & Drawings", desc: "3D product design, assemblies & manufacturing drawings" },
   { href: "/services/engineering-manufacturing#fea", label: "FEA & Structural Analysis", desc: "Finite element analysis & simulation" },
   { href: "/services/engineering-manufacturing#cfd", label: "CFD Analysis", desc: "Computational fluid dynamics" },
@@ -24,11 +26,22 @@ const engineeringItems: NavItem[] = [
   { href: "/services/engineering-manufacturing#prototyping", label: "Rapid Prototyping", desc: "Prototype design, validation & DFM" },
 ];
 
+const automationItems: NavItem[] = [
+  { isLabel: true, label: "Digital Transformation & Automation" },
+  { href: "/services/software-development#automation", label: "Process Automation", desc: "Automate repetitive tasks & workflows" },
+  { href: "/services/software-development#digitalisation", label: "Business Process Digitalisation", desc: "Replace paper & manual processes with digital systems" },
+  { href: "/services/software-development#workflow", label: "Workflow Automation", desc: "End-to-end workflow design & automation" },
+  { href: "/services/software-development#analytics", label: "Data Analytics & Dashboards", desc: "Real-time insights & KPI dashboards" },
+  { href: "/services/software-development#integration", label: "System Integration", desc: "Connect ERP, CRM & IoT platforms" },
+];
+
 const softwareItems: NavItem[] = [
-  { isLabel: true, label: "Software & Automation" },
-  { href: "/services/web-app-development", label: "Web & App Development", desc: "Websites, SaaS apps, portals & APIs" },
+  { isLabel: true, label: "Software Solutions" },
   { href: "/services/sales-crm", label: "CRM Systems", desc: "Custom Sales CRM for UK businesses" },
-  { href: "/services/software-development", label: "Software Development", desc: "Custom business & enterprise software" },
+  { href: "/services/software-development", label: "Custom Software Development", desc: "Bespoke business & enterprise software" },
+  { href: "/services/web-app-development", label: "Web Applications", desc: "SaaS apps, portals & APIs" },
+  { href: "/services/web-app-development#mobile", label: "Mobile Applications", desc: "iOS & Android app development" },
+  { href: "/services/software-development#cloud", label: "Cloud Solutions", desc: "AWS, Azure & cloud architecture" },
 ];
 
 const products = [
@@ -94,7 +107,7 @@ export function SiteHeader() {
               priority
             />
             <span className="hidden text-[10px] font-medium uppercase tracking-widest text-white/50 sm:block">
-              Industrial IoT · Engineering · Software &amp; Automation
+              Industry 4.0 · Engineering · Automation · Software
             </span>
           </Link>
           <div className="flex items-center gap-3">
@@ -126,8 +139,9 @@ export function SiteHeader() {
         {/* Desktop nav */}
         <nav className="hidden items-center justify-between gap-x-1 py-2 lg:flex">
           <div className="flex items-center gap-x-1">
-            <DropdownMenu label="Industrial IoT" href="/services/iot-solutions" items={iotItems} />
+            <DropdownMenu label="Industry 4.0" href="/services/iot-solutions" items={iotItems} />
             <DropdownMenu label="Engineering" href="/services/engineering-manufacturing" items={engineeringItems} />
+            <DropdownMenu label="Automation" href="/services/software-development" items={automationItems} />
             <DropdownMenu label="Software" href="/services/software-development" items={softwareItems} />
             <DropdownMenu label="Products" href="/products" items={products} />
             <Link href="/industries" className="px-2 py-1 text-xs text-white/70 hover:text-white">
@@ -166,7 +180,7 @@ export function SiteHeader() {
         {mobileOpen && (
           <nav className="border-t border-white/10 py-4 lg:hidden">
             <div className="space-y-1">
-              <p className="px-2 pt-2 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Industrial IoT & Reliability</p>
+              <p className="px-2 pt-2 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Industry 4.0 & Smart Manufacturing</p>
               {iotItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
                   key={item.href}
@@ -177,7 +191,7 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Engineering & Manufacturing</p>
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Engineering & Product Development</p>
               {engineeringItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
                   key={item.href}
@@ -188,7 +202,18 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Software & Automation</p>
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Digital Transformation & Automation</p>
+              {automationItems.filter((i) => !i.isLabel).map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href!}
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Software Solutions</p>
               {softwareItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
                   key={item.href}

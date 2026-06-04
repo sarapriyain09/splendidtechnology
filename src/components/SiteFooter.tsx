@@ -11,7 +11,7 @@ export function SiteFooter() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex flex-col leading-tight">
               <span className="text-base font-bold text-white">Splendid Technology</span>
-              <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">Industrial IoT &amp; Process Automation</span>
+              <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">Industry 4.0 &amp; Smart Manufacturing</span>
             </Link>
             <p className="mt-3 text-xs leading-5 text-white/50">
               CAD design, FEA analysis, CFD simulation, reverse engineering, and rapid prototyping
@@ -33,13 +33,15 @@ export function SiteFooter() {
             </p>
           </div>
 
-          {/* Industrial IoT & Reliability */}
+          {/* Industry 4.0 & Smart Manufacturing */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Industrial IoT &amp; Reliability</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Industry 4.0 &amp; Smart Manufacturing</h3>
             <ul className="mt-3 space-y-2">
               {[
-                { href: "/services/iot-solutions", label: "IoT & Condition Monitoring" },
+                { href: "/services/iot-solutions", label: "Industrial IoT Solutions" },
                 { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring" },
+                { href: "/services/iot-solutions#condition-monitoring", label: "Condition Monitoring" },
+                { href: "/industrial-iot/predictive-maintenance", label: "Predictive Maintenance" },
                 { href: "/services/reliability-engineering", label: "Reliability Engineering" },
                 { href: "/proof-of-concept", label: "IoT Proof of Concept" },
               ].map((l) => (
@@ -52,9 +54,9 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Engineering & Manufacturing */}
+          {/* Engineering & Product Development */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Engineering &amp; Manufacturing</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Engineering &amp; Product Development</h3>
             <ul className="mt-3 space-y-2">
               {[
                 { href: "/services/engineering-manufacturing", label: "CAD Design & Drawings" },
@@ -72,14 +74,32 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Software & Automation + Company */}
+          {/* Digital Transformation & Automation + Software Solutions + Company */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Software &amp; Automation</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Digital Transformation &amp; Automation</h3>
             <ul className="mt-3 space-y-2">
               {[
-                { href: "/services/web-app-development", label: "Web & App Development" },
+                { href: "/services/software-development#automation", label: "Process Automation" },
+                { href: "/services/software-development#digitalisation", label: "Business Process Digitalisation" },
+                { href: "/services/software-development#workflow", label: "Workflow Automation" },
+                { href: "/services/software-development#analytics", label: "Data Analytics & Dashboards" },
+                { href: "/services/software-development#integration", label: "System Integration" },
+              ].map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-xs text-white/60 hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h3 className="mt-6 text-xs font-bold uppercase tracking-widest text-green-400">Software Solutions</h3>
+            <ul className="mt-3 space-y-2">
+              {[
                 { href: "/services/sales-crm", label: "CRM Systems" },
-                { href: "/services/software-development", label: "Software Development" },
+                { href: "/services/software-development", label: "Custom Software Development" },
+                { href: "/services/web-app-development", label: "Web Applications" },
+                { href: "/services/web-app-development#mobile", label: "Mobile Applications" },
+                { href: "/services/software-development#cloud", label: "Cloud Solutions" },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
