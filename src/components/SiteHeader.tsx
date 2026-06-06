@@ -151,6 +151,9 @@ export function SiteHeader() {
             <Link href="/portfolio" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Portfolio
             </Link>
+            <Link href="/engineering-case-studies" className="px-2 py-1 text-xs text-white/70 hover:text-white">
+              Engineering Case Studies
+            </Link>
             <Link href="/blog" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Blog
             </Link>
@@ -234,6 +237,7 @@ export function SiteHeader() {
               {[
                 { href: "/industries", label: "Industries" },
                 { href: "/portfolio", label: "Portfolio" },
+                { href: "/engineering-case-studies", label: "Engineering Case Studies" },
                 { href: "/blog", label: "Blog" },
                 { href: "/about", label: "About" },
                 { href: "/pricing", label: "Pricing" },

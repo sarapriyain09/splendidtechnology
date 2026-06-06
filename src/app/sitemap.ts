@@ -40,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/industrial-iot/reliability-study`, lastModified },
     { url: `${base}/tools/mtbf`, lastModified },
     { url: `${base}/portfolio`, lastModified },
+    { url: `${base}/engineering-case-studies`, lastModified },
     { url: `${base}/about`, lastModified },
     { url: `${base}/pricing`, lastModified },
     { url: `${base}/contact`, lastModified },

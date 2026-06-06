@@ -151,6 +151,12 @@ export default function EngineeringManufacturingPage() {
               Discuss Your Project
             </Link>
             <Link
+              href="/engineering-case-studies"
+              className="inline-flex items-center justify-center rounded-lg border border-green-500/60 px-7 py-3 font-bold text-green-200 transition-colors hover:bg-green-500/10"
+            >
+              Engineering Case Studies
+            </Link>
+            <Link
               href="/portfolio"
               className="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-3 font-bold text-white transition-colors hover:bg-white/10"
             >
