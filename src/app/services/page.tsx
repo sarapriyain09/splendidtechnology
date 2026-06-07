@@ -2,81 +2,115 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services | Industrial IoT, Engineering & Software Automation | Splendid Technology",
+  title: "Engineering Services UK | Automation, Drives, Electrical & Digital | Splendid Technology",
   description:
-    "Splendid Technology delivers Industrial IoT, Predictive Maintenance, Reliability Engineering, CAD Design, FEA Analysis, Reverse Engineering, and Software Automation for UK manufacturers.",
+    "Engineering services for UK industry: Automation Engineering, Drive Systems Engineering, Electrical Engineering, Mechanical Engineering, and Digital Engineering (CRM & ERP).",
   keywords: [
-    "industrial iot solutions uk",
-    "predictive maintenance uk",
-    "reliability engineering services uk",
-    "cad design uk",
-    "fea analysis uk",
-    "cfd analysis uk",
-    "reverse engineering uk",
-    "rapid prototyping uk",
-    "manufacturing support uk",
-    "software automation uk",
-    "crm software uk",
-    "web app development uk",
+    "industrial automation engineering uk",
+    "plc programming services uk",
+    "scada hmi development uk",
+    "drive systems engineering uk",
+    "mv drive engineering uk",
+    "electrical engineering services uk",
+    "control panel design uk",
+    "mechanical engineering services uk",
+    "crm erp solutions uk",
+    "digital engineering services uk",
   ],
   alternates: {
     canonical: "/services",
   },
 };
 
-const serviceAreas = [
+const engineeringServiceLines = [
   {
-    icon: "�",
-    label: "Strategic Growth",
-    title: "Industrial IoT & Reliability",
+    icon: "⚙️",
+    label: "Automation",
+    title: "Automation Engineering",
     description:
-      "Smart motor health monitoring, predictive maintenance, vibration analysis, condition monitoring, and reliability engineering — our primary focus and long-term strategic growth area.",
+      "PLC programming, SCADA and HMI development, control system design, FAT support, commissioning, and industrial network architecture.",
     bullets: [
-      "Motor health & vibration monitoring",
-      "Predictive maintenance systems",
-      "Energy consumption monitoring",
-      "Industrial IoT dashboards",
-      "MTBF, FMEA & RAM analysis",
-      "Portable diagnostic kits",
+      "PLC programming services",
+      "SCADA and HMI development",
+      "Control system design",
+      "Factory acceptance test support",
+      "Commissioning support",
+      "Safety systems integration",
     ],
-    href: "/services/iot-solutions",
-    cta: "Industrial IoT & Reliability",
+    href: "/services/automation-engineering",
+    cta: "Automation Engineering",
     highlight: true,
+  },
+  {
+    icon: "⚡",
+    label: "Drives",
+    title: "Drive Systems Engineering",
+    description:
+      "LV and MV AC drives, DC drives, common DC bus systems, AFE rectifiers, soft starters, servo drives, and renewable energy converters.",
+    bullets: [
+      "LV and MV AC drives",
+      "DC drives up to 2250A",
+      "AFE systems and rectifiers",
+      "Common DC bus architecture",
+      "Drive sizing and protection coordination",
+      "Integration, FAT, and commissioning",
+    ],
+    href: "/services/drive-systems-engineering",
+    cta: "Drive Systems Engineering",
+    highlight: true,
+  },
+  {
+    icon: "🔌",
+    label: "Electrical",
+    title: "Electrical Engineering",
+    description:
+      "Detailed electrical engineering and documentation including SLDs, I/O lists, panel design, cable schedules, and protection studies.",
+    bullets: [
+      "Detailed engineering design",
+      "Single line diagrams",
+      "I/O lists and cable schedules",
+      "Control panel design",
+      "Protection studies",
+      "Technical specifications",
+    ],
+    href: "/services/electrical-engineering",
+    cta: "Electrical Engineering",
+    highlight: false,
   },
   {
     icon: "🔩",
-    label: "Near-Term Revenue",
-    title: "Engineering & Manufacturing",
+    label: "Mechanical",
+    title: "Mechanical Engineering",
     description:
-      "3D CAD design, FEA structural analysis, CFD simulation, reverse engineering, rapid prototyping, and manufacturing support — generating revenue while the IoT platform matures.",
+      "Mechanical design and product development support including CAD, FEA, reverse engineering, prototyping, and manufacturing documentation.",
     bullets: [
-      "3D CAD design & manufacturing drawings",
-      "FEA & structural analysis",
-      "CFD analysis & simulation",
-      "Reverse engineering & legacy components",
-      "Rapid prototyping & design validation",
-      "Design for Manufacturing (DFM) & BOM",
+      "3D CAD and assemblies",
+      "Manufacturing drawings",
+      "FEA and structural analysis",
+      "Reverse engineering",
+      "DFM and prototype support",
+      "Supplier-ready documentation",
     ],
-    href: "/services/engineering-manufacturing",
-    cta: "Engineering & Manufacturing",
-    highlight: true,
+    href: "/services/mechanical-engineering",
+    cta: "Mechanical Engineering",
+    highlight: false,
   },
   {
     icon: "💻",
-    label: "Recurring Revenue",
-    title: "Software & Automation",
+    label: "Digital",
+    title: "Digital Engineering",
     description:
-      "Custom CRM systems, web applications, SaaS platforms, AI process automation, customer portals, and business dashboards — providing recurring revenue that complements our industrial services.",
+      "CRM, ERP, warehouse and supply chain digitalisation solutions that connect sales, operations, and management in one practical platform.",
     bullets: [
-      "CRM & sales pipeline systems",
-      "Web & app development",
-      "AI process automation",
-      "Customer portals & dashboards",
-      "Asset management systems",
-      "SaaS platform development",
+      "CRM solutions",
+      "ERP solutions",
+      "Warehouse management systems",
+      "Supply chain digitalisation",
+      "Workflow automation",
+      "Business dashboards",
     ],
-    href: "/services/software-development",
-    cta: "Software & Automation",
+    href: "/services/digital-engineering",
+    cta: "Digital Engineering",
     highlight: false,
   },
 ];
@@ -92,11 +126,12 @@ export default function ServicesPage() {
             Splendid Technology &mdash; Services
           </p>
           <h1 className="mt-4 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-            Three Service Pillars. One Engineering Technology Partner.
+            Industrial Automation, Drive Systems &amp; Digital Engineering Solutions
           </h1>
           <p className="mt-4 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-            Industrial IoT &amp; Reliability for long-term strategic growth — Engineering &amp; Manufacturing
-            for immediate revenue — Software &amp; Automation for recurring income.
+            Delivering automation engineering, electrical design, drive systems engineering,
+            mechanical engineering, and CRM/ERP digital solutions for manufacturing, energy,
+            material handling, and wider industrial sectors across the UK.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
@@ -118,12 +153,13 @@ export default function ServicesPage() {
       {/* Service Areas Grid */}
       <section className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Our Three Service Pillars</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Engineering Services Built Around Specific UK Search Intent</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Each pillar serves a distinct commercial purpose — together they form a complete engineering technology business.
+            UK buyers typically search for specific capabilities such as PLC programming,
+            drive engineering, control panel design, or CRM and ERP projects.
           </p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            {serviceAreas.map((s) => (
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {engineeringServiceLines.map((s) => (
               <div
                 key={s.title}
                 className={`flex flex-col rounded-2xl border p-7 ${
@@ -174,11 +210,11 @@ export default function ServicesPage() {
       {/* Positioning strip */}
       <section className="bg-[#0b1f3a] px-4 py-14 sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-green-400">Our Promise</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-green-400">Our Positioning</p>
           <blockquote className="mx-auto mt-4 max-w-3xl text-xl font-semibold leading-8 text-white">
-            &ldquo;Splendid Technology is an Industrial Technology &amp; Engineering Solutions company
-            helping UK manufacturers improve reliability, productivity, and innovation through
-            Industrial IoT, predictive maintenance, engineering design, and software automation.&rdquo;
+            &ldquo;We solve practical industrial problems through specialist engineering services,
+            from PLC and SCADA delivery through MV drive systems, electrical design,
+            mechanical engineering, and connected CRM and ERP digital platforms.&rdquo;
           </blockquote>
         </div>
       </section>

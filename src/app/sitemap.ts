@@ -23,10 +23,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/`, lastModified },
     // Services
     { url: `${base}/services`, lastModified },
+    { url: `${base}/services/automation-engineering`, lastModified },
+    { url: `${base}/services/drive-systems-engineering`, lastModified },
+    { url: `${base}/services/electrical-engineering`, lastModified },
+    { url: `${base}/services/mechanical-engineering`, lastModified },
+    { url: `${base}/services/digital-engineering`, lastModified },
+    { url: `${base}/services/engineering-manufacturing`, lastModified },
     { url: `${base}/services/web-app-development`, lastModified },
     { url: `${base}/services/iot-solutions`, lastModified },
     { url: `${base}/services/reliability-engineering`, lastModified },
     { url: `${base}/services/software-development`, lastModified },
+    { url: `${base}/services/sales-crm`, lastModified },
     // Products
     { url: `${base}/products`, lastModified },
     { url: `${base}/products/splendid-accounting`, lastModified },

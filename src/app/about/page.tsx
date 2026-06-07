@@ -3,9 +3,9 @@ import Link from "next/link";
 import QRCode from "react-qr-code";
 
 export const metadata: Metadata = {
-  title: "About Splendid Technology | Industrial IoT, Reliability Engineering & Software",
+  title: "About Splendid Technology | Automation, Drive, Electrical and Digital Engineering",
   description:
-    "Splendid Technology Ltd — an Industrial Technology & Engineering Solutions company delivering Industry 4.0, Engineering & Product Development, Digital Transformation & Automation, and Software Solutions for UK manufacturers and engineering businesses.",
+    "Splendid Technology delivers specialist engineering services across Automation Engineering, Drive Systems Engineering, Electrical Engineering, Mechanical Engineering, and Digital Engineering for UK industry.",
   alternates: {
     canonical: "/about",
   },
@@ -13,53 +13,93 @@ export const metadata: Metadata = {
 
 const pillars = [
   {
-    title: "Industry 4.0 & Smart Manufacturing",
-    desc: "Industrial IoT, smart motor monitoring, condition monitoring, predictive maintenance, reliability engineering (MTBF, FMEA, RAM, RCM), and IoT proof of concept — grounded in 25+ years of rotating machine expertise.",
-    href: "/services/iot-solutions",
+    title: "Automation Engineering",
+    desc: "PLC programming, SCADA and HMI development, control system design, FAT support, commissioning, and network architecture for industrial systems.",
+    href: "/services/automation-engineering",
   },
   {
-    title: "Engineering & Product Development",
-    desc: "CAD design & drawings, FEA structural analysis, CFD simulation, reverse engineering, rapid prototyping, and manufacturing support for UK engineering businesses.",
-    href: "/services/engineering-manufacturing",
+    title: "Drive Systems Engineering",
+    desc: "LV and MV AC drives, DC drives, AFE systems, common DC bus architecture, protection coordination, and integration support.",
+    href: "/services/drive-systems-engineering",
   },
   {
-    title: "Digital Transformation & Automation",
-    desc: "Process automation, business process digitalisation, workflow automation, data analytics & dashboards, and system integration — connecting ERP, CRM & IoT platforms.",
-    href: "/services/software-development",
+    title: "Electrical Engineering",
+    desc: "Detailed engineering outputs including single line diagrams, I/O lists, panel design, cable schedules, and protection studies.",
+    href: "/services/electrical-engineering",
   },
   {
-    title: "Software Solutions",
-    desc: "Custom CRM systems, bespoke software development, web applications, mobile applications, and cloud solutions — built with Next.js, React, and modern cloud infrastructure.",
-    href: "/services/software-development",
+    title: "Mechanical Engineering",
+    desc: "CAD design, FEA, reverse engineering, rapid prototyping, and manufacturing documentation for practical project delivery.",
+    href: "/services/mechanical-engineering",
+  },
+  {
+    title: "Digital Engineering",
+    desc: "CRM and ERP solutions, warehouse management systems, supply chain digitalisation, and operational workflow automation.",
+    href: "/services/digital-engineering",
   },
 ];
 
-const keySkills = [
-  // Industrial IoT & Condition Monitoring
-  "Motor & Generator Health Monitoring (MV, HV)",
-  "Vibration Analysis & Root Cause Analysis",
-  "Predictive Maintenance Systems",
-  "Condition Monitoring (IoT Edge-to-Cloud)",
-  "Industrial Automation & SCADA",
-  // Reliability Engineering
-  "Reliability Engineering (MTBF, FMEA, RAM, RCM)",
-  "ISO 9000 Internal Auditor",
-  "Six Sigma Green Belt (GE)",
-  "Lean Management & Kaizen",
-  // Electrical & Mechanical Engineering
-  "MV/HV Induction & Synchronous Motor Design",
-  "MV Generator Design & Engineering",
-  "Electromagnetic Design (FEMM)",
-  "Instrumentation Design & ATEX Certification",
-  "3D CAD / 2D Drawing (IDEAS, UG, ProE, Creo)",
-  "BOM Creation & PLM (Teamcenter, SAP)",
-  "Reverse Engineering",
-  // Digital & Software
-  "Web Application Development",
-  "IoT Dashboard Design",
-  "CRM & Business Systems",
-  "AI Process Automation",
-  "Project & Engineering Management",
+const detailedScope = [
+  {
+    heading: "Automation Engineering",
+    points: [
+      "PLC programming",
+      "SCADA and HMI development",
+      "Control system design",
+      "FAT and commissioning support",
+      "Network architecture",
+      "Safety systems",
+    ],
+    href: "/services/automation-engineering",
+  },
+  {
+    heading: "Drive Systems Engineering",
+    points: [
+      "LV and MV AC drives",
+      "DC drives",
+      "Common DC bus systems",
+      "AFE rectifiers",
+      "Soft starters and servo drives",
+      "Renewable energy converters",
+    ],
+    href: "/services/drive-systems-engineering",
+  },
+  {
+    heading: "Electrical Engineering",
+    points: [
+      "Detailed engineering",
+      "Single line diagrams",
+      "I/O lists",
+      "Panel design",
+      "Cable schedules",
+      "Protection studies",
+    ],
+    href: "/services/electrical-engineering",
+  },
+  {
+    heading: "Mechanical Engineering",
+    points: [
+      "CAD and design documentation",
+      "FEA and simulation",
+      "Reverse engineering",
+      "Rapid prototyping",
+      "DFM reviews",
+      "Supplier-ready packs",
+    ],
+    href: "/services/mechanical-engineering",
+  },
+  {
+    heading: "Digital Engineering",
+    points: [
+      "CRM solutions",
+      "ERP solutions",
+      "Warehouse management systems",
+      "Supply chain digitalisation",
+      "Workflow automation",
+      "Management dashboards",
+    ],
+    href: "/services/digital-engineering",
+  },
 ];
 
 export default function AboutPage() {
@@ -73,22 +113,22 @@ export default function AboutPage() {
           <h1 className="text-4xl font-bold leading-tight sm:text-5xl">Splendid Technology Ltd</h1>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
             An Industrial Technology &amp; Engineering Solutions company serving UK manufacturers nationwide —
-            delivering Industry 4.0 &amp; Smart Manufacturing, Engineering &amp; Product Development,
-            Digital Transformation &amp; Automation, and Software Solutions for UK manufacturers and engineering businesses.
+            delivering Automation Engineering, Drive Systems Engineering, Electrical Engineering,
+            Mechanical Engineering, and Digital Engineering solutions for industrial clients.
           </p>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-400">
-            Founded on 25+ years of deep expertise in rotating machines, MV motor &amp; generator design,
-            condition monitoring, and reliability engineering — combined with modern software development
-            to solve real industrial problems.
+            Founded on 25+ years of rotating machinery and industrial systems expertise,
+            we combine deep engineering delivery with practical digital systems that improve
+            reliability, productivity, and operational visibility.
           </p>
         </div>
       </section>
 
-      {/* 4 Pillars */}
+      {/* Service Lines */}
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <h2 className="text-2xl font-bold text-[#0b1f3a]">What We Do</h2>
-        <p className="mt-2 text-sm text-slate-500">Four service pillars. One engineering technology partner.</p>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+        <p className="mt-2 text-sm text-slate-500">Five specialist engineering service lines with detailed delivery scope.</p>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {pillars.map((pillar) => (
             <Link
               key={pillar.title}
@@ -105,8 +145,37 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Approach */}
+      {/* Expanded Scope */}
       <section className="bg-slate-50 py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-[#0b1f3a]">Expanded Engineering Scope</h2>
+          <p className="mt-2 max-w-2xl text-sm text-slate-600">
+            Each service line includes concrete deliverables so clients can align technical scope,
+            budget, and outcomes before implementation begins.
+          </p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {detailedScope.map((scope) => (
+              <div key={scope.heading} className="rounded-2xl border border-slate-200 bg-white p-6">
+                <h3 className="text-lg font-semibold text-[#0b1f3a]">{scope.heading}</h3>
+                <ul className="mt-4 space-y-2">
+                  {scope.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2 text-sm text-slate-700">
+                      <span className="mt-0.5 font-bold text-green-600">+</span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+                <Link href={scope.href} className="mt-5 inline-block text-xs font-semibold uppercase tracking-wide text-green-700 hover:underline">
+                  View service details &rarr;
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Approach */}
+      <section className="py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2">
             <div>
@@ -114,31 +183,32 @@ export default function AboutPage() {
               <p className="mt-4 text-sm leading-7 text-slate-600">
                 We focus on practical, engineering-driven solutions rather than generic platforms.
                 Every project starts with understanding the real operational challenge &mdash; then
-                we apply the right technology to solve it, whether that&rsquo;s a web app, an IoT
-                sensor network, a reliability study, or a piece of custom software.
+                we apply the right engineering and digital solution to solve it, whether that&rsquo;s
+                automation controls, drive systems integration, electrical design outputs,
+                mechanical engineering support, or CRM and ERP implementation.
               </p>
               <p className="mt-3 text-sm leading-7 text-slate-600">
                 Our team spans electrical engineering, software engineering, and business development
-                &mdash; giving us end-to-end capability from hardware-level monitoring to
-                customer-facing SaaS products.
+                &mdash; giving us end-to-end capability from plant-level systems through
+                operational digital platforms used by engineering and management teams.
               </p>
               <p className="mt-3 text-sm leading-7 text-slate-600">
-                For website clients, we handle <strong>everything</strong> &mdash; domain registration,
-                hosting, SSL certificates, and ongoing maintenance &mdash; so you never have to deal
-                with any hosting provider yourself.
+                For industrial clients, we handle <strong>full delivery support</strong> &mdash; scope definition,
+                technical documentation, implementation planning, commissioning support,
+                and ongoing optimisation to keep systems reliable and scalable.
               </p>
             </div>
             <div>
               <h2 className="text-2xl font-bold text-[#0b1f3a]">How We Work</h2>
               <ul className="mt-4 space-y-3">
                 {[
-                  "Rapid pilot deployment — prove value fast",
-                  "Practical implementation — no over-engineering",
-                  "Domain registration, hosting & SSL — fully managed",
-                  "Ongoing maintenance & care plans available",
+                  "Rapid discovery and scope definition",
+                  "Practical implementation with no over-engineering",
+                  "Engineering documentation aligned to delivery",
+                  "FAT, SAT and commissioning support",
                   "Clear technical visibility at every stage",
-                  "Scalable architecture — grows with your business",
-                  "Long-term maintainability — built to last",
+                  "Scalable architecture that grows with operations",
+                  "Long-term reliability and optimisation support",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
                     <span className="mt-0.5 text-green-500">&#10003;</span>
@@ -150,270 +220,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Team heading */}
-      <div className="mx-auto max-w-6xl px-4 pb-4 pt-14 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-[#0b1f3a]">The Team</h2>
-        <p className="mt-1 text-sm text-slate-500">The engineers and specialists behind Splendid Technology.</p>
-      </div>
-
-      <div className="mx-auto max-w-6xl space-y-8 px-4 pb-16 sm:px-6 lg:px-8">
-
-      <section className="rounded-2xl border border-[#0b3d91]/20 bg-white p-6">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-10">
-          <div className="flex-1 space-y-3">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#0b3d91]/60">
-                Founder &amp; Engineering Technology Lead
-              </span>
-              <h2 className="mt-1 text-2xl font-bold text-[#0b3d91]">
-                Raja Saravanan
-              </h2>
-              <p className="text-sm font-medium text-black/60">
-                Founder &amp; Engineering Technology Lead — Splendid Technology, UK
-              </p>
-              <a href="mailto:raja@splendidtechnology.co.uk" className="text-xs text-[#0b3d91] hover:underline">raja@splendidtechnology.co.uk</a>
-            </div>
-            <p className="text-sm leading-6 text-black/70">
-              Engineering Technology leader with 25+ years of expertise spanning Medium Voltage
-              motor &amp; generator design, application engineering, condition monitoring, and
-              reliability engineering for Oil &amp; Gas, Marine, Metal, and Mining industries globally.
-            </p>
-            <p className="text-sm leading-6 text-black/70">
-              At Splendid Technology, Raja combines this deep industrial expertise with modern
-              web development, IoT, and software automation to build solutions that genuinely solve
-              manufacturing and engineering challenges — from smart motor health monitoring platforms
-              to custom CRM and business software.
-            </p>
-            <p className="text-sm leading-6 text-black/70">
-              Previously Senior Services Engineering Manager at GE Power Conversion, leading
-              rotating machine services for ASIA P&amp;L across motors and generators rated 1MW–400MW
-              for Oil &amp; Gas, Marine, Metal &amp; Mining customers.
-            </p>
-            <div className="flex flex-wrap gap-2 pt-1">
-              {[
-                "MBA (Operations) — ICFAI University",
-                "BE Electrical & Electronics — Madurai Kamaraj University",
-                "ISO 9000:2001 Internal Auditor",
-                "Six Sigma Green Belt (GE Crotonville)",
-                "Instrumentation Design Training — Nancy, France",
-                "Electrical Design Training — Cranfield University, UK",
-                "MV Motor Design — Rotating Machines, Rugby, UK",
-                "Lean Management & Kaizen (GE)",
-              ].map((cred) => (
-                <span
-                  key={cred}
-                  className="rounded-full border border-[#0b3d91]/20 bg-[#f0f4ff] px-3 py-1 text-xs text-[#0b3d91]"
-                >
-                  {cred}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Key Skills */}
-          <div className="w-full shrink-0 lg:w-64">
-            <h3 className="text-sm font-semibold text-[#0b3d91]">Key Skills</h3>
-            <ul className="mt-3 space-y-2">
-              {keySkills.map((skill) => (
-                <li key={skill} className="flex items-start gap-2 text-xs text-black/70">
-                  <span className="mt-0.5 shrink-0 font-bold text-[#0b3d91]">✔</span>
-                  {skill}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <div>
-        <h2 className="text-lg font-semibold text-[#0b1f3a]">The Team</h2>
-        <p className="mt-1 text-sm text-black/50">The engineers and specialists behind Splendid Technology.</p>
-      </div>
-
-      {/* Shiva — Technical Delivery Manager */}
-      <section className="rounded-2xl border border-[#0b3d91]/20 bg-white p-6">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-10">
-          <div className="flex-1 space-y-3">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#0b3d91]/60">
-                Technical Delivery Manager
-              </span>
-              <h2 className="mt-1 text-2xl font-bold text-[#0b3d91]">
-                Shiva Prakash Saravanan
-              </h2>
-              <p className="text-sm font-medium text-black/60">
-                Technical Delivery Manager — Splendid Technology, UK
-              </p>
-              <a href="mailto:shiva@splendidtechnology.co.uk" className="text-xs text-[#0b3d91] hover:underline">shiva@splendidtechnology.co.uk</a>
-            </div>
-            <p className="text-sm leading-6 text-black/70">
-              Responsible for the successful delivery of client projects, including website
-              development, hosting, deployment, maintenance, and technical support. Works
-              closely with clients and the business development team to translate requirements
-              into reliable, secure, and scalable digital solutions.
-            </p>
-            <div className="flex flex-wrap gap-2 pt-1">
-              {[
-                "MSc Advanced Computer Science — University of Leicester",
-                "BSc Computer Science — SRM University (First Class, Distinction)",
-                "2+ yrs Software Engineering (Phumber India)",
-                "Live: CodLearn · MendForWorks",
-              ].map((cred) => (
-                <span
-                  key={cred}
-                  className="rounded-full border border-[#0b3d91]/20 bg-[#f0f4ff] px-3 py-1 text-xs text-[#0b3d91]"
-                >
-                  {cred}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="w-full shrink-0 lg:w-64">
-            <h3 className="text-sm font-semibold text-[#0b3d91]">Key Skills</h3>
-            <ul className="mt-3 space-y-2">
-              {[
-                "Website Development",
-                "Technical Project Delivery",
-                "Web Hosting",
-                "Deployment & Release Management",
-                "Technical Support",
-                "System Administration",
-                "Cloud Hosting",
-                "Website Maintenance",
-                "Application Troubleshooting",
-                "Performance Optimisation",
-                "Security & SSL Management",
-                "Client Support",
-              ].map((skill) => (
-                <li key={skill} className="flex items-start gap-2 text-xs text-black/70">
-                  <span className="mt-0.5 shrink-0 font-bold text-[#0b3d91]">✔</span>
-                  {skill}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Project highlights */}
-        <div className="mt-6 border-t border-black/5 pt-5">
-          <h3 className="text-sm font-semibold text-[#0b3d91]">Notable Projects</h3>
-          <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            {[
-              {
-                name: "Kubernetes Distributed System",
-                detail: "3-node K3s cluster · 93% Docker image reduction · <50ms latency",
-              },
-              {
-                name: "AI-Driven K8s Scheduling Research",
-                detail: "RL algorithms (Q-learning, DQN, PPO, LSTM, MARL) · 20–35% resource improvement",
-              },
-              {
-                name: "MongoDB Atlas Performance",
-                detail: "Query caching: 48s → 29ms · .explain() optimisation",
-              },
-              {
-                name: "LSTM Workload Prediction",
-                detail: "Cloud workload time-series model · Python / Machine Learning",
-              },
-            ].map((p) => (
-              <div key={p.name} className="rounded-lg bg-[#f7f9ff] p-3">
-                <p className="text-xs font-semibold text-black">{p.name}</p>
-                <p className="mt-0.5 text-xs text-black/55">{p.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Arun — Business Development Manager */}
-      <section className="rounded-2xl border border-[#0b3d91]/20 bg-white p-6">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-10">
-          <div className="flex-1 space-y-3">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#0b3d91]/60">
-                Business Development Manager
-              </span>
-              <h2 className="mt-1 text-2xl font-bold text-[#0b3d91]">
-                Arun Prakash Rajagopalan Saravanan
-              </h2>
-              <p className="text-sm font-medium text-black/60">
-                Business Development Manager — Splendid Technology, Leicester, UK
-              </p>
-              <a href="mailto:arun@splendidtechnology.co.uk" className="text-xs text-[#0b3d91] hover:underline">arun@splendidtechnology.co.uk</a>
-            </div>
-            <p className="text-sm leading-6 text-black/70">
-              Responsible for lead generation, prospect research, CRM management, customer
-              engagement, quotation preparation, and supporting business growth initiatives.
-              Focused on identifying opportunities, understanding customer requirements,
-              nurturing prospects, and helping convert enquiries into business opportunities.
-            </p>
-            <div className="flex flex-wrap gap-2 pt-1">
-              {[
-                "MSc International Business — University of Leicester (2026)",
-                "BBA — SRM University (2024)",
-                "Supply Chain Intern — L&T Valves",
-                "Certified: Supply Chain Management (Coursera)",
-                "Cambridge English Certificate",
-              ].map((cred) => (
-                <span
-                  key={cred}
-                  className="rounded-full border border-[#0b3d91]/20 bg-[#f0f4ff] px-3 py-1 text-xs text-[#0b3d91]"
-                >
-                  {cred}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="w-full shrink-0 lg:w-64">
-            <h3 className="text-sm font-semibold text-[#0b3d91]">Key Skills</h3>
-            <ul className="mt-3 space-y-2">
-              {[
-                "Lead Generation & Pipeline Management",
-                "CRM (In-house) — Leads, Quotes & Follow-ups",
-                "Segment-wise Customer Research & Analysis",
-                "Prospect Engagement & Conversion",
-                "Quote Preparation & Proposal Writing",
-                "Market Mapping & Competitor Analysis",
-                "Cross-functional Collaboration",
-                "Market Entry & Strategic Analysis",
-              ].map((skill) => (
-                <li key={skill} className="flex items-start gap-2 text-xs text-black/70">
-                  <span className="mt-0.5 shrink-0 font-bold text-[#0b3d91]">✔</span>
-                  {skill}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Project highlights */}
-        <div className="mt-6 border-t border-black/5 pt-5">
-          <h3 className="text-sm font-semibold text-[#0b3d91]">Notable Projects</h3>
-          <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            {[
-              {
-                name: "J&J Global Supply Chain Analysis",
-                detail: "Evaluated demand planning, sourcing, distribution, and regulatory risk for J&J global operations",
-              },
-              {
-                name: "GE Vietnam Supply Chain Strategy",
-                detail: "Analysed market entry, supply chain setup, and workforce operational challenges",
-              },
-            ].map((p) => (
-              <div key={p.name} className="rounded-lg bg-[#f7f9ff] p-3">
-                <p className="text-xs font-semibold text-black">{p.name}</p>
-                <p className="mt-0.5 text-xs text-black/55">{p.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      </div>{/* end team wrapper */}
 
       {/* QR Code */}
       <section className="py-14">

@@ -5,8 +5,8 @@ export function SiteFooter() {
     <footer className="bg-[#0b1f3a] text-white">
       <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
 
-        {/* ── Four Pillars ── */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {/* ── Service Menu ── */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
 
           {/* Pillar 1 */}
           <div>
@@ -20,7 +20,7 @@ export function SiteFooter() {
                 { href: "/services/reliability-engineering", label: "Reliability Engineering" },
                 { href: "/proof-of-concept", label: "IoT Proof of Concept" },
               ].map((l) => (
-                <li key={l.href}>
+                <li key={`${l.href}-${l.label}`}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
                     {l.label}
                   </Link>
@@ -29,18 +29,59 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Pillar 2 */}
+          {/* Automation Engineering */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Engineering &amp; Product Development</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Automation Engineering</h3>
             <ul className="mt-4 space-y-2">
               {[
+                { href: "/services/automation-engineering", label: "Automation Engineering Overview" },
+                { href: "/services/automation-engineering", label: "PLC Programming" },
+                { href: "/services/automation-engineering", label: "SCADA & HMI Development" },
+                { href: "/services/automation-engineering", label: "Control System Design" },
+                { href: "/services/automation-engineering", label: "FAT & Commissioning Support" },
+              ].map((l) => (
+                <li key={`${l.href}-${l.label}`}>
+                  <Link href={l.href} className="text-xs text-white/60 hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Drive & Electrical */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Drive &amp; Electrical Engineering</h3>
+            <ul className="mt-4 space-y-2">
+              {[
+                { href: "/services/drive-systems-engineering", label: "Drive Systems Engineering" },
+                { href: "/services/drive-systems-engineering", label: "LV & MV AC Drives" },
+                { href: "/services/drive-systems-engineering", label: "DC Drives & AFE Systems" },
+                { href: "/services/electrical-engineering", label: "Electrical Engineering" },
+                { href: "/services/electrical-engineering", label: "SLD, I/O Lists & Panel Design" },
+              ].map((l) => (
+                <li key={`${l.href}-${l.label}`}>
+                  <Link href={l.href} className="text-xs text-white/60 hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Mechanical Engineering */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Mechanical Engineering</h3>
+            <ul className="mt-4 space-y-2">
+              {[
+                { href: "/services/mechanical-engineering", label: "Mechanical Engineering Overview" },
                 { href: "/services/engineering-manufacturing", label: "CAD Design & Drawings" },
                 { href: "/services/engineering-manufacturing#fea", label: "FEA & Structural Analysis" },
                 { href: "/services/engineering-manufacturing#cfd", label: "CFD Analysis" },
                 { href: "/services/engineering-manufacturing#reverse", label: "Reverse Engineering" },
                 { href: "/services/engineering-manufacturing#prototyping", label: "Rapid Prototyping" },
               ].map((l) => (
-                <li key={l.href}>
+                <li key={`${l.href}-${l.label}`}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
                     {l.label}
                   </Link>
@@ -49,39 +90,19 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Pillar 3 */}
+          {/* Digital Engineering */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Digital Transformation &amp; Automation</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Digital Engineering</h3>
             <ul className="mt-4 space-y-2">
               {[
-                { href: "/services/software-development#automation", label: "Process Automation" },
-                { href: "/services/software-development#digitalisation", label: "Business Process Digitalisation" },
+                { href: "/services/digital-engineering", label: "Digital Engineering Overview" },
+                { href: "/services/sales-crm", label: "CRM Solutions" },
+                { href: "/services/software-development#erp", label: "ERP Solutions" },
+                { href: "/services/digital-engineering", label: "Warehouse Management Systems" },
+                { href: "/services/digital-engineering", label: "Supply Chain Digitalisation" },
                 { href: "/services/software-development#workflow", label: "Workflow Automation" },
-                { href: "/services/software-development#analytics", label: "Data Analytics & Dashboards" },
-                { href: "/services/software-development#integration", label: "System Integration" },
               ].map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="text-xs text-white/60 hover:text-white">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Pillar 4 */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Software Solutions</h3>
-            <ul className="mt-4 space-y-2">
-              {[
-                { href: "/services/sales-crm", label: "CRM Systems" },
-                { href: "/services/software-development", label: "Custom Software Development" },
-                { href: "/services/web-app-development", label: "Web Applications" },
-                { href: "/services/web-app-development#mobile", label: "Mobile Applications" },
-                { href: "/services/software-development#cloud", label: "Cloud Solutions" },
-                { href: "/products/splendid-erp-light", label: "Splendid ERP Light" },
-              ].map((l) => (
-                <li key={l.href}>
+                <li key={`${l.href}-${l.label}`}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
                     {l.label}
                   </Link>
@@ -102,8 +123,8 @@ export function SiteFooter() {
                 <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">Engineering Technology Partner · UK Nationwide</span>
               </Link>
               <p className="mt-3 text-xs leading-5 text-white/50">
-                Industry 4.0 &amp; Smart Manufacturing, Engineering &amp; Product Development,
-                Digital Transformation &amp; Automation, and Software Solutions for UK manufacturers.
+                Automation Engineering, Drive Systems Engineering, Electrical Engineering,
+                Mechanical Engineering, and Digital Engineering solutions for UK industry.
               </p>
             </div>
 

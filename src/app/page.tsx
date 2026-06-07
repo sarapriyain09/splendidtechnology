@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Industry 4.0, Engineering & Software Solutions for UK Manufacturers | Splendid Technology",
+  title: "Industrial Automation, Drive Systems & Digital Engineering Solutions | Splendid Technology",
   description:
-    "Splendid Technology delivers Industry 4.0 & Smart Manufacturing, Engineering & Product Development, Digital Transformation & Automation, and Software Solutions for UK manufacturers and engineering businesses.",
+    "Delivering automation engineering, electrical design, drive systems engineering, CRM and ERP solutions for manufacturing, energy, material handling and industrial sectors.",
   keywords: [
     "industrial iot uk",
     "predictive maintenance uk",
@@ -42,50 +42,113 @@ export const metadata: Metadata = {
 
 const solutions = [
   {
-    title: "Industry 4.0 & Smart Manufacturing",
+    title: "Automation Engineering",
     description:
-      "Industrial IoT, smart motor monitoring, condition monitoring, predictive maintenance, reliability engineering, and IoT proof of concept — built for UK manufacturers.",
-    href: "/services/iot-solutions",
-    icon: "📡",
-    tag: "Industry 4.0",
-    highlight: true,
-  },
-  {
-    title: "Engineering & Product Development",
-    description:
-      "CAD design & drawings, FEA & structural analysis, CFD analysis, reverse engineering, and rapid prototyping for UK engineering businesses.",
-    href: "/services/engineering-manufacturing",
-    icon: "🔩",
-    tag: "Engineering",
-    highlight: true,
-  },
-  {
-    title: "Digital Transformation & Automation",
-    description:
-      "Process automation, business process digitalisation, workflow automation, data analytics & dashboards, and system integration.",
-    href: "/services/software-development",
+      "PLC programming, SCADA and HMI development, control system design, FAT support, commissioning, and safety systems.",
+    href: "/services/automation-engineering",
     icon: "⚙️",
     tag: "Automation",
     highlight: true,
   },
   {
-    title: "Software Solutions",
+    title: "Drive Systems Engineering",
     description:
-      "Custom CRM systems, bespoke software development, web applications, mobile applications, and cloud solutions for UK businesses.",
-    href: "/services/software-development",
+      "LV and MV AC drives, DC drives, common DC bus architecture, AFE systems, and protection coordination.",
+    href: "/services/drive-systems-engineering",
+    icon: "⚡",
+    tag: "Drives",
+    highlight: true,
+  },
+  {
+    title: "Electrical Engineering",
+    description:
+      "Detailed engineering, single line diagrams, I/O lists, panel design, cable schedules, and protection studies.",
+    href: "/services/electrical-engineering",
+    icon: "🔌",
+    tag: "Electrical",
+    highlight: true,
+  },
+  {
+    title: "Digital Engineering",
+    description:
+      "CRM solutions, ERP solutions, warehouse management systems, and supply chain digitalisation for UK industry.",
+    href: "/services/digital-engineering",
     icon: "💻",
-    tag: "Software",
+    tag: "Digital",
     highlight: true,
   },
 ];
 
 const benefits = [
-  { icon: "📡", title: "Industrial IoT Solutions", body: "Real-time condition monitoring for motors, pumps, fans, and rotating industrial plant." },
-  { icon: "🔁", title: "Predictive Maintenance", body: "AI-driven failure prediction and maintenance scheduling to eliminate unplanned downtime." },
-  { icon: "🔩", title: "CAD, FEA & CFD", body: "3D CAD design, FEA structural analysis, CFD simulation, and rapid prototyping for engineers." },
-  { icon: "⚙️", title: "Process & Workflow Automation", body: "Digitalise business processes, automate workflows, and connect your operational systems." },
-  { icon: "📊", title: "Data Analytics & Dashboards", body: "Real-time KPI dashboards and data analytics that turn operational data into decisions." },
-  { icon: "💻", title: "Custom Software & CRM", body: "Bespoke CRM, web applications, mobile apps and cloud solutions built for UK businesses." },
+  { icon: "⚙️", title: "PLC, SCADA and HMI Delivery", body: "Automation engineering services for new systems, upgrades, and production reliability improvements." },
+  { icon: "⚡", title: "Drive Systems Expertise", body: "LV and MV drive engineering including DC drives, AFE systems, and common DC bus architecture." },
+  { icon: "🔌", title: "Electrical Engineering Outputs", body: "SLDs, I/O lists, panel design, cable schedules, and protection studies built for project delivery." },
+  { icon: "🔩", title: "Mechanical Engineering Support", body: "CAD, FEA, reverse engineering, and prototyping for practical design and manufacturing execution." },
+  { icon: "📊", title: "Digital Engineering Platforms", body: "CRM, ERP, WMS, and supply chain digitalisation with operational dashboards and workflows." },
+  { icon: "💻", title: "Integrated Delivery Approach", body: "Controls, drives, electrical, mechanical, and digital systems delivered by one coordinated team." },
+];
+
+const detailedScope = [
+  {
+    title: "Automation Engineering",
+    href: "/services/automation-engineering",
+    items: [
+      "PLC programming",
+      "SCADA and HMI development",
+      "Control system design",
+      "FAT and commissioning support",
+      "Industrial network architecture",
+      "Safety systems",
+    ],
+  },
+  {
+    title: "Drive Systems Engineering",
+    href: "/services/drive-systems-engineering",
+    items: [
+      "LV and MV AC drives",
+      "DC drives",
+      "Common DC bus systems",
+      "AFE rectifiers",
+      "Soft starters and servo drives",
+      "Renewable energy converters",
+    ],
+  },
+  {
+    title: "Electrical Engineering",
+    href: "/services/electrical-engineering",
+    items: [
+      "Detailed engineering",
+      "Single line diagrams",
+      "I/O lists",
+      "Panel design",
+      "Cable schedules",
+      "Protection studies",
+    ],
+  },
+  {
+    title: "Mechanical Engineering",
+    href: "/services/mechanical-engineering",
+    items: [
+      "CAD design",
+      "Manufacturing drawings",
+      "FEA and simulation",
+      "Reverse engineering",
+      "Rapid prototyping",
+      "DFM support",
+    ],
+  },
+  {
+    title: "Digital Engineering",
+    href: "/services/digital-engineering",
+    items: [
+      "CRM solutions",
+      "ERP solutions",
+      "Warehouse management systems",
+      "Supply chain digitalisation",
+      "Workflow automation",
+      "Operational dashboards",
+    ],
+  },
 ];
 
 export default function Home() {
@@ -102,12 +165,12 @@ export default function Home() {
               Splendid Technology Ltd &mdash; Leicester, UK
             </p>
             <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Industry 4.0, Engineering &amp; Software Solutions for UK Manufacturers
+              Industrial Automation, Drive Systems &amp; Digital Engineering Solutions
             </h1>
             <p className="mt-5 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-              Helping UK manufacturers succeed through Smart Manufacturing &amp; Industrial IoT,
-              Engineering &amp; Product Development, Digital Transformation &amp; Automation,
-              and bespoke Software Solutions.
+              Delivering automation engineering, electrical design, drive systems engineering,
+              CRM and ERP solutions for manufacturing, energy, material handling and
+              industrial sectors across the UK.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -130,9 +193,10 @@ export default function Home() {
       {/* ── Solutions Grid ── */}
       <section id="solutions" className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Four Pillars. One Technology Partner.</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Specialist Engineering Services for UK Industry</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Industry 4.0 &amp; Smart Manufacturing — Engineering &amp; Product Development — Digital Transformation &amp; Automation — Software Solutions.
+            Structured around what buyers search for: automation engineering, drive systems,
+            electrical engineering, mechanical delivery, and digital engineering projects.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {solutions.map((s) => (
@@ -172,11 +236,11 @@ export default function Home() {
       <section className="bg-[#0b1f3a] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl">
           <h2 className="text-center text-3xl font-bold text-white">
-            Four Ways We Help UK Manufacturers
+            Detailed Engineering Scope for Industrial Projects
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-center text-sm text-white/60">
-            Smart manufacturing that protects your assets, engineering services that bring products to life,
-            automation that digitalises your operations, and software that scales with you.
+            We do not position as generic engineering services. We deliver specialist scopes
+            clients can search, evaluate, and procure with confidence.
           </p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {benefits.map((b) => (
@@ -186,6 +250,35 @@ export default function Home() {
                   <p className="font-bold text-white">{b.title}</p>
                   <p className="mt-1 text-sm text-white/60">{b.body}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Expanded Engineering Scope ── */}
+      <section className="py-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Expanded Service Scope</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
+            Five specialist lines with detailed deliverables for manufacturing, energy,
+            material handling, and wider industrial sectors.
+          </p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {detailedScope.map((scope) => (
+              <div key={scope.title} className="rounded-2xl border border-black/10 bg-white p-6">
+                <h3 className="text-lg font-bold text-[#0b1f3a]">{scope.title}</h3>
+                <ul className="mt-4 space-y-2">
+                  {scope.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-black/70">
+                      <span className="mt-0.5 font-bold text-green-600">+</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link href={scope.href} className="mt-5 inline-block text-sm font-semibold text-[#0b3d91] hover:underline">
+                  View service details &rarr;
+                </Link>
               </div>
             ))}
           </div>
@@ -256,7 +349,7 @@ export default function Home() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { heading: "Engineering Technology Partner", body: "Not a web agency — an engineering technology company with 25+ years of deep industrial IoT and manufacturing expertise." },
-              { heading: "Four Service Pillars", body: "Industry 4.0 & Smart Manufacturing, Engineering & Product Development, Digital Transformation & Automation, and Software Solutions." },
+              { heading: "Five Engineering Service Lines", body: "Automation Engineering, Drive Systems Engineering, Electrical Engineering, Mechanical Engineering, and Digital Engineering." },
               { heading: "UK-Based & Reliable", body: "Leicester-based team. On-site pilots, local support, and end-to-end project delivery across the UK." },
               { heading: "Results-Driven", body: "Every engagement is measured by reduced downtime, lower manufacturing cost, and better operational data." },
             ].map((item) => (
@@ -317,7 +410,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold">Ready to Transform Your Operations?</h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-white/75">
             Book a free consultation. We assess your challenges and show you exactly
-            what our four-pillar approach can do for your business.
+            what our specialist engineering scope can do for your business.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
