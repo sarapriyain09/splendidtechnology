@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
 
@@ -28,27 +29,40 @@ export default function BlogIndexPage() {
         {posts.map((post) => (
           <article
             key={post.slug}
-            className="rounded-2xl border border-black/10 bg-white p-6"
+            className="overflow-hidden rounded-2xl border border-black/10 bg-white"
           >
-            <p className="text-xs text-black/60">
-              {new Date(post.date).toLocaleDateString("en-GB", {
-                day: "2-digit",
-                month: "short",
-                year: "numeric",
-              })}
-            </p>
-            <h2 className="mt-2 text-lg font-semibold">
-              <Link className="hover:underline" href={`/blog/${post.slug}`}>
-                {post.title}
+            {post.featuredImage ? (
+              <Link href={`/blog/${post.slug}`} className="relative block h-44 w-full">
+                <Image
+                  src={post.featuredImage}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </Link>
-            </h2>
-            <p className="mt-2 text-sm leading-6 text-black/70">
-              {post.description}
-            </p>
-            <div className="mt-4">
-              <Link className="text-sm font-medium text-blue-700 hover:underline" href={`/blog/${post.slug}`}>
-                Read post
-              </Link>
+            ) : null}
+            <div className="p-6">
+              <p className="text-xs text-black/60">
+                {new Date(post.date).toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </p>
+              <h2 className="mt-2 text-lg font-semibold">
+                <Link className="hover:underline" href={`/blog/${post.slug}`}>
+                  {post.title}
+                </Link>
+              </h2>
+              <p className="mt-2 text-sm leading-6 text-black/70">
+                {post.excerpt ?? post.description}
+              </p>
+              <div className="mt-4">
+                <Link className="text-sm font-medium text-blue-700 hover:underline" href={`/blog/${post.slug}`}>
+                  Read post
+                </Link>
+              </div>
             </div>
           </article>
         ))}

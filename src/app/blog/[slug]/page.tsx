@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getAllBlogPosts, getBlogPostHtml } from "@/lib/blog";
 
@@ -20,6 +21,18 @@ export async function generateMetadata({
     title: meta.title,
     description: meta.description,
     keywords: meta.keywords,
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      type: "article",
+      images: meta.featuredImage ? [{ url: meta.featuredImage }] : undefined,
+    },
+    twitter: {
+      card: meta.featuredImage ? "summary_large_image" : "summary",
+      title: meta.title,
+      description: meta.description,
+      images: meta.featuredImage ? [meta.featuredImage] : undefined,
+    },
     alternates: {
       canonical: `/blog/${meta.slug}`,
     },
@@ -46,6 +59,12 @@ export default async function BlogPostPage({
         </p>
         <h1 className="text-3xl font-semibold tracking-tight">{meta.title}</h1>
         <p className="text-sm leading-6 text-black/70">{meta.description}</p>
+        {meta.excerpt ? (
+          <div className="rounded-xl border border-black/10 bg-[#f7f7f7] p-4">
+            <p className="text-xs font-semibold uppercase tracking-wider text-black/50">In Short</p>
+            <p className="mt-1 text-sm leading-6 text-black/75">{meta.excerpt}</p>
+          </div>
+        ) : null}
         <div className="flex flex-wrap gap-3 pt-1">
           <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services">
             Services
@@ -58,6 +77,19 @@ export default async function BlogPostPage({
           </Link>
         </div>
       </header>
+
+      {meta.featuredImage ? (
+        <div className="relative h-64 w-full overflow-hidden rounded-2xl border border-black/10 sm:h-80">
+          <Image
+            src={meta.featuredImage}
+            alt={meta.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 768px"
+            priority
+          />
+        </div>
+      ) : null}
 
       <article
         className="prose prose-slate max-w-none"

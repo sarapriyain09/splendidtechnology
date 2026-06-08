@@ -3,6 +3,8 @@ title: "Case Study: Building a CRM-Driven Lead Generation System for SMEs"
 slug: "crm-driven-lead-generation-case-study"
 date: "2026-06-08"
 description: "How Splendid CRM helped structure B2B lead generation for SMEs through pipeline management, decision-maker research, and consistent follow-up workflows."
+excerpt: "A practical case study showing how Splendid CRM improved B2B lead generation through structured pipelines, LinkedIn-based decision-maker targeting, and measurable follow-up discipline."
+featuredImage: "/images/blog/crm-lead-generation-case-study.svg"
 keywords: ["CRM", "Lead Generation", "B2B Sales", "SME", "LinkedIn", "Pipeline Management"]
 ---
 

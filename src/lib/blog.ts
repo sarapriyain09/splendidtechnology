@@ -9,6 +9,8 @@ export type BlogPostMeta = {
   slug: string;
   title: string;
   description: string;
+  excerpt?: string;
+  featuredImage?: string;
   date: string; // ISO YYYY-MM-DD
   keywords: string[];
 };
@@ -34,6 +36,8 @@ export function getAllBlogPosts(): BlogPostMeta[] {
 
       const title = String(parsed.data.title ?? "").trim();
       const description = String(parsed.data.description ?? "").trim();
+      const excerpt = String(parsed.data.excerpt ?? "").trim() || undefined;
+      const featuredImage = String(parsed.data.featuredImage ?? "").trim() || undefined;
       const date = String(parsed.data.date ?? "").trim();
       const keywords = Array.isArray(parsed.data.keywords)
         ? parsed.data.keywords.map((k: unknown) => String(k)).filter(Boolean)
@@ -45,7 +49,15 @@ export function getAllBlogPosts(): BlogPostMeta[] {
         );
       }
 
-      return { slug, title, description, date, keywords } satisfies BlogPostMeta;
+      return {
+        slug,
+        title,
+        description,
+        excerpt,
+        featuredImage,
+        date,
+        keywords,
+      } satisfies BlogPostMeta;
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 
@@ -68,6 +80,8 @@ export async function getBlogPostHtml(slug: string): Promise<{
     slug,
     title: String(parsed.data.title ?? "").trim(),
     description: String(parsed.data.description ?? "").trim(),
+    excerpt: String(parsed.data.excerpt ?? "").trim() || undefined,
+    featuredImage: String(parsed.data.featuredImage ?? "").trim() || undefined,
     date: String(parsed.data.date ?? "").trim(),
     keywords: Array.isArray(parsed.data.keywords)
       ? parsed.data.keywords.map((k: unknown) => String(k)).filter(Boolean)
