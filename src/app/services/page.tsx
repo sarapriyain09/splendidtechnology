@@ -2,20 +2,19 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Engineering Services UK | Automation, Drives, Electrical & Digital | Splendid Technology",
+  title: "Engineering Digitalization Services UK | CRM, ERP, Supply Chain, IoT & Web App Development | Splendid Technology",
   description:
-    "Engineering services for UK industry: Automation Engineering, Drive Systems Engineering, Electrical Engineering, Mechanical Engineering, and Digital Engineering (CRM & ERP).",
+    "Digital solutions for UK engineering and manufacturing SMEs across CRM, operations, ERP and supply chain workflows, IoT asset intelligence, and web app development.",
   keywords: [
-    "industrial automation engineering uk",
-    "plc programming services uk",
-    "scada hmi development uk",
-    "drive systems engineering uk",
-    "mv drive engineering uk",
-    "electrical engineering services uk",
-    "control panel design uk",
-    "mechanical engineering services uk",
+    "engineering digitalization uk",
+    "manufacturing digital transformation uk",
+    "crm for engineering companies uk",
+    "erp workflow automation uk",
+    "supply chain digitalisation uk",
+    "industrial iot solutions uk",
+    "web app development uk",
     "crm erp solutions uk",
-    "digital engineering services uk",
+    "digital solutions for manufacturers",
   ],
   alternates: {
     canonical: "/services",
@@ -24,93 +23,94 @@ export const metadata: Metadata = {
 
 const engineeringServiceLines = [
   {
-    icon: "⚙️",
-    label: "Automation",
-    title: "Automation Engineering",
+    icon: "📈",
+    label: "CRM",
+    title: "CRM and Sales Systems",
     description:
-      "PLC programming, SCADA and HMI development, control system design, FAT support, commissioning, and industrial network architecture.",
+      "Lead capture, customer management, quote workflows, and commercial dashboards to improve sales execution.",
     bullets: [
-      "PLC programming services",
-      "SCADA and HMI development",
-      "Control system design",
-      "Factory acceptance test support",
-      "Commissioning support",
-      "Safety systems integration",
+      "CRM implementation and migration",
+      "Lead and follow-up automation",
+      "Quote and proposal workflows",
+      "Customer lifecycle tracking",
+      "Pipeline reporting",
+      "Commercial process standardization",
     ],
-    href: "/services/automation-engineering",
-    cta: "Automation Engineering",
+    href: "/services/sales-crm",
+    cta: "CRM and Sales Systems",
     highlight: true,
   },
   {
-    icon: "⚡",
-    label: "Drives",
-    title: "Drive Systems Engineering",
+    icon: "🏭",
+    label: "ERP",
+    title: "Operations, ERP and Supply Chain",
     description:
-      "LV and MV AC drives, DC drives, common DC bus systems, AFE rectifiers, soft starters, servo drives, and renewable energy converters.",
+      "Digitize job execution, inventory, warehouse, and supply chain workflows with practical ERP-aligned systems.",
     bullets: [
-      "LV and MV AC drives",
-      "DC drives up to 2250A",
-      "AFE systems and rectifiers",
-      "Common DC bus architecture",
-      "Drive sizing and protection coordination",
-      "Integration, FAT, and commissioning",
+      "Job and work-order tracking",
+      "Inventory and warehouse workflows",
+      "Supply chain visibility and planning",
+      "ERP module setup and integration",
+      "Approval and handoff automation",
+      "Operational KPI dashboards",
+      "Supplier and procurement process flows",
     ],
-    href: "/services/drive-systems-engineering",
-    cta: "Drive Systems Engineering",
+    href: "/services/software-development#erp",
+    cta: "Operations, ERP and Supply Chain",
     highlight: true,
   },
   {
-    icon: "🔌",
-    label: "Electrical",
-    title: "Electrical Engineering",
+    icon: "📡",
+    label: "IoT",
+    title: "IoT and Asset Intelligence",
     description:
-      "Detailed electrical engineering and documentation including SLDs, I/O lists, panel design, cable schedules, and protection studies.",
+      "Connect critical equipment to telemetry, dashboards, and predictive maintenance workflows.",
     bullets: [
-      "Detailed engineering design",
-      "Single line diagrams",
-      "I/O lists and cable schedules",
-      "Control panel design",
-      "Protection studies",
-      "Technical specifications",
+      "Condition monitoring systems",
+      "Raspberry Pi and edge deployment",
+      "Asset telemetry dashboards",
+      "Alerting and escalation logic",
+      "Predictive maintenance workflows",
+      "Reliability performance reporting",
     ],
-    href: "/services/electrical-engineering",
-    cta: "Electrical Engineering",
+    href: "/services/iot-solutions",
+    cta: "IoT and Asset Intelligence",
     highlight: false,
   },
   {
-    icon: "🔩",
-    label: "Mechanical",
-    title: "Mechanical Engineering",
+    icon: "🧠",
+    label: "Web Apps",
+    title: "Web App Development",
     description:
-      "Mechanical design and product development support including CAD, FEA, reverse engineering, prototyping, and manufacturing documentation.",
+      "Build customer portals, internal tools, workflow apps, and scalable SaaS systems.",
     bullets: [
-      "3D CAD and assemblies",
-      "Manufacturing drawings",
-      "FEA and structural analysis",
-      "Reverse engineering",
-      "DFM and prototype support",
-      "Supplier-ready documentation",
+      "Custom web application development",
+      "Customer and partner portals",
+      "Internal workflow applications",
+      "SaaS product development",
+      "API integration and automation",
+      "Post-launch support and iteration",
     ],
-    href: "/services/mechanical-engineering",
-    cta: "Mechanical Engineering",
+    href: "/services/web-app-development",
+    cta: "Web App Development",
     highlight: false,
   },
   {
-    icon: "💻",
-    label: "Digital",
-    title: "Digital Engineering",
+    icon: "🤝",
+    label: "Delivery",
+    title: "Advisory and Implementation",
     description:
-      "CRM, ERP, warehouse and supply chain digitalisation solutions that connect sales, operations, and management in one practical platform.",
+      "From assessment to rollout, we design phased implementation plans with clear business outcomes.",
     bullets: [
-      "CRM solutions",
-      "ERP solutions",
-      "Warehouse management systems",
-      "Supply chain digitalisation",
-      "Workflow automation",
-      "Business dashboards",
+      "Digitalization assessment",
+      "Systems architecture and roadmap",
+      "Pilot-to-rollout planning",
+      "Integration sequencing",
+      "Team enablement",
+      "Managed optimization support",
     ],
-    href: "/services/digital-engineering",
-    cta: "Digital Engineering",
+    href: "/contact",
+    cta: "Advisory and Implementation",
     highlight: false,
   },
 ];
@@ -123,28 +123,28 @@ export default function ServicesPage() {
       <section className="bg-[#0b1f3a] px-4 py-16 text-white sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl">
           <p className="inline-block rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-green-400">
-            Splendid Technology &mdash; Services
+            Engineering Digitalization Services
           </p>
           <h1 className="mt-4 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-            Industrial Automation, Drive Systems &amp; Digital Engineering Solutions
+            Digital Solutions for Engineering and Manufacturing SMEs
           </h1>
           <p className="mt-4 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-            Delivering automation engineering, electrical design, drive systems engineering,
-            mechanical engineering, and CRM/ERP digital solutions for manufacturing, energy,
-            material handling, and wider industrial sectors across the UK.
+            We help engineering and manufacturing businesses digitize sales, operations,
+            assets, and engineering workflows through practical CRM, ERP, supply chain, IoT, and
+            web app systems.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-lg bg-green-600 px-7 py-3 font-bold text-white hover:bg-green-700"
             >
-              Book a Free Consultation
+              Book a Digitalization Assessment
             </Link>
             <Link
-              href="/products"
+              href="/services/web-app-development"
               className="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-3 font-bold text-white hover:bg-white/10"
             >
-              View Our Products
+              Explore Web App Development
             </Link>
           </div>
         </div>
@@ -153,10 +153,10 @@ export default function ServicesPage() {
       {/* Service Areas Grid */}
       <section className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Engineering Services Built Around Specific UK Search Intent</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Digitalization Service Categories</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            UK buyers typically search for specific capabilities such as PLC programming,
-            drive engineering, control panel design, or CRM and ERP projects.
+            Structured around the business systems engineering and manufacturing SMEs need
+            to improve speed, visibility, reliability, and decision quality.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {engineeringServiceLines.map((s) => (
@@ -212,9 +212,9 @@ export default function ServicesPage() {
         <div className="mx-auto w-full max-w-6xl text-center">
           <p className="text-xs font-bold uppercase tracking-widest text-green-400">Our Positioning</p>
           <blockquote className="mx-auto mt-4 max-w-3xl text-xl font-semibold leading-8 text-white">
-            &ldquo;We solve practical industrial problems through specialist engineering services,
-            from PLC and SCADA delivery through MV drive systems, electrical design,
-            mechanical engineering, and connected CRM and ERP digital platforms.&rdquo;
+            &ldquo;We help engineering and manufacturing SMEs make better decisions through
+            connected sales, operational, asset, and web application systems.
+            Every rollout phase is tied to measurable business outcomes.&rdquo;
           </blockquote>
         </div>
       </section>
@@ -222,23 +222,23 @@ export default function ServicesPage() {
       {/* CTA */}
       <section className="bg-[#f7f7f7] py-14 text-center">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Not sure which service fits?</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Not sure where to start?</h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-black/60">
-            Book a free 30-minute consultation and we&apos;ll help you identify exactly which
-            combination of services will generate the best return for your business.
+            Start with a digitalization assessment. We identify your biggest bottlenecks,
+            then define a phased roadmap and implementation priorities with measurable ROI.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-lg bg-[#0b1f3a] px-8 py-3 font-bold text-white hover:bg-[#0b3d91]"
             >
-              Book a Free Consultation
+              Book Assessment
             </Link>
             <Link
-              href="/products"
+              href="/services"
               className="inline-flex items-center justify-center rounded-lg border border-[#0b1f3a]/30 px-8 py-3 font-bold text-[#0b1f3a] hover:bg-[#0b1f3a]/5"
             >
-              Browse Our Products
+              Review Categories
             </Link>
           </div>
         </div>

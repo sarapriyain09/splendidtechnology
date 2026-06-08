@@ -319,17 +319,17 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* IoT & Engineering — Quote Only */}
+      {/* IoT and Digital Platforms — Quote Only */}
       <section className="bg-[#0b1f3a] py-16 text-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">
-                IoT, Reliability &amp; Engineering Software
+                IoT, Reliability &amp; Digital Platforms
               </p>
               <h2 className="text-3xl font-bold">Priced on Enquiry</h2>
               <p className="mt-4 text-slate-300">
-                Our Industrial IoT solutions, Reliability Engineering services, and SaaS products
+                Our Industrial IoT solutions, reliability analytics services, and SaaS products
                 (Splendid Monitor, Splendid Reliability, Splendid Asset Manager) are scoped and
                 priced individually &mdash; because hardware, installation complexity, and site
                 conditions vary significantly between projects.

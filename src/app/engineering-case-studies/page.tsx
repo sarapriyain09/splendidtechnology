@@ -274,10 +274,10 @@ export default function EngineeringCaseStudiesPage() {
               Discuss a Project
             </Link>
             <Link
-              href="/services/engineering-manufacturing"
+              href="/services"
               className="rounded-full border border-white px-7 py-3 text-sm font-semibold text-white hover:bg-white/10"
             >
-              Engineering Services
+              Solution Categories
             </Link>
           </div>
         </div>

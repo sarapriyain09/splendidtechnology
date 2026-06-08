@@ -8,41 +8,41 @@ type NavItem =
   | { isLabel: true; label: string; href?: never; desc?: never };
 
 const iotItems: NavItem[] = [
-  { isLabel: true, label: "Industry 4.0 & Smart Manufacturing" },
-  { href: "/services/iot-solutions", label: "Industrial IoT Solutions", desc: "IoT sensors, connectivity & industrial monitoring" },
-  { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring", desc: "Real-time motor health & predictive alerts" },
-  { href: "/services/iot-solutions#condition-monitoring", label: "Condition Monitoring", desc: "Vibration, temperature & energy analysis" },
-  { href: "/industrial-iot/predictive-maintenance", label: "Predictive Maintenance", desc: "AI-driven failure prediction & maintenance scheduling" },
-  { href: "/services/reliability-engineering", label: "Reliability Engineering", desc: "MTBF, FMEA, RAM & RCM studies" },
-  { href: "/proof-of-concept", label: "IoT Proof of Concept", desc: "Live Raspberry Pi + AWS demo platform" },
+  { isLabel: true, label: "IoT and Asset Intelligence" },
+  { href: "/services/iot-solutions", label: "IoT Solutions Overview", desc: "Sensors, connectivity, monitoring, and asset telemetry" },
+  { href: "/services/iot-solutions#condition-monitoring", label: "Condition Monitoring", desc: "Vibration, temperature, and energy trend analysis" },
+  { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring", desc: "Real-time motor health with alerting workflows" },
+  { href: "/industrial-iot/predictive-maintenance", label: "Predictive Maintenance", desc: "Data-driven failure prediction and planning" },
+  { href: "/services/reliability-engineering", label: "Reliability Engineering", desc: "MTBF, FMEA, RAM, and RCM support" },
+  { href: "/proof-of-concept", label: "Asset Insight Pilot", desc: "Live Raspberry Pi and cloud pilot platform" },
 ];
 
-const engineeringItems: NavItem[] = [
-  { isLabel: true, label: "Engineering Services" },
-  { href: "/services/automation-engineering", label: "Automation Engineering", desc: "PLC programming, SCADA and control systems" },
-  { href: "/services/drive-systems-engineering", label: "Drive Systems Engineering", desc: "LV and MV AC drives, DC drives and AFE systems" },
-  { href: "/services/electrical-engineering", label: "Electrical Engineering", desc: "SLD, I/O lists, panel design and protection studies" },
-  { href: "/services/mechanical-engineering", label: "Mechanical Engineering", desc: "CAD, FEA, prototyping and manufacturing support" },
-  { href: "/services/engineering-manufacturing", label: "Mechanical Capability Details", desc: "Detailed CAD, FEA, CFD and reverse engineering" },
+const webAppItems: NavItem[] = [
+  { isLabel: true, label: "Web App Development" },
+  { href: "/services/web-app-development", label: "Web App Overview", desc: "Custom portals, internal tools, and web products" },
+  { href: "/services/web-app-development", label: "Customer Portals", desc: "Secure self-service experiences for clients" },
+  { href: "/services/web-app-development", label: "Internal Workflow Apps", desc: "Purpose-built apps for team operations" },
+  { href: "/services/web-app-development", label: "SaaS Product Development", desc: "Scalable product architecture and delivery" },
+  { href: "/services/web-app-development", label: "API and System Integration", desc: "Integrate core platforms and business tools" },
 ];
 
 const automationItems: NavItem[] = [
-  { isLabel: true, label: "Digital Solutions" },
-  { href: "/services/digital-engineering", label: "Digital Solutions Overview", desc: "CRM, ERP, WMS and supply chain digitalisation" },
-  { href: "/services/sales-crm", label: "CRM Solutions", desc: "Lead management and sales pipeline systems" },
-  { href: "/services/software-development#erp", label: "ERP Solutions", desc: "Custom ERP modules and business software" },
-  { href: "/services/software-development#workflow", label: "Workflow Automation", desc: "Digitise approvals, reporting and operational workflows" },
-  { href: "/services/digital-engineering", label: "Warehouse & Supply Chain Solutions", desc: "Warehouse systems and supply chain digitalisation" },
-  { href: "/services/software-development", label: "System Integration Solutions", desc: "Connect CRM, ERP, operations and reporting systems" },
+  { isLabel: true, label: "CRM and Sales Systems" },
+  { href: "/services/sales-crm", label: "CRM Overview", desc: "Lead capture, follow-up workflows, and customer pipelines" },
+  { href: "/services/sales-crm", label: "Lead Workflow Automation", desc: "Automate qualification, routing, and follow-up tasks" },
+  { href: "/services/sales-crm", label: "Quote and Customer Flows", desc: "Standardize quoting and customer handoff processes" },
+  { href: "/services/software-development#workflow", label: "Commercial Workflow Automation", desc: "Digitize approvals, reporting, and commercial tasks" },
+  { href: "/services/digital-engineering", label: "Sales and Reporting Dashboards", desc: "Pipeline visibility and decision-ready reporting" },
 ];
 
 const softwareItems: NavItem[] = [
-  { isLabel: true, label: "Business Solutions" },
-  { href: "/services/sales-crm", label: "CRM Systems", desc: "Custom Sales CRM for UK businesses" },
-  { href: "/services/software-development", label: "Custom Business Software", desc: "Bespoke business and enterprise software" },
-  { href: "/services/software-development#erp", label: "ERP Modules", desc: "Operational and finance module delivery" },
-  { href: "/services/software-development#workflow", label: "Workflow Solutions", desc: "Automate approvals, reporting and handoffs" },
-  { href: "/services/software-development#cloud", label: "Cloud Solutions", desc: "AWS, Azure and cloud architecture" },
+  { isLabel: true, label: "Operations, ERP and Supply Chain" },
+  { href: "/services/software-development#erp", label: "ERP Modules", desc: "Operational and finance workflow implementation" },
+  { href: "/services/digital-engineering", label: "Warehouse and Supply Chain", desc: "Inventory, warehouse, and supply chain visibility" },
+  { href: "/services/digital-engineering", label: "Supply Chain Planning", desc: "Supplier flow visibility and procurement coordination" },
+  { href: "/services/software-development#workflow", label: "Operations Workflow Automation", desc: "Digitize approvals, reporting, and process handoffs" },
+  { href: "/services/software-development", label: "System Integration", desc: "Connect CRM, ERP, operations, and reporting systems" },
+  { href: "/services/software-development#cloud", label: "Cloud Architecture", desc: "AWS and Azure architecture for scalable operations" },
 ];
 
 const products = [
@@ -109,7 +109,7 @@ export function SiteHeader() {
               priority
             />
             <span className="hidden text-[10px] font-medium uppercase tracking-widest text-white/50 sm:block">
-              Engineering Services · Digital Solutions · UK Nationwide
+              CRM · ERP · Supply Chain · IoT · Web Apps · UK Nationwide
             </span>
           </Link>
           <div className="flex items-center gap-3">
@@ -141,16 +141,13 @@ export function SiteHeader() {
         {/* Desktop nav */}
         <nav className="hidden items-center justify-between gap-x-1 py-2 lg:flex">
           <div className="flex items-center gap-x-1">
-            <DropdownMenu label="Industry 4.0" href="/services/iot-solutions" items={iotItems} />
-            <DropdownMenu label="Engineering" href="/services" items={engineeringItems} />
-            <DropdownMenu label="Digital" href="/services/digital-engineering" items={automationItems} />
-            <DropdownMenu label="Business" href="/services/software-development" items={softwareItems} />
-            <DropdownMenu label="Solutions" href="/products" items={products} />
+            <DropdownMenu label="CRM" href="/services/sales-crm" items={automationItems} />
+            <DropdownMenu label="ERP & Supply Chain" href="/services/software-development#erp" items={softwareItems} />
+            <DropdownMenu label="IoT" href="/services/iot-solutions" items={iotItems} />
+            <DropdownMenu label="Web Apps" href="/services/web-app-development" items={webAppItems} />
+            <DropdownMenu label="Products" href="/products" items={products} />
             <Link href="/industries" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Industries
-            </Link>
-            <Link href="/engineering-case-studies" className="px-2 py-1 text-xs text-white/70 hover:text-white">
-              Engineering Case Studies
             </Link>
             <Link href="/blog" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Blog
@@ -176,32 +173,10 @@ export function SiteHeader() {
         {mobileOpen && (
           <nav className="border-t border-white/10 py-4 lg:hidden">
             <div className="space-y-1">
-              <p className="px-2 pt-2 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Industry 4.0 & Smart Manufacturing</p>
-              {iotItems.filter((i) => !i.isLabel).map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href!}
-                  onClick={() => setMobileOpen(false)}
-                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Engineering Services</p>
-              {engineeringItems.filter((i) => !i.isLabel).map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href!}
-                  onClick={() => setMobileOpen(false)}
-                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Digital Solutions</p>
+              <p className="px-2 pt-2 text-[10px] font-bold uppercase tracking-widest text-green-400/80">CRM and Sales Systems</p>
               {automationItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
-                  key={`${item.href}-${item.label}`}
+                  key={item.href}
                   href={item.href!}
                   onClick={() => setMobileOpen(false)}
                   className="block px-2 py-2 text-sm text-white/80 hover:text-white"
@@ -209,8 +184,19 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Business Solutions</p>
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Operations, ERP and Supply Chain</p>
               {softwareItems.filter((i) => !i.isLabel).map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href!}
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">IoT and Asset Intelligence</p>
+              {iotItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
                   key={`${item.href}-${item.label}`}
                   href={item.href!}
@@ -220,7 +206,18 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-white/30">Solutions</p>
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Web App Development</p>
+              {webAppItems.filter((i) => !i.isLabel).map((item) => (
+                <Link
+                  key={`${item.href}-${item.label}`}
+                  href={item.href!}
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-white/30">Products</p>
               {products.map((item) => (
                 <Link
                   key={item.href}
@@ -234,7 +231,6 @@ export function SiteHeader() {
               <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-white/30">More</p>
               {[
                 { href: "/industries", label: "Industries" },
-                { href: "/engineering-case-studies", label: "Engineering Case Studies" },
                 { href: "/blog", label: "Blog" },
                 { href: "/about", label: "About" },
                 { href: "/pricing", label: "Pricing" },

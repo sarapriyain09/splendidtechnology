@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Splendid Technology",
   },
   description:
-    "Splendid Technology Ltd — Industry 4.0, Engineering & Software Solutions for UK manufacturers. Smart motor monitoring, predictive maintenance, engineering design, and digital transformation — nationwide.",
+    "Splendid Technology Ltd — Industry 4.0 and digital solutions for UK manufacturers. Smart motor monitoring, predictive maintenance, CRM, ERP, and operational transformation — nationwide.",
   keywords: [
     "industrial iot uk",
     "smart motor monitoring uk",
@@ -48,14 +48,14 @@ export const metadata: Metadata = {
     type: "website",
     title: "Splendid Technology | Industrial IoT & Process Automation",
     description:
-      "Industry 4.0, Engineering & Software Solutions for UK manufacturers. Smart motor monitoring, predictive maintenance, engineering design, and digital transformation — nationwide.",
+      "Industry 4.0 and digital solutions for UK manufacturers. Smart motor monitoring, predictive maintenance, CRM, ERP, and operational transformation — nationwide.",
     url: "/",
   },
   twitter: {
     card: "summary_large_image",
     title: "Splendid Technology | Industrial IoT & Process Automation",
     description:
-      "Industry 4.0, Engineering & Software Solutions for UK manufacturers. Smart motor monitoring, predictive maintenance, engineering design, and digital transformation — nationwide.",
+      "Industry 4.0 and digital solutions for UK manufacturers. Smart motor monitoring, predictive maintenance, CRM, ERP, and operational transformation — nationwide.",
   },
   robots: {
     index: true,

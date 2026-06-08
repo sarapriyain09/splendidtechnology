@@ -3,23 +3,17 @@ import type { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Industrial Automation, Drive Systems & Digital Engineering Solutions | Splendid Technology",
+  title: "Digital Solutions for Engineering and Manufacturing SMEs | Splendid Technology",
   description:
-    "Delivering automation engineering, electrical design, drive systems engineering, CRM and ERP solutions for manufacturing, energy, material handling and industrial sectors.",
+    "Splendid Technology helps UK engineering and manufacturing SMEs digitize CRM, operations, ERP and supply chain workflows, IoT assets, and web app systems.",
   keywords: [
-    "industrial iot uk",
+    "engineering digitalization uk",
+    "manufacturing digital transformation uk",
+    "crm erp iot uk",
+    "supply chain digitalisation uk",
+    "web app development uk",
     "predictive maintenance uk",
-    "reliability engineering uk",
-    "condition monitoring uk",
-    "smart motor monitoring uk",
-    "cad design uk",
-    "fea analysis uk",
-    "engineering design leicester",
-    "manufacturing solutions uk",
-    "reverse engineering uk",
-    "crm software uk",
-    "business software development leicester",
-    "digital transformation manufacturer uk",
+    "digital solutions for engineering businesses",
     "splendid technology",
   ],
   alternates: {
@@ -27,126 +21,151 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Splendid Technology | Industry 4.0, Engineering & Software Solutions",
+    title: "Digital Solutions for Engineering and Manufacturing Businesses",
     description:
-      "Industry 4.0 & Smart Manufacturing, Engineering & Product Development, Digital Transformation & Automation, and Software Solutions for UK manufacturers.",
+      "CRM, ERP, Supply Chain, IoT, AI, and web app development to improve decisions, reduce downtime, and scale operations.",
     url: "https://www.splendidtechnology.co.uk/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Splendid Technology | Industry 4.0, Engineering & Software Solutions",
+    title: "Digital Solutions for Engineering and Manufacturing Businesses",
     description:
-      "Industry 4.0 & Smart Manufacturing, Engineering & Product Development, Digital Transformation & Automation, and Software Solutions for UK manufacturers.",
+      "CRM, ERP, Supply Chain, IoT, AI, and web app development for UK engineering and manufacturing SMEs.",
   },
 };
 
 const solutions = [
   {
-    title: "Automation Engineering",
+    title: "Sales & Customer Systems",
     description:
-      "PLC programming, SCADA and HMI development, control system design, FAT support, commissioning, and safety systems.",
-    href: "/services/automation-engineering",
-    icon: "⚙️",
-    tag: "Automation",
+      "CRM implementation, lead capture, pipeline workflows, customer management, and commercial dashboards.",
+    href: "/services/sales-crm",
+    icon: "📈",
+    tag: "CRM",
     highlight: true,
   },
   {
-    title: "Drive Systems Engineering",
+    title: "Operations, ERP & Supply Chain",
     description:
-      "LV and MV AC drives, DC drives, common DC bus architecture, AFE systems, and protection coordination.",
-    href: "/services/drive-systems-engineering",
-    icon: "⚡",
-    tag: "Drives",
+      "Job tracking, inventory visibility, warehouse management, supply chain workflows, approvals, and ERP integration.",
+    href: "/services/software-development#erp",
+    icon: "🧩",
+    tag: "ERP/SCM",
     highlight: true,
   },
   {
-    title: "Electrical Engineering",
+    title: "IoT & Asset Intelligence",
     description:
-      "Detailed engineering, single line diagrams, I/O lists, panel design, cable schedules, and protection studies.",
-    href: "/services/electrical-engineering",
-    icon: "🔌",
-    tag: "Electrical",
+      "Condition monitoring, edge devices, telemetry dashboards, predictive alerts, and maintenance planning.",
+    href: "/services/iot-solutions",
+    icon: "📡",
+    tag: "IoT",
     highlight: true,
   },
   {
-    title: "Digital Engineering",
+    title: "Web App Development",
     description:
-      "CRM solutions, ERP solutions, warehouse management systems, and supply chain digitalisation for UK industry.",
-    href: "/services/digital-engineering",
+      "Customer portals, internal tools, workflow apps, and full-stack systems that support growth.",
+    href: "/services/web-app-development",
     icon: "💻",
-    tag: "Digital",
+    tag: "Web Apps",
     highlight: true,
   },
 ];
 
 const benefits = [
-  { icon: "⚙️", title: "PLC, SCADA and HMI Delivery", body: "Automation engineering services for new systems, upgrades, and production reliability improvements." },
-  { icon: "⚡", title: "Drive Systems Expertise", body: "LV and MV drive engineering including DC drives, AFE systems, and common DC bus architecture." },
-  { icon: "🔌", title: "Electrical Engineering Outputs", body: "SLDs, I/O lists, panel design, cable schedules, and protection studies built for project delivery." },
-  { icon: "🔩", title: "Mechanical Engineering Support", body: "CAD, FEA, reverse engineering, and prototyping for practical design and manufacturing execution." },
-  { icon: "📊", title: "Digital Engineering Platforms", body: "CRM, ERP, WMS, and supply chain digitalisation with operational dashboards and workflows." },
-  { icon: "💻", title: "Integrated Delivery Approach", body: "Controls, drives, electrical, mechanical, and digital systems delivered by one coordinated team." },
+  {
+    icon: "⏱️",
+    title: "Faster Commercial Response",
+    body: "Digitized CRM and quote workflows reduce lead follow-up lag and improve conversion speed.",
+  },
+  {
+    icon: "🏭",
+    title: "Connected Operations",
+    body: "Job, inventory, warehouse, and reporting workflows stay aligned across teams and systems.",
+  },
+  {
+    icon: "🔧",
+    title: "Reduced Downtime",
+    body: "Asset telemetry and predictive maintenance workflows improve reliability planning and execution.",
+  },
+  {
+    icon: "📊",
+    title: "Decision-Ready Data",
+    body: "Unified dashboards provide actionable KPIs for sales, operations, and engineering leaders.",
+  },
+  {
+    icon: "🤝",
+    title: "Implementation-Led Delivery",
+    body: "Each phase is scoped for practical rollout, team adoption, and measurable business impact.",
+  },
+  {
+    icon: "📈",
+    title: "Scalable Growth Platform",
+    body: "Start with one high-impact workflow, then expand into a connected digital operating model.",
+  },
 ];
 
 const detailedScope = [
   {
-    title: "Automation Engineering",
-    href: "/services/automation-engineering",
+    title: "CRM and Sales Systems",
+    href: "/services/sales-crm",
     items: [
-      "PLC programming",
-      "SCADA and HMI development",
-      "Control system design",
-      "FAT and commissioning support",
-      "Industrial network architecture",
-      "Safety systems",
+      "CRM implementation and migration",
+      "Lead capture and pipeline workflows",
+      "Quote and customer process automation",
+      "Sales dashboarding and reporting",
+      "Follow-up automation",
+      "Commercial data standardization",
     ],
   },
   {
-    title: "Drive Systems Engineering",
-    href: "/services/drive-systems-engineering",
+    title: "Operations, ERP and Supply Chain",
+    href: "/services/software-development#erp",
     items: [
-      "LV and MV AC drives",
-      "DC drives",
-      "Common DC bus systems",
-      "AFE rectifiers",
-      "Soft starters and servo drives",
-      "Renewable energy converters",
-    ],
-  },
-  {
-    title: "Electrical Engineering",
-    href: "/services/electrical-engineering",
-    items: [
-      "Detailed engineering",
-      "Single line diagrams",
-      "I/O lists",
-      "Panel design",
-      "Cable schedules",
-      "Protection studies",
-    ],
-  },
-  {
-    title: "Mechanical Engineering",
-    href: "/services/mechanical-engineering",
-    items: [
-      "CAD design",
-      "Manufacturing drawings",
-      "FEA and simulation",
-      "Reverse engineering",
-      "Rapid prototyping",
-      "DFM support",
-    ],
-  },
-  {
-    title: "Digital Engineering",
-    href: "/services/digital-engineering",
-    items: [
-      "CRM solutions",
-      "ERP solutions",
-      "Warehouse management systems",
-      "Supply chain digitalisation",
-      "Workflow automation",
+      "Job and work-order tracking",
+      "Inventory and warehouse workflows",
+      "Supply chain visibility and planning",
+      "ERP modules and integrations",
+      "Approval workflow automation",
       "Operational dashboards",
+      "Supplier and procurement workflows",
+    ],
+  },
+  {
+    title: "IoT and Asset Intelligence",
+    href: "/services/iot-solutions",
+    items: [
+      "Condition monitoring systems",
+      "Raspberry Pi and edge deployments",
+      "Asset telemetry dashboards",
+      "Predictive maintenance workflows",
+      "Alerting and escalation logic",
+      "Reliability performance reporting",
+    ],
+  },
+  {
+    title: "Web App Development",
+    href: "/services/web-app-development",
+    items: [
+      "Custom web application development",
+      "Customer and partner portals",
+      "Internal workflow apps",
+      "API integration and automation",
+      "SaaS product development",
+      "Post-launch maintenance and support",
+    ],
+  },
+  {
+    title: "Advisory and Implementation",
+    href: "/contact",
+    items: [
+      "Digitalization assessment",
+      "Systems architecture and roadmap",
+      "Pilot-to-rollout execution",
+      "Integration planning",
+      "Adoption and enablement",
+      "Managed optimization support",
     ],
   },
 ];
@@ -162,28 +181,27 @@ export default function Home() {
         <div className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="inline-block rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-green-400">
-              Splendid Technology Ltd &mdash; Leicester, UK
+              Engineering Digitalization for UK SMEs
             </p>
             <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Industrial Automation, Drive Systems &amp; Digital Engineering Solutions
+              Digital Solutions for Engineering and Manufacturing Businesses
             </h1>
             <p className="mt-5 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-              Delivering automation engineering, electrical design, drive systems engineering,
-              CRM and ERP solutions for manufacturing, energy, material handling and
-              industrial sectors across the UK.
+              CRM, ERP, Supply Chain, IoT, AI, and web app development to improve decisions,
+              reduce downtime, and scale operations.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href="/services"
+                href="/contact"
                 className="inline-flex items-center justify-center rounded-lg bg-green-600 px-7 py-3 font-bold text-white transition-colors hover:bg-green-700"
               >
-                Explore Services
+                Book a Digitalization Assessment
               </Link>
               <Link
-                href="/contact"
+                href="/services"
                 className="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-3 font-bold text-white transition-colors hover:bg-white/10"
               >
-                Book a Free Consultation
+                Explore Solutions
               </Link>
             </div>
           </div>
@@ -193,10 +211,10 @@ export default function Home() {
       {/* ── Solutions Grid ── */}
       <section id="solutions" className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Specialist Engineering Services for UK Industry</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">One Connected Digital Layer Across Sales, Operations, and Assets</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Structured around what buyers search for: automation engineering, drive systems,
-            electrical engineering, mechanical delivery, and digital engineering projects.
+            We design and implement practical systems that connect commercial workflows,
+            operations data, IoT telemetry, and web applications in one environment.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {solutions.map((s) => (
@@ -236,11 +254,11 @@ export default function Home() {
       <section className="bg-[#0b1f3a] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl">
           <h2 className="text-center text-3xl font-bold text-white">
-            Detailed Engineering Scope for Industrial Projects
+            Business Outcomes, Not Technical Vanity Metrics
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-center text-sm text-white/60">
-            We do not position as generic engineering services. We deliver specialist scopes
-            clients can search, evaluate, and procure with confidence.
+            Every engagement is designed to improve commercial speed, operational visibility,
+            reliability, and decision quality.
           </p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {benefits.map((b) => (
@@ -259,10 +277,9 @@ export default function Home() {
       {/* ── Expanded Engineering Scope ── */}
       <section className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Expanded Service Scope</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Digitalization Service Taxonomy</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Five specialist lines with detailed deliverables for manufacturing, energy,
-            material handling, and wider industrial sectors.
+            Five practical service categories engineered for manufacturing and industrial SMEs.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {detailedScope.map((scope) => (
@@ -291,21 +308,20 @@ export default function Home() {
           <div className="rounded-2xl bg-[#f7f7f7] p-8 lg:p-10">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-xl">
-                <p className="text-xs font-bold uppercase tracking-widest text-[#0b1f3a]/50">Digital Transformation &amp; Automation</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-[#0b1f3a]/50">Differentiation</p>
                 <h2 className="mt-2 text-2xl font-bold text-[#0b1f3a]">
-                  Automate, Digitalise &amp; Connect Your Operations
+                  Practical Systems, Clear Outcomes, and Phased Rollout.
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-black/65">
-                  Beyond hardware monitoring — we digitalise and automate the business processes
-                  around your operations. From workflow automation and data capture to
-                  management dashboards and system integration. All connected. All measurable.
+                  We focus on connected digital workflows that deliver visible business impact.
+                  Start with one high-impact system and expand through measurable rollout phases.
                 </p>
                 <ul className="mt-5 space-y-2">
                   {[
-                    "Automated maintenance reports & alerts",
-                    "Workflow automation & digital forms",
-                    "Data analytics & KPI dashboards",
-                    "ERP, CRM & IoT system integration",
+                    "Connected CRM, ERP, IoT, and reporting",
+                    "Phased rollout model with measurable outcomes",
+                    "Designed for SME budgets and operational realities",
+                    "Implementation support from discovery through adoption",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-black/70">
                       <span className="mt-0.5 font-bold text-green-600">✔</span>
@@ -315,19 +331,19 @@ export default function Home() {
                 </ul>
                 <div className="mt-6">
                   <Link
-                    href="/services/software-development"
+                    href="/contact"
                     className="inline-flex items-center justify-center rounded-lg bg-[#0b1f3a] px-6 py-3 font-bold text-white transition-colors hover:bg-[#0b3d91]"
                   >
-                    Explore Digital Transformation
+                    Get Your 14-Day Roadmap
                   </Link>
                 </div>
               </div>
               <div className="grid w-full max-w-xs grid-cols-1 gap-3 lg:w-auto">
                 {[
-                  { icon: "⚙️", label: "Process Automation" },
-                  { icon: "📊", label: "Data Analytics" },
-                  { icon: "🔗", label: "System Integration" },
-                  { icon: "📱", label: "Digital Workflows" },
+                  { icon: "📈", label: "CRM & Sales" },
+                  { icon: "🧩", label: "ERP & Operations" },
+                  { icon: "📡", label: "IoT & Assets" },
+                  { icon: "💻", label: "Web Apps" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3 rounded-xl border border-black/10 bg-white px-4 py-3">
                     <span className="text-xl">{item.icon}</span>
@@ -348,10 +364,10 @@ export default function Home() {
           </h2>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { heading: "Engineering Technology Partner", body: "Not a web agency — an engineering technology company with 25+ years of deep industrial IoT and manufacturing expertise." },
-              { heading: "Five Engineering Service Lines", body: "Automation Engineering, Drive Systems Engineering, Electrical Engineering, Mechanical Engineering, and Digital Engineering." },
-              { heading: "UK-Based & Reliable", body: "Leicester-based team. On-site pilots, local support, and end-to-end project delivery across the UK." },
-              { heading: "Results-Driven", body: "Every engagement is measured by reduced downtime, lower manufacturing cost, and better operational data." },
+              { heading: "Outcome-Led Delivery", body: "We prioritize measurable business outcomes over isolated technical deliverables." },
+              { heading: "Cross-Functional Digitalization", body: "Sales, operations, asset telemetry, and engineering workflows connected in one model." },
+              { heading: "Engineering-Embedded", body: "Automation, electrical, mechanical, and reliability expertise remains part of every implementation." },
+              { heading: "SME-Focused Execution", body: "Phased deployment model aligned to practical budgets, team capacity, and rapid value realization." },
             ].map((item) => (
               <div key={item.heading} className="rounded-xl border border-black/10 bg-white p-6">
                 <h3 className="font-bold text-[#0b1f3a]">{item.heading}</h3>
@@ -407,23 +423,23 @@ export default function Home() {
       {/* ── Contact CTA ── */}
       <section id="contact" className="bg-[#0b1f3a] py-16 text-center text-white">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold">Ready to Transform Your Operations?</h2>
+          <h2 className="text-3xl font-bold">Get a Digitalization Roadmap in 14 Days</h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-white/75">
-            Book a free consultation. We assess your challenges and show you exactly
-            what our specialist engineering scope can do for your business.
+            We assess your current systems, identify top bottlenecks, and propose a phased
+            implementation plan with clear ROI checkpoints.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-lg bg-green-600 px-8 py-3 font-bold text-white transition-colors hover:bg-green-700"
             >
-              Book a Free Pilot
+              Book a Digitalization Assessment
             </Link>
             <Link
-              href="/industrial-iot"
+              href="/services"
               className="inline-flex items-center justify-center rounded-lg border border-white/30 px-8 py-3 font-bold text-white transition-colors hover:bg-white/10"
             >
-              Explore Solutions
+              View Solution Categories
             </Link>
           </div>
           <p className="mt-6 text-sm text-white/50">

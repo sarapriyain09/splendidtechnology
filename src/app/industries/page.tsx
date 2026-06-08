@@ -4,12 +4,13 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Industries We Serve | Manufacturing, Engineering, SME | Splendid Technology",
   description:
-    "Splendid Technology serves UK manufacturers, engineering businesses, industrial SMEs, and professional services firms — delivering web apps, IoT solutions, reliability engineering, and business software.",
+    "Splendid Technology serves UK manufacturers, engineering businesses, industrial SMEs, and professional services firms — delivering web apps, IoT solutions, supply chain systems, and business software.",
   keywords: [
     "industrial technology solutions uk",
     "manufacturing software uk",
     "engineering business software uk",
     "sme digital transformation uk",
+    "supply chain digitalisation uk",
     "industrial iot manufacturing uk",
     "reliability engineering manufacturing uk",
   ],
@@ -20,8 +21,8 @@ const industries = [
   {
     icon: "🏭",
     title: "Manufacturing",
-    desc: "Process and discrete manufacturers across the UK — from food & beverage to precision engineering. We deliver motor monitoring, predictive maintenance, production dashboards, and custom manufacturing software.",
-    services: ["IoT & Condition Monitoring", "Reliability Engineering", "Splendid Monitor", "Custom Software"],
+    desc: "Process and discrete manufacturers across the UK — from food & beverage to precision engineering. We deliver motor monitoring, predictive maintenance, production dashboards, supply chain visibility, and custom manufacturing software.",
+    services: ["IoT & Condition Monitoring", "Supply Chain Visibility", "Splendid Monitor", "Custom Software"],
   },
   {
     icon: "⚡",
@@ -32,14 +33,14 @@ const industries = [
   {
     icon: "🔧",
     title: "Maintenance & Engineering Contractors",
-    desc: "MRO contractors, engineering service companies, and facilities management businesses. MTBF tracking, job costing, asset management, and mobile field tools.",
-    services: ["Splendid Reliability", "Job Costing Software", "Mobile Field Tools", "Splendid Asset Manager"],
+    desc: "MRO contractors, engineering service companies, and facilities management businesses. MTBF tracking, job costing, asset management, supply chain coordination, and mobile field tools.",
+    services: ["Splendid Reliability", "Job Costing Software", "Supply Chain Coordination", "Splendid Asset Manager"],
   },
   {
     icon: "🏗️",
     title: "Construction & Infrastructure",
-    desc: "Construction firms and civil engineering businesses needing project accounting, plant management, and compliance tracking for large infrastructure projects.",
-    services: ["Splendid Accounting", "Asset Management", "Project Tracking", "Compliance Tools"],
+    desc: "Construction firms and civil engineering businesses needing project accounting, plant management, supply chain planning, and compliance tracking for large infrastructure projects.",
+    services: ["Splendid Accounting", "Asset Management", "Supply Chain Planning", "Compliance Tools"],
   },
   {
     icon: "💼",
@@ -70,7 +71,7 @@ export default function IndustriesPage() {
           </h1>
           <p className="mt-4 max-w-2xl text-pretty text-lg leading-7 text-white/80">
             We work with manufacturers, engineering contractors, utilities, and SMEs across
-            the UK — delivering web applications, IoT monitoring, reliability engineering,
+            the UK — delivering web applications, IoT monitoring, supply chain systems,
             and business software sized for your industry.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">

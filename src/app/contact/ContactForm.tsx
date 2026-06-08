@@ -33,7 +33,7 @@ export function ContactForm() {
       }
 
       setState("success");
-      setMessage("Thanks — we’ll get back to you shortly.");
+      setMessage("Thanks. We will review your request and reply with next steps shortly.");
     } catch (error) {
       setState("error");
       setMessage(error instanceof Error ? error.message : "Something went wrong.");
@@ -79,7 +79,7 @@ export function ContactForm() {
           disabled={state === "submitting"}
           className="inline-flex h-11 items-center justify-center rounded-full bg-black px-5 text-sm font-medium text-white disabled:opacity-60"
         >
-          {state === "submitting" ? "Sending…" : "Send"}
+          {state === "submitting" ? "Sending..." : "Request Assessment"}
         </button>
         {message ? (
           <p className="text-sm text-black/70" role={state === "error" ? "alert" : undefined}>

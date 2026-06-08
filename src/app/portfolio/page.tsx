@@ -282,8 +282,8 @@ export default function PortfolioPage() {
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-600">
             These projects are presented without customer-identifying details,
-            while still showing depth of engineering capability in rotating
-            machinery, structural dynamics, and thermal analysis.
+            while showing our approach to complex analysis, diagnostics,
+            and decision support in industrial environments.
           </p>
         </div>
 

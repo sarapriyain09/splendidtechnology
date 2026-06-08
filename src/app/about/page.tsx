@@ -3,9 +3,9 @@ import Link from "next/link";
 import QRCode from "react-qr-code";
 
 export const metadata: Metadata = {
-  title: "About Splendid Technology | Automation, Drive, Electrical and Digital Engineering",
+  title: "About Splendid Technology | Digital Solutions for UK SMEs",
   description:
-    "Splendid Technology delivers specialist engineering services across Automation Engineering, Drive Systems Engineering, Electrical Engineering, Mechanical Engineering, and Digital Engineering for UK industry.",
+    "Splendid Technology helps UK engineering and manufacturing SMEs digitize sales, operations, assets, and workflows through practical software systems.",
   alternates: {
     canonical: "/about",
   },
@@ -13,92 +13,92 @@ export const metadata: Metadata = {
 
 const pillars = [
   {
-    title: "Automation Engineering",
-    desc: "PLC programming, SCADA and HMI development, control system design, FAT support, commissioning, and network architecture for industrial systems.",
-    href: "/services/automation-engineering",
+    title: "CRM and Sales Systems",
+    desc: "Lead capture, quote workflows, and customer management systems that improve conversion and follow-up speed.",
+    href: "/services/sales-crm",
   },
   {
-    title: "Drive Systems Engineering",
-    desc: "LV and MV AC drives, DC drives, AFE systems, common DC bus architecture, protection coordination, and integration support.",
-    href: "/services/drive-systems-engineering",
+    title: "Operations and ERP",
+    desc: "Connected operational workflows across jobs, inventory, warehouse movement, and performance reporting.",
+    href: "/services/software-development#erp",
   },
   {
-    title: "Electrical Engineering",
-    desc: "Detailed engineering outputs including single line diagrams, I/O lists, panel design, cable schedules, and protection studies.",
-    href: "/services/electrical-engineering",
+    title: "IoT and Asset Intelligence",
+    desc: "Condition monitoring and telemetry systems that improve reliability planning and visibility.",
+    href: "/services/iot-solutions",
   },
   {
-    title: "Mechanical Engineering",
-    desc: "CAD design, FEA, reverse engineering, rapid prototyping, and manufacturing documentation for practical project delivery.",
-    href: "/services/mechanical-engineering",
-  },
-  {
-    title: "Digital Engineering",
-    desc: "CRM and ERP solutions, warehouse management systems, supply chain digitalisation, and operational workflow automation.",
+    title: "Digital Intelligence",
+    desc: "Data workflows, automation, dashboards, and AI-assisted processes for better decision-making.",
     href: "/services/digital-engineering",
+  },
+  {
+    title: "Advisory and Implementation",
+    desc: "Start with an assessment, then roll out high-impact systems in practical, measurable phases.",
+    href: "/contact",
   },
 ];
 
 const detailedScope = [
   {
-    heading: "Automation Engineering",
+    heading: "CRM and Sales Systems",
     points: [
-      "PLC programming",
-      "SCADA and HMI development",
-      "Control system design",
-      "FAT and commissioning support",
-      "Network architecture",
-      "Safety systems",
+      "CRM implementation and migration",
+      "Lead capture and follow-up workflows",
+      "Quote and customer lifecycle tracking",
+      "Commercial process automation",
+      "Sales reporting dashboards",
+      "Adoption support",
     ],
-    href: "/services/automation-engineering",
+    href: "/services/sales-crm",
   },
   {
-    heading: "Drive Systems Engineering",
+    heading: "Operations and ERP",
     points: [
-      "LV and MV AC drives",
-      "DC drives",
-      "Common DC bus systems",
-      "AFE rectifiers",
-      "Soft starters and servo drives",
-      "Renewable energy converters",
+      "Job and work-order tracking",
+      "Inventory and warehouse workflows",
+      "ERP module integration",
+      "Process and approval automation",
+      "Operational KPI dashboards",
+      "Supplier and procurement flows",
     ],
-    href: "/services/drive-systems-engineering",
+    href: "/services/software-development#erp",
   },
   {
-    heading: "Electrical Engineering",
+    heading: "IoT and Asset Intelligence",
     points: [
-      "Detailed engineering",
-      "Single line diagrams",
-      "I/O lists",
-      "Panel design",
-      "Cable schedules",
-      "Protection studies",
+      "Condition monitoring systems",
+      "Edge device and telemetry setup",
+      "Asset performance dashboards",
+      "Alerting and escalation rules",
+      "Predictive maintenance workflows",
+      "Reliability reporting",
     ],
-    href: "/services/electrical-engineering",
+    href: "/services/iot-solutions",
   },
   {
-    heading: "Mechanical Engineering",
+    heading: "Digital Intelligence",
     points: [
-      "CAD and design documentation",
-      "FEA and simulation",
-      "Reverse engineering",
-      "Rapid prototyping",
-      "DFM reviews",
-      "Supplier-ready packs",
-    ],
-    href: "/services/mechanical-engineering",
-  },
-  {
-    heading: "Digital Engineering",
-    points: [
-      "CRM solutions",
-      "ERP solutions",
-      "Warehouse management systems",
-      "Supply chain digitalisation",
-      "Workflow automation",
-      "Management dashboards",
+      "Data and document workflows",
+      "Design and reporting automation",
+      "Reliability analytics",
+      "AI-assisted operational tasks",
+      "Cross-team visibility",
+      "Decision support dashboards",
     ],
     href: "/services/digital-engineering",
+  },
+  {
+    heading: "Advisory and Implementation",
+    points: [
+      "Digitalization assessment",
+      "Roadmap and sequencing",
+      "Pilot-to-rollout planning",
+      "Integration strategy",
+      "Team enablement",
+      "Managed optimization",
+    ],
+    href: "/contact",
   },
 ];
 
@@ -112,14 +112,12 @@ export default function AboutPage() {
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">About Us</p>
           <h1 className="text-4xl font-bold leading-tight sm:text-5xl">Splendid Technology Ltd</h1>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
-            An Industrial Technology &amp; Engineering Solutions company serving UK manufacturers nationwide —
-            delivering Automation Engineering, Drive Systems Engineering, Electrical Engineering,
-            Mechanical Engineering, and Digital Engineering solutions for industrial clients.
+            A digital solutions company helping engineering and manufacturing SMEs connect sales,
+            operations, assets, and workflows into one practical operating model.
           </p>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-400">
-            Founded on 25+ years of rotating machinery and industrial systems expertise,
-            we combine deep engineering delivery with practical digital systems that improve
-            reliability, productivity, and operational visibility.
+            We focus on practical implementation, measurable outcomes, and scalable systems
+            that improve reliability, productivity, and operational visibility.
           </p>
         </div>
       </section>
@@ -127,7 +125,7 @@ export default function AboutPage() {
       {/* Service Lines */}
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <h2 className="text-2xl font-bold text-[#0b1f3a]">What We Do</h2>
-        <p className="mt-2 text-sm text-slate-500">Five specialist engineering service lines with detailed delivery scope.</p>
+        <p className="mt-2 text-sm text-slate-500">Five digital solution categories with clear implementation scope.</p>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {pillars.map((pillar) => (
             <Link
@@ -148,7 +146,7 @@ export default function AboutPage() {
       {/* Expanded Scope */}
       <section className="bg-slate-50 py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#0b1f3a]">Expanded Engineering Scope</h2>
+          <h2 className="text-2xl font-bold text-[#0b1f3a]">Expanded Delivery Scope</h2>
           <p className="mt-2 max-w-2xl text-sm text-slate-600">
             Each service line includes concrete deliverables so clients can align technical scope,
             budget, and outcomes before implementation begins.
@@ -181,21 +179,17 @@ export default function AboutPage() {
             <div>
               <h2 className="text-2xl font-bold text-[#0b1f3a]">Our Approach</h2>
               <p className="mt-4 text-sm leading-7 text-slate-600">
-                We focus on practical, engineering-driven solutions rather than generic platforms.
-                Every project starts with understanding the real operational challenge &mdash; then
-                we apply the right engineering and digital solution to solve it, whether that&rsquo;s
-                automation controls, drive systems integration, electrical design outputs,
-                mechanical engineering support, or CRM and ERP implementation.
+                We focus on practical digitalization rather than generic software rollouts.
+                Every project starts with the real operational bottleneck, then maps to the
+                minimum viable system change that creates measurable impact.
               </p>
               <p className="mt-3 text-sm leading-7 text-slate-600">
-                Our team spans electrical engineering, software engineering, and business development
-                &mdash; giving us end-to-end capability from plant-level systems through
-                operational digital platforms used by engineering and management teams.
+                Our delivery model connects commercial, operational, and asset data so teams
+                can make faster decisions with better visibility across the business.
               </p>
               <p className="mt-3 text-sm leading-7 text-slate-600">
-                For industrial clients, we handle <strong>full delivery support</strong> &mdash; scope definition,
-                technical documentation, implementation planning, commissioning support,
-                and ongoing optimisation to keep systems reliable and scalable.
+                We provide <strong>end-to-end support</strong> &mdash; from assessment and roadmap definition
+                through implementation, adoption, and optimization.
               </p>
             </div>
             <div>
@@ -203,12 +197,12 @@ export default function AboutPage() {
               <ul className="mt-4 space-y-3">
                 {[
                   "Rapid discovery and scope definition",
-                  "Practical implementation with no over-engineering",
-                  "Engineering documentation aligned to delivery",
-                  "FAT, SAT and commissioning support",
-                  "Clear technical visibility at every stage",
+                  "Practical implementation with no unnecessary complexity",
+                  "Clear workflow and data ownership",
+                  "Phased rollout with measurable outcomes",
+                  "Visibility at every stage",
                   "Scalable architecture that grows with operations",
-                  "Long-term reliability and optimisation support",
+                  "Long-term optimization support",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
                     <span className="mt-0.5 text-green-500">&#10003;</span>
@@ -252,8 +246,8 @@ export default function AboutPage() {
         <div className="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold">Work with us</h2>
           <p className="mt-3 text-slate-300">
-            Whether you need a web app, an IoT monitoring system, a reliability study, or bespoke
-            software &mdash; we&rsquo;d love to hear about your project.
+            Whether you need CRM, ERP workflows, IoT monitoring, or implementation support,
+            we&rsquo;d love to hear about your project.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link

@@ -10,15 +10,15 @@ export function SiteFooter() {
 
           {/* Pillar 1 */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Industry 4.0 &amp; Smart Manufacturing</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">IoT &amp; Asset Intelligence</h3>
             <ul className="mt-4 space-y-2">
               {[
-                { href: "/services/iot-solutions", label: "Industrial IoT Solutions" },
+                { href: "/services/iot-solutions", label: "IoT Solutions Overview" },
                 { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring" },
                 { href: "/services/iot-solutions#condition-monitoring", label: "Condition Monitoring" },
                 { href: "/industrial-iot/predictive-maintenance", label: "Predictive Maintenance" },
                 { href: "/services/reliability-engineering", label: "Reliability Engineering" },
-                { href: "/proof-of-concept", label: "IoT Proof of Concept" },
+                { href: "/proof-of-concept", label: "Asset Insight Pilot" },
               ].map((l) => (
                 <li key={`${l.href}-${l.label}`}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
@@ -29,16 +29,16 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Automation Engineering */}
+          {/* CRM and Sales */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Automation Engineering</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">CRM &amp; Sales Systems</h3>
             <ul className="mt-4 space-y-2">
               {[
-                { href: "/services/automation-engineering", label: "Automation Engineering Overview" },
-                { href: "/services/automation-engineering", label: "PLC Programming" },
-                { href: "/services/automation-engineering", label: "SCADA & HMI Development" },
-                { href: "/services/automation-engineering", label: "Control System Design" },
-                { href: "/services/automation-engineering", label: "FAT & Commissioning Support" },
+                { href: "/services/sales-crm", label: "CRM Solutions Overview" },
+                { href: "/services/sales-crm", label: "Lead Capture Workflows" },
+                { href: "/services/sales-crm", label: "Follow-Up Automation" },
+                { href: "/services/sales-crm", label: "Quote & Customer Management" },
+                { href: "/services/digital-engineering", label: "Commercial Dashboards" },
               ].map((l) => (
                 <li key={`${l.href}-${l.label}`}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
@@ -49,58 +49,59 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Drive & Electrical */}
+          {/* Operations, ERP and Supply Chain */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Drive &amp; Electrical Engineering</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Operations, ERP &amp; Supply Chain</h3>
             <ul className="mt-4 space-y-2">
               {[
-                { href: "/services/drive-systems-engineering", label: "Drive Systems Engineering" },
-                { href: "/services/drive-systems-engineering", label: "LV & MV AC Drives" },
-                { href: "/services/drive-systems-engineering", label: "DC Drives & AFE Systems" },
-                { href: "/services/electrical-engineering", label: "Electrical Engineering" },
-                { href: "/services/electrical-engineering", label: "SLD, I/O Lists & Panel Design" },
-              ].map((l) => (
-                <li key={`${l.href}-${l.label}`}>
-                  <Link href={l.href} className="text-xs text-white/60 hover:text-white">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Mechanical Engineering */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Mechanical Engineering</h3>
-            <ul className="mt-4 space-y-2">
-              {[
-                { href: "/services/mechanical-engineering", label: "Mechanical Engineering Overview" },
-                { href: "/services/engineering-manufacturing", label: "CAD Design & Drawings" },
-                { href: "/services/engineering-manufacturing#fea", label: "FEA & Structural Analysis" },
-                { href: "/services/engineering-manufacturing#cfd", label: "CFD Analysis" },
-                { href: "/services/engineering-manufacturing#reverse", label: "Reverse Engineering" },
-                { href: "/services/engineering-manufacturing#prototyping", label: "Rapid Prototyping" },
-              ].map((l) => (
-                <li key={`${l.href}-${l.label}`}>
-                  <Link href={l.href} className="text-xs text-white/60 hover:text-white">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Digital Engineering */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Digital Engineering</h3>
-            <ul className="mt-4 space-y-2">
-              {[
-                { href: "/services/digital-engineering", label: "Digital Engineering Overview" },
-                { href: "/services/sales-crm", label: "CRM Solutions" },
-                { href: "/services/software-development#erp", label: "ERP Solutions" },
-                { href: "/services/digital-engineering", label: "Warehouse Management Systems" },
-                { href: "/services/digital-engineering", label: "Supply Chain Digitalisation" },
+                { href: "/services/software-development#erp", label: "ERP Modules" },
+                { href: "/services/digital-engineering", label: "Warehouse Management" },
+                { href: "/services/digital-engineering", label: "Supply Chain Workflows" },
+                { href: "/services/digital-engineering", label: "Supply Chain Planning" },
                 { href: "/services/software-development#workflow", label: "Workflow Automation" },
+                { href: "/services/software-development", label: "System Integration" },
+              ].map((l) => (
+                <li key={`${l.href}-${l.label}`}>
+                  <Link href={l.href} className="text-xs text-white/60 hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Web App Development */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Web App Development</h3>
+            <ul className="mt-4 space-y-2">
+              {[
+                { href: "/services/web-app-development", label: "Web App Development Overview" },
+                { href: "/services/web-app-development", label: "Customer Portals" },
+                { href: "/services/web-app-development", label: "Internal Workflow Apps" },
+                { href: "/services/web-app-development", label: "SaaS Product Development" },
+                { href: "/services/web-app-development", label: "API Integrations" },
+                { href: "/services/web-app-development", label: "Post-Launch Support" },
+              ].map((l) => (
+                <li key={`${l.href}-${l.label}`}>
+                  <Link href={l.href} className="text-xs text-white/60 hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Advisory and Implementation */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Advisory &amp; Implementation</h3>
+            <ul className="mt-4 space-y-2">
+              {[
+                { href: "/contact", label: "Digitalization Assessment" },
+                { href: "/services", label: "Solution Categories" },
+                { href: "/services/sales-crm", label: "CRM Accelerator" },
+                { href: "/services/software-development#erp", label: "Operations Control Starter" },
+                { href: "/services/iot-solutions", label: "Asset Insight Pilot" },
+                { href: "/contact", label: "Book Assessment" },
               ].map((l) => (
                 <li key={`${l.href}-${l.label}`}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
@@ -120,11 +121,11 @@ export function SiteFooter() {
             <div className="max-w-xs">
               <Link href="/" className="flex flex-col leading-tight">
                 <span className="text-base font-bold text-white">Splendid Technology</span>
-                <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">Engineering Technology Partner · UK Nationwide</span>
+                <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">Digital Solutions for Engineering &amp; Manufacturing SMEs · UK Nationwide</span>
               </Link>
               <p className="mt-3 text-xs leading-5 text-white/50">
-                Automation Engineering, Drive Systems Engineering, Electrical Engineering,
-                Mechanical Engineering, and Digital Engineering solutions for UK industry.
+                We help engineering and manufacturing businesses digitize CRM, operations,
+                supply chain, assets, and web workflows through practical software systems.
               </p>
             </div>
 
@@ -145,6 +146,7 @@ export function SiteFooter() {
                   {[
                     { href: "/about", label: "About" },
                     { href: "/blog", label: "Insights & Guides" },
+                    { href: "/services", label: "Solution Categories" },
                     { href: "/contact", label: "Contact Us" },
                   ].map((l) => (
                     <li key={l.href}>
