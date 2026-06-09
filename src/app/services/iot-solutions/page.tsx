@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Industrial IoT & Condition Monitoring Services UK | Splendid Technology",
@@ -69,7 +70,7 @@ export default function IoTSolutionsPage() {
           <p className="mt-4 max-w-2xl text-pretty text-lg leading-7 text-white/80">
             Know what&apos;s happening inside your plant before problems become breakdowns.
             We deploy motor health monitoring, vibration analysis, energy monitoring, and
-            predictive maintenance systems for UK manufacturers.
+            predictive maintenance systems with digital twin capability for UK manufacturers.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
@@ -104,6 +105,26 @@ export default function IoTSolutionsPage() {
                 <p className="mt-2 text-sm leading-6 text-black/60">{s.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Digital twin architecture */}
+      <section className="bg-[#f7f9fc] py-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">AI-Driven Digital Twin Architecture</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-black/60">
+            End-to-end architecture from physical assets and edge devices to AWS cloud services,
+            digital twin modelling, and AI prediction outputs for fault detection and remaining useful life.
+          </p>
+          <div className="mt-8 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
+            <Image
+              src="/images/industrial-iot/dital-twins.png"
+              alt="AI-driven industrial digital twin architecture showing sensors, edge processing, cloud platform, twin model, and AI analytics"
+              width={1536}
+              height={1024}
+              className="h-auto w-full"
+            />
           </div>
         </div>
       </section>

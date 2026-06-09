@@ -62,13 +62,14 @@ const engineeringServiceLines = [
   {
     icon: "📡",
     label: "IoT",
-    title: "IoT and Asset Intelligence",
+    title: "IoT, Digital Twin and Asset Intelligence",
     description:
-      "Connect critical equipment to telemetry, dashboards, and predictive maintenance workflows.",
+      "Connect critical equipment to telemetry, digital twin models, dashboards, and predictive maintenance workflows.",
     bullets: [
       "Condition monitoring systems",
       "Raspberry Pi and edge deployment",
       "Asset telemetry dashboards",
+      "Digital twin modelling and synchronization",
       "Alerting and escalation logic",
       "Predictive maintenance workflows",
       "Reliability performance reporting",
