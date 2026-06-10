@@ -146,6 +146,7 @@ export function SiteFooter() {
                   {[
                     { href: "/about", label: "About" },
                     { href: "/blog", label: "Insights & Guides" },
+                    { href: "/portfolio", label: "Portfolio" },
                     { href: "/services", label: "Solution Categories" },
                     { href: "/contact", label: "Contact Us" },
                   ].map((l) => (
