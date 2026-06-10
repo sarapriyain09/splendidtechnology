@@ -29,6 +29,7 @@ const webAppItems: NavItem[] = [
 const automationItems: NavItem[] = [
   { isLabel: true, label: "CRM and Sales Systems" },
   { href: "/services/sales-crm", label: "CRM Overview", desc: "Lead capture, follow-up workflows, and customer pipelines" },
+  { href: "/services/call-crm", label: "CallCRM", desc: "Route, track, and manage customer calls in one console" },
   { href: "/services/sales-crm", label: "Lead Workflow Automation", desc: "Automate qualification, routing, and follow-up tasks" },
   { href: "/services/sales-crm", label: "Quote and Customer Flows", desc: "Standardize quoting and customer handoff processes" },
   { href: "/services/software-development#workflow", label: "Commercial Workflow Automation", desc: "Digitize approvals, reporting, and commercial tasks" },

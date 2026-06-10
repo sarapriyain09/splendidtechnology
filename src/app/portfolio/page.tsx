@@ -37,7 +37,7 @@ const projects = [
       "Admin controls for teams and dialing workflows",
     ],
     tech: ["Next.js", "Twilio", "CRM Workflow", "Operations Dashboard"],
-    href: "/services/sales-crm",
+    href: "/services/call-crm",
     imageSrc: "/images/projects/callcrm.png",
   },
   {
