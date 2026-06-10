@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -70,6 +71,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-8VJ7HX37V6"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-8VJ7HX37V6');
+          `}
+        </Script>
+      </head>
       <body className={`${roboto.variable} min-h-screen antialiased`}>
         <SiteHeader />
         <main className="w-full">{children}</main>
