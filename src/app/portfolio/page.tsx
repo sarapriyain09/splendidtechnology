@@ -2,12 +2,28 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Portfolio & Case Studies | Splendid Technology",
+  title: "Portfolio | Splendid Technology",
   description:
-    "Anonymized engineering case studies and real web platforms delivered by Splendid Technology, from dynamic analysis and CFD to AI-powered applications.",
+    "Real web platforms delivered by Splendid Technology, from customer call management systems to AI-powered applications.",
 };
 
 const projects = [
+  {
+    category: "Sales CRM Platform",
+    title: "Splendid CRM Tool",
+    summary:
+      "A sales CRM platform for lead capture, pipeline tracking, quote workflows, and follow-up automation so teams can convert more enquiries with clear visibility.",
+    deliverables: [
+      "Lead capture and qualification workflows",
+      "Pipeline and deal-stage dashboard",
+      "Quote and follow-up task automation",
+      "Role-based access and team visibility",
+      "Reporting views for conversion tracking",
+    ],
+    tech: ["Next.js", "CRM Workflow", "Sales Automation", "Dashboard"],
+    href: "/services/sales-crm",
+    imageSrc: "/images/projects/CRM.png",
+  },
   {
     category: "Customer Call Management Platform",
     title: "CallCRM Operations Console",
@@ -71,132 +87,6 @@ const projects = [
     tech: ["Web App", "AI Integration", "Chat UI", "Subscription Billing"],
     href: "https://www.codlearn.com/",
     imageSrc: "/images/projects/codlearn.png",
-  },
-];
-
-const engineeringCaseStudies = [
-  {
-    category: "Structural Dynamics",
-    title: "Generator Frame Dynamic Analysis",
-    challenge:
-      "A manufacturer required verification of a generator support structure to ensure operating frequencies would not coincide with structural natural frequencies.",
-    scope: [
-      "Finite element model development of generator frame",
-      "Modal analysis for natural frequencies and mode shapes",
-      "Harmonic response analysis",
-      "Vibration behaviour evaluation under operating conditions",
-    ],
-    activities: [
-      "Structural modelling",
-      "Boundary condition definition",
-      "Modal analysis",
-      "Harmonic response simulation",
-      "Engineering assessment",
-    ],
-    outcome: [
-      "Identified critical vibration modes",
-      "Verified structural suitability for operating conditions",
-      "Provided recommendations to minimise resonance risk",
-    ],
-    expertise: [
-      "Dynamic FEA",
-      "Modal Analysis",
-      "Harmonic Response Analysis",
-      "Rotating Equipment Engineering",
-    ],
-    imageSrc: null,
-  },
-  {
-    category: "Rotor Dynamics",
-    title: "Rotor Dynamic Analysis of High-Speed Machinery",
-    challenge:
-      "A rotating equipment manufacturer required evaluation of rotor dynamic behaviour for a machine and associated drive train.",
-    scope: [
-      "Rotor lateral critical speed analysis",
-      "Drive train dynamic assessment",
-      "Stability evaluation",
-      "Operating speed verification",
-    ],
-    activities: [
-      "Rotor modelling",
-      "Bearing system representation",
-      "Critical speed determination",
-      "Campbell diagram generation",
-      "Stability assessment",
-    ],
-    outcome: [
-      "Identified critical speed locations",
-      "Confirmed operating speed separation margins",
-      "Reduced risk of vibration-related operational issues",
-    ],
-    expertise: [
-      "Rotor Dynamics",
-      "Rotordynamic Simulation",
-      "Critical Speed Analysis",
-      "Drive Train Engineering",
-    ],
-    imageSrc: null,
-  },
-  {
-    category: "CFD & Thermal",
-    title: "CFD Analysis of Flywheel Energy Storage System",
-    challenge:
-      "A development team required prediction of thermal behaviour and aerodynamic losses within a flywheel system.",
-    scope: [
-      "CFD model development",
-      "Thermal analysis",
-      "Loss prediction",
-      "Temperature rise assessment",
-    ],
-    activities: [
-      "Geometry preparation",
-      "CFD simulation",
-      "Thermal performance evaluation",
-      "Loss mechanism assessment",
-    ],
-    outcome: [
-      "Predicted operating temperature profile",
-      "Quantified system losses",
-      "Supported design optimisation activities",
-    ],
-    expertise: [
-      "CFD Analysis",
-      "Thermal Engineering",
-      "Energy Storage Systems",
-      "Performance Optimisation",
-    ],
-    imageSrc: null,
-  },
-  {
-    category: "Reverse Engineering",
-    title: "Reverse Engineering of Legacy Components",
-    challenge:
-      "A customer required replacement of legacy equipment components where original CAD models and drawings were unavailable.",
-    scope: [
-      "3D scanning of existing components",
-      "CAD reconstruction",
-      "Manufacturing drawing generation",
-      "Design validation",
-    ],
-    activities: [
-      "Laser/3D scanning",
-      "Point cloud processing",
-      "Surface reconstruction",
-      "CAD model development",
-      "Drawing package creation",
-    ],
-    outcome: [
-      "Accurate digital model of legacy component",
-      "Manufacturing-ready documentation",
-      "Reduced downtime and replacement lead time",
-    ],
-    expertise: [
-      "Reverse Engineering",
-      "3D Scanning",
-      "CAD Reconstruction",
-      "Legacy Equipment Support",
-    ],
-    imageSrc: null,
   },
 ];
 
@@ -284,154 +174,6 @@ export default function PortfolioPage() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Advanced Engineering Case Studies */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-[#0b3d91]">
-            Advanced Engineering Analysis
-          </p>
-          <h2 className="text-3xl font-bold text-[#0b1f3a] sm:text-4xl">
-            Anonymized Case Studies
-          </h2>
-          <p className="mt-4 text-base leading-7 text-slate-600">
-            These projects are presented without customer-identifying details,
-            while showing our approach to complex analysis, diagnostics,
-            and decision support in industrial environments.
-          </p>
-        </div>
-
-        <div className="mt-12 space-y-12">
-          {engineeringCaseStudies.map((study) => (
-            <article
-              key={study.title}
-              className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
-            >
-              <div className="grid gap-0 lg:grid-cols-5">
-                <div className="relative min-h-56 border-b border-slate-200 bg-slate-50 lg:col-span-2 lg:border-b-0 lg:border-r">
-                  {study.imageSrc ? (
-                    <Image
-                      src={study.imageSrc}
-                      alt={`${study.title} visual`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 40vw"
-                    />
-                  ) : (
-                    <div className="flex h-full items-center justify-center px-6 text-center text-sm text-slate-500">
-                      Image placeholder. Add a relevant project visual when
-                      available.
-                    </div>
-                  )}
-                </div>
-
-                <div className="p-6 sm:p-8 lg:col-span-3">
-                  <span className="inline-block rounded-full bg-[#e8eef9] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#0b3d91]">
-                    {study.category}
-                  </span>
-                  <h3 className="mt-3 text-2xl font-bold text-[#0b1f3a]">
-                    {study.title}
-                  </h3>
-
-                  <div className="mt-5 space-y-4 text-sm leading-6 text-slate-700">
-                    <div>
-                      <p className="font-semibold text-slate-900">Challenge</p>
-                      <p>{study.challenge}</p>
-                    </div>
-
-                    <div>
-                      <p className="font-semibold text-slate-900">Scope</p>
-                      <ul className="mt-1 space-y-1">
-                        {study.scope.map((item) => (
-                          <li key={item} className="flex items-start gap-2">
-                            <span className="mt-0.5 text-[#0b3d91]">&#8226;</span>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <p className="font-semibold text-slate-900">Activities</p>
-                      <ul className="mt-1 space-y-1">
-                        {study.activities.map((item) => (
-                          <li key={item} className="flex items-start gap-2">
-                            <span className="mt-0.5 text-[#0b3d91]">&#8226;</span>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <p className="font-semibold text-slate-900">Outcome</p>
-                      <ul className="mt-1 space-y-1">
-                        {study.outcome.map((item) => (
-                          <li key={item} className="flex items-start gap-2">
-                            <span className="mt-0.5 text-[#16a34a]">&#10003;</span>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {study.expertise.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-12 rounded-2xl border border-[#d8e2f3] bg-[#f7faff] p-6 sm:p-8">
-          <h3 className="text-xl font-bold text-[#0b1f3a]">Specialist Service Areas</h3>
-          <p className="mt-2 text-sm leading-6 text-slate-700">
-            Our engineering portfolio focuses on high-value analysis work that
-            supports reliability, performance, and risk reduction in industrial
-            systems.
-          </p>
-
-          <div className="mt-5 grid gap-5 sm:grid-cols-2">
-            <div>
-              <p className="text-sm font-semibold text-[#0b3d91]">Structural Dynamics</p>
-              <p className="mt-1 text-sm text-slate-700">
-                Modal analysis, harmonic response, vibration assessment, and
-                resonance evaluation.
-              </p>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-[#0b3d91]">Rotor Dynamics</p>
-              <p className="mt-1 text-sm text-slate-700">
-                Critical speed analysis, lateral rotor behaviour, drive train
-                dynamics, and stability assessment.
-              </p>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-[#0b3d91]">CFD &amp; Thermal Analysis</p>
-              <p className="mt-1 text-sm text-slate-700">
-                Flow analysis, thermal prediction, loss estimation, and
-                performance optimisation.
-              </p>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-[#0b3d91]">Reverse Engineering</p>
-              <p className="mt-1 text-sm text-slate-700">
-                3D scanning, CAD reconstruction, legacy component modelling,
-                and manufacturing documentation.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
