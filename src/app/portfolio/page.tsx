@@ -9,6 +9,22 @@ export const metadata = {
 
 const projects = [
   {
+    category: "Customer Call Management Platform",
+    title: "CallCRM Operations Console",
+    summary:
+      "A call management web application built for growing teams to route inbound calls, track call outcomes, manage callbacks, and keep customer communication visible in one place.",
+    deliverables: [
+      "Inbound call routing and queue visibility",
+      "Recent calls dashboard with filters",
+      "Missed call monitoring and callback actions",
+      "Contact-linked call history and notes",
+      "Admin controls for teams and dialing workflows",
+    ],
+    tech: ["Next.js", "Twilio", "CRM Workflow", "Operations Dashboard"],
+    href: "/services/sales-crm",
+    imageSrc: "/images/projects/callcrm.png",
+  },
+  {
     category: "AI Mentorship Platform",
     title: "MendForWorks",
     summary:
