@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ChatWidget } from "@/components/ChatWidget";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -81,6 +82,13 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
+              gtag('consent', 'default', {
+                ad_storage: 'denied',
+                analytics_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                wait_for_update: 500
+              });
               gtag('config', 'G-8VJ7HX37V6');
             `,
           }}
@@ -92,6 +100,7 @@ export default function RootLayout({
         <SiteFooter />
         <ChatWidget />
         <WhatsAppButton />
+        <CookieConsentBanner />
       </body>
     </html>
   );
