@@ -3,17 +3,17 @@ import type { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Digital Solutions for Engineering and Manufacturing SMEs | Splendid Technology",
+  title: "Digitalisation, CRM, Web Apps and AI Solutions for UK SMEs | Splendid Technology",
   description:
-    "Splendid Technology helps UK engineering and manufacturing SMEs digitize CRM, operations, ERP and supply chain workflows, IoT assets, and web app systems.",
+    "Splendid Technology helps UK SMEs implement CRM, workflow automation, SaaS and web applications, AI-enabled processes, and connected business systems.",
   keywords: [
-    "engineering digitalization uk",
-    "manufacturing digital transformation uk",
-    "crm erp iot uk",
-    "supply chain digitalisation uk",
+    "digitalisation services uk",
+    "crm for smes uk",
+    "workflow automation uk",
+    "saas development company uk",
     "web app development uk",
-    "predictive maintenance uk",
-    "digital solutions for engineering businesses",
+    "ai solutions for small business uk",
+    "business systems integration uk",
     "splendid technology",
   ],
   alternates: {
@@ -21,54 +21,63 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Digital Solutions for Engineering and Manufacturing Businesses",
+    title: "Digitalisation, CRM, Web Apps and AI Solutions for UK SMEs",
     description:
-      "CRM, ERP, Supply Chain, IoT, AI, and web app development to improve decisions, reduce downtime, and scale operations.",
+      "CRM, business systems, SaaS platforms, AI automation, and web app development for UK SMEs.",
     url: "https://www.splendidtechnology.co.uk/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Digital Solutions for Engineering and Manufacturing Businesses",
+    title: "Digitalisation, CRM, Web Apps and AI Solutions for UK SMEs",
     description:
-      "CRM, ERP, Supply Chain, IoT, AI, and web app development for UK engineering and manufacturing SMEs.",
+      "CRM, workflow automation, SaaS and AI-enabled web apps for UK SMEs.",
   },
 };
 
 const solutions = [
   {
-    title: "Sales & Customer Systems",
+    title: "CRM",
     description:
-      "CRM implementation, lead capture, pipeline workflows, customer management, and commercial dashboards.",
+      "Lead capture, pipeline workflows, customer lifecycle tracking, and commercial dashboards.",
     href: "/services/sales-crm",
     icon: "📈",
     tag: "CRM",
     highlight: true,
   },
   {
-    title: "Operations, ERP & Supply Chain",
+    title: "Digitisation",
     description:
-      "Job tracking, inventory visibility, warehouse management, supply chain workflows, approvals, and ERP integration.",
-    href: "/services/software-development#erp",
+      "Digitise operations, approvals, reporting, and system handoffs across business workflows.",
+    href: "/services/software-development#workflow",
     icon: "🧩",
-    tag: "ERP/SCM",
+    tag: "Digitisation",
     highlight: true,
   },
   {
-    title: "IoT & Asset Intelligence",
+    title: "SaaS",
     description:
-      "Condition monitoring, edge devices, telemetry dashboards, predictive alerts, and maintenance planning.",
+      "Build scalable SaaS products, customer portals, and internal web platforms for growth.",
+    href: "/services/web-app-development",
+    icon: "💻",
+    tag: "SaaS",
+    highlight: true,
+  },
+  {
+    title: "AI Solutions",
+    description:
+      "Apply AI to automate repetitive processes, improve response speed, and enhance decision support.",
+    href: "/services/software-development#workflow",
+    icon: "🧠",
+    tag: "AI",
+    highlight: true,
+  },
+  {
+    title: "IoT",
+    description:
+      "Connect assets to telemetry dashboards, alerts, and predictive workflows for smarter operations.",
     href: "/services/iot-solutions",
     icon: "📡",
     tag: "IoT",
-    highlight: true,
-  },
-  {
-    title: "Web App Development",
-    description:
-      "Customer portals, internal tools, workflow apps, and full-stack systems that support growth.",
-    href: "/services/web-app-development",
-    icon: "💻",
-    tag: "Web Apps",
     highlight: true,
   },
 ];
@@ -108,7 +117,7 @@ const benefits = [
 
 const detailedScope = [
   {
-    title: "CRM and Sales Systems",
+    title: "CRM",
     href: "/services/sales-crm",
     items: [
       "CRM implementation and migration",
@@ -120,20 +129,43 @@ const detailedScope = [
     ],
   },
   {
-    title: "Operations, ERP and Supply Chain",
-    href: "/services/software-development#erp",
+    title: "Digitisation",
+    href: "/services/software-development#workflow",
     items: [
       "Job and work-order tracking",
-      "Inventory and warehouse workflows",
-      "Supply chain visibility and planning",
-      "ERP modules and integrations",
       "Approval workflow automation",
       "Operational dashboards",
-      "Supplier and procurement workflows",
+      "System integration across core tools",
+      "Process mapping and optimization",
+      "Data standardization and reporting",
     ],
   },
   {
-    title: "IoT and Asset Intelligence",
+    title: "SaaS",
+    href: "/services/web-app-development",
+    items: [
+      "Custom SaaS product development",
+      "Customer and partner portals",
+      "Internal workflow apps",
+      "API and platform integrations",
+      "Scalable architecture and delivery",
+      "Post-launch support and iteration",
+    ],
+  },
+  {
+    title: "AI Solutions",
+    href: "/services/software-development#workflow",
+    items: [
+      "AI-assisted process automation",
+      "Intelligent lead and enquiry routing",
+      "AI-supported reporting and insights",
+      "Operational recommendation workflows",
+      "Assistive copilots for internal teams",
+      "AI readiness and implementation planning",
+    ],
+  },
+  {
+    title: "IoT",
     href: "/services/iot-solutions",
     items: [
       "Condition monitoring systems",
@@ -142,30 +174,6 @@ const detailedScope = [
       "Predictive maintenance workflows",
       "Alerting and escalation logic",
       "Reliability performance reporting",
-    ],
-  },
-  {
-    title: "Web App Development",
-    href: "/services/web-app-development",
-    items: [
-      "Custom web application development",
-      "Customer and partner portals",
-      "Internal workflow apps",
-      "API integration and automation",
-      "SaaS product development",
-      "Post-launch maintenance and support",
-    ],
-  },
-  {
-    title: "Advisory and Implementation",
-    href: "/contact",
-    items: [
-      "Digitalization assessment",
-      "Systems architecture and roadmap",
-      "Pilot-to-rollout execution",
-      "Integration planning",
-      "Adoption and enablement",
-      "Managed optimization support",
     ],
   },
 ];
@@ -181,14 +189,14 @@ export default function Home() {
         <div className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="inline-block rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-green-400">
-              Engineering Digitalization for UK SMEs
+              CRM, SaaS and Digitalisation for UK SMEs
             </p>
             <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Digital Solutions for Engineering and Manufacturing Businesses
+              Digitalisation, CRM, Web Apps and AI Solutions for UK SMEs
             </h1>
             <p className="mt-5 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-              CRM, ERP, Supply Chain, IoT, AI, and web app development to improve decisions,
-              reduce downtime, and scale operations.
+              We design and implement practical digital systems that improve sales response,
+              streamline operations, and help growing businesses scale with confidence.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -216,7 +224,7 @@ export default function Home() {
             We design and implement practical systems that connect commercial workflows,
             operations data, IoT telemetry, and web applications in one environment.
           </p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
             {solutions.map((s) => (
               <Link
                 key={s.title}
@@ -279,7 +287,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-[#0b1f3a]">Digitalization Service Taxonomy</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Five practical service categories engineered for manufacturing and industrial SMEs.
+            Five practical service categories for scaling SMEs and operational teams.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {detailedScope.map((scope) => (
@@ -340,10 +348,11 @@ export default function Home() {
               </div>
               <div className="grid w-full max-w-xs grid-cols-1 gap-3 lg:w-auto">
                 {[
-                  { icon: "📈", label: "CRM & Sales" },
-                  { icon: "🧩", label: "ERP & Operations" },
-                  { icon: "📡", label: "IoT & Assets" },
-                  { icon: "💻", label: "Web Apps" },
+                  { icon: "📈", label: "CRM" },
+                  { icon: "🧩", label: "Digitisation" },
+                  { icon: "💻", label: "SaaS" },
+                  { icon: "🧠", label: "AI Solutions" },
+                  { icon: "📡", label: "IoT" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3 rounded-xl border border-black/10 bg-white px-4 py-3">
                     <span className="text-xl">{item.icon}</span>
@@ -365,8 +374,8 @@ export default function Home() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { heading: "Outcome-Led Delivery", body: "We prioritize measurable business outcomes over isolated technical deliverables." },
-              { heading: "Cross-Functional Digitalization", body: "Sales, operations, asset telemetry, and engineering workflows connected in one model." },
-              { heading: "Engineering-Embedded", body: "Automation, electrical, mechanical, and reliability expertise remains part of every implementation." },
+              { heading: "Cross-Functional Digitalization", body: "Sales, operations, and customer workflows connected in one practical model." },
+              { heading: "Business-System Focused", body: "CRM, automation, AI workflows, and web platforms aligned to measurable outcomes." },
               { heading: "SME-Focused Execution", body: "Phased deployment model aligned to practical budgets, team capacity, and rapid value realization." },
             ].map((item) => (
               <div key={item.heading} className="rounded-xl border border-black/10 bg-white p-6">
@@ -385,7 +394,7 @@ export default function Home() {
             <div>
               <h2 className="text-3xl font-bold text-[#0b1f3a]">Latest Insights</h2>
               <p className="mt-2 max-w-xl text-sm leading-6 text-black/60">
-                Practical guides on industrial IoT, predictive maintenance, and operational improvement.
+                Practical guides on CRM, digitalisation, automation, and web app delivery.
               </p>
             </div>
             <Link className="text-sm font-medium text-[#0b3d91] hover:underline" href="/blog">

@@ -7,54 +7,52 @@ type NavItem =
   | { href: string; label: string; desc: string; isLabel?: false }
   | { isLabel: true; label: string; href?: never; desc?: never };
 
-const iotItems: NavItem[] = [
-  { isLabel: true, label: "IoT and Asset Intelligence" },
-  { href: "/services/iot-solutions", label: "IoT Solutions Overview", desc: "Sensors, connectivity, monitoring, and asset telemetry" },
-  { href: "/services/iot-solutions#condition-monitoring", label: "Condition Monitoring", desc: "Vibration, temperature, and energy trend analysis" },
-  { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring", desc: "Real-time motor health with alerting workflows" },
-  { href: "/industrial-iot/predictive-maintenance", label: "Predictive Maintenance", desc: "Data-driven failure prediction and planning" },
-  { href: "/services/reliability-engineering", label: "Reliability Engineering", desc: "MTBF, FMEA, RAM, and RCM support" },
-  { href: "/proof-of-concept", label: "Asset Insight Pilot", desc: "Live Raspberry Pi and cloud pilot platform" },
-];
-
-const webAppItems: NavItem[] = [
-  { isLabel: true, label: "Web App Development" },
-  { href: "/services/web-app-development", label: "Web App Overview", desc: "Custom portals, internal tools, and web products" },
-  { href: "/services/web-app-development", label: "Customer Portals", desc: "Secure self-service experiences for clients" },
-  { href: "/services/web-app-development", label: "Internal Workflow Apps", desc: "Purpose-built apps for team operations" },
-  { href: "/services/web-app-development", label: "SaaS Product Development", desc: "Scalable product architecture and delivery" },
-  { href: "/services/web-app-development", label: "API and System Integration", desc: "Integrate core platforms and business tools" },
-];
-
-const automationItems: NavItem[] = [
-  { isLabel: true, label: "CRM and Sales Systems" },
+const crmItems: NavItem[] = [
+  { isLabel: true, label: "CRM" },
   { href: "/services/sales-crm", label: "CRM Overview", desc: "Lead capture, follow-up workflows, and customer pipelines" },
   { href: "/services/call-crm", label: "CallCRM", desc: "Route, track, and manage customer calls in one console" },
   { href: "/services/sales-crm", label: "Lead Workflow Automation", desc: "Automate qualification, routing, and follow-up tasks" },
   { href: "/services/sales-crm", label: "Quote and Customer Flows", desc: "Standardize quoting and customer handoff processes" },
-  { href: "/services/software-development#workflow", label: "Commercial Workflow Automation", desc: "Digitize approvals, reporting, and commercial tasks" },
+  { href: "/services/software-development#workflow", label: "CRM Workflow Automation", desc: "Digitize approvals, reporting, and customer workflows" },
   { href: "/services/digital-engineering", label: "Sales and Reporting Dashboards", desc: "Pipeline visibility and decision-ready reporting" },
 ];
 
-const softwareItems: NavItem[] = [
-  { isLabel: true, label: "Operations, ERP and Supply Chain" },
+const digitisationItems: NavItem[] = [
+  { isLabel: true, label: "Digitisation" },
+  { href: "/services/software-development", label: "Digitisation Overview", desc: "Connected systems for scalable business operations" },
   { href: "/services/software-development#erp", label: "ERP Modules", desc: "Operational and finance workflow implementation" },
+  { href: "/services/software-development#workflow", label: "Workflow Automation", desc: "Digitize approvals, reporting, and process handoffs" },
+  { href: "/services/software-development", label: "System Integration", desc: "Connect CRM, ERP, operations, and reporting systems" },
   { href: "/services/digital-engineering", label: "Warehouse and Supply Chain", desc: "Inventory, warehouse, and supply chain visibility" },
   { href: "/services/digital-engineering", label: "Supply Chain Planning", desc: "Supplier flow visibility and procurement coordination" },
-  { href: "/services/software-development#workflow", label: "Operations Workflow Automation", desc: "Digitize approvals, reporting, and process handoffs" },
-  { href: "/services/software-development", label: "System Integration", desc: "Connect CRM, ERP, operations, and reporting systems" },
-  { href: "/services/software-development#cloud", label: "Cloud Architecture", desc: "AWS and Azure architecture for scalable operations" },
+  { href: "/services/software-development#cloud", label: "Cloud Architecture", desc: "AWS and Azure architecture for scalable systems" },
 ];
 
-const products = [
-  { href: "/products/expapp-money-planner", label: "ExpApp — Money Planner", desc: "Free household budget & net worth tracker" },
-  { href: "/products/splendid-accounting", label: "Splendid Accounting", desc: "SME accounting & finance software" },
-  { href: "/products/splendid-reliability", label: "Splendid Reliability", desc: "MTBF calculations & reliability tracking" },
-  { href: "/products/splendid-monitor", label: "Splendid Monitor", desc: "Industrial IoT dashboards" },
-  { href: "/products/splendid-erp-light", label: "Splendid ERP Light", desc: "Simple ERP for UK SMEs" },
-  { href: "/products/splendid-asset-manager", label: "Splendid Asset Manager", desc: "Asset performance & engineering ERP" },
-  { href: "/products/motor-health-monitoring-kit", label: "Motor Health Monitoring Kit", desc: "Portable motor diagnostic kit" },
-  { href: "/services/sales-crm", label: "Splendid CRM", desc: "Custom Sales CRM for UK businesses" },
+const saasItems: NavItem[] = [
+  { isLabel: true, label: "SaaS" },
+  { href: "/services/web-app-development", label: "SaaS Overview", desc: "Build and scale web platforms for SME growth" },
+  { href: "/services/web-app-development", label: "Customer Portals", desc: "Secure self-service experiences for clients" },
+  { href: "/services/web-app-development", label: "Internal Workflow Apps", desc: "Purpose-built apps for team operations" },
+  { href: "/services/web-app-development", label: "API and System Integration", desc: "Integrate core platforms and business tools" },
+  { href: "/products", label: "Products and SaaS Tools", desc: "Explore Splendid software products" },
+];
+
+const iotItems: NavItem[] = [
+  { isLabel: true, label: "IoT" },
+  { href: "/services/iot-solutions", label: "IoT Solutions Overview", desc: "Sensors, connectivity, monitoring, and asset telemetry" },
+  { href: "/services/iot-solutions#condition-monitoring", label: "Condition Monitoring", desc: "Vibration, temperature, and energy trend analysis" },
+  { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring", desc: "Real-time motor health with alerting workflows" },
+  { href: "/industrial-iot/predictive-maintenance", label: "Predictive Maintenance", desc: "Data-driven failure prediction and planning" },
+  { href: "/proof-of-concept", label: "Asset Insight Pilot", desc: "Live Raspberry Pi and cloud pilot platform" },
+];
+
+const aiItems: NavItem[] = [
+  { isLabel: true, label: "AI Solutions" },
+  { href: "/services/software-development#workflow", label: "AI Workflow Automation", desc: "Apply AI to repetitive operational tasks" },
+  { href: "/services/call-crm", label: "AI-Ready Call Management", desc: "Structured call data for smarter follow-up workflows" },
+  { href: "/services/iot-solutions", label: "Data and Telemetry Foundations", desc: "Build the data layer required for reliable AI outcomes" },
+  { href: "/industrial-iot/predictive-maintenance", label: "Predictive Insights", desc: "Prediction workflows for operations and maintenance" },
+  { href: "/proof-of-concept", label: "AI and Automation Pilot", desc: "Test a high-impact use case before full rollout" },
 ];
 
 function DropdownMenu({ label, href, items }: { label: string; href: string; items: NavItem[] }) {
@@ -110,7 +108,7 @@ export function SiteHeader() {
               priority
             />
             <span className="hidden text-[10px] font-medium uppercase tracking-widest text-white/50 sm:block">
-              CRM · ERP · Supply Chain · IoT · Web Apps · UK Nationwide
+              CRM · Digitisation · SaaS · AI Solutions · IoT · UK Nationwide
             </span>
           </Link>
           <div className="flex items-center gap-3">
@@ -142,11 +140,11 @@ export function SiteHeader() {
         {/* Desktop nav */}
         <nav className="hidden items-center justify-between gap-x-1 py-2 lg:flex">
           <div className="flex items-center gap-x-1">
-            <DropdownMenu label="CRM" href="/services/sales-crm" items={automationItems} />
-            <DropdownMenu label="ERP & Supply Chain" href="/services/software-development#erp" items={softwareItems} />
+            <DropdownMenu label="CRM" href="/services/sales-crm" items={crmItems} />
+            <DropdownMenu label="Digitisation" href="/services/software-development" items={digitisationItems} />
+            <DropdownMenu label="SaaS" href="/services/web-app-development" items={saasItems} />
+            <DropdownMenu label="AI Solutions" href="/services/software-development#workflow" items={aiItems} />
             <DropdownMenu label="IoT" href="/services/iot-solutions" items={iotItems} />
-            <DropdownMenu label="Web Apps" href="/services/web-app-development" items={webAppItems} />
-            <DropdownMenu label="Products" href="/products" items={products} />
             <Link href="/industries" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Industries
             </Link>
@@ -177,8 +175,8 @@ export function SiteHeader() {
         {mobileOpen && (
           <nav className="border-t border-white/10 py-4 lg:hidden">
             <div className="space-y-1">
-              <p className="px-2 pt-2 text-[10px] font-bold uppercase tracking-widest text-green-400/80">CRM and Sales Systems</p>
-              {automationItems.filter((i) => !i.isLabel).map((item) => (
+              <p className="px-2 pt-2 text-[10px] font-bold uppercase tracking-widest text-green-400/80">CRM</p>
+              {crmItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
                   key={item.href}
                   href={item.href!}
@@ -188,8 +186,8 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Operations, ERP and Supply Chain</p>
-              {softwareItems.filter((i) => !i.isLabel).map((item) => (
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Digitisation</p>
+              {digitisationItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
                   key={item.href}
                   href={item.href!}
@@ -199,33 +197,33 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">IoT and Asset Intelligence</p>
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">SaaS</p>
+              {saasItems.filter((i) => !i.isLabel).map((item) => (
+                <Link
+                  key={`${item.href}-${item.label}`}
+                  href={item.href!}
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">AI Solutions</p>
+              {aiItems.filter((i) => !i.isLabel).map((item) => (
+                <Link
+                  key={`${item.href}-${item.label}`}
+                  href={item.href!}
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">IoT</p>
               {iotItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
                   key={`${item.href}-${item.label}`}
                   href={item.href!}
-                  onClick={() => setMobileOpen(false)}
-                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Web App Development</p>
-              {webAppItems.filter((i) => !i.isLabel).map((item) => (
-                <Link
-                  key={`${item.href}-${item.label}`}
-                  href={item.href!}
-                  onClick={() => setMobileOpen(false)}
-                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-white/30">Products</p>
-              {products.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
                   onClick={() => setMobileOpen(false)}
                   className="block px-2 py-2 text-sm text-white/80 hover:text-white"
                 >

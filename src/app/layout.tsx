@@ -26,37 +26,37 @@ function getSiteUrl(): string {
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Splendid Technology | Industrial IoT & Process Automation",
+    default: "Splendid Technology | CRM, Digitalisation, Web Apps & AI Solutions",
     template: "%s | Splendid Technology",
   },
   description:
-    "Splendid Technology Ltd — Industry 4.0 and digital solutions for UK manufacturers. Smart motor monitoring, predictive maintenance, CRM, ERP, and operational transformation — nationwide.",
+    "Splendid Technology Ltd provides CRM implementation, digitalisation services, workflow automation, SaaS and web app development, and AI solutions for UK SMEs.",
   keywords: [
-    "industrial iot uk",
-    "smart motor monitoring uk",
-    "predictive maintenance uk",
-    "industry 4.0 solutions uk",
-    "motor condition monitoring uk",
+    "crm for smes uk",
+    "digitalisation services uk",
+    "workflow automation uk",
+    "saas development uk",
+    "custom web app development uk",
     "ai process automation uk",
-    "industrial iot solutions uk",
-    "motor diagnostic kit uk",
-    "smart factory solutions uk",
+    "business systems integration uk",
+    "digital transformation for small business uk",
+    "leicester crm development",
   ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
-    title: "Splendid Technology | Industrial IoT & Process Automation",
+    title: "Splendid Technology | CRM, Digitalisation, Web Apps & AI Solutions",
     description:
-      "Industry 4.0 and digital solutions for UK manufacturers. Smart motor monitoring, predictive maintenance, CRM, ERP, and operational transformation — nationwide.",
+      "CRM, workflow automation, SaaS and web app development, and AI-enabled digital solutions for UK SMEs.",
     url: "/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Splendid Technology | Industrial IoT & Process Automation",
+    title: "Splendid Technology | CRM, Digitalisation, Web Apps & AI Solutions",
     description:
-      "Industry 4.0 and digital solutions for UK manufacturers. Smart motor monitoring, predictive maintenance, CRM, ERP, and operational transformation — nationwide.",
+      "CRM, workflow automation, SaaS and web app development, and AI-enabled digital solutions for UK SMEs.",
   },
   robots: {
     index: true,
