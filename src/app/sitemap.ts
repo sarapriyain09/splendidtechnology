@@ -29,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/services/reliability-engineering`, lastModified },
     { url: `${base}/services/software-development`, lastModified },
     { url: `${base}/services/sales-crm`, lastModified },
+    { url: `${base}/services/ai-solutions`, lastModified },
     // Products
     { url: `${base}/products`, lastModified },
     { url: `${base}/products/splendid-accounting`, lastModified },

@@ -75,7 +75,7 @@ export function SiteFooter() {
             <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">AI Solutions</h3>
             <ul className="mt-4 space-y-2">
               {[
-                { href: "/services/software-development#workflow", label: "AI Workflow Automation" },
+                { href: "/services/ai-solutions", label: "AI Workflow Automation" },
                 { href: "/services/call-crm", label: "AI-Ready Call Management" },
                 { href: "/services/iot-solutions", label: "Data and Telemetry Foundations" },
                 { href: "/industrial-iot/predictive-maintenance", label: "Predictive Insights" },

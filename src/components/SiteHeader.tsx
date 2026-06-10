@@ -48,7 +48,7 @@ const iotItems: NavItem[] = [
 
 const aiItems: NavItem[] = [
   { isLabel: true, label: "AI Solutions" },
-  { href: "/services/software-development#workflow", label: "AI Workflow Automation", desc: "Apply AI to repetitive operational tasks" },
+  { href: "/services/ai-solutions", label: "AI Workflow Automation", desc: "Apply AI to repetitive operational tasks" },
   { href: "/services/call-crm", label: "AI-Ready Call Management", desc: "Structured call data for smarter follow-up workflows" },
   { href: "/services/iot-solutions", label: "Data and Telemetry Foundations", desc: "Build the data layer required for reliable AI outcomes" },
   { href: "/industrial-iot/predictive-maintenance", label: "Predictive Insights", desc: "Prediction workflows for operations and maintenance" },
@@ -143,7 +143,7 @@ export function SiteHeader() {
             <DropdownMenu label="CRM" href="/services/sales-crm" items={crmItems} />
             <DropdownMenu label="Digitisation" href="/services/software-development" items={digitisationItems} />
             <DropdownMenu label="SaaS" href="/services/web-app-development" items={saasItems} />
-            <DropdownMenu label="AI Solutions" href="/services/software-development#workflow" items={aiItems} />
+            <DropdownMenu label="AI Solutions" href="/services/ai-solutions" items={aiItems} />
             <DropdownMenu label="IoT and Data" href="/services/iot-solutions" items={iotItems} />
             <Link href="/industries" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Industries

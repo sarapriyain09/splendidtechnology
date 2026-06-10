@@ -60,6 +60,24 @@ const engineeringServiceLines = [
     highlight: true,
   },
   {
+    icon: "🧠",
+    label: "AI",
+    title: "AI Solutions for SMEs",
+    description:
+      "Implement practical AI assistants, CRM AI workflows, document processing, and customer support automation.",
+    bullets: [
+      "AI assistants for internal teams",
+      "CRM AI and lead workflow automation",
+      "Document processing and extraction",
+      "Quotation generation workflows",
+      "Knowledge base systems",
+      "Customer support AI",
+    ],
+    href: "/services/ai-solutions",
+    cta: "AI Solutions for SMEs",
+    highlight: true,
+  },
+  {
     icon: "📡",
     label: "IoT",
     title: "IoT, Digital Twin and Asset Intelligence",

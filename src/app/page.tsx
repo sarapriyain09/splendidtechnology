@@ -66,7 +66,7 @@ const solutions = [
     title: "AI Solutions",
     description:
       "Apply AI to automate repetitive processes, improve response speed, and enhance decision support.",
-    href: "/services/software-development#workflow",
+    href: "/services/ai-solutions",
     icon: "🧠",
     tag: "AI",
     highlight: true,
@@ -162,7 +162,7 @@ const detailedScope = [
   },
   {
     title: "AI Solutions",
-    href: "/services/software-development#workflow",
+    href: "/services/ai-solutions",
     items: [
       "AI-assisted process automation",
       "Intelligent lead and enquiry routing",
@@ -404,7 +404,7 @@ export default function Home() {
             {[
               { heading: "Outcome-Led Delivery", body: "We prioritize measurable business outcomes over isolated technical deliverables." },
               { heading: "Cross-Functional Digitalization", body: "Sales, operations, and customer workflows connected in one practical model." },
-              { heading: "Industry-Focused Expertise", body: "Experience supporting manufacturing, engineering, and industrial SMEs through digitalisation, CRM, IoT, and business systems." },
+              { heading: "Industry-Aware Digitalisation", body: "Experience supporting manufacturing and industrial SMEs through CRM, ERP, IoT, and business systems." },
               { heading: "SME-Focused Execution", body: "Phased deployment model aligned to practical budgets, team capacity, and rapid value realization." },
             ].map((item) => (
               <div key={item.heading} className="rounded-xl border border-black/10 bg-white p-6">
