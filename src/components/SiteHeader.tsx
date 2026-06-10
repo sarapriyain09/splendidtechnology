@@ -38,12 +38,12 @@ const saasItems: NavItem[] = [
 ];
 
 const iotItems: NavItem[] = [
-  { isLabel: true, label: "IoT" },
-  { href: "/services/iot-solutions", label: "IoT Solutions Overview", desc: "Sensors, connectivity, monitoring, and asset telemetry" },
-  { href: "/services/iot-solutions#condition-monitoring", label: "Condition Monitoring", desc: "Vibration, temperature, and energy trend analysis" },
-  { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring", desc: "Real-time motor health with alerting workflows" },
-  { href: "/industrial-iot/predictive-maintenance", label: "Predictive Maintenance", desc: "Data-driven failure prediction and planning" },
-  { href: "/proof-of-concept", label: "Asset Insight Pilot", desc: "Live Raspberry Pi and cloud pilot platform" },
+  { isLabel: true, label: "Connected Data and Asset Intelligence" },
+  { href: "/services/iot-solutions", label: "Data and Asset Intelligence Overview", desc: "Connected data collection, dashboards, and asset visibility" },
+  { href: "/services/iot-solutions#condition-monitoring", label: "Data Collection Pipelines", desc: "Capture and structure asset data for reporting" },
+  { href: "/industrial-iot/smart-motor-monitoring", label: "Asset Visibility Dashboards", desc: "Real-time visibility for critical equipment and assets" },
+  { href: "/industrial-iot/predictive-maintenance", label: "Predictive Insights", desc: "Insight-led forecasting to improve planning and uptime" },
+  { href: "/proof-of-concept", label: "Data and Insight Pilot", desc: "Validate dashboards, reporting, and predictive insight workflows" },
 ];
 
 const aiItems: NavItem[] = [
@@ -108,7 +108,7 @@ export function SiteHeader() {
               priority
             />
             <span className="hidden text-[10px] font-medium uppercase tracking-widest text-white/50 sm:block">
-              CRM · Digitisation · SaaS · AI Solutions · IoT · UK Nationwide
+              CRM · Digitisation · SaaS · AI Solutions · Data and Asset Intelligence · UK Nationwide
             </span>
           </Link>
           <div className="flex items-center gap-3">
@@ -144,7 +144,7 @@ export function SiteHeader() {
             <DropdownMenu label="Digitisation" href="/services/software-development" items={digitisationItems} />
             <DropdownMenu label="SaaS" href="/services/web-app-development" items={saasItems} />
             <DropdownMenu label="AI Solutions" href="/services/software-development#workflow" items={aiItems} />
-            <DropdownMenu label="IoT" href="/services/iot-solutions" items={iotItems} />
+            <DropdownMenu label="IoT and Data" href="/services/iot-solutions" items={iotItems} />
             <Link href="/industries" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Industries
             </Link>
@@ -219,7 +219,7 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">IoT</p>
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">IoT and Data</p>
               {iotItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
                   key={`${item.href}-${item.label}`}

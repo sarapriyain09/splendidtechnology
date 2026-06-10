@@ -5,7 +5,7 @@ import { getAllBlogPosts } from "@/lib/blog";
 export const metadata: Metadata = {
   title: "Digitalisation, CRM, Web Apps and AI Solutions for UK SMEs | Splendid Technology",
   description:
-    "Splendid Technology helps UK SMEs implement CRM, workflow automation, SaaS and web applications, AI-enabled processes, and connected business systems.",
+    "Splendid Technology is a digital company helping UK SMEs implement CRM, workflow automation, SaaS and web applications, AI-enabled processes, and connected business systems.",
   keywords: [
     "digitalisation services uk",
     "crm for smes uk",
@@ -72,12 +72,12 @@ const solutions = [
     highlight: true,
   },
   {
-    title: "IoT",
+    title: "Connected Data and Asset Intelligence",
     description:
-      "Connect assets to telemetry dashboards, alerts, and predictive workflows for smarter operations.",
+      "Capture connected asset data, improve visibility with dashboards, and generate predictive insights for smarter operations.",
     href: "/services/iot-solutions",
     icon: "📡",
-    tag: "IoT",
+    tag: "IoT/Data",
     highlight: true,
   },
 ];
@@ -96,7 +96,7 @@ const benefits = [
   {
     icon: "🔧",
     title: "Reduced Downtime",
-    body: "Asset telemetry and predictive maintenance workflows improve reliability planning and execution.",
+    body: "Connected asset data and predictive insights improve reliability planning and execution.",
   },
   {
     icon: "📊",
@@ -113,6 +113,14 @@ const benefits = [
     title: "Scalable Growth Platform",
     body: "Start with one high-impact workflow, then expand into a connected digital operating model.",
   },
+];
+
+const whoWeHelp = [
+  "Manufacturers",
+  "Engineering SMEs",
+  "Accountants",
+  "Professional Services Firms",
+  "Growing SMEs",
 ];
 
 const detailedScope = [
@@ -165,15 +173,15 @@ const detailedScope = [
     ],
   },
   {
-    title: "IoT",
+    title: "Connected Data and Asset Intelligence",
     href: "/services/iot-solutions",
     items: [
-      "Condition monitoring systems",
-      "Raspberry Pi and edge deployments",
-      "Asset telemetry dashboards",
-      "Predictive maintenance workflows",
-      "Alerting and escalation logic",
-      "Reliability performance reporting",
+      "Connected data collection pipelines",
+      "Telemetry and asset visibility dashboards",
+      "Cross-site reporting and KPI tracking",
+      "Predictive insights and anomaly detection",
+      "Alerting and escalation workflows",
+      "Reliability and performance reporting",
     ],
   },
 ];
@@ -195,8 +203,8 @@ export default function Home() {
               Digitalisation, CRM, Web Apps and AI Solutions for UK SMEs
             </h1>
             <p className="mt-5 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-              We design and implement practical digital systems that improve sales response,
-              streamline operations, and help growing businesses scale with confidence.
+              We are a digital company helping UK SMEs improve sales response, streamline
+              operations, and scale with practical CRM, web applications, AI, and connected business systems.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -222,7 +230,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-[#0b1f3a]">One Connected Digital Layer Across Sales, Operations, and Assets</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
             We design and implement practical systems that connect commercial workflows,
-            operations data, IoT telemetry, and web applications in one environment.
+            operations data, connected asset data, and web applications in one environment.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
             {solutions.map((s) => (
@@ -253,6 +261,27 @@ export default function Home() {
                   Learn more &rarr;
                 </span>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Who We Help ── */}
+      <section className="bg-[#f7f7f7] py-14">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Who We Help</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
+            We support teams that need clearer visibility, better process control, and scalable
+            digital systems to improve performance.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {whoWeHelp.map((group) => (
+              <div
+                key={group}
+                className="rounded-xl border border-black/10 bg-white px-4 py-5 text-center"
+              >
+                <p className="text-sm font-semibold text-[#0b1f3a]">{group}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -326,7 +355,7 @@ export default function Home() {
                 </p>
                 <ul className="mt-5 space-y-2">
                   {[
-                    "Connected CRM, ERP, IoT, and reporting",
+                    "Connected CRM, ERP, data visibility, and reporting",
                     "Phased rollout model with measurable outcomes",
                     "Designed for SME budgets and operational realities",
                     "Implementation support from discovery through adoption",
@@ -352,7 +381,7 @@ export default function Home() {
                   { icon: "🧩", label: "Digitisation" },
                   { icon: "💻", label: "SaaS" },
                   { icon: "🧠", label: "AI Solutions" },
-                  { icon: "📡", label: "IoT" },
+                  { icon: "📡", label: "IoT and Data" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3 rounded-xl border border-black/10 bg-white px-4 py-3">
                     <span className="text-xl">{item.icon}</span>
@@ -375,7 +404,7 @@ export default function Home() {
             {[
               { heading: "Outcome-Led Delivery", body: "We prioritize measurable business outcomes over isolated technical deliverables." },
               { heading: "Cross-Functional Digitalization", body: "Sales, operations, and customer workflows connected in one practical model." },
-              { heading: "Business-System Focused", body: "CRM, automation, AI workflows, and web platforms aligned to measurable outcomes." },
+              { heading: "Industry-Focused Expertise", body: "Experience supporting manufacturing, engineering, and industrial SMEs through digitalisation, CRM, IoT, and business systems." },
               { heading: "SME-Focused Execution", body: "Phased deployment model aligned to practical budgets, team capacity, and rapid value realization." },
             ].map((item) => (
               <div key={item.heading} className="rounded-xl border border-black/10 bg-white p-6">

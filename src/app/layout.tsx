@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | Splendid Technology",
   },
   description:
-    "Splendid Technology Ltd provides CRM implementation, digitalisation services, workflow automation, SaaS and web app development, and AI solutions for UK SMEs.",
+    "Splendid Technology Ltd is a digital company providing CRM implementation, digitalisation services, workflow automation, SaaS and web app development, and AI solutions for UK SMEs.",
   keywords: [
     "crm for smes uk",
     "digitalisation services uk",

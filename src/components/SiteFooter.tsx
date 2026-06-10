@@ -93,15 +93,15 @@ export function SiteFooter() {
 
           {/* IoT */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">IoT</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Connected Data and Asset Intelligence</h3>
             <ul className="mt-4 space-y-2">
               {[
-                { href: "/services/iot-solutions", label: "IoT Solutions Overview" },
-                { href: "/services/iot-solutions#condition-monitoring", label: "Condition Monitoring" },
-                { href: "/industrial-iot/smart-motor-monitoring", label: "Smart Motor Monitoring" },
-                { href: "/industrial-iot/predictive-maintenance", label: "Predictive Maintenance" },
-                { href: "/proof-of-concept", label: "Asset Insight Pilot" },
-                { href: "/industrial-iot", label: "Industrial IoT Hub" },
+                { href: "/services/iot-solutions", label: "Data and Asset Intelligence Overview" },
+                { href: "/services/iot-solutions#condition-monitoring", label: "Data Collection Pipelines" },
+                { href: "/industrial-iot/smart-motor-monitoring", label: "Asset Visibility Dashboards" },
+                { href: "/industrial-iot/predictive-maintenance", label: "Predictive Insights" },
+                { href: "/proof-of-concept", label: "Data and Insight Pilot" },
+                { href: "/industrial-iot", label: "Connected Asset Intelligence Hub" },
               ].map((l) => (
                 <li key={`${l.href}-${l.label}`}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
@@ -121,7 +121,7 @@ export function SiteFooter() {
             <div className="max-w-xs">
               <Link href="/" className="flex flex-col leading-tight">
                 <span className="text-base font-bold text-white">Splendid Technology</span>
-                <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">CRM · Digitisation · SaaS · AI Solutions · IoT · UK Nationwide</span>
+                <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">CRM · Digitisation · SaaS · AI Solutions · Data and Asset Intelligence · UK Nationwide</span>
               </Link>
               <p className="mt-3 text-xs leading-5 text-white/50">
                 We help UK SMEs improve sales, operations, and customer delivery through practical
