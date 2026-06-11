@@ -148,6 +148,7 @@ export function SiteFooter() {
                     { href: "/blog", label: "Insights & Guides" },
                     { href: "/portfolio", label: "Portfolio" },
                     { href: "/services", label: "Solution Categories" },
+                    { href: "/demo", label: "CRM Demo" },
                     { href: "/contact", label: "Contact Us" },
                   ].map((l) => (
                     <li key={l.href}>
