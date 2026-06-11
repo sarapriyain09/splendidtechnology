@@ -160,6 +160,9 @@ export function SiteHeader() {
             <Link href="/pricing" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Pricing
             </Link>
+            <Link href="/demo" className="px-2 py-1 text-xs text-white/70 hover:text-white">
+              Demo
+            </Link>
           </div>
           <div className="flex items-center gap-x-2">
             <Link
@@ -237,6 +240,7 @@ export function SiteHeader() {
                 { href: "/portfolio", label: "Portfolio" },
                 { href: "/about", label: "About" },
                 { href: "/pricing", label: "Pricing" },
+                { href: "/demo", label: "Demo" },
               ].map((item) => (
                 <Link
                   key={item.href}
