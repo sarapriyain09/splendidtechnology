@@ -30,7 +30,32 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/engineering-case-studies",
-        destination: "/portfolio",
+        destination: "/case-studies",
+        permanent: true,
+      },
+      {
+        source: "/engineering-services",
+        destination: "/engineering",
+        permanent: true,
+      },
+      {
+        source: "/services/erp",
+        destination: "/erp",
+        permanent: true,
+      },
+      {
+        source: "/services/crm",
+        destination: "/crm",
+        permanent: true,
+      },
+      {
+        source: "/services/ai",
+        destination: "/ai",
+        permanent: true,
+      },
+      {
+        source: "/services/case-studies",
+        destination: "/case-studies",
         permanent: true,
       },
     ];

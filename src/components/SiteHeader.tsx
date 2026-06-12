@@ -9,7 +9,7 @@ type NavItem =
 
 const crmItems: NavItem[] = [
   { isLabel: true, label: "CRM" },
-  { href: "/services/sales-crm", label: "CRM Overview", desc: "Lead capture, follow-up workflows, and customer pipelines" },
+  { href: "/crm", label: "CRM Overview", desc: "Lead capture, follow-up workflows, and customer pipelines" },
   { href: "/services/call-crm", label: "CallCRM", desc: "Route, track, and manage customer calls in one console" },
   { href: "/services/sales-crm", label: "Lead Workflow Automation", desc: "Automate qualification, routing, and follow-up tasks" },
   { href: "/services/sales-crm", label: "Quote and Customer Flows", desc: "Standardize quoting and customer handoff processes" },
@@ -140,13 +140,25 @@ export function SiteHeader() {
         {/* Desktop nav */}
         <nav className="hidden items-center justify-between gap-x-1 py-2 lg:flex">
           <div className="flex items-center gap-x-1">
-            <DropdownMenu label="CRM" href="/services/sales-crm" items={crmItems} />
+            <DropdownMenu label="CRM" href="/crm" items={crmItems} />
             <DropdownMenu label="Digitisation" href="/services/software-development" items={digitisationItems} />
             <DropdownMenu label="SaaS" href="/services/web-app-development" items={saasItems} />
             <DropdownMenu label="AI Solutions" href="/services/ai-solutions" items={aiItems} />
             <DropdownMenu label="IoT and Data" href="/services/iot-solutions" items={iotItems} />
             <Link href="/industries" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Industries
+            </Link>
+            <Link href="/engineering" className="px-2 py-1 text-xs text-white/70 hover:text-white">
+              Engineering
+            </Link>
+            <Link href="/erp" className="px-2 py-1 text-xs text-white/70 hover:text-white">
+              ERP
+            </Link>
+            <Link href="/ai" className="px-2 py-1 text-xs text-white/70 hover:text-white">
+              AI
+            </Link>
+            <Link href="/case-studies" className="px-2 py-1 text-xs text-white/70 hover:text-white">
+              Case Studies
             </Link>
             <Link href="/blog" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Blog
@@ -170,6 +182,10 @@ export function SiteHeader() {
               className="rounded bg-green-600 px-3 py-1 text-xs font-bold text-white hover:bg-green-700"
             >
               Contact
+                { href: "/engineering", label: "Engineering" },
+                { href: "/erp", label: "ERP" },
+                { href: "/ai", label: "AI" },
+                { href: "/case-studies", label: "Case Studies" },
             </Link>
           </div>
         </nav>

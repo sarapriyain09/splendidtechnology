@@ -21,7 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: `${base}/`, lastModified },
+    { url: `${base}/engineering`, lastModified },
+    { url: `${base}/erp`, lastModified },
+    { url: `${base}/ai`, lastModified },
+    { url: `${base}/case-studies`, lastModified },
     // Services
+    { url: `${base}/crm`, lastModified },
     { url: `${base}/services`, lastModified },
     { url: `${base}/services/digital-engineering`, lastModified },
     { url: `${base}/services/web-app-development`, lastModified },
