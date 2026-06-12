@@ -11,15 +11,9 @@ function isValidEmail(value: string) {
   return /^\S+@\S+\.\S+$/.test(value);
 }
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 export async function POST(request: Request) {
-  const resendApiKey = process.env.RESEND_API_KEY;
-  if (!resendApiKey) {
-    console.error("Missing RESEND_API_KEY for /api/contact");
-    return NextResponse.json({ error: "Email service is not configured." }, { status: 500 });
-  }
-
-  const resend = new Resend(resendApiKey);
-
   const body = (await request.json().catch(() => null)) as Partial<ContactPayload> | null;
 
   const name = (body?.name ?? "").trim();

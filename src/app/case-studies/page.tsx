@@ -60,7 +60,7 @@ export default function CaseStudiesPage() {
               >
                 <h2 className="text-lg font-bold text-[#0b1f3a]">{item.title}</h2>
                 <p className="mt-2 text-sm leading-6 text-black/60">{item.body}</p>
-                <span className="mt-4 block text-sm font-semibold text-green-700">{item.cta} &rarr;</span>
+                <span className="mt-4 block text-sm font-semibold text-green-700">{item.cta} -></span>
               </Link>
             ))}
           </div>
