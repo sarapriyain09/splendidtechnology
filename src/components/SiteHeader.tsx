@@ -182,10 +182,6 @@ export function SiteHeader() {
               className="rounded bg-green-600 px-3 py-1 text-xs font-bold text-white hover:bg-green-700"
             >
               Contact
-                { href: "/engineering", label: "Engineering" },
-                { href: "/erp", label: "ERP" },
-                { href: "/ai", label: "AI" },
-                { href: "/case-studies", label: "Case Studies" },
             </Link>
           </div>
         </nav>
@@ -252,6 +248,10 @@ export function SiteHeader() {
               <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-white/30">More</p>
               {[
                 { href: "/industries", label: "Industries" },
+                { href: "/engineering", label: "Engineering" },
+                { href: "/erp", label: "ERP" },
+                { href: "/ai", label: "AI" },
+                { href: "/case-studies", label: "Case Studies" },
                 { href: "/blog", label: "Blog" },
                 { href: "/portfolio", label: "Portfolio" },
                 { href: "/about", label: "About" },

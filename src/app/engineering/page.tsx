@@ -66,7 +66,7 @@ export default function EngineeringPage() {
               >
                 <h3 className="text-lg font-bold text-[#0b1f3a]">{item.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-black/60">{item.body}</p>
-                <span className="mt-4 block text-sm font-semibold text-green-700">Explore service -></span>
+                <span className="mt-4 block text-sm font-semibold text-green-700">Explore service &rarr;</span>
               </Link>
             ))}
           </div>
