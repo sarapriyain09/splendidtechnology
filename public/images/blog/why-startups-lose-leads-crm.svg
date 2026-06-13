@@ -1,0 +1,37 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.06"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1080" cy="88" r="170" fill="#22c55e" fill-opacity="0.14"/>
+  <circle cx="120" cy="594" r="230" fill="#22c55e" fill-opacity="0.1"/>
+
+  <rect x="78" y="70" width="1044" height="490" rx="26" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.22"/>
+
+  <text x="130" y="150" fill="#86efac" font-family="Arial, sans-serif" font-size="26" font-weight="700">Splendid CRM Insights</text>
+
+  <text x="130" y="230" fill="#ffffff" font-family="Arial, sans-serif" font-size="52" font-weight="700">Why Startups Lose Leads</text>
+  <text x="130" y="292" fill="#ffffff" font-family="Arial, sans-serif" font-size="52" font-weight="700">And How CRM Captures</text>
+  <text x="130" y="354" fill="#ffffff" font-family="Arial, sans-serif" font-size="52" font-weight="700">Every Opportunity</text>
+
+  <rect x="130" y="405" width="680" height="4" rx="2" fill="#22c55e"/>
+  <text x="130" y="455" fill="#d1d5db" font-family="Arial, sans-serif" font-size="28" font-weight="500">Lead Management • Follow-up Discipline • Pipeline Visibility</text>
+
+  <g opacity="0.95">
+    <rect x="870" y="180" width="196" height="250" rx="16" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.28"/>
+    <rect x="900" y="220" width="136" height="18" rx="9" fill="#22c55e" fill-opacity="0.9"/>
+    <rect x="900" y="256" width="110" height="14" rx="7" fill="#bfdbfe" fill-opacity="0.9"/>
+    <rect x="900" y="286" width="126" height="14" rx="7" fill="#bfdbfe" fill-opacity="0.9"/>
+    <rect x="900" y="316" width="96" height="14" rx="7" fill="#bfdbfe" fill-opacity="0.9"/>
+    <rect x="900" y="360" width="136" height="34" rx="17" fill="#16a34a"/>
+    <text x="939" y="383" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="700">Follow Up</text>
+  </g>
+</svg>
