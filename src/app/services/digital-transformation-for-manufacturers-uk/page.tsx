@@ -2,62 +2,61 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "CRM for Manufacturers UK | CRM Implementation for Industrial SMEs",
+  title: "Digital Transformation for Manufacturers UK | Practical Digitalisation for SMEs",
   description:
-    "CRM for manufacturers in the UK. Improve lead capture, quote follow-up, distributor management, and sales visibility with practical CRM implementation for industrial SMEs.",
+    "Digital transformation for UK manufacturers and industrial SMEs. Improve sales response, workflow visibility, and operational execution through practical digitalisation.",
   keywords: [
-    "crm for manufacturers uk",
-    "manufacturing crm software uk",
-    "crm implementation manufacturing",
-    "crm consultant uk",
-    "b2b lead management crm",
-    "sales crm for industrial companies",
+    "digital transformation manufacturing uk",
+    "manufacturing digitisation uk",
+    "digitalisation for manufacturers",
+    "industrial workflow automation",
+    "engineering digital transformation",
+    "digital consultant uk",
   ],
   alternates: {
-    canonical: "/services/crm-for-manufacturers-uk",
+    canonical: "/services/digital-transformation-for-manufacturers-uk",
   },
   openGraph: {
     type: "website",
-    title: "CRM for Manufacturers UK",
+    title: "Digital Transformation for Manufacturers UK",
     description:
-      "Practical CRM implementation for UK manufacturers and industrial SMEs.",
-    url: "https://www.splendidtechnology.co.uk/services/crm-for-manufacturers-uk",
+      "Practical digitalisation roadmaps and implementation for UK manufacturing SMEs.",
+    url: "https://www.splendidtechnology.co.uk/services/digital-transformation-for-manufacturers-uk",
   },
 };
 
-const outcomes = [
-  "Centralized lead capture from web, phone, and referrals",
-  "Faster quote follow-up and fewer missed opportunities",
-  "Clear pipeline visibility across sales reps and territories",
-  "Better distributor and account relationship tracking",
-  "Reliable sales forecasting and management reporting",
+const priorities = [
+  "Enquiry-to-quote workflow clarity",
+  "Operations and approval handoff control",
+  "Data visibility across sales and delivery",
+  "KPI reporting with weekly decision cadence",
+  "Phased rollout with adoption support",
 ];
 
-const scope = [
-  "CRM process mapping and implementation",
-  "Lead and enquiry routing workflows",
-  "Quote and proposal automation",
-  "Pipeline stage design for complex B2B deals",
-  "Dashboards for conversion, cycle time, and revenue",
-  "Integration with email, forms, and core systems",
+const phases = [
+  "Assess bottlenecks and map current workflows",
+  "Prioritize high-impact digitalisation use cases",
+  "Implement first workflow with ownership and SLAs",
+  "Add dashboards and process accountability",
+  "Scale to adjacent workflows with governance",
 ];
 
 const faqs = [
   {
-    q: "Is this only for large manufacturers?",
-    a: "No. This service is designed for UK manufacturing SMEs that need better commercial control without enterprise-level overhead.",
+    q: "Do you provide strategy only, or implementation as well?",
+    a: "We provide both. Most engagements start with assessment and roadmap, then move into phased implementation and adoption support.",
   },
   {
-    q: "Can you migrate from spreadsheets or an old CRM?",
-    a: "Yes. We migrate contacts, deal history, and process rules, then set up a cleaner CRM structure for your current operation.",
+    q: "Can this work for SMEs without enterprise budgets?",
+    a: "Yes. We focus on practical sequencing so SMEs can start with one high-impact workflow and scale based on measurable outcomes.",
   },
   {
-    q: "Do you support multi-site or distributor sales models?",
-    a: "Yes. We can model distributor channels, key accounts, and regional workflows so reporting and ownership stay clear.",
+    q: "How long does a first digitalisation phase take?",
+    a: "A first phase is typically scoped in weeks, not months, depending on process complexity and data readiness.",
   },
 ];
 
-export default function CRMForManufacturersUKPage() {
+export default function DigitalTransformationForManufacturersUKPage() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -74,15 +73,15 @@ export default function CRMForManufacturersUKPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "CRM for Manufacturers UK",
-    serviceType: "CRM implementation",
+    name: "Digital Transformation for Manufacturers UK",
+    serviceType: "Digital transformation and workflow digitalisation",
     provider: {
       "@type": "Organization",
       name: "Splendid Technology Ltd",
       url: "https://www.splendidtechnology.co.uk",
     },
     areaServed: "GB",
-    url: "https://www.splendidtechnology.co.uk/services/crm-for-manufacturers-uk",
+    url: "https://www.splendidtechnology.co.uk/services/digital-transformation-for-manufacturers-uk",
   };
 
   return (
@@ -99,27 +98,27 @@ export default function CRMForManufacturersUKPage() {
       <section className="bg-[#0b1f3a] px-4 py-16 text-white sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl">
           <p className="inline-block rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-green-400">
-            Manufacturing CRM
+            Manufacturing Digitalisation
           </p>
           <h1 className="mt-4 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-            CRM for Manufacturers in the UK
+            Digital Transformation for Manufacturers in the UK
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-7 text-white/80">
-            We help manufacturing and industrial SMEs implement CRM systems that improve lead
-            management, quote response speed, and commercial visibility.
+            We help UK manufacturing SMEs connect sales, operations, and workflow data to improve
+            execution speed, visibility, and decision quality.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-lg bg-green-600 px-7 py-3 font-bold text-white hover:bg-green-700"
             >
-              Book a CRM Assessment
+              Book a Digitalisation Assessment
             </Link>
             <Link
-              href="/services/sales-crm"
+              href="/services/software-development"
               className="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-3 font-bold text-white hover:bg-white/10"
             >
-              View CRM Service
+              View Digitalisation Services
             </Link>
           </div>
         </div>
@@ -127,9 +126,9 @@ export default function CRMForManufacturersUKPage() {
 
       <section className="py-14">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Expected Outcomes</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Common Priority Areas</h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {outcomes.map((item) => (
+            {priorities.map((item) => (
               <li key={item} className="rounded-xl border border-black/10 bg-white px-4 py-3 text-sm text-black/75">
                 {item}
               </li>
@@ -140,9 +139,9 @@ export default function CRMForManufacturersUKPage() {
 
       <section className="bg-[#f7f7f7] py-14">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">What We Implement</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Typical Delivery Phases</h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {scope.map((item) => (
+            {phases.map((item) => (
               <li key={item} className="rounded-xl border border-black/10 bg-white px-4 py-3 text-sm text-black/75">
                 {item}
               </li>
@@ -157,16 +156,16 @@ export default function CRMForManufacturersUKPage() {
           <div className="mt-6 grid gap-4 lg:grid-cols-3">
             {[
               {
-                quote: "Lead and quote ownership is now clear across our commercial team.",
-                role: "Sales Manager, UK Manufacturer",
+                quote: "Our workflow handoffs are clearer, and status visibility is much better across teams.",
+                role: "Operations Lead, Manufacturing SME",
               },
               {
-                quote: "Follow-up consistency improved and we reduced missed opportunities.",
-                role: "Director, Engineering SME",
+                quote: "Phased implementation made adoption practical for our internal teams.",
+                role: "Managing Director, Engineering Company",
               },
               {
-                quote: "Pipeline reporting now supports reliable weekly decisions.",
-                role: "Commercial Lead, Industrial SME",
+                quote: "Weekly KPI reviews now give us faster and better-informed decisions.",
+                role: "Commercial Director, UK SME",
               },
             ].map((item) => (
               <article key={item.role} className="rounded-2xl border border-black/10 bg-white p-6">
@@ -202,14 +201,6 @@ export default function CRMForManufacturersUKPage() {
                 <p className="mt-2 text-sm leading-6 text-black/70">{item.a}</p>
               </article>
             ))}
-          </div>
-          <div className="mt-8">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-lg bg-[#0b1f3a] px-6 py-3 font-bold text-white hover:bg-[#0b3d91]"
-            >
-              Request a Proposal
-            </Link>
           </div>
         </div>
       </section>

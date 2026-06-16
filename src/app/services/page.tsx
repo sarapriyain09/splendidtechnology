@@ -255,6 +255,28 @@ export default function ServicesPage() {
               </p>
               <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
             </Link>
+            <Link
+              href="/services/crm-for-engineering-companies-uk"
+              className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-shadow hover:shadow-md"
+            >
+              <p className="text-xs font-bold uppercase tracking-wider text-green-600">CRM</p>
+              <h3 className="mt-2 text-lg font-bold text-[#0b1f3a]">CRM for Engineering Companies UK</h3>
+              <p className="mt-2 text-sm leading-6 text-black/70">
+                Structured lead and quote workflows for engineering firms with complex B2B sales cycles.
+              </p>
+              <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
+            </Link>
+            <Link
+              href="/services/digital-transformation-for-manufacturers-uk"
+              className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-shadow hover:shadow-md"
+            >
+              <p className="text-xs font-bold uppercase tracking-wider text-green-600">Digitalisation</p>
+              <h3 className="mt-2 text-lg font-bold text-[#0b1f3a]">Digital Transformation for Manufacturers UK</h3>
+              <p className="mt-2 text-sm leading-6 text-black/70">
+                Practical digitalisation roadmaps and phased implementation for UK manufacturing SMEs.
+              </p>
+              <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
+            </Link>
           </div>
         </div>
       </section>

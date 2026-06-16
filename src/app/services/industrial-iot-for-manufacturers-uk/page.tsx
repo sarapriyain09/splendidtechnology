@@ -152,6 +152,47 @@ export default function IndustrialIoTForManufacturersUKPage() {
 
       <section className="py-14">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Client Proof and Trust</h2>
+          <div className="mt-6 grid gap-4 lg:grid-cols-3">
+            {[
+              {
+                quote: "We moved from reactive maintenance to better-planned interventions on critical assets.",
+                role: "Maintenance Lead, UK Industrial Site",
+              },
+              {
+                quote: "The reliability dashboard gave both operations and engineering teams shared visibility.",
+                role: "Operations Manager, Manufacturer",
+              },
+              {
+                quote: "Pilot-first rollout helped us prove value before scaling across more lines.",
+                role: "Engineering Director, SME",
+              },
+            ].map((item) => (
+              <article key={item.role} className="rounded-2xl border border-black/10 bg-white p-6">
+                <p className="text-sm leading-6 text-black/75">&ldquo;{item.quote}&rdquo;</p>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-[#0b3d91]">{item.role}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link
+              href="/engineering-case-studies"
+              className="inline-flex items-center justify-center rounded-lg bg-[#0b1f3a] px-6 py-3 text-sm font-bold text-white hover:bg-[#0b3d91]"
+            >
+              Read Case Studies
+            </Link>
+            <Link
+              href="/about"
+              className="inline-flex items-center justify-center rounded-lg border border-[#0b1f3a]/30 px-6 py-3 text-sm font-bold text-[#0b1f3a] hover:bg-[#0b1f3a]/5"
+            >
+              Founder and Team Profile
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-14">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-[#0b1f3a]">Frequently Asked Questions</h2>
           <div className="mt-6 grid gap-4 lg:grid-cols-3">
             {faqs.map((item) => (

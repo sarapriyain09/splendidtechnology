@@ -27,37 +27,42 @@ export async function generateMetadata({
 
   const cityMeta: Record<string, CityMeta> = {
     leicester: {
-      title: "Web Developer Leicester | Software & SaaS Development | Splendid Technology",
+      title: "CRM Consultant Leicester | CRM and Digitalisation Services | Splendid Technology",
       description:
-        "Splendid Technology — Leicester-based web developer, software developer, and SaaS specialist. Custom web applications, business websites, and managed hosting for SMEs across the UK.",
+        "Splendid Technology provides CRM consultancy, digitalisation services, and workflow automation for Leicester SMEs and manufacturers.",
       keywords: [
-        "web developer Leicester",
-        "software developer Leicester",
-        "SaaS development UK",
-        "custom web applications UK",
-        "website hosting for SMEs",
-        "web development company Leicester",
-        "web app development Leicester",
-        "bespoke software Leicester",
-        "small business web developer UK",
-        "custom software development Leicestershire",
+        "crm consultant leicester",
+        "crm implementation leicester",
+        "digitalisation consultant leicester",
+        "workflow automation leicester",
+        "crm for manufacturers leicester",
+        "digital transformation leicestershire",
       ],
     },
     birmingham: {
-      title: "Web Developer Birmingham | Custom Web Apps & SaaS | Splendid Technology",
+      title: "CRM Consultant Birmingham | CRM and Digitalisation Services | Splendid Technology",
       description:
-        "Splendid Technology builds custom web applications, SaaS platforms, and business websites for Birmingham SMEs. Software developer and web app specialist serving the West Midlands.",
+        "CRM consultancy and digitalisation services for Birmingham SMEs and engineering teams, including pipeline workflows and automation.",
       keywords: [
-        "web developer Birmingham",
-        "software developer Birmingham",
-        "SaaS development Birmingham",
-        "custom web applications Birmingham",
-        "web development company Birmingham",
-        "web app development West Midlands",
-        "bespoke software Birmingham",
-        "small business website Birmingham",
-        "website hosting for SMEs UK",
-        "custom software development West Midlands",
+        "crm consultant birmingham",
+        "crm implementation birmingham",
+        "digitalisation consultant birmingham",
+        "workflow automation west midlands",
+        "crm for manufacturers birmingham",
+        "digital transformation birmingham",
+      ],
+    },
+    manchester: {
+      title: "CRM Consultant Manchester | CRM and Digitalisation Services | Splendid Technology",
+      description:
+        "CRM consultancy and digitalisation services for Manchester SMEs and industrial teams, including sales pipeline workflows and automation.",
+      keywords: [
+        "crm consultant manchester",
+        "crm implementation manchester",
+        "digitalisation consultant manchester",
+        "workflow automation manchester",
+        "crm for engineering companies manchester",
+        "digital transformation manchester",
       ],
     },
     london: {
@@ -169,8 +174,79 @@ export default async function LocationPage({
     para: `We build fast, maintainable websites, web apps, ecommerce stores, and automations for ${loc.name} businesses. ${isLeicester ? "We're Leicester-based and can also meet locally when needed." : "We deliver projects remotely across the UK."}`,
   };
 
+  const localSchemaByCity: Record<string, { name: string; description: string }> = {
+    leicester: {
+      name: "CRM Consultant Leicester - Splendid Technology",
+      description:
+        "CRM consultancy and digitalisation services for Leicester SMEs and manufacturers.",
+    },
+    birmingham: {
+      name: "CRM Consultant Birmingham - Splendid Technology",
+      description:
+        "CRM consultancy and digitalisation services for Birmingham SMEs and engineering teams.",
+    },
+    manchester: {
+      name: "CRM Consultant Manchester - Splendid Technology",
+      description:
+        "CRM consultancy and digitalisation services for Manchester SMEs and industrial teams.",
+    },
+    london: {
+      name: "CRM Consultant London - Splendid Technology",
+      description:
+        "CRM consultancy and digitalisation services for London SMEs and engineering businesses.",
+    },
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: localSchemaByCity[loc.slug]?.name ?? `Splendid Technology - ${loc.name}`,
+    description:
+      localSchemaByCity[loc.slug]?.description ??
+      `Digital services for businesses in ${loc.name} and nearby UK areas.`,
+    url: `https://www.splendidtechnology.co.uk/locations/${loc.slug}`,
+    areaServed: {
+      "@type": "City",
+      name: loc.name,
+    },
+    addressCountry: "GB",
+    email: "info@splendidtechnology.co.uk",
+    telephone: "+44 7723 144910",
+    provider: {
+      "@type": "Organization",
+      name: "Splendid Technology Ltd",
+      url: "https://www.splendidtechnology.co.uk",
+    },
+  };
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `CRM and Digitalisation Services in ${loc.name}`,
+    serviceType: ["CRM consultancy", "Digitalisation", "Workflow automation"],
+    areaServed: {
+      "@type": "City",
+      name: loc.name,
+    },
+    provider: {
+      "@type": "Organization",
+      name: "Splendid Technology Ltd",
+      url: "https://www.splendidtechnology.co.uk",
+    },
+    url: `https://www.splendidtechnology.co.uk/locations/${loc.slug}`,
+  };
+
   return (
     <div className="mx-auto w-full max-w-3xl space-y-8 px-4 py-10 sm:px-6 lg:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+
       <header className="space-y-3">
         <p className="text-xs text-black/60">
           UK-wide delivery &bull; Remote-first{isLeicester ? " \u2022 Leicester office" : ""}

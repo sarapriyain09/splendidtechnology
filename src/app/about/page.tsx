@@ -102,6 +102,39 @@ const detailedScope = [
   },
 ];
 
+const leadershipTeam = [
+  {
+    name: "Shiva Prakhash",
+    role: "Technical Delivery Manager",
+    credential: "MSc Computer Science",
+    badge: "Technical Delivery Manager",
+    subtitle: "Technical Delivery Manager — Splendid Technology, Leicester, UK",
+    bio: "Responsible for the successful delivery of client projects, including website development, hosting, deployment, maintenance, and technical support. Works closely with clients and the business development team to translate requirements into reliable, secure, and scalable digital solutions.",
+    skills: [
+      "Website Development",
+      "Technical Project Delivery",
+      "Web Hosting",
+      "Deployment and Release Management",
+      "Technical Support",
+      "System Administration",
+      "Cloud Hosting",
+      "Website Maintenance",
+      "Application Troubleshooting",
+      "Performance Optimization",
+      "Security and SSL Management",
+      "Client Support",
+    ],
+  },
+  {
+    name: "Arun Prakash",
+    role: "Business Development Manager",
+    credential: "MSc International Business",
+    badge: "Business Development Manager",
+    subtitle: "Business Development Manager — Splendid Technology, Leicester, UK",
+    bio: "Responsible for lead generation, prospect research, CRM management, customer engagement, quotation preparation, and supporting business growth initiatives. Focused on identifying opportunities, understanding customer requirements, nurturing prospects, and helping convert enquiries into business opportunities.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <div className="bg-white">
@@ -211,6 +244,49 @@ export default function AboutPage() {
                 ))}
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Team */}
+      <section className="bg-slate-50 py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-[#0b1f3a]">Leadership Team</h2>
+          <p className="mt-2 max-w-2xl text-sm text-slate-600">
+            Delivery and growth leadership focused on practical implementation for UK SMEs.
+          </p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {leadershipTeam.map((member) => (
+              <article key={member.name} className="rounded-2xl border border-slate-200 bg-white p-6">
+                {("badge" in member && member.badge) ? (
+                  <p className="inline-block rounded-full border border-green-300 bg-green-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-green-700">
+                    {member.badge}
+                  </p>
+                ) : null}
+                <h3 className="text-lg font-bold text-[#0b1f3a]">{member.name}</h3>
+                <p className="mt-1 text-sm font-semibold text-green-700">{member.role}</p>
+                {("subtitle" in member && member.subtitle) ? (
+                  <p className="mt-1 text-xs text-slate-500">{member.subtitle}</p>
+                ) : null}
+                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500">{member.credential}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-700">{member.bio}</p>
+                {("skills" in member && member.skills) ? (
+                  <div className="mt-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-[#0b3d91]">Key Skills</p>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {member.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-700"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </article>
+            ))}
           </div>
         </div>
       </section>

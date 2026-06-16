@@ -511,6 +511,55 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Proof and Trust ── */}
+      <section className="py-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Proof and Trust Signals</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
+            Evidence-led delivery matters. We focus on measurable workflow and reliability outcomes,
+            with practical implementation for UK SMEs.
+          </p>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {[
+              {
+                quote:
+                  "Our sales process is now visible end-to-end, and follow-up discipline has improved significantly.",
+                role: "Commercial Lead, UK Manufacturing SME",
+              },
+              {
+                quote:
+                  "Condition monitoring gave us earlier warning and better planning for critical maintenance windows.",
+                role: "Operations Manager, Industrial Site",
+              },
+              {
+                quote:
+                  "The phased rollout made adoption easier and helped us show value quickly to leadership.",
+                role: "Director, Engineering SME",
+              },
+            ].map((item) => (
+              <article key={item.role} className="rounded-2xl border border-black/10 bg-white p-6">
+                <p className="text-sm leading-6 text-black/75">&ldquo;{item.quote}&rdquo;</p>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-[#0b3d91]">{item.role}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link
+              href="/engineering-case-studies"
+              className="inline-flex items-center justify-center rounded-lg bg-[#0b1f3a] px-6 py-3 text-sm font-bold text-white hover:bg-[#0b3d91]"
+            >
+              View Case Studies
+            </Link>
+            <Link
+              href="/about"
+              className="inline-flex items-center justify-center rounded-lg border border-[#0b1f3a]/30 px-6 py-3 text-sm font-bold text-[#0b1f3a] hover:bg-[#0b1f3a]/5"
+            >
+              Meet the Team
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── Blog ── */}
       <section className="bg-[#f7f7f7] py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">

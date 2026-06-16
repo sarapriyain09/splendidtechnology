@@ -33,6 +33,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/services/sales-crm`, lastModified },
     { url: `${base}/services/ai-solutions`, lastModified },
     { url: `${base}/services/crm-for-manufacturers-uk`, lastModified },
+    { url: `${base}/services/crm-for-engineering-companies-uk`, lastModified },
+    { url: `${base}/services/digital-transformation-for-manufacturers-uk`, lastModified },
     { url: `${base}/services/industrial-iot-for-manufacturers-uk`, lastModified },
     // Products
     { url: `${base}/products`, lastModified },
