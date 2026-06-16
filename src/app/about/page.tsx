@@ -2,13 +2,39 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Splendid Technology | Digital Solutions for UK SMEs",
+  title: "About Rajagopalan Saravanan | Founder, Splendid Technology UK",
   description:
-    "Splendid Technology helps UK engineering and manufacturing SMEs digitize sales, operations, assets, and workflows through practical software systems.",
+    "Meet Rajagopalan Saravanan, Founder of Splendid Technology. Digital Transformation Consultant UK focused on CRM, AI, Industrial IoT, reliability engineering, and manufacturing digitalisation.",
   alternates: {
     canonical: "/about",
   },
 };
+
+const founderHighlights = [
+  "25+ Years Engineering Experience",
+  "MBA (Operations)",
+  "B.E. Electrical & Electronics Engineering",
+  "ISO 9000 Internal Auditor",
+  "Six Sigma Green Belt",
+  "Leadership roles at Baker Hughes and GE Power Conversion",
+];
+
+const industriesServed = [
+  "Manufacturing",
+  "Oil & Gas",
+  "Marine",
+  "Mining",
+  "Metals",
+  "Utilities",
+  "Engineering Services",
+];
+
+const credibilityMetrics = [
+  { label: "Engineering Experience", value: "25+ Years" },
+  { label: "Major Projects", value: "100+" },
+  { label: "Industries Served", value: "7" },
+  { label: "Countries Worked In", value: "UK, India, France" },
+];
 
 const pillars = [
   {
@@ -173,6 +199,27 @@ const leadershipTeam = [
 ];
 
 export default function AboutPage() {
+  const founderSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Rajagopalan Saravanan",
+    jobTitle: "Founder",
+    worksFor: {
+      "@type": "Organization",
+      name: "Splendid Technology",
+      url: "https://www.splendidtechnology.co.uk",
+    },
+    description:
+      "Engineering leader and Digital Transformation Consultant in the UK with 25+ years of experience in reliability engineering, industrial operations, CRM, AI, and Industrial IoT.",
+    knowsAbout: [
+      "Digital Transformation Consultant UK",
+      "CRM Consultant UK",
+      "Industrial IoT Consultant UK",
+      "Reliability Engineering",
+      "Manufacturing Digitalisation",
+    ],
+  };
+
   const renderLeaderCard = (member: (typeof leadershipTeam)[number]) => (
     <article key={member.name} className="rounded-2xl border border-slate-200 bg-white p-6">
       {("badge" in member && member.badge) ? (
@@ -219,6 +266,10 @@ export default function AboutPage() {
 
   return (
     <div className="bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(founderSchema) }}
+      />
 
       {/* Hero */}
       <section className="bg-[#0b1f3a] py-16 text-white">
@@ -232,6 +283,46 @@ export default function AboutPage() {
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-400">
             We focus on practical implementation, measurable outcomes, and scalable systems
             that improve reliability, productivity, and operational visibility.
+          </p>
+        </div>
+      </section>
+
+      {/* Meet the Founder */}
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+        <p className="text-xs font-bold uppercase tracking-widest text-green-700">Meet the Founder</p>
+        <h2 className="mt-2 text-3xl font-bold text-[#0b1f3a]">Rajagopalan Saravanan</h2>
+        <p className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-7 text-slate-700">
+          Rajagopalan Saravanan founded Splendid Technology after more than 25 years working in engineering,
+          reliability, asset management, and industrial operations. Having held leadership roles at Baker Hughes and
+          GE Power Conversion, he combines deep industrial expertise with modern digital technologies including CRM,
+          AI, Industrial IoT, and business process automation. His mission is to help SMEs adopt practical digital
+          systems that improve sales performance, operational visibility, and sustainable growth.
+        </p>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {founderHighlights.map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* Why We Exist */}
+      <section className="bg-slate-50 py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-[#0b1f3a]">Why Splendid Technology Exists</h2>
+          <p className="mt-4 max-w-4xl text-sm leading-7 text-slate-700">
+            Splendid Technology was founded to bridge the gap between engineering excellence and digital
+            transformation. Many SMEs struggle with disconnected systems, manual processes, and limited visibility
+            across sales and operations. We help organisations implement practical CRM, automation, AI, and Industrial
+            IoT solutions that deliver measurable business outcomes.
+          </p>
+          <p className="mt-3 max-w-4xl text-sm leading-7 text-slate-700">
+            Our consulting and implementation approach supports businesses looking for a Digital Transformation
+            Consultant UK, CRM Consultant UK, and Industrial IoT Consultant UK partner with real industrial experience.
           </p>
         </div>
       </section>
@@ -325,6 +416,33 @@ export default function AboutPage() {
                 ))}
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Industries and Proof */}
+      <section className="bg-slate-50 py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-[#0b1f3a]">Industries Served</h2>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {industriesServed.map((industry) => (
+              <div
+                key={industry}
+                className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700"
+              >
+                {industry}
+              </div>
+            ))}
+          </div>
+
+          <h3 className="mt-10 text-xl font-bold text-[#0b1f3a]">Operational Credibility</h3>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {credibilityMetrics.map((metric) => (
+              <div key={metric.label} className="rounded-2xl border border-slate-200 bg-white p-5">
+                <p className="text-2xl font-bold text-green-700">{metric.value}</p>
+                <p className="mt-1 text-xs uppercase tracking-wide text-slate-500">{metric.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
