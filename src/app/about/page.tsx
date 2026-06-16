@@ -106,10 +106,10 @@ const leadershipTeam = [
   {
     name: "Rajagopalan Saravanan",
     role: "Founder & Director",
-    credential: "15+ years in engineering and industrial operations",
+    credential: "25+ years in engineering and industrial operations",
     badge: "Founder & Director",
-    subtitle: "Founder & Director — Splendid Technology",
-    bio: "Rajagopalan Saravanan is the Founder and Director of Splendid Technology, helping SMEs and industrial businesses improve performance through CRM systems, digital transformation, AI solutions, and Industrial IoT technologies. With over 15 years of experience in electrical engineering, asset management, reliability, and industrial operations, he combines deep engineering knowledge with practical digital innovation. At Splendid Technology, Rajagopalan works closely with clients to design and deliver solutions that improve operational efficiency, strengthen customer engagement, and support sustainable business growth. His focus is on bridging the gap between engineering excellence and modern digital technologies to create measurable business value.",
+    subtitle: "Founder — Splendid Technology",
+    bio: "Rajagopalan Saravanan is the Founder and Director of Splendid Technology, helping SMEs and industrial businesses improve performance through CRM systems, digital transformation, AI solutions, and Industrial IoT technologies. With over 25 years of experience in electrical engineering, asset management, reliability, and industrial operations, he combines deep engineering knowledge with practical digital innovation. At Splendid Technology, Rajagopalan works closely with clients to design and deliver solutions that improve operational efficiency, strengthen customer engagement, and support sustainable business growth. His focus is on bridging the gap between engineering excellence and modern digital technologies to create measurable business value.",
     skills: [
       "CRM and Business Process Automation",
       "Digital Transformation",
