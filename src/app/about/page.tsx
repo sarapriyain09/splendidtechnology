@@ -173,6 +173,50 @@ const leadershipTeam = [
 ];
 
 export default function AboutPage() {
+  const renderLeaderCard = (member: (typeof leadershipTeam)[number]) => (
+    <article key={member.name} className="rounded-2xl border border-slate-200 bg-white p-6">
+      {("badge" in member && member.badge) ? (
+        <p className="inline-block rounded-full border border-green-300 bg-green-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-green-700">
+          {member.badge}
+        </p>
+      ) : null}
+      <h3 className="text-lg font-bold text-[#0b1f3a]">{member.name}</h3>
+      <p className="mt-1 text-sm font-semibold text-green-700">{member.role}</p>
+      {("subtitle" in member && member.subtitle) ? (
+        <p className="mt-1 text-xs text-slate-500">{member.subtitle}</p>
+      ) : null}
+      <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500">{member.credential}</p>
+      <p className="mt-3 text-sm leading-6 text-slate-700">{member.bio}</p>
+      {("skills" in member && member.skills) ? (
+        <div className="mt-4">
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#0b3d91]">Key Skills</p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {member.skills.map((skill) => (
+              <span
+                key={skill}
+                className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-700"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      ) : null}
+      {("qualifications" in member && member.qualifications) ? (
+        <div className="mt-4">
+          <p className="text-xs font-semibold uppercase tracking-wide text-[#0b3d91]">Qualifications</p>
+          <ul className="mt-2 space-y-1">
+            {member.qualifications.map((qualification) => (
+              <li key={qualification} className="text-xs text-slate-700">
+                {qualification}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+    </article>
+  );
+
   return (
     <div className="bg-white">
 
@@ -292,50 +336,11 @@ export default function AboutPage() {
           <p className="mt-2 max-w-2xl text-sm text-slate-600">
             Delivery and growth leadership focused on practical implementation for UK SMEs.
           </p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            {leadershipTeam.map((member) => (
-              <article key={member.name} className="rounded-2xl border border-slate-200 bg-white p-6">
-                {("badge" in member && member.badge) ? (
-                  <p className="inline-block rounded-full border border-green-300 bg-green-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-green-700">
-                    {member.badge}
-                  </p>
-                ) : null}
-                <h3 className="text-lg font-bold text-[#0b1f3a]">{member.name}</h3>
-                <p className="mt-1 text-sm font-semibold text-green-700">{member.role}</p>
-                {("subtitle" in member && member.subtitle) ? (
-                  <p className="mt-1 text-xs text-slate-500">{member.subtitle}</p>
-                ) : null}
-                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500">{member.credential}</p>
-                <p className="mt-3 text-sm leading-6 text-slate-700">{member.bio}</p>
-                {("skills" in member && member.skills) ? (
-                  <div className="mt-4">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-[#0b3d91]">Key Skills</p>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {member.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-700"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ) : null}
-                {("qualifications" in member && member.qualifications) ? (
-                  <div className="mt-4">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-[#0b3d91]">Qualifications</p>
-                    <ul className="mt-2 space-y-1">
-                      {member.qualifications.map((qualification) => (
-                        <li key={qualification} className="text-xs text-slate-700">
-                          {qualification}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
-              </article>
-            ))}
+          <div className="mt-8 grid gap-5 lg:grid-cols-2">
+            {leadershipTeam[0] ? renderLeaderCard(leadershipTeam[0]) : null}
+            <div className="space-y-5">
+              {leadershipTeam.slice(1).map((member) => renderLeaderCard(member))}
+            </div>
           </div>
         </div>
       </section>
