@@ -123,7 +123,7 @@ const leadershipTeam = [
   {
     name: "Shiva Prakhash",
     role: "Technical Delivery Manager",
-    credential: "MSc Computer Science",
+    credential: "MSc Advanced Computer Science, University of Leicester",
     badge: "Technical Delivery Manager",
     subtitle: "Technical Delivery Manager — Splendid Technology, Leicester, UK",
     bio: "Responsible for the successful delivery of client projects, including website development, hosting, deployment, maintenance, and technical support. Works closely with clients and the business development team to translate requirements into reliable, secure, and scalable digital solutions.",
@@ -145,7 +145,7 @@ const leadershipTeam = [
   {
     name: "Arun Prakash",
     role: "Business Development Manager",
-    credential: "MSc International Business",
+    credential: "MSc International Business, University of Leicester",
     badge: "Business Development Manager",
     subtitle: "Business Development Manager — Splendid Technology, Leicester, UK",
     bio: "Responsible for lead generation, prospect research, CRM management, customer engagement, quotation preparation, and supporting business growth initiatives. Focused on identifying opportunities, understanding customer requirements, nurturing prospects, and helping convert enquiries into business opportunities.",
