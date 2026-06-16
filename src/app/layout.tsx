@@ -69,9 +69,62 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const siteUrl = getSiteUrl();
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Splendid Technology Ltd",
+    url: siteUrl,
+    logo: `${siteUrl}/images/hero/logo.png`,
+    email: "info@splendidtechnology.co.uk",
+    telephone: "+44 7723 144910",
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: "info@splendidtechnology.co.uk",
+        telephone: "+44 7723 144910",
+        areaServed: "GB",
+        availableLanguage: ["en-GB"],
+      },
+    ],
+    sameAs: ["https://www.splendidtechnology.co.uk"],
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Splendid Technology Ltd",
+    url: siteUrl,
+    image: `${siteUrl}/images/hero/logo.png`,
+    telephone: "+44 7723 144910",
+    email: "info@splendidtechnology.co.uk",
+    areaServed: {
+      "@type": "Country",
+      name: "United Kingdom",
+    },
+    addressCountry: "GB",
+    priceRange: "$$",
+    serviceType: [
+      "CRM implementation",
+      "Digitalisation services",
+      "AI automation solutions",
+      "Industrial IoT solutions",
+      "Web application development",
+    ],
+  };
+
   return (
     <html lang="en" className="h-full">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-8VJ7HX37V6"

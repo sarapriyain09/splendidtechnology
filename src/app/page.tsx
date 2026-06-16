@@ -3,17 +3,18 @@ import type { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Digitalisation, CRM, Web Apps and AI Solutions for UK SMEs | Splendid Technology",
+  title: "CRM, Digitalisation and AI Solutions for UK SMEs | Splendid Technology",
   description:
-    "Splendid Technology is a digital company helping UK SMEs implement CRM, workflow automation, SaaS and web applications, AI-enabled processes, and connected business systems.",
+    "Splendid Technology helps UK SMEs and manufacturers implement CRM, digitalisation workflows, and AI automation to improve sales response, operations, and decision-making.",
   keywords: [
-    "digitalisation services uk",
+    "crm for manufacturers uk",
     "crm for smes uk",
-    "workflow automation uk",
-    "saas development company uk",
-    "web app development uk",
-    "ai solutions for small business uk",
-    "business systems integration uk",
+    "digitalisation services uk",
+    "digital transformation manufacturing uk",
+    "ai automation for smes",
+    "ai workflow automation uk",
+    "crm consultant uk",
+    "manufacturing crm software",
     "splendid technology",
   ],
   alternates: {
@@ -21,16 +22,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Digitalisation, CRM, Web Apps and AI Solutions for UK SMEs",
+    title: "CRM, Digitalisation and AI Solutions for UK SMEs",
     description:
-      "CRM, business systems, SaaS platforms, AI automation, and web app development for UK SMEs.",
+      "CRM implementation, digitalisation workflows, and AI automation for UK SMEs and manufacturers.",
     url: "https://www.splendidtechnology.co.uk/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Digitalisation, CRM, Web Apps and AI Solutions for UK SMEs",
+    title: "CRM, Digitalisation and AI Solutions for UK SMEs",
     description:
-      "CRM, workflow automation, SaaS and AI-enabled web apps for UK SMEs.",
+      "CRM implementation, digitalisation workflows, and AI automation for UK SMEs and manufacturers.",
   },
 };
 
@@ -186,25 +187,119 @@ const detailedScope = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "Do you provide CRM solutions for manufacturers in the UK?",
+    answer:
+      "Yes. We design and implement CRM systems for UK manufacturers, including lead capture, quote workflows, distributor management, and commercial reporting.",
+  },
+  {
+    question: "What does digitalisation include for an SME?",
+    answer:
+      "Digitalisation typically includes workflow automation, approvals, operational dashboards, integrations between business systems, and data standardization for faster decisions.",
+  },
+  {
+    question: "Can AI automation work with our existing systems?",
+    answer:
+      "Yes. We integrate AI-assisted workflows with existing CRM, email, and operational systems so teams can automate repetitive work without replacing everything.",
+  },
+  {
+    question: "Do you support industrial IoT and predictive maintenance?",
+    answer:
+      "Yes. For industrial and engineering teams, we provide connected data and asset intelligence solutions including monitoring dashboards and predictive insights.",
+  },
+];
+
 export default function Home() {
   const latestPosts = getAllBlogPosts().slice(0, 2);
+  const homeServiceSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: [
+      {
+        "@type": "Service",
+        name: "CRM implementation for UK SMEs",
+        serviceType: "CRM",
+        areaServed: "GB",
+        provider: {
+          "@type": "Organization",
+          name: "Splendid Technology Ltd",
+        },
+        url: "https://www.splendidtechnology.co.uk/services/sales-crm",
+      },
+      {
+        "@type": "Service",
+        name: "Digitalisation workflows for UK businesses",
+        serviceType: "Digitalisation",
+        areaServed: "GB",
+        provider: {
+          "@type": "Organization",
+          name: "Splendid Technology Ltd",
+        },
+        url: "https://www.splendidtechnology.co.uk/services/software-development",
+      },
+      {
+        "@type": "Service",
+        name: "AI automation solutions for SMEs",
+        serviceType: "AI automation",
+        areaServed: "GB",
+        provider: {
+          "@type": "Organization",
+          name: "Splendid Technology Ltd",
+        },
+        url: "https://www.splendidtechnology.co.uk/services/ai-solutions",
+      },
+      {
+        "@type": "Service",
+        name: "Industrial IoT for manufacturers",
+        serviceType: "Industrial IoT",
+        areaServed: "GB",
+        provider: {
+          "@type": "Organization",
+          name: "Splendid Technology Ltd",
+        },
+        url: "https://www.splendidtechnology.co.uk/services/iot-solutions",
+      },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
 
   return (
     <div className="w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeServiceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       {/* ── Hero ── */}
       <section className="bg-[#0b1f3a] text-white">
         <div className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="inline-block rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-green-400">
-              CRM, SaaS and Digitalisation for UK SMEs
+              CRM, Digitalisation and AI for UK SMEs
             </p>
             <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Digitalisation, CRM, Web Apps and AI Solutions for UK SMEs
+              CRM, Digitalisation and AI Solutions for UK SMEs
             </h1>
             <p className="mt-5 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-              We are a digital company helping UK SMEs improve sales response, streamline
-              operations, and scale with practical CRM, web applications, AI, and connected business systems.
+              We help UK SMEs and manufacturers improve sales response, streamline
+              operations, and scale with practical CRM systems, digital workflows, and AI automation.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -489,6 +584,24 @@ export default function Home() {
               +44 7723 144910
             </a>
           </p>
+        </div>
+      </section>
+
+      {/* ── FAQs ── */}
+      <section className="bg-[#f7f7f7] py-14">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Frequently Asked Questions</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
+            Quick answers for teams planning CRM, digitalisation, and AI implementation.
+          </p>
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            {faqItems.map((item) => (
+              <article key={item.question} className="rounded-2xl border border-black/10 bg-white p-6">
+                <h3 className="text-base font-bold text-[#0b1f3a]">{item.question}</h3>
+                <p className="mt-2 text-sm leading-6 text-black/70">{item.answer}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

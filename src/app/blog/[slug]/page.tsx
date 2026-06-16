@@ -66,8 +66,14 @@ export default async function BlogPostPage({
           </div>
         ) : null}
         <div className="flex flex-wrap gap-3 pt-1">
-          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services">
-            Services
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services/sales-crm">
+            CRM Services
+          </Link>
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services/ai-solutions">
+            AI Solutions
+          </Link>
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services/iot-solutions">
+            IoT Solutions
           </Link>
           <Link className="text-sm font-medium text-blue-700 hover:underline" href="/contact">
             Contact

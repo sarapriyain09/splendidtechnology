@@ -226,6 +226,39 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <section className="bg-[#f7f7f7] py-12">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-[#0b1f3a]">Manufacturing-Focused Pages</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-black/60">
+            Explore our dedicated pages for high-intent manufacturing search topics.
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <Link
+              href="/services/crm-for-manufacturers-uk"
+              className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-shadow hover:shadow-md"
+            >
+              <p className="text-xs font-bold uppercase tracking-wider text-green-600">CRM</p>
+              <h3 className="mt-2 text-lg font-bold text-[#0b1f3a]">CRM for Manufacturers UK</h3>
+              <p className="mt-2 text-sm leading-6 text-black/70">
+                Lead capture, quote workflows, and commercial reporting tailored to UK manufacturing SMEs.
+              </p>
+              <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
+            </Link>
+            <Link
+              href="/services/industrial-iot-for-manufacturers-uk"
+              className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-shadow hover:shadow-md"
+            >
+              <p className="text-xs font-bold uppercase tracking-wider text-green-600">Industrial IoT</p>
+              <h3 className="mt-2 text-lg font-bold text-[#0b1f3a]">Industrial IoT for Manufacturers UK</h3>
+              <p className="mt-2 text-sm leading-6 text-black/70">
+                Condition monitoring and predictive maintenance workflows for reliability-focused teams.
+              </p>
+              <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Positioning strip */}
       <section className="bg-[#0b1f3a] px-4 py-14 sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl text-center">
