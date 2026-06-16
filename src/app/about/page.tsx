@@ -104,19 +104,26 @@ const detailedScope = [
 const leadershipTeam = [
   {
     name: "Rajagopalan Saravanan",
-    role: "Founder & Director",
-    credential: "25+ years in engineering and industrial operations",
-    badge: "Founder & Director",
-    subtitle: "Founder — Splendid Technology",
-    bio: "Rajagopalan Saravanan is the Founder and Director of Splendid Technology, helping SMEs and industrial businesses improve performance through CRM systems, digital transformation, AI solutions, and Industrial IoT technologies. With over 25 years of experience in electrical engineering, asset management, reliability, and industrial operations, he combines deep engineering knowledge with practical digital innovation. At Splendid Technology, Rajagopalan works closely with clients to design and deliver solutions that improve operational efficiency, strengthen customer engagement, and support sustainable business growth. His focus is on bridging the gap between engineering excellence and modern digital technologies to create measurable business value.",
+    role: "Founder",
+    credential: "25+ years international engineering and industrial leadership experience",
+    badge: "Founder",
+    subtitle: "Founder | Splendid Technology",
+    bio: "Rajagopalan Saravanan is an Engineering Leader, Digital Transformation Consultant, and Founder of Splendid Technology, with more than 25 years of international experience spanning electrical engineering, rotating machines, reliability engineering, industrial operations, and technology innovation. Throughout his career, Rajagopalan has held technical and leadership positions with global organisations including GE Vernova, Regal Beloit, and Tecumseh. He has led engineering teams, managed multi-million-dollar projects, supported industrial customers across Oil & Gas, Marine, Mining, Metals, and Manufacturing sectors, and delivered solutions ranging from motor and generator design to asset reliability and condition monitoring. His expertise combines deep industrial engineering knowledge with modern digital technologies including CRM systems, AI-powered business solutions, Industrial IoT, predictive maintenance, and business process automation. Through Splendid Technology, Rajagopalan helps SMEs and industrial organisations improve commercial performance, operational efficiency, and decision-making by connecting people, processes, and technology.",
     skills: [
-      "CRM and Business Process Automation",
-      "Digital Transformation",
-      "Artificial Intelligence Applications",
-      "Industrial IoT and Condition Monitoring",
-      "Reliability and Asset Management",
+      "Digital Transformation & Business Process Improvement",
+      "CRM Strategy & Implementation",
+      "Artificial Intelligence & Workflow Automation",
+      "Industrial IoT & Condition Monitoring",
+      "Reliability Engineering & Asset Management",
       "Electrical Power Systems",
-      "SaaS Product Development",
+      "Rotating Machines (Motors & Generators)",
+      "Engineering Leadership & Project Management",
+    ],
+    qualifications: [
+      "MBA (Operations), ICFAI University",
+      "B.E. Electrical & Electronics Engineering",
+      "ISO 9000 Internal Auditor",
+      "Six Sigma Green Belt Trained",
     ],
   },
   {
@@ -313,6 +320,18 @@ export default function AboutPage() {
                         </span>
                       ))}
                     </div>
+                  </div>
+                ) : null}
+                {("qualifications" in member && member.qualifications) ? (
+                  <div className="mt-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-[#0b3d91]">Qualifications</p>
+                    <ul className="mt-2 space-y-1">
+                      {member.qualifications.map((qualification) => (
+                        <li key={qualification} className="text-xs text-slate-700">
+                          {qualification}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ) : null}
               </article>
