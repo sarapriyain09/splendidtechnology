@@ -56,6 +56,29 @@ const industries = [
   },
 ];
 
+const priorityIndustryPages = [
+  {
+    title: "CRM for Manufacturers UK",
+    href: "/industries/crm-for-manufacturers-uk",
+  },
+  {
+    title: "Digital Transformation for Manufacturers",
+    href: "/industries/digital-transformation-for-manufacturers",
+  },
+  {
+    title: "AI for Manufacturing SMEs",
+    href: "/industries/ai-for-manufacturing-smes",
+  },
+  {
+    title: "Industrial IoT for Manufacturers",
+    href: "/industries/industrial-iot-for-manufacturers",
+  },
+  {
+    title: "CRM for Engineering Companies",
+    href: "/industries/crm-for-engineering-companies",
+  },
+];
+
 export default function IndustriesPage() {
   return (
     <div className="w-full">
@@ -113,6 +136,27 @@ export default function IndustriesPage() {
                   ))}
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Priority Industry Pages */}
+      <section className="bg-slate-50 py-14">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">High-Priority Industry Solutions</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-black/60">
+            Explore our focused industry pages built around high-intent commercial and operational search topics.
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {priorityIndustryPages.map((page) => (
+              <Link
+                key={page.href}
+                href={page.href}
+                className="rounded-xl border border-black/10 bg-white px-5 py-4 text-sm font-semibold text-[#0b1f3a] hover:border-green-400 hover:text-green-700"
+              >
+                {page.title}
+              </Link>
             ))}
           </div>
         </div>

@@ -308,6 +308,14 @@ export default function AboutPage() {
             </span>
           ))}
         </div>
+        <div className="mt-6">
+          <Link
+            href="/about/rajagopalan-saravanan"
+            className="inline-flex rounded-full border border-[#0b1f3a] px-5 py-2 text-xs font-semibold uppercase tracking-wide text-[#0b1f3a] hover:bg-[#0b1f3a] hover:text-white"
+          >
+            View Full Founder Profile
+          </Link>
+        </div>
       </section>
 
       {/* Why We Exist */}
@@ -454,11 +462,8 @@ export default function AboutPage() {
           <p className="mt-2 max-w-2xl text-sm text-slate-600">
             Delivery and growth leadership focused on practical implementation for UK SMEs.
           </p>
-          <div className="mt-8 grid gap-5 lg:grid-cols-2">
-            {leadershipTeam[0] ? renderLeaderCard(leadershipTeam[0]) : null}
-            <div className="space-y-5">
-              {leadershipTeam.slice(1).map((member) => renderLeaderCard(member))}
-            </div>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {leadershipTeam.slice(1).map((member) => renderLeaderCard(member))}
           </div>
         </div>
       </section>
