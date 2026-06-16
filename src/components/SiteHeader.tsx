@@ -157,6 +157,9 @@ export function SiteHeader() {
             <Link href="/about" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               About
             </Link>
+            <Link href="/about/rajagopalan-saravanan" className="px-2 py-1 text-xs text-white/70 hover:text-white">
+              Founder
+            </Link>
             <Link href="/pricing" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Pricing
             </Link>
@@ -239,6 +242,7 @@ export function SiteHeader() {
                 { href: "/blog", label: "Blog" },
                 { href: "/portfolio", label: "Portfolio" },
                 { href: "/about", label: "About" },
+                { href: "/about/rajagopalan-saravanan", label: "Founder" },
                 { href: "/pricing", label: "Pricing" },
                 { href: "/demo", label: "Demo" },
               ].map((item) => (

@@ -12,6 +12,9 @@ export const metadata: Metadata = {
 
 const founderHighlights = [
   "25+ Years Engineering Experience",
+  "Application Engineering and Services Sales Leadership",
+  "Salesforce Commercial Workflow Experience",
+  "International Industry Travel: India, France, Netherlands, Czech Republic",
   "MBA (Operations)",
   "B.E. Electrical & Electronics Engineering",
   "ISO 9000 Internal Auditor",
@@ -33,7 +36,7 @@ const credibilityMetrics = [
   { label: "Engineering Experience", value: "25+ Years" },
   { label: "Major Projects", value: "100+" },
   { label: "Industries Served", value: "7" },
-  { label: "Countries Worked In", value: "UK, India, France" },
+  { label: "Countries Worked In", value: "UK, India, France, Netherlands, Czech Republic" },
 ];
 
 const pillars = [
@@ -134,10 +137,13 @@ const leadershipTeam = [
     credential: "25+ years international engineering and industrial leadership experience",
     badge: "Founder",
     subtitle: "Founder | Splendid Technology",
-    bio: "Rajagopalan Saravanan is an Engineering Leader, Digital Transformation Consultant, and Founder of Splendid Technology, with more than 25 years of international experience spanning electrical engineering, rotating machines, reliability engineering, industrial operations, and technology innovation. Throughout his career, Rajagopalan has held technical and leadership positions with global organisations including GE Vernova, Regal Beloit, and Tecumseh. He has led engineering teams, managed multi-million-dollar projects, supported industrial customers across Oil & Gas, Marine, Mining, Metals, and Manufacturing sectors, and delivered solutions ranging from motor and generator design to asset reliability and condition monitoring. His expertise combines deep industrial engineering knowledge with modern digital technologies including CRM systems, AI-powered business solutions, Industrial IoT, predictive maintenance, and business process automation. Through Splendid Technology, Rajagopalan helps SMEs and industrial organisations improve commercial performance, operational efficiency, and decision-making by connecting people, processes, and technology.",
+    bio: "Rajagopalan Saravanan is an Engineering Leader, Digital Transformation Consultant, and Founder of Splendid Technology, with more than 25 years of international experience spanning electrical engineering, rotating machines, reliability engineering, industrial operations, and technology innovation. Throughout his career, Rajagopalan has held technical and leadership positions with global organisations including GE Vernova, Regal Beloit, and Tecumseh. He has led engineering teams, managed multi-million-dollar projects, supported industrial customers across Metals, Oil & Gas, Marine, Mining, and Manufacturing sectors, and delivered solutions ranging from motor and generator design, application engineering, services sales, and Salesforce-enabled commercial process execution to asset reliability and condition monitoring. His expertise also includes end-to-end new product development from design, development, and testing through services and sales, working closely with manufacturing, sourcing, and marketing functions in continuous-process and customer-machine production environments. Through Splendid Technology, Rajagopalan helps SMEs and industrial organisations improve commercial performance, operational efficiency, and decision-making by connecting people, processes, and technology.",
     skills: [
       "Digital Transformation & Business Process Improvement",
       "CRM Strategy & Implementation",
+      "Application Engineering",
+      "Salesforce CRM and Workflow Design",
+      "Technical Services Sales",
       "Artificial Intelligence & Workflow Automation",
       "Industrial IoT & Condition Monitoring",
       "Reliability Engineering & Asset Management",
@@ -210,10 +216,13 @@ export default function AboutPage() {
       url: "https://www.splendidtechnology.co.uk",
     },
     description:
-      "Engineering leader and Digital Transformation Consultant in the UK with 25+ years of experience in reliability engineering, industrial operations, CRM, AI, and Industrial IoT.",
+      "Engineering leader and Digital Transformation Consultant in the UK with 25+ years of experience in application engineering, services sales, Salesforce workflows, reliability engineering, industrial operations, CRM, AI, and Industrial IoT.",
     knowsAbout: [
       "Digital Transformation Consultant UK",
       "CRM Consultant UK",
+      "Application Engineering",
+      "Salesforce",
+      "Services Sales",
       "Industrial IoT Consultant UK",
       "Reliability Engineering",
       "Manufacturing Digitalisation",

@@ -232,7 +232,7 @@ export default function ServicesPage() {
           <p className="mt-2 max-w-2xl text-sm leading-6 text-black/60">
             Explore our dedicated pages for high-intent manufacturing search topics.
           </p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <Link
               href="/services/crm-for-manufacturers-uk"
               className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-shadow hover:shadow-md"
@@ -274,6 +274,28 @@ export default function ServicesPage() {
               <h3 className="mt-2 text-lg font-bold text-[#0b1f3a]">Digital Transformation for Manufacturers UK</h3>
               <p className="mt-2 text-sm leading-6 text-black/70">
                 Practical digitalisation roadmaps and phased implementation for UK manufacturing SMEs.
+              </p>
+              <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
+            </Link>
+            <Link
+              href="/services/reliability-engineering-services"
+              className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-shadow hover:shadow-md"
+            >
+              <p className="text-xs font-bold uppercase tracking-wider text-green-600">Reliability</p>
+              <h3 className="mt-2 text-lg font-bold text-[#0b1f3a]">Reliability Engineering Services</h3>
+              <p className="mt-2 text-sm leading-6 text-black/70">
+                Structured reliability engineering support for critical assets, maintenance strategy, and KPI visibility.
+              </p>
+              <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
+            </Link>
+            <Link
+              href="/services/predictive-maintenance-solutions-uk"
+              className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-shadow hover:shadow-md"
+            >
+              <p className="text-xs font-bold uppercase tracking-wider text-green-600">Predictive Maintenance</p>
+              <h3 className="mt-2 text-lg font-bold text-[#0b1f3a]">Predictive Maintenance Solutions UK</h3>
+              <p className="mt-2 text-sm leading-6 text-black/70">
+                Condition-led maintenance planning and anomaly-driven intervention to reduce unplanned downtime.
               </p>
               <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
             </Link>

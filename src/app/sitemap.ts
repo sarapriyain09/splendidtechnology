@@ -36,6 +36,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/services/crm-for-engineering-companies-uk`, lastModified },
     { url: `${base}/services/digital-transformation-for-manufacturers-uk`, lastModified },
     { url: `${base}/services/industrial-iot-for-manufacturers-uk`, lastModified },
+    { url: `${base}/services/reliability-engineering-services`, lastModified },
+    { url: `${base}/services/predictive-maintenance-solutions-uk`, lastModified },
     // Products
     { url: `${base}/products`, lastModified },
     { url: `${base}/products/splendid-accounting`, lastModified },

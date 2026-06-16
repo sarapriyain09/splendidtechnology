@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Rajagopalan Saravanan | Founder | Splendid Technology UK",
   description:
-    "Rajagopalan Saravanan is a UK-based engineering leader and digital transformation consultant with 25+ years of experience in reliability engineering, rotating machines, CRM, AI, and Industrial IoT.",
+    "Rajagopalan Saravanan is a UK-based engineering leader and digital transformation consultant with 25+ years of experience in application engineering, services sales, Salesforce workflows, reliability engineering, rotating machines, CRM, AI, and Industrial IoT.",
   alternates: {
     canonical: "/about/rajagopalan-saravanan",
   },
@@ -28,6 +28,9 @@ export const metadata: Metadata = {
 const expertise = [
   "Digital Transformation & Business Process Improvement",
   "CRM Strategy & Implementation",
+  "Application Engineering",
+  "Salesforce CRM and Workflow Design",
+  "Technical Services Sales",
   "Artificial Intelligence & Workflow Automation",
   "Industrial IoT & Condition Monitoring",
   "Reliability Engineering & Asset Management",
@@ -72,10 +75,13 @@ export default function FounderPage() {
       },
     ],
     description:
-      "Engineering leader and Digital Transformation Consultant with 25+ years of international experience across reliability engineering, rotating machines, asset management, CRM, AI, and Industrial IoT.",
+      "Engineering leader and Digital Transformation Consultant with 25+ years of international experience across application engineering, services sales, Salesforce workflow leadership, reliability engineering, rotating machines, asset management, CRM, AI, and Industrial IoT.",
     knowsAbout: [
       "Digital Transformation Consultant UK",
       "CRM Consultant UK",
+      "Application Engineering",
+      "Salesforce",
+      "Services Sales",
       "Industrial IoT Consultant UK",
       "Reliability Engineering",
       "Manufacturing Digitalisation",
@@ -126,7 +132,9 @@ export default function FounderPage() {
           <h1 className="mt-2 text-4xl font-bold leading-tight sm:text-5xl">Rajagopalan Saravanan</h1>
           <p className="mt-4 max-w-4xl text-lg leading-8 text-slate-300">
             Founder of Splendid Technology and engineering leader with 25+ years of international experience across
-            reliability engineering, rotating machines, asset management, and industrial operations.
+            application engineering, services sales, Salesforce-enabled commercial workflows, reliability engineering,
+            rotating machines, asset management, and industrial operations across India, France, the Netherlands,
+            and the Czech Republic.
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
             <span className="rounded-full border border-green-300 bg-green-50 px-3 py-1 text-xs font-semibold text-green-800">
@@ -152,9 +160,15 @@ export default function FounderPage() {
         <p className="mt-3 text-sm leading-7 text-slate-700">
           Throughout his career, Rajagopalan has held technical and leadership positions with global organisations
           including Baker Hughes, GE Power Conversion, Regal Beloit, and Tecumseh. He has led engineering teams,
-          managed multi-million-dollar projects, supported industrial customers across Oil & Gas, Marine, Mining,
-          Metals, and Manufacturing sectors, and delivered solutions ranging from motor and generator design to asset
+          managed multi-million-dollar projects, supported industrial customers across Metals, Oil & Gas, Marine,
+          Mining, and Manufacturing sectors, and delivered solutions ranging from motor and generator design,
+          application engineering, services sales, and Salesforce-enabled commercial process execution to asset
           reliability and condition monitoring.
+        </p>
+        <p className="mt-3 text-sm leading-7 text-slate-700">
+          His experience also covers end-to-end new product development across design, development, testing,
+          services, and sales, with close collaboration across manufacturing, sourcing, and marketing functions in
+          both continuous-process and customer-machine production environments.
         </p>
         <p className="mt-3 text-sm leading-7 text-slate-700">
           Through Splendid Technology, he helps SMEs and industrial organisations improve commercial performance,
