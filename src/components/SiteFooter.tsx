@@ -77,7 +77,7 @@ export function SiteFooter() {
                 { href: "/blog", label: "Blog" },
                 { href: "/engineering-case-studies", label: "Case Studies" },
                 { href: "/portfolio", label: "Videos and Portfolio" },
-                { href: "/about", label: "Team" },
+                { href: "/about", label: "About Us" },
                 { href: "/about/rajagopalan-saravanan", label: "Founder" },
               ].map((l) => (
                 <li key={`${l.href}-${l.label}`}>
@@ -141,7 +141,7 @@ export function SiteFooter() {
                 <p className="text-[10px] font-bold uppercase tracking-widest text-white/40">Company</p>
                 <ul className="mt-2 space-y-1">
                   {[
-                    { href: "/about", label: "Team" },
+                    { href: "/about", label: "About Us" },
                     { href: "/about/rajagopalan-saravanan", label: "Founder" },
                     { href: "/blog", label: "Insights & Guides" },
                     { href: "/portfolio", label: "Portfolio" },

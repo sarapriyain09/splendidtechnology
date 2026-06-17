@@ -129,7 +129,7 @@ export function SiteHeader() {
             <DropdownMenu label="Custom Software" href="/services/web-app-development" items={customSoftwareItems} />
             <DropdownMenu label="Resources" href="/blog" items={resourcesItems} />
             <Link href="/about" className="px-2 py-1 text-xs text-white/70 hover:text-white">
-              Team
+              About Us
             </Link>
             <Link href="/about/rajagopalan-saravanan" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               Founder
@@ -195,7 +195,7 @@ export function SiteHeader() {
               ))}
               <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-white/30">Company</p>
               {[
-                { href: "/about", label: "Team" },
+                { href: "/about", label: "About Us" },
                 { href: "/about/rajagopalan-saravanan", label: "Founder" },
                 { href: "/contact", label: "Contact" },
               ].map((item) => (
