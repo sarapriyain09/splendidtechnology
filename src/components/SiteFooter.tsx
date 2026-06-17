@@ -13,12 +13,12 @@ export function SiteFooter() {
             <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">CRM</h3>
             <ul className="mt-4 space-y-2">
               {[
-                { href: "/services/sales-crm", label: "CRM Solutions Overview" },
-                { href: "/services/call-crm", label: "CallCRM" },
-                { href: "/services/sales-crm", label: "Lead Capture Workflows" },
-                { href: "/services/sales-crm", label: "Follow-Up Automation" },
-                { href: "/services/sales-crm", label: "Quote and Customer Management" },
-                { href: "/services/digital-engineering", label: "CRM Dashboards" },
+                { href: "/services/sales-crm", label: "Splendid CRM" },
+                { href: "/services/sales-crm", label: "CRM Implementation" },
+                { href: "/services/sales-crm", label: "Sales Pipeline Management" },
+                { href: "/services/call-crm", label: "Call CRM" },
+                { href: "/services/sales-crm", label: "Quotation Tracking" },
+                { href: "/services/sales-crm", label: "Dashboard and Reporting" },
               ].map((l) => (
                 <li key={`${l.href}-${l.label}`}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
@@ -29,16 +29,16 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Digitisation */}
+          {/* AI Automation */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Digitisation</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">AI Automation</h3>
             <ul className="mt-4 space-y-2">
               {[
-                { href: "/services/software-development", label: "Digitalisation Overview" },
+                { href: "/services/ai-solutions", label: "AI Assistants" },
                 { href: "/services/software-development#workflow", label: "Workflow Automation" },
-                { href: "/services/software-development#erp", label: "ERP Modules" },
-                { href: "/services/digital-engineering", label: "Operations Dashboards" },
-                { href: "/services/software-development", label: "System Integration" },
+                { href: "/services/ai-solutions", label: "Email and SMS Automation" },
+                { href: "/services/ai-solutions", label: "Custom AI Solutions" },
+                { href: "/services/ai-solutions", label: "CRM Integrations" },
               ].map((l) => (
                 <li key={`${l.href}-${l.label}`}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
@@ -49,17 +49,16 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* SaaS */}
+          {/* Custom Software */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">SaaS</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Custom Software</h3>
             <ul className="mt-4 space-y-2">
               {[
-                { href: "/services/web-app-development", label: "SaaS Overview" },
+                { href: "/services/web-app-development", label: "Web Applications" },
+                { href: "/services/web-app-development", label: "SaaS Development" },
                 { href: "/services/web-app-development", label: "Customer Portals" },
-                { href: "/services/web-app-development", label: "Internal Workflow Apps" },
-                { href: "/services/web-app-development", label: "API Integrations" },
-                { href: "/products", label: "Products" },
-                { href: "/portfolio", label: "Product and Build Portfolio" },
+                { href: "/services/web-app-development", label: "API and System Integration" },
+                { href: "/portfolio", label: "Build Portfolio" },
               ].map((l) => (
                 <li key={`${l.href}-${l.label}`}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
@@ -70,17 +69,16 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* AI Solutions */}
+          {/* Resources */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">AI Solutions</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Resources</h3>
             <ul className="mt-4 space-y-2">
               {[
-                { href: "/services/ai-solutions", label: "AI Workflow Automation" },
-                { href: "/services/call-crm", label: "AI-Ready Call Management" },
-                { href: "/services/iot-solutions", label: "Data and Telemetry Foundations" },
-                { href: "/industrial-iot/predictive-maintenance", label: "Predictive Insights" },
-                { href: "/proof-of-concept", label: "AI and Automation Pilot" },
-                { href: "/contact", label: "Book AI Discovery Call" },
+                { href: "/blog", label: "Blog" },
+                { href: "/engineering-case-studies", label: "Case Studies" },
+                { href: "/portfolio", label: "Videos and Portfolio" },
+                { href: "/about", label: "About" },
+                { href: "/about/rajagopalan-saravanan", label: "Founder" },
               ].map((l) => (
                 <li key={`${l.href}-${l.label}`}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
@@ -91,17 +89,16 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* IoT */}
+          {/* Book Demo */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Connected Data and Asset Intelligence</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Book Demo</h3>
             <ul className="mt-4 space-y-2">
               {[
-                { href: "/services/iot-solutions", label: "Data and Asset Intelligence Overview" },
-                { href: "/services/iot-solutions#condition-monitoring", label: "Data Collection Pipelines" },
-                { href: "/industrial-iot/smart-motor-monitoring", label: "Asset Visibility Dashboards" },
-                { href: "/industrial-iot/predictive-maintenance", label: "Predictive Insights" },
-                { href: "/proof-of-concept", label: "Data and Insight Pilot" },
-                { href: "/industrial-iot", label: "Connected Asset Intelligence Hub" },
+                { href: "/demo", label: "Book CRM and AI Demo" },
+                { href: "/contact", label: "Talk to a Specialist" },
+                { href: "/services/sales-crm", label: "CRM Service Details" },
+                { href: "/services/ai-solutions", label: "AI Automation Service Details" },
+                { href: "/services/web-app-development", label: "Custom Software Service Details" },
               ].map((l) => (
                 <li key={`${l.href}-${l.label}`}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
@@ -121,11 +118,11 @@ export function SiteFooter() {
             <div className="max-w-xs">
               <Link href="/" className="flex flex-col leading-tight">
                 <span className="text-base font-bold text-white">Splendid Technology</span>
-                <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">CRM · Digitisation · SaaS · AI Solutions · Data and Asset Intelligence · UK Nationwide</span>
+                <span className="text-[10px] font-medium uppercase tracking-widest text-white/40">CRM and AI Automation Solutions for UK SMEs</span>
               </Link>
               <p className="mt-3 text-xs leading-5 text-white/50">
                 We help UK SMEs improve sales, operations, and customer delivery through practical
-                CRM systems, digital workflows, SaaS platforms, and AI-enabled automation.
+                CRM systems, AI automation workflows, and custom software implementation.
               </p>
             </div>
 
@@ -147,8 +144,8 @@ export function SiteFooter() {
                     { href: "/about", label: "About" },
                     { href: "/blog", label: "Insights & Guides" },
                     { href: "/portfolio", label: "Portfolio" },
-                    { href: "/services", label: "Solution Categories" },
-                    { href: "/demo", label: "CRM Demo" },
+                    { href: "/services", label: "Services" },
+                    { href: "/demo", label: "Book Demo" },
                     { href: "/contact", label: "Contact Us" },
                   ].map((l) => (
                     <li key={l.href}>

@@ -3,14 +3,12 @@ import type { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "CRM, Digitalisation and AI Solutions for UK SMEs | Splendid Technology",
+  title: "CRM and AI Automation Solutions for UK SMEs | Splendid Technology",
   description:
-    "Splendid Technology helps UK SMEs and manufacturers implement CRM, digitalisation workflows, and AI automation to improve sales response, operations, and decision-making.",
+    "Splendid Technology helps UK SMEs implement CRM systems and AI automation workflows to improve sales response, customer management, and business operations.",
   keywords: [
     "crm for manufacturers uk",
     "crm for smes uk",
-    "digitalisation services uk",
-    "digital transformation manufacturing uk",
     "ai automation for smes",
     "ai workflow automation uk",
     "crm consultant uk",
@@ -22,16 +20,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "CRM, Digitalisation and AI Solutions for UK SMEs",
+    title: "CRM and AI Automation Solutions for UK SMEs",
     description:
-      "CRM implementation, digitalisation workflows, and AI automation for UK SMEs and manufacturers.",
+      "CRM implementation and AI automation for UK SMEs and manufacturers.",
     url: "https://www.splendidtechnology.co.uk/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CRM, Digitalisation and AI Solutions for UK SMEs",
+    title: "CRM and AI Automation Solutions for UK SMEs",
     description:
-      "CRM implementation, digitalisation workflows, and AI automation for UK SMEs and manufacturers.",
+      "CRM implementation and AI automation for UK SMEs and manufacturers.",
   },
 };
 
@@ -46,39 +44,21 @@ const solutions = [
     highlight: true,
   },
   {
-    title: "Digitisation",
+    title: "AI Automation",
     description:
-      "Digitise operations, approvals, reporting, and system handoffs across business workflows.",
-    href: "/services/software-development#workflow",
-    icon: "🧩",
-    tag: "Digitisation",
-    highlight: true,
-  },
-  {
-    title: "SaaS",
-    description:
-      "Build scalable SaaS products, customer portals, and internal web platforms for growth.",
-    href: "/services/web-app-development",
-    icon: "💻",
-    tag: "SaaS",
-    highlight: true,
-  },
-  {
-    title: "AI Solutions",
-    description:
-      "Apply AI to automate repetitive processes, improve response speed, and enhance decision support.",
+      "Automate repetitive workflows, follow-up tasks, and reporting with practical AI-enabled processes.",
     href: "/services/ai-solutions",
     icon: "🧠",
     tag: "AI",
     highlight: true,
   },
   {
-    title: "Connected Data and Asset Intelligence",
+    title: "Custom Software",
     description:
-      "Capture connected asset data, improve visibility with dashboards, and generate predictive insights for smarter operations.",
-    href: "/services/iot-solutions",
-    icon: "📡",
-    tag: "IoT/Data",
+      "Build web apps, customer portals, and SaaS products integrated with CRM and automation workflows.",
+    href: "/services/web-app-development",
+    icon: "💻",
+    tag: "Software",
     highlight: true,
   },
 ];
@@ -91,13 +71,13 @@ const benefits = [
   },
   {
     icon: "🏭",
-    title: "Connected Operations",
-    body: "Job, inventory, warehouse, and reporting workflows stay aligned across teams and systems.",
+    title: "Smoother Team Handoffs",
+    body: "CRM and workflow automation reduce internal delays across sales and operations teams.",
   },
   {
-    icon: "🔧",
-    title: "Reduced Downtime",
-    body: "Connected asset data and predictive insights improve reliability planning and execution.",
+    icon: "📬",
+    title: "Reliable Follow-Up",
+    body: "Automated reminders and sequences reduce missed opportunities and no-response lead loss.",
   },
   {
     icon: "📊",
@@ -138,19 +118,19 @@ const detailedScope = [
     ],
   },
   {
-    title: "Digitisation",
-    href: "/services/software-development#workflow",
+    title: "AI Automation",
+    href: "/services/ai-solutions",
     items: [
-      "Job and work-order tracking",
-      "Approval workflow automation",
-      "Operational dashboards",
-      "System integration across core tools",
-      "Process mapping and optimization",
-      "Data standardization and reporting",
+      "AI assistants for service and internal teams",
+      "Workflow automation for repetitive tasks",
+      "Email and SMS automation",
+      "CRM integration with forms and call workflows",
+      "AI-supported reporting and insights",
+      "Pilot-to-rollout implementation support",
     ],
   },
   {
-    title: "SaaS",
+    title: "Custom Software",
     href: "/services/web-app-development",
     items: [
       "Custom SaaS product development",
@@ -159,30 +139,6 @@ const detailedScope = [
       "API and platform integrations",
       "Scalable architecture and delivery",
       "Post-launch support and iteration",
-    ],
-  },
-  {
-    title: "AI Solutions",
-    href: "/services/ai-solutions",
-    items: [
-      "AI-assisted process automation",
-      "Intelligent lead and enquiry routing",
-      "AI-supported reporting and insights",
-      "Operational recommendation workflows",
-      "Assistive copilots for internal teams",
-      "AI readiness and implementation planning",
-    ],
-  },
-  {
-    title: "Connected Data and Asset Intelligence",
-    href: "/services/iot-solutions",
-    items: [
-      "Connected data collection pipelines",
-      "Telemetry and asset visibility dashboards",
-      "Cross-site reporting and KPI tracking",
-      "Predictive insights and anomaly detection",
-      "Alerting and escalation workflows",
-      "Reliability and performance reporting",
     ],
   },
 ];
@@ -194,9 +150,9 @@ const faqItems = [
       "Yes. We design and implement CRM systems for UK manufacturers, including lead capture, quote workflows, distributor management, and commercial reporting.",
   },
   {
-    question: "What does digitalisation include for an SME?",
+    question: "What does AI automation include for an SME?",
     answer:
-      "Digitalisation typically includes workflow automation, approvals, operational dashboards, integrations between business systems, and data standardization for faster decisions.",
+      "AI automation typically includes workflow automation, follow-up sequences, assistant-driven task support, and integrations between CRM, email, and reporting systems.",
   },
   {
     question: "Can AI automation work with our existing systems?",
@@ -204,9 +160,9 @@ const faqItems = [
       "Yes. We integrate AI-assisted workflows with existing CRM, email, and operational systems so teams can automate repetitive work without replacing everything.",
   },
   {
-    question: "Do you support industrial IoT and predictive maintenance?",
+    question: "Do you build custom software as part of CRM and AI projects?",
     answer:
-      "Yes. For industrial and engineering teams, we provide connected data and asset intelligence solutions including monitoring dashboards and predictive insights.",
+      "Yes. We build web applications, customer portals, and SaaS components when off-the-shelf tools do not fit your workflow.",
   },
 ];
 
@@ -229,17 +185,6 @@ export default function Home() {
       },
       {
         "@type": "Service",
-        name: "Digitalisation workflows for UK businesses",
-        serviceType: "Digitalisation",
-        areaServed: "GB",
-        provider: {
-          "@type": "Organization",
-          name: "Splendid Technology Ltd",
-        },
-        url: "https://www.splendidtechnology.co.uk/services/software-development",
-      },
-      {
-        "@type": "Service",
         name: "AI automation solutions for SMEs",
         serviceType: "AI automation",
         areaServed: "GB",
@@ -251,14 +196,14 @@ export default function Home() {
       },
       {
         "@type": "Service",
-        name: "Industrial IoT for manufacturers",
-        serviceType: "Industrial IoT",
+        name: "Custom software development for SMEs",
+        serviceType: "Custom software",
         areaServed: "GB",
         provider: {
           "@type": "Organization",
           name: "Splendid Technology Ltd",
         },
-        url: "https://www.splendidtechnology.co.uk/services/iot-solutions",
+        url: "https://www.splendidtechnology.co.uk/services/web-app-development",
       },
     ],
   };
@@ -292,27 +237,27 @@ export default function Home() {
         <div className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="inline-block rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-green-400">
-              CRM, Digitalisation and AI for UK SMEs
+              CRM and AI Automation for UK SMEs
             </p>
             <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              CRM, Digitalisation and AI Solutions for UK SMEs
+              CRM and AI Automation Solutions for UK SMEs
             </h1>
             <p className="mt-5 max-w-2xl text-pretty text-lg leading-7 text-white/80">
               We help UK SMEs and manufacturers improve sales response, streamline
-              operations, and scale with practical CRM systems, digital workflows, and AI automation.
+              operations, and scale with practical CRM systems, AI automation workflows, and custom software.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-lg bg-green-600 px-7 py-3 font-bold text-white transition-colors hover:bg-green-700"
               >
-                Book a Digitalization Assessment
+                Book Demo
               </Link>
               <Link
                 href="/services"
                 className="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-3 font-bold text-white transition-colors hover:bg-white/10"
               >
-                Explore Solutions
+                Explore Services
               </Link>
             </div>
           </div>
@@ -322,12 +267,12 @@ export default function Home() {
       {/* ── Solutions Grid ── */}
       <section id="solutions" className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">One Connected Digital Layer Across Sales, Operations, and Assets</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Three Core Pillars: CRM, AI Automation, and Custom Software</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            We design and implement practical systems that connect commercial workflows,
-            operations data, connected asset data, and web applications in one environment.
+            We implement practical systems that improve sales execution, customer management,
+            and business process automation for SMEs.
           </p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {solutions.map((s) => (
               <Link
                 key={s.title}
@@ -409,9 +354,9 @@ export default function Home() {
       {/* ── Expanded Engineering Scope ── */}
       <section className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Digitalization Service Taxonomy</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Service Taxonomy</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Five practical service categories for scaling SMEs and operational teams.
+            Three practical service categories for scaling SMEs and operational teams.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {detailedScope.map((scope) => (
@@ -445,12 +390,12 @@ export default function Home() {
                   Practical Systems, Clear Outcomes, and Phased Rollout.
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-black/65">
-                  We focus on connected digital workflows that deliver visible business impact.
+                  We focus on CRM and AI workflows that deliver visible business impact.
                   Start with one high-impact system and expand through measurable rollout phases.
                 </p>
                 <ul className="mt-5 space-y-2">
                   {[
-                    "Connected CRM, ERP, data visibility, and reporting",
+                    "Connected CRM, automation, and reporting workflows",
                     "Phased rollout model with measurable outcomes",
                     "Designed for SME budgets and operational realities",
                     "Implementation support from discovery through adoption",
@@ -473,10 +418,8 @@ export default function Home() {
               <div className="grid w-full max-w-xs grid-cols-1 gap-3 lg:w-auto">
                 {[
                   { icon: "📈", label: "CRM" },
-                  { icon: "🧩", label: "Digitisation" },
-                  { icon: "💻", label: "SaaS" },
-                  { icon: "🧠", label: "AI Solutions" },
-                  { icon: "📡", label: "IoT and Data" },
+                  { icon: "🧠", label: "AI Automation" },
+                  { icon: "💻", label: "Custom Software" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3 rounded-xl border border-black/10 bg-white px-4 py-3">
                     <span className="text-xl">{item.icon}</span>
@@ -498,8 +441,8 @@ export default function Home() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { heading: "Outcome-Led Delivery", body: "We prioritize measurable business outcomes over isolated technical deliverables." },
-              { heading: "Cross-Functional Digitalization", body: "Sales, operations, and customer workflows connected in one practical model." },
-              { heading: "Industry-Aware Digitalisation", body: "Experience supporting manufacturing and industrial SMEs through CRM, ERP, IoT, and business systems." },
+              { heading: "CRM and AI Focus", body: "Sales, customer, and automation workflows connected in one practical model." },
+              { heading: "Implementation-Led Support", body: "Hands-on delivery for CRM setup, AI workflow rollout, and adoption." },
               { heading: "SME-Focused Execution", body: "Phased deployment model aligned to practical budgets, team capacity, and rapid value realization." },
             ].map((item) => (
               <div key={item.heading} className="rounded-xl border border-black/10 bg-white p-6">
@@ -528,8 +471,8 @@ export default function Home() {
               },
               {
                 quote:
-                  "Condition monitoring gave us earlier warning and better planning for critical maintenance windows.",
-                role: "Operations Manager, Industrial Site",
+                  "Our follow-up workflows are now automated and response times improved across new enquiries.",
+                role: "Operations Manager, UK SME",
               },
               {
                 quote:
@@ -567,7 +510,7 @@ export default function Home() {
             <div>
               <h2 className="text-3xl font-bold text-[#0b1f3a]">Latest Insights</h2>
               <p className="mt-2 max-w-xl text-sm leading-6 text-black/60">
-                Practical guides on CRM, digitalisation, automation, and web app delivery.
+                Practical guides on CRM, AI automation, and custom software delivery.
               </p>
             </div>
             <Link className="text-sm font-medium text-[#0b3d91] hover:underline" href="/blog">
@@ -605,7 +548,7 @@ export default function Home() {
       {/* ── Contact CTA ── */}
       <section id="contact" className="bg-[#0b1f3a] py-16 text-center text-white">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold">Get a Digitalization Roadmap in 14 Days</h2>
+          <h2 className="text-3xl font-bold">Get a CRM and AI Roadmap in 14 Days</h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-white/75">
             We assess your current systems, identify top bottlenecks, and propose a phased
             implementation plan with clear ROI checkpoints.
@@ -615,13 +558,13 @@ export default function Home() {
               href="/contact"
               className="inline-flex items-center justify-center rounded-lg bg-green-600 px-8 py-3 font-bold text-white transition-colors hover:bg-green-700"
             >
-              Book a Digitalization Assessment
+              Book Demo
             </Link>
             <Link
               href="/services"
               className="inline-flex items-center justify-center rounded-lg border border-white/30 px-8 py-3 font-bold text-white transition-colors hover:bg-white/10"
             >
-              View Solution Categories
+              View Services
             </Link>
           </div>
           <p className="mt-6 text-sm text-white/50">
@@ -641,7 +584,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-[#0b1f3a]">Frequently Asked Questions</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Quick answers for teams planning CRM, digitalisation, and AI implementation.
+            Quick answers for teams planning CRM and AI automation implementation.
           </p>
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             {faqItems.map((item) => (

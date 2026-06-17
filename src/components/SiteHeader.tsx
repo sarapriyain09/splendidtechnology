@@ -9,50 +9,34 @@ type NavItem =
 
 const crmItems: NavItem[] = [
   { isLabel: true, label: "CRM" },
-  { href: "/services/sales-crm", label: "CRM Overview", desc: "Lead capture, follow-up workflows, and customer pipelines" },
-  { href: "/services/call-crm", label: "CallCRM", desc: "Route, track, and manage customer calls in one console" },
-  { href: "/services/sales-crm", label: "Lead Workflow Automation", desc: "Automate qualification, routing, and follow-up tasks" },
-  { href: "/services/sales-crm", label: "Quote and Customer Flows", desc: "Standardize quoting and customer handoff processes" },
-  { href: "/services/software-development#workflow", label: "CRM Workflow Automation", desc: "Digitize approvals, reporting, and customer workflows" },
-  { href: "/services/digital-engineering", label: "Sales and Reporting Dashboards", desc: "Pipeline visibility and decision-ready reporting" },
-];
-
-const digitisationItems: NavItem[] = [
-  { isLabel: true, label: "Digitisation" },
-  { href: "/services/software-development", label: "Digitisation Overview", desc: "Connected systems for scalable business operations" },
-  { href: "/services/software-development#erp", label: "ERP Modules", desc: "Operational and finance workflow implementation" },
-  { href: "/services/software-development#workflow", label: "Workflow Automation", desc: "Digitize approvals, reporting, and process handoffs" },
-  { href: "/services/software-development", label: "System Integration", desc: "Connect CRM, ERP, operations, and reporting systems" },
-  { href: "/services/digital-engineering", label: "Warehouse and Supply Chain", desc: "Inventory, warehouse, and supply chain visibility" },
-  { href: "/services/digital-engineering", label: "Supply Chain Planning", desc: "Supplier flow visibility and procurement coordination" },
-  { href: "/services/software-development#cloud", label: "Cloud Architecture", desc: "AWS and Azure architecture for scalable systems" },
-];
-
-const saasItems: NavItem[] = [
-  { isLabel: true, label: "SaaS" },
-  { href: "/services/web-app-development", label: "SaaS Overview", desc: "Build and scale web platforms for SME growth" },
-  { href: "/services/web-app-development", label: "Customer Portals", desc: "Secure self-service experiences for clients" },
-  { href: "/services/web-app-development", label: "Internal Workflow Apps", desc: "Purpose-built apps for team operations" },
-  { href: "/services/web-app-development", label: "API and System Integration", desc: "Integrate core platforms and business tools" },
-  { href: "/products", label: "Products and SaaS Tools", desc: "Explore Splendid software products" },
-];
-
-const iotItems: NavItem[] = [
-  { isLabel: true, label: "Connected Data and Asset Intelligence" },
-  { href: "/services/iot-solutions", label: "Data and Asset Intelligence Overview", desc: "Connected data collection, dashboards, and asset visibility" },
-  { href: "/services/iot-solutions#condition-monitoring", label: "Data Collection Pipelines", desc: "Capture and structure asset data for reporting" },
-  { href: "/industrial-iot/smart-motor-monitoring", label: "Asset Visibility Dashboards", desc: "Real-time visibility for critical equipment and assets" },
-  { href: "/industrial-iot/predictive-maintenance", label: "Predictive Insights", desc: "Insight-led forecasting to improve planning and uptime" },
-  { href: "/proof-of-concept", label: "Data and Insight Pilot", desc: "Validate dashboards, reporting, and predictive insight workflows" },
+  { href: "/services/sales-crm", label: "Splendid CRM", desc: "Lead and pipeline workflows with customer visibility" },
+  { href: "/services/sales-crm", label: "CRM Implementation", desc: "Setup, migration, adoption, and rollout support" },
+  { href: "/services/sales-crm", label: "Sales Pipeline Management", desc: "Stage design, follow-up SLAs, and reporting discipline" },
+  { href: "/services/call-crm", label: "Call CRM", desc: "Route, track, and manage calls in one workflow" },
+  { href: "/services/sales-crm", label: "Quotation Tracking", desc: "Track quote status from enquiry to order" },
 ];
 
 const aiItems: NavItem[] = [
-  { isLabel: true, label: "AI Solutions" },
-  { href: "/services/ai-solutions", label: "AI Workflow Automation", desc: "Apply AI to repetitive operational tasks" },
-  { href: "/services/call-crm", label: "AI-Ready Call Management", desc: "Structured call data for smarter follow-up workflows" },
-  { href: "/services/iot-solutions", label: "Data and Telemetry Foundations", desc: "Build the data layer required for reliable AI outcomes" },
-  { href: "/industrial-iot/predictive-maintenance", label: "Predictive Insights", desc: "Prediction workflows for operations and maintenance" },
-  { href: "/proof-of-concept", label: "AI and Automation Pilot", desc: "Test a high-impact use case before full rollout" },
+  { isLabel: true, label: "AI Automation" },
+  { href: "/services/ai-solutions", label: "AI Assistants", desc: "Deploy assistants for support and internal workflows" },
+  { href: "/services/software-development#workflow", label: "Workflow Automation", desc: "Automate repetitive handoffs and manual tasks" },
+  { href: "/services/ai-solutions", label: "Email and SMS Automation", desc: "Set up follow-up flows and trigger-based messaging" },
+  { href: "/services/ai-solutions", label: "Custom AI Solutions", desc: "Design AI workflows for your exact business process" },
+  { href: "/services/ai-solutions", label: "CRM Integrations", desc: "Connect CRM, forms, calls, and reporting tools" },
+];
+
+const customSoftwareItems: NavItem[] = [
+  { isLabel: true, label: "Custom Software" },
+  { href: "/services/web-app-development", label: "Web Applications", desc: "Build internal and customer-facing web applications" },
+  { href: "/services/web-app-development", label: "SaaS Development", desc: "Launch scalable SaaS products with phased delivery" },
+  { href: "/services/web-app-development", label: "Customer Portals", desc: "Secure self-service portals for clients and teams" },
+];
+
+const resourcesItems: NavItem[] = [
+  { isLabel: true, label: "Resources" },
+  { href: "/blog", label: "Blog", desc: "Guides on CRM, automation, and SME growth" },
+  { href: "/engineering-case-studies", label: "Case Studies", desc: "Proof of outcomes from delivery projects" },
+  { href: "/portfolio", label: "Videos and Portfolio", desc: "See product demos and delivery highlights" },
 ];
 
 function DropdownMenu({ label, href, items }: { label: string; href: string; items: NavItem[] }) {
@@ -108,7 +92,7 @@ export function SiteHeader() {
               priority
             />
             <span className="hidden text-[10px] font-medium uppercase tracking-widest text-white/50 sm:block">
-              CRM · Digitisation · SaaS · AI Solutions · Data and Asset Intelligence · UK Nationwide
+              CRM and AI Automation Solutions for UK SMEs
             </span>
           </Link>
           <div className="flex items-center gap-3">
@@ -141,38 +125,16 @@ export function SiteHeader() {
         <nav className="hidden items-center justify-between gap-x-1 py-2 lg:flex">
           <div className="flex items-center gap-x-1">
             <DropdownMenu label="CRM" href="/services/sales-crm" items={crmItems} />
-            <DropdownMenu label="Digitisation" href="/services/software-development" items={digitisationItems} />
-            <DropdownMenu label="SaaS" href="/services/web-app-development" items={saasItems} />
-            <DropdownMenu label="AI Solutions" href="/services/ai-solutions" items={aiItems} />
-            <DropdownMenu label="IoT and Data" href="/services/iot-solutions" items={iotItems} />
-            <Link href="/industries" className="px-2 py-1 text-xs text-white/70 hover:text-white">
-              Industries
-            </Link>
-            <Link href="/blog" className="px-2 py-1 text-xs text-white/70 hover:text-white">
-              Blog
-            </Link>
-            <Link href="/portfolio" className="px-2 py-1 text-xs text-white/70 hover:text-white">
-              Portfolio
-            </Link>
-            <Link href="/about" className="px-2 py-1 text-xs text-white/70 hover:text-white">
-              About
-            </Link>
-            <Link href="/about/rajagopalan-saravanan" className="px-2 py-1 text-xs text-white/70 hover:text-white">
-              Founder
-            </Link>
-            <Link href="/pricing" className="px-2 py-1 text-xs text-white/70 hover:text-white">
-              Pricing
-            </Link>
-            <Link href="/demo" className="px-2 py-1 text-xs text-white/70 hover:text-white">
-              Demo
-            </Link>
+            <DropdownMenu label="AI Automation" href="/services/ai-solutions" items={aiItems} />
+            <DropdownMenu label="Custom Software" href="/services/web-app-development" items={customSoftwareItems} />
+            <DropdownMenu label="Resources" href="/blog" items={resourcesItems} />
           </div>
           <div className="flex items-center gap-x-2">
             <Link
-              href="/contact"
+              href="/demo"
               className="rounded bg-green-600 px-3 py-1 text-xs font-bold text-white hover:bg-green-700"
             >
-              Contact
+              Book Demo
             </Link>
           </div>
         </nav>
@@ -184,28 +146,6 @@ export function SiteHeader() {
               <p className="px-2 pt-2 text-[10px] font-bold uppercase tracking-widest text-green-400/80">CRM</p>
               {crmItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
-                  key={item.href}
-                  href={item.href!}
-                  onClick={() => setMobileOpen(false)}
-                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Digitisation</p>
-              {digitisationItems.filter((i) => !i.isLabel).map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href!}
-                  onClick={() => setMobileOpen(false)}
-                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">SaaS</p>
-              {saasItems.filter((i) => !i.isLabel).map((item) => (
-                <Link
                   key={`${item.href}-${item.label}`}
                   href={item.href!}
                   onClick={() => setMobileOpen(false)}
@@ -214,7 +154,7 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">AI Solutions</p>
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">AI Automation</p>
               {aiItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
                   key={`${item.href}-${item.label}`}
@@ -225,8 +165,8 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">IoT and Data</p>
-              {iotItems.filter((i) => !i.isLabel).map((item) => (
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Custom Software</p>
+              {customSoftwareItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
                   key={`${item.href}-${item.label}`}
                   href={item.href!}
@@ -236,15 +176,22 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-white/30">More</p>
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Resources</p>
+              {resourcesItems.filter((i) => !i.isLabel).map((item) => (
+                <Link
+                  key={`${item.href}-${item.label}`}
+                  href={item.href!}
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-white/30">Company</p>
               {[
-                { href: "/industries", label: "Industries" },
-                { href: "/blog", label: "Blog" },
-                { href: "/portfolio", label: "Portfolio" },
                 { href: "/about", label: "About" },
                 { href: "/about/rajagopalan-saravanan", label: "Founder" },
-                { href: "/pricing", label: "Pricing" },
-                { href: "/demo", label: "Demo" },
+                { href: "/contact", label: "Contact" },
               ].map((item) => (
                 <Link
                   key={item.href}
@@ -257,11 +204,11 @@ export function SiteHeader() {
               ))}
               <div className="pt-4">
                 <Link
-                  href="/contact"
+                  href="/demo"
                   onClick={() => setMobileOpen(false)}
                   className="block rounded bg-green-600 px-4 py-2 text-center text-sm font-bold text-white hover:bg-green-700"
                 >
-                  Contact Us
+                  Book Demo
                 </Link>
               </div>
             </div>

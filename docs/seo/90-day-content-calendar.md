@@ -1,11 +1,100 @@
-# 90-day content calendar (UK + Leicester) — Splendid Technology
+# 90-day positioning + content calendar (CRM + AI Automation) — Splendid Technology
 
 Cadence: 1 post/week (13 posts ≈ 90 days)
 Start date: Week commencing **Mon 12 Jan 2026**
 Target length: **900–1200 words**
-Default CTA: **“Book a quick call / request a quote” → /contact**
+Default CTA: **"Book a CRM/AI demo" → /contact**
 
-Publish-ready outlines (Weeks 1–3): see `docs/seo/blog-briefs-week-1-3.md`
+## Core positioning (next 90 days)
+
+Primary message:
+
+> **CRM & AI Automation Solutions for SMEs**
+
+Alternative headline:
+
+> **Helping SMEs improve sales and operations through CRM and AI automation**
+
+One-line positioning statement:
+
+> **A CRM and AI Automation company helping SMEs streamline sales, customer management, and business processes.**
+
+## Service pillars
+
+### 1) CRM Solutions
+
+Offer: **Splendid CRM**
+
+- Lead Management
+- Pipeline Management
+- Customer Management
+- Quotation Tracking
+- Call CRM
+- Dashboard & Reporting
+
+Target customers:
+
+- SMEs
+- Engineering companies
+- Service businesses
+- Consultants
+
+### 2) AI & Business Automation
+
+Offer: **AI-Powered Solutions**
+
+- AI Assistants
+- Workflow Automation
+- Email & SMS Automation
+- Customer Portals
+- Custom SaaS Applications
+- CRM Integrations
+
+Target customers:
+
+- SMEs
+- Growing businesses
+- Startups
+
+## Website navigation focus
+
+### CRM
+
+- Splendid CRM
+- CRM Implementation
+- Sales Pipeline Management
+
+### AI Automation
+
+- AI Assistants
+- Workflow Automation
+- Email Automation
+- Custom AI Solutions
+
+### Custom Software
+
+- Web Applications
+- SaaS Development
+- Customer Portals
+
+### Resources
+
+- Blog
+- Case Studies
+- Videos
+
+### Conversion
+
+- Book Demo
+
+## De-emphasize for now
+
+- ERP
+- IoT
+- Engineering Services
+- Digital Twin
+- Asset Monitoring
+- Generic Web Design
 
 ## How to use this calendar
 
@@ -13,113 +102,113 @@ Publish-ready outlines (Weeks 1–3): see `docs/seo/blog-briefs-week-1-3.md`
 - Add 2–4 related secondary phrases naturally in H2/H3s.
 - Add internal links:
   - Money pages: **/services**, **/contact**
-  - Sections: services sections on Home (**/#services**) and portfolio (**/#portfolio**)
+  - Pillar pages: **/services/crm**, **/services/ai-automation**
 - End each post with:
   - 1 short case-study style example
   - a “next step” checklist
   - a clear CTA link to **/contact**
 
-## Editorial calendar
+## Editorial calendar (2 pillars only)
 
-| Week (Mon) | Post title (exact) | Primary keyword | Intent | Suggested slug | Internal links (must include) |
-| --- | --- | --- | --- | --- | --- |
-| 12 Jan 2026 | How much does a website cost in the UK in 2026? (Realistic price ranges) | how much does a website cost in uk | Informational → commercial | /blog/website-cost-uk | /services, /contact |
-| 19 Jan 2026 | Web app vs website: what’s the difference (and which should you build)? | web app vs website differences | Informational | /blog/web-app-vs-website | /services, /portfolio |
-| 26 Jan 2026 | Best tech stack for startups in 2026 (fast to launch, easy to scale) | best tech stack for startups | Informational | /blog/best-tech-stack-startups | /services, /contact |
-| 2 Feb 2026 | How to build an ecommerce website in the UK: a step-by-step checklist | how to build ecommerce website uk | Informational → transactional | /blog/build-ecommerce-website-uk | /services, /contact |
-| 9 Feb 2026 | Shopify website development in the UK: costs, timelines, and common pitfalls | shopify website development uk | Commercial investigation | /blog/shopify-website-development-uk | /services, /contact |
-| 16 Feb 2026 | Benefits of AI automation for business: 12 practical use cases (with ROI examples) | benefits of ai automation for business | Informational → commercial | /blog/benefits-ai-automation-business | /services, /contact |
-| 23 Feb 2026 | How to automate small business operations (without breaking your existing tools) | how to automate small business operations | Informational | /blog/automate-small-business-operations | /services, /contact |
-| 2 Mar 2026 | Workflow automation in the UK: what to automate first (quick wins) | workflow automation uk | Commercial investigation | /blog/workflow-automation-uk | /services, /contact |
-| 9 Mar 2026 | What does a web development company in the UK actually do? (A buyer’s guide) | web development company uk | Commercial investigation | /blog/web-development-company-uk-guide | /services, /contact |
-| 16 Mar 2026 | Affordable web development in the UK: how to cut costs without cutting quality | affordable web development uk | Commercial investigation | /blog/affordable-web-development-uk | /services, /contact |
-| 23 Mar 2026 | Web development company Leicester: how to choose the right partner (2026 checklist) | web development company leicester | Local commercial | /blog/web-development-company-leicester | /services, /contact |
-| 30 Mar 2026 | Website development Leicester: local SEO basics that actually move rankings | website development leicester | Local informational | /blog/website-development-leicester-local-seo | /services, /contact |
-| 6 Apr 2026 | AI automation services Leicester: 10 workflows that save 5+ hours/week | ai automation services leicester | Local commercial | /blog/ai-automation-services-leicester | /services, /contact |
+| Week (Mon) | Post title (exact) | Primary keyword | Pillar | Intent | Suggested slug | Internal links (must include) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 12 Jan 2026 | What CRM do manufacturers need? A practical SME guide for 2026 | what crm do manufacturers need | CRM | Informational -> commercial | /blog/what-crm-do-manufacturers-need | /services/crm, /contact |
+| 19 Jan 2026 | Why UK manufacturers lose leads between enquiry and quote (and how CRM fixes it) | why uk manufacturers lose leads between enquiry and quote | CRM | Problem-aware | /blog/why-uk-manufacturers-lose-leads-between-enquiry-and-quote | /services/crm, /contact |
+| 26 Jan 2026 | CRM vs ERP for UK manufacturing SMEs: what to implement first | crm vs erp for uk manufacturing smes | CRM | Commercial investigation | /blog/crm-vs-erp-for-uk-manufacturing-smes | /services/crm, /contact |
+| 2 Feb 2026 | B2B lead management CRM for manufacturing: process, fields, and KPIs | b2b lead management crm manufacturing | CRM | Informational -> transactional | /blog/b2b-lead-management-crm-manufacturing | /services/crm, /contact |
+| 9 Feb 2026 | Quote-to-order workflow automation for manufacturers: the 30-day playbook | quote to order workflow automation manufacturing | AI Automation | Commercial investigation | /blog/quote-to-order-workflow-automation-manufacturing | /services/ai-automation, /contact |
+| 16 Feb 2026 | Benefits of AI automation for business: 12 use cases for SME sales and operations | benefits of ai automation for business | AI Automation | Informational -> commercial | /blog/benefits-ai-automation-business | /services/ai-automation, /contact |
+| 23 Feb 2026 | How to automate small business operations without replacing your current tools | how to automate small business operations | AI Automation | Informational | /blog/automate-small-business-operations | /services/ai-automation, /contact |
+| 2 Mar 2026 | Workflow automation UK: what to automate first for fastest ROI | workflow automation uk | AI Automation | Commercial investigation | /blog/workflow-automation-uk | /services/ai-automation, /contact |
+| 9 Mar 2026 | AI assistants for SMEs: where they help, where they fail, and how to deploy safely | ai assistants for smes | AI Automation | Informational -> trust building | /blog/ai-assistants-for-smes | /services/ai-automation, /contact |
+| 16 Mar 2026 | Email and SMS automation for SME follow-up: reduce no-response and missed opportunities | email and sms automation for smes | AI Automation | Transactional | /blog/email-sms-automation-sme-follow-up | /services/ai-automation, /contact |
+| 23 Mar 2026 | CRM implementation for SMEs: a practical 6-week rollout plan | crm implementation for smes | CRM | Commercial investigation | /blog/crm-implementation-for-smes | /services/crm, /contact |
+| 30 Mar 2026 | Sales pipeline management for engineering and service businesses: stages, SLAs, and dashboards | sales pipeline management for engineering businesses | CRM | Informational -> commercial | /blog/sales-pipeline-management-engineering-service-businesses | /services/crm, /contact |
+| 6 Apr 2026 | CRM integrations for SMEs: connect forms, calls, email, and reporting in 14 days | crm integrations for smes | CRM + AI | Transactional | /blog/crm-integrations-for-smes | /services/crm, /services/ai-automation |
 
 ## Content briefs (H2 structure + angle)
 
-### 1) How much does a website cost in the UK in 2026?
-- H2: Typical UK website price bands (starter, SME, ecommerce, bespoke)
-- H2: What changes cost the most (design, content, integrations, SEO)
-- H2: Timeline vs price (what you get in 2, 4, 8+ weeks)
-- H2: A simple way to scope your quote in 15 minutes
+### 1) What CRM do manufacturers need?
+- H2: The minimum CRM capabilities for UK manufacturing SMEs
+- H2: Must-have fields and pipeline stages
+- H2: Quotation and follow-up tracking fundamentals
+- H2: A simple CRM selection checklist
 
-### 2) Web app vs website
-- H2: Definitions (with examples)
-- H2: When a website is enough
-- H2: When you need a web app (accounts, roles, dashboards)
-- H2: Cost and timeline differences
+### 2) Why manufacturers lose leads between enquiry and quote
+- H2: Where lead leakage happens in typical workflows
+- H2: Common process and ownership gaps
+- H2: How CRM plugs visibility and accountability gaps
+- H2: 30-day fix plan for SMEs
 
-### 3) Best tech stack for startups
-- H2: What “best” means (speed, maintainability, hiring, cost)
-- H2: Recommended stack (Next.js/React + backend API + DB)
-- H2: When to use Shopify vs custom ecommerce
-- H2: How to avoid overengineering
+### 3) CRM vs ERP sequencing
+- H2: What CRM and ERP are each best at
+- H2: Why most SMEs should sequence CRM before ERP
+- H2: Exceptions where ERP-first makes sense
+- H2: A phased rollout model
 
-### 4) How to build ecommerce website (UK)
-- H2: Choosing platform (Shopify, Woo, custom)
-- H2: Essentials checklist (payments, shipping, VAT, email flows)
-- H2: Conversion basics (product pages, trust signals, speed)
-- H2: Launch checklist
+### 4) B2B lead management CRM process
+- H2: Pipeline design for long-cycle B2B sales
+- H2: Lead qualification framework
+- H2: Quote and next-step discipline
+- H2: KPIs to track weekly
 
-### 5) Shopify website development (UK)
-- H2: Real costs (theme, apps, custom dev)
-- H2: Timelines by complexity
-- H2: Common pitfalls (app bloat, slow theme, tracking)
-- H2: When headless Shopify makes sense
+### 5) Quote-to-order workflow automation
+- H2: Mapping quote-to-order bottlenecks
+- H2: Where automation delivers fastest wins
+- H2: Alerts, approvals, and handoffs
+- H2: Pilot scope and success metrics
 
 ### 6) Benefits of AI automation for business
-- H2: Where AI helps vs where rules-based automation is better
-- H2: 12 use cases (support, content ops, lead triage, reporting)
-- H2: Risk controls (privacy, approvals, hallucinations)
-- H2: Measuring ROI
+- H2: AI vs rules-based automation: when to use each
+- H2: 12 use cases across sales and operations
+- H2: Risk controls and guardrails
+- H2: ROI model SMEs can use
 
 ### 7) Automate small business operations
-- H2: Audit your process (map tasks)
-- H2: Pick 3 high-impact workflows
-- H2: Integrations (email, CRM, payments)
-- H2: A 30-day implementation plan
+- H2: Process audit and prioritization
+- H2: Choosing first 3 workflows
+- H2: Integrations with CRM, email, and spreadsheets
+- H2: 30-day implementation roadmap
 
 ### 8) Workflow automation UK
-- H2: Automation maturity levels
-- H2: Quick wins by department (sales, ops, finance)
-- H2: Tooling choices (n8n vs Zapier vs custom)
-- H2: Governance (who owns it)
+- H2: Quick wins by business function
+- H2: Tool choices (n8n, Zapier, custom)
+- H2: Data quality and governance
+- H2: ROI and ownership model
 
-### 9) What does a UK web development company do?
-- H2: Discovery & scoping
-- H2: UX/design and content
-- H2: Development & integrations
-- H2: QA, launch, and support
+### 9) AI assistants for SMEs
+- H2: High-value assistant use cases
+- H2: Prompting, fallback, and escalation design
+- H2: Security and data boundaries
+- H2: Go-live checklist
 
-### 10) Affordable web development UK
-- H2: Where “cheap” goes wrong
-- H2: Ways to reduce cost safely (phased scope, templates + custom)
-- H2: The minimum viable quality checklist
-- H2: Getting a fixed scope
+### 10) Email and SMS automation for follow-up
+- H2: Follow-up workflows that recover lost deals
+- H2: Timing, cadence, and message templates
+- H2: CRM-triggered automation examples
+- H2: Deliverability and compliance basics
 
-### 11) Web development company Leicester (choosing a partner)
-- H2: The 10 questions to ask
-- H2: Red flags (vague scope, no hosting plan)
-- H2: What good proposals include
-- H2: Example timeline
+### 11) CRM implementation for SMEs
+- H2: Discovery and process mapping
+- H2: Data migration and cleanup
+- H2: Team onboarding and adoption
+- H2: First 6-week KPI targets
 
-### 12) Website development Leicester (local SEO basics)
-- H2: Service-area pages and location signals
-- H2: On-page SEO checklist (titles, H1, schema, internal links)
-- H2: Google Business Profile essentials
-- H2: Reviews and citations
+### 12) Sales pipeline management for engineering/service businesses
+- H2: Stage design and entry/exit criteria
+- H2: SLA rules and owner accountability
+- H2: Dashboard design for managers
+- H2: Review cadence and coaching loop
 
-### 13) AI automation services Leicester
-- H2: 10 workflows (lead capture, CRM sync, reporting, support triage)
-- H2: Data/privacy considerations
-- H2: What a 2-week pilot looks like
-- H2: Typical pricing models
+### 13) CRM integrations for SMEs
+- H2: Integration architecture for fast wins
+- H2: Forms, call logs, email, and reporting sync
+- H2: Error handling and monitoring
+- H2: 14-day implementation plan
 
 ## Reuse plan (optional)
 
 - Turn each blog post into:
-  - 1 LinkedIn post (summary + CTA)
-  - 1 short “checklist” graphic
+  - 1 LinkedIn post (problem -> insight -> CTA)
+  - 1 short checklist or framework graphic
   - 1 newsletter snippet
