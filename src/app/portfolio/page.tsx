@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Portfolio | Splendid Technology",
   description:
-    "Real web platforms delivered by Splendid Technology, from customer call management systems to AI-powered applications.",
+    "Real CRM and AI automation platforms delivered by Splendid Technology for UK SMEs.",
 };
 
 const projects = [
@@ -57,22 +57,6 @@ const projects = [
     imageSrc: "/images/projects/mendforworks.png",
   },
   {
-    category: "Food Ordering & Catering Website",
-    title: "Home Kitchen UK",
-    summary:
-      "A mobile-first food ordering and catering website for a UK-based home kitchen. Built around a rich menu experience with combo builder, individual meal pages, and a catering enquiry system for events and office lunches.",
-    deliverables: [
-      "Multi-page menu (Veg, Non-Veg, Combo, Meals)",
-      "Catering enquiry & contact form",
-      "Today's highlights section",
-      "Mobile-first responsive design",
-      "Light red & maroon brand identity",
-    ],
-    tech: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
-    href: "https://www.home-kitchen.uk/",
-    imageSrc: "/images/projects/homekitchen.png",
-  },
-  {
     category: "AI-Powered Learning Platform",
     title: "CodLearn",
     summary:
@@ -100,11 +84,11 @@ export default function PortfolioPage() {
             Our Work
           </p>
           <h1 className="text-4xl font-bold leading-tight sm:text-5xl">
-            Web Apps We&rsquo;ve Built
+            CRM and AI Platforms We&rsquo;ve Built
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-300">
-            Real platforms, live in production. From AI-powered SaaS tools to
-            food ordering sites &mdash; each project delivered end-to-end by
+            Real platforms, live in production. From CRM workflow systems to
+            AI-enabled applications &mdash; each project delivered end-to-end by
             Splendid Technology.
           </p>
         </div>
@@ -182,21 +166,21 @@ export default function PortfolioPage() {
         <div className="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold">Have a project in mind?</h2>
           <p className="mt-3 text-slate-300">
-            We design and build web apps from scratch &mdash; tailored to your
-            business, ready to scale.
+            We design and implement practical CRM and AI automation systems
+            tailored to your business goals.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
-              href="/contact"
+              href="/demo"
               className="rounded-full bg-green-600 px-7 py-3 text-sm font-semibold text-white hover:bg-green-700"
             >
-              Start a Project
+              Book a CRM Demo
             </Link>
             <Link
-              href="/services/web-app-development"
+              href="/services/ai-solutions"
               className="rounded-full border border-white px-7 py-3 text-sm font-semibold text-white hover:bg-white/10"
             >
-              Web &amp; App Development
+              AI Automation Services
             </Link>
           </div>
         </div>
