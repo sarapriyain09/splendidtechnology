@@ -6,7 +6,7 @@ export function SiteFooter() {
       <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
 
         {/* ── Service Menu ── */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
 
           {/* CRM */}
           <div>
@@ -49,26 +49,6 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Custom Software */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Custom Software</h3>
-            <ul className="mt-4 space-y-2">
-              {[
-                { href: "/services/web-app-development", label: "Web Applications" },
-                { href: "/services/web-app-development", label: "SaaS Development" },
-                { href: "/services/web-app-development", label: "Customer Portals" },
-                { href: "/services/web-app-development", label: "API and System Integration" },
-                { href: "/portfolio", label: "Build Portfolio" },
-              ].map((l) => (
-                <li key={`${l.href}-${l.label}`}>
-                  <Link href={l.href} className="text-xs text-white/60 hover:text-white">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Resources */}
           <div>
             <h3 className="text-xs font-bold uppercase tracking-widest text-green-400">Resources</h3>
@@ -98,7 +78,6 @@ export function SiteFooter() {
                 { href: "/contact", label: "Talk to a Specialist" },
                 { href: "/services/sales-crm", label: "CRM Service Details" },
                 { href: "/services/ai-solutions", label: "AI Automation Service Details" },
-                { href: "/services/web-app-development", label: "Custom Software Service Details" },
               ].map((l) => (
                 <li key={`${l.href}-${l.label}`}>
                   <Link href={l.href} className="text-xs text-white/60 hover:text-white">
@@ -122,7 +101,7 @@ export function SiteFooter() {
               </Link>
               <p className="mt-3 text-xs leading-5 text-white/50">
                 We help UK SMEs improve sales, operations, and customer delivery through practical
-                CRM systems, AI automation workflows, and custom software implementation.
+                CRM systems and AI automation workflows.
               </p>
             </div>
 

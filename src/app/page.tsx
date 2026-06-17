@@ -52,15 +52,6 @@ const solutions = [
     tag: "AI",
     highlight: true,
   },
-  {
-    title: "Custom Software",
-    description:
-      "Build web apps, customer portals, and SaaS products integrated with CRM and automation workflows.",
-    href: "/services/web-app-development",
-    icon: "💻",
-    tag: "Software",
-    highlight: true,
-  },
 ];
 
 const benefits = [
@@ -129,18 +120,6 @@ const detailedScope = [
       "Pilot-to-rollout implementation support",
     ],
   },
-  {
-    title: "Custom Software",
-    href: "/services/web-app-development",
-    items: [
-      "Custom SaaS product development",
-      "Customer and partner portals",
-      "Internal workflow apps",
-      "API and platform integrations",
-      "Scalable architecture and delivery",
-      "Post-launch support and iteration",
-    ],
-  },
 ];
 
 const faqItems = [
@@ -160,9 +139,9 @@ const faqItems = [
       "Yes. We integrate AI-assisted workflows with existing CRM, email, and operational systems so teams can automate repetitive work without replacing everything.",
   },
   {
-    question: "Do you build custom software as part of CRM and AI projects?",
+    question: "Can you integrate CRM with our current tools?",
     answer:
-      "Yes. We build web applications, customer portals, and SaaS components when off-the-shelf tools do not fit your workflow.",
+      "Yes. We connect CRM with email, forms, call workflows, and reporting tools so your team can improve execution without replacing everything at once.",
   },
 ];
 
@@ -247,17 +226,6 @@ export default function Home() {
         },
         url: "https://www.splendidtechnology.co.uk/services/ai-solutions",
       },
-      {
-        "@type": "Service",
-        name: "Custom software development for SMEs",
-        serviceType: "Custom software",
-        areaServed: "GB",
-        provider: {
-          "@type": "Organization",
-          name: "Splendid Technology Ltd",
-        },
-        url: "https://www.splendidtechnology.co.uk/services/web-app-development",
-      },
     ],
   };
 
@@ -333,12 +301,12 @@ export default function Home() {
       {/* ── Solutions Grid ── */}
       <section id="solutions" className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Three Core Pillars: CRM, AI Automation, and Custom Software</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Two Core Pillars: CRM and AI Automation</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
             We implement practical systems that improve sales execution, customer management,
             and business process automation for SMEs.
           </p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
             {solutions.map((s) => (
               <Link
                 key={s.title}
@@ -422,9 +390,9 @@ export default function Home() {
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-[#0b1f3a]">Service Taxonomy</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Three practical service categories for scaling SMEs and operational teams.
+            Two practical service categories for scaling SMEs and operational teams.
           </p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
             {detailedScope.map((scope) => (
               <div key={scope.title} className="rounded-2xl border border-black/10 bg-white p-6">
                 <h3 className="text-lg font-bold text-[#0b1f3a]">{scope.title}</h3>
@@ -513,7 +481,6 @@ export default function Home() {
                 {[
                   { icon: "📈", label: "CRM" },
                   { icon: "🧠", label: "AI Automation" },
-                  { icon: "💻", label: "Custom Software" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3 rounded-xl border border-black/10 bg-white px-4 py-3">
                     <span className="text-xl">{item.icon}</span>
@@ -604,7 +571,7 @@ export default function Home() {
             <div>
               <h2 className="text-3xl font-bold text-[#0b1f3a]">Latest Insights</h2>
               <p className="mt-2 max-w-xl text-sm leading-6 text-black/60">
-                Practical guides on CRM, AI automation, and custom software delivery.
+                Practical guides on CRM implementation, lead management, and AI automation.
               </p>
             </div>
             <Link className="text-sm font-medium text-[#0b3d91] hover:underline" href="/blog">

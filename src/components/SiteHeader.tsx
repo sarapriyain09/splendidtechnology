@@ -25,13 +25,6 @@ const aiItems: NavItem[] = [
   { href: "/services/ai-solutions", label: "CRM Integrations", desc: "Connect CRM, forms, calls, and reporting tools" },
 ];
 
-const customSoftwareItems: NavItem[] = [
-  { isLabel: true, label: "Custom Software" },
-  { href: "/services/web-app-development", label: "Web Applications", desc: "Build internal and customer-facing web applications" },
-  { href: "/services/web-app-development", label: "SaaS Development", desc: "Launch scalable SaaS products with phased delivery" },
-  { href: "/services/web-app-development", label: "Customer Portals", desc: "Secure self-service portals for clients and teams" },
-];
-
 const resourcesItems: NavItem[] = [
   { isLabel: true, label: "Resources" },
   { href: "/blog", label: "Blog", desc: "Guides on CRM, automation, and SME growth" },
@@ -126,7 +119,6 @@ export function SiteHeader() {
           <div className="flex items-center gap-x-1">
             <DropdownMenu label="CRM" href="/services/sales-crm" items={crmItems} />
             <DropdownMenu label="AI Automation" href="/services/ai-solutions" items={aiItems} />
-            <DropdownMenu label="Custom Software" href="/services/web-app-development" items={customSoftwareItems} />
             <DropdownMenu label="Resources" href="/blog" items={resourcesItems} />
             <Link href="/about" className="px-2 py-1 text-xs text-white/70 hover:text-white">
               About Us
@@ -162,17 +154,6 @@ export function SiteHeader() {
               ))}
               <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">AI Automation</p>
               {aiItems.filter((i) => !i.isLabel).map((item) => (
-                <Link
-                  key={`${item.href}-${item.label}`}
-                  href={item.href!}
-                  onClick={() => setMobileOpen(false)}
-                  className="block px-2 py-2 text-sm text-white/80 hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <p className="px-2 pt-4 text-[10px] font-bold uppercase tracking-widest text-green-400/80">Custom Software</p>
-              {customSoftwareItems.filter((i) => !i.isLabel).map((item) => (
                 <Link
                   key={`${item.href}-${item.label}`}
                   href={item.href!}
