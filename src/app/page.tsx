@@ -240,24 +240,25 @@ export default function Home() {
               CRM and AI Automation for UK SMEs
             </p>
             <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              CRM and AI Automation Solutions for UK SMEs
+              CRM and AI Automation for Growing SMEs
             </h1>
             <p className="mt-5 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-              We help UK SMEs and manufacturers improve sales response, streamline
-              operations, and scale with practical CRM systems, AI automation workflows, and custom software.
+              Help SMEs improve sales, automate workflows, and build scalable digital systems.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/contact"
+              <a
+                href="https://democrm.splendidtechnology.co.uk/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-lg bg-green-600 px-7 py-3 font-bold text-white transition-colors hover:bg-green-700"
               >
-                Book Demo
-              </Link>
+                Try CRM Demo
+              </a>
               <Link
-                href="/services"
+                href="/demo"
                 className="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-3 font-bold text-white transition-colors hover:bg-white/10"
               >
-                Explore Services
+                Book a CRM Demo
               </Link>
             </div>
           </div>
@@ -334,8 +335,8 @@ export default function Home() {
             Business Outcomes, Not Technical Vanity Metrics
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-center text-sm text-white/60">
-            Every engagement is designed to improve commercial speed, operational visibility,
-            reliability, and decision quality.
+            Every engagement is designed to help you track leads, improve follow-up,
+            convert more enquiries, and reduce repetitive manual work.
           </p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {benefits.map((b) => (
@@ -443,7 +444,7 @@ export default function Home() {
               { heading: "Outcome-Led Delivery", body: "We prioritize measurable business outcomes over isolated technical deliverables." },
               { heading: "CRM and AI Focus", body: "Sales, customer, and automation workflows connected in one practical model." },
               { heading: "Implementation-Led Support", body: "Hands-on delivery for CRM setup, AI workflow rollout, and adoption." },
-              { heading: "SME-Focused Execution", body: "Phased deployment model aligned to practical budgets, team capacity, and rapid value realization." },
+              { heading: "SME-Focused Execution", body: "Phased rollout aligned to practical budgets, team capacity, and quick business value." },
             ].map((item) => (
               <div key={item.heading} className="rounded-xl border border-black/10 bg-white p-6">
                 <h3 className="font-bold text-[#0b1f3a]">{item.heading}</h3>
