@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Web App Development, IoT & Automation Insights | Splendid Technology Blog",
+  title: "CRM and AI Automation Insights | Splendid Technology Blog",
   description:
-    "Practical guides on web app development, industrial IoT, smart motor monitoring, predictive maintenance, AI automation, and digital transformation for UK businesses.",
+    "Practical guides on CRM implementation, lead management, sales pipeline workflows, and AI automation for UK SMEs.",
   alternates: {
     canonical: "/blog",
   },
@@ -18,10 +18,10 @@ export default function BlogIndexPage() {
   return (
     <div className="mx-auto w-full max-w-6xl space-y-10 px-4 py-10 sm:px-6 lg:px-8">
       <header className="space-y-3">
-        <h1 className="text-3xl font-semibold tracking-tight">Web App Development, IoT &amp; Automation Insights</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">CRM and AI Automation Insights</h1>
         <p className="max-w-2xl text-sm leading-6 text-black/70">
-          Practical guides on web app development, industrial IoT, smart motor monitoring,
-          predictive maintenance, AI automation, and digital transformation &mdash; for UK businesses.
+          Practical guides on CRM implementation, lead management, sales pipeline workflows,
+          and AI automation &mdash; for UK SMEs.
         </p>
       </header>
 
@@ -71,9 +71,9 @@ export default function BlogIndexPage() {
       <div>
         <Link
           className="inline-flex h-11 items-center justify-center rounded-full bg-blue-600 px-5 text-sm font-medium text-white hover:bg-blue-700"
-          href="/contact"
+          href="/demo"
         >
-          Request a Quote
+          Book a CRM Demo
         </Link>
       </div>
     </div>

@@ -70,10 +70,7 @@ export default async function BlogPostPage({
             CRM Services
           </Link>
           <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services/ai-solutions">
-            AI Solutions
-          </Link>
-          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services/iot-solutions">
-            IoT Solutions
+            AI Automation
           </Link>
           <Link className="text-sm font-medium text-blue-700 hover:underline" href="/contact">
             Contact
@@ -104,17 +101,17 @@ export default async function BlogPostPage({
       />
 
       <section className="rounded-2xl border border-black/10 bg-white p-6">
-        <h2 className="text-lg font-semibold">Want a clear quote?</h2>
+        <h2 className="text-lg font-semibold">Want a practical CRM and AI plan?</h2>
         <p className="mt-2 text-sm leading-6 text-black/70">
-          Share your goals, timeline, and any examples you like. We&apos;ll respond
-          with a realistic scope, timeline, and estimate.
+          Share your lead management and automation goals. We&apos;ll propose a realistic
+          rollout plan with clear scope and timeline.
         </p>
         <div className="mt-4">
           <Link
             className="inline-flex h-11 items-center justify-center rounded-full bg-blue-600 px-5 text-sm font-medium text-white hover:bg-blue-700"
-            href="/contact"
+            href="/demo"
           >
-            Request a Quote
+            Book a CRM Demo
           </Link>
         </div>
       </section>
