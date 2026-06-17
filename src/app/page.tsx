@@ -152,7 +152,7 @@ export default function Home() {
     "@type": "Organization",
     name: "Splendid Technology Ltd",
     url: "https://www.splendidtechnology.co.uk/",
-    logo: "https://www.splendidtechnology.co.uk/images/industrial-iot/logo_Splendid%20PNG.png",
+    logo: "https://www.splendidtechnology.co.uk/images/brand/logo-splendid.png",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",

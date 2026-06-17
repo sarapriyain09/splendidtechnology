@@ -77,7 +77,7 @@ export function SiteHeader() {
         <div className="flex items-center justify-between border-b border-white/10 py-3">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/images/industrial-iot/logo_Splendid PNG.png"
+              src="/images/brand/logo-splendid.png"
               alt="Splendid Technology"
               width={360}
               height={144}
