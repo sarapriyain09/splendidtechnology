@@ -168,6 +168,59 @@ const faqItems = [
 
 export default function Home() {
   const latestPosts = getAllBlogPosts().slice(0, 2);
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Splendid Technology Ltd",
+    url: "https://www.splendidtechnology.co.uk/",
+    logo: "https://www.splendidtechnology.co.uk/images/industrial-iot/logo_Splendid%20PNG.png",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      telephone: "+44 7723 144910",
+      email: "info@splendidtechnology.co.uk",
+      areaServed: "GB",
+      availableLanguage: ["en-GB"],
+    },
+    sameAs: [
+      "https://www.linkedin.com/",
+    ],
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Splendid Technology Ltd",
+    url: "https://www.splendidtechnology.co.uk/",
+    areaServed: ["Leicester", "East Midlands", "United Kingdom"],
+    telephone: "+44 7723 144910",
+    email: "info@splendidtechnology.co.uk",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "GB",
+    },
+  };
+
+  const softwareApplicationSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Splendid CRM",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "GBP",
+      description: "Book a demo for pricing and rollout options",
+    },
+    provider: {
+      "@type": "Organization",
+      name: "Splendid Technology Ltd",
+      url: "https://www.splendidtechnology.co.uk/",
+    },
+    url: "https://www.splendidtechnology.co.uk/services/sales-crm",
+  };
+
   const homeServiceSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -223,6 +276,18 @@ export default function Home() {
 
   return (
     <div className="w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeServiceSchema) }}
@@ -375,6 +440,34 @@ export default function Home() {
                   View service details &rarr;
                 </Link>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SEO Landing Page Links ── */}
+      <section className="bg-[#f7f7f7] py-14">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Explore CRM and AI Topics</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-black/60">
+            Browse focused pages built around lead management, sales pipeline execution,
+            and AI automation for SMEs.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { href: "/crm-for-engineering-companies", label: "CRM for Engineering Companies" },
+              { href: "/lead-management-software", label: "Lead Management Software" },
+              { href: "/sales-pipeline-management", label: "Sales Pipeline Management" },
+              { href: "/call-management-crm", label: "Call Management CRM" },
+              { href: "/ai-business-automation", label: "AI Business Automation" },
+            ].map((page) => (
+              <Link
+                key={page.href}
+                href={page.href}
+                className="rounded-xl border border-black/10 bg-white px-4 py-4 text-sm font-semibold text-[#0b1f3a] hover:bg-[#0b1f3a] hover:text-white"
+              >
+                {page.label} &rarr;
+              </Link>
             ))}
           </div>
         </div>

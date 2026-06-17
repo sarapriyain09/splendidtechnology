@@ -63,6 +63,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/contact`, lastModified },
     { url: `${base}/blog`, lastModified },
     { url: `${base}/locations`, lastModified },
+    // SEO landing pages
+    { url: `${base}/crm-for-engineering-companies`, lastModified },
+    { url: `${base}/lead-management-software`, lastModified },
+    { url: `${base}/sales-pipeline-management`, lastModified },
+    { url: `${base}/call-management-crm`, lastModified },
+    { url: `${base}/ai-business-automation`, lastModified },
     ...posts.map((post) => ({
       url: `${base}/blog/${post.slug}`,
       lastModified: new Date(post.date),
