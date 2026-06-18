@@ -37,7 +37,7 @@ function DropdownMenu({ label, href, items }: { label: string; href: string; ite
     <div className="group relative">
       <Link
         href={href}
-        className="flex items-center gap-1 rounded-lg px-4 py-2 text-[20px] font-semibold text-[#24395f] hover:bg-[#fff3ea] hover:text-[#111827]"
+        className="flex items-center gap-1 rounded-lg px-3 py-1.5 text-[17px] font-semibold text-[#24395f] hover:bg-[#fff3ea] hover:text-[#111827]"
       >
         {label}
         <svg className="h-3 w-3 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -70,18 +70,18 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[#e7e7e7] bg-white/95 text-[#0e1629] backdrop-blur">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-10">
+    <header className="sticky top-0 z-40 h-[100px] border-b border-[#e7e7e7] bg-white/95 text-[#0e1629] backdrop-blur lg:overflow-visible">
+      <div className="mx-auto h-full w-full max-w-7xl px-4 sm:px-8 lg:px-10">
 
         {/* Single-row header */}
-        <div className="flex items-center justify-between py-4 lg:py-6">
+        <div className="flex h-full items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <Image
               src="/images/brand/logo-splendid.png"
               alt="Splendid Technology"
               width={620}
               height={248}
-              className="h-auto w-[170px] object-contain sm:w-[210px] lg:w-[270px]"
+              className="h-auto w-[150px] object-contain sm:w-[170px] lg:w-[190px]"
               priority
             />
           </Link>
@@ -90,11 +90,11 @@ export function SiteHeader() {
           <nav className="hidden items-center gap-x-2 lg:flex">
             <DropdownMenu label="Products" href="/services/sales-crm" items={crmItems} />
             <DropdownMenu label="Solutions" href="/services" items={aiItems} />
-            <Link href="/pricing" className="rounded-lg px-4 py-2 text-[20px] font-semibold text-[#24395f] hover:bg-[#fff3ea] hover:text-[#111827]">
+            <Link href="/pricing" className="rounded-lg px-3 py-1.5 text-[17px] font-semibold text-[#24395f] hover:bg-[#fff3ea] hover:text-[#111827]">
               Pricing
             </Link>
             <DropdownMenu label="Resources" href="/blog" items={resourcesItems} />
-            <Link href="/contact" className="rounded-lg px-4 py-2 text-[20px] font-semibold text-[#24395f] hover:bg-[#fff3ea] hover:text-[#111827]">
+            <Link href="/contact" className="rounded-lg px-3 py-1.5 text-[17px] font-semibold text-[#24395f] hover:bg-[#fff3ea] hover:text-[#111827]">
               Contact
             </Link>
           </nav>
@@ -102,13 +102,13 @@ export function SiteHeader() {
           <div className="flex items-center gap-3">
             <Link
               href="https://democrm.splendidtechnology.co.uk/"
-              className="hidden rounded-full border-2 border-[#e2571a] px-7 py-2.5 text-xl font-semibold text-[#e2571a] hover:bg-[#fff3ea] lg:inline-flex"
+              className="hidden rounded-full border-2 border-[#e2571a] px-5 py-1.5 text-base font-semibold text-[#e2571a] hover:bg-[#fff3ea] lg:inline-flex"
             >
               Log in
             </Link>
             <Link
               href="/demo"
-              className="hidden rounded-full bg-[#e2571a] px-7 py-2.5 text-xl font-semibold text-white hover:bg-[#c84e18] lg:inline-flex"
+              className="hidden rounded-full bg-[#e2571a] px-5 py-1.5 text-base font-semibold text-white hover:bg-[#c84e18] lg:inline-flex"
             >
               Try CRM for free
             </Link>
