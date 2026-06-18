@@ -1,507 +1,178 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "About Rajagopalan Saravanan | Founder, Splendid Technology UK",
+  title: "About Splendid Technology | CRM and AI Automation Partner",
   description:
-    "Meet Rajagopalan Saravanan, Founder of Splendid Technology. Digital Transformation Consultant UK focused on CRM, AI, Industrial IoT, reliability engineering, and manufacturing digitalisation.",
+    "Learn how Splendid Technology helps SMEs grow with CRM implementation, AI automation, workflow systems, and practical business integrations.",
   alternates: {
     canonical: "/about",
   },
 };
 
-const founderHighlights = [
-  "25+ Years Engineering Experience",
-  "Application Engineering and Services Sales Leadership",
-  "Salesforce Commercial Workflow Experience",
-  "International Industry Travel: India, France, Netherlands, Czech Republic",
-  "MBA (Operations)",
-  "B.E. Electrical & Electronics Engineering",
-  "ISO 9000 Internal Auditor",
-  "Six Sigma Green Belt",
-  "Leadership roles at Baker Hughes and GE Power Conversion",
-];
-
-const industriesServed = [
-  "Manufacturing",
-  "Oil & Gas",
-  "Marine",
-  "Mining",
-  "Metals",
-  "Utilities",
-  "Engineering Services",
-];
-
-const credibilityMetrics = [
-  { label: "Engineering Experience", value: "25+ Years" },
-  { label: "Major Projects", value: "100+" },
-  { label: "Industries Served", value: "7" },
-  { label: "Countries Worked In", value: "UK, India, France, Netherlands, Czech Republic" },
-];
-
-const pillars = [
+const values = [
   {
-    title: "CRM and Sales Systems",
-    desc: "Lead capture, quote workflows, and customer management systems that improve conversion and follow-up speed.",
-    href: "/services/sales-crm",
+    title: "Clarity Over Complexity",
+    description: "We simplify systems so teams can execute faster with less friction and fewer handoffs.",
   },
   {
-    title: "Operations and ERP",
-    desc: "Connected operational workflows across jobs, inventory, warehouse movement, and performance reporting.",
-    href: "/services/software-development#erp",
+    title: "Outcomes Over Features",
+    description: "Every rollout is tied to measurable metrics such as lead response speed and conversion progress.",
   },
   {
-    title: "IoT and Asset Intelligence",
-    desc: "Condition monitoring and telemetry systems that improve reliability planning and visibility.",
-    href: "/services/iot-solutions",
+    title: "Build What Teams Will Use",
+    description: "We design around real team workflows, not around generic software assumptions.",
   },
   {
-    title: "Digital Intelligence",
-    desc: "Data workflows, automation, dashboards, and AI-assisted processes for better decision-making.",
-    href: "/services/digital-engineering",
-  },
-  {
-    title: "Advisory and Implementation",
-    desc: "Start with an assessment, then roll out high-impact systems in practical, measurable phases.",
-    href: "/contact",
+    title: "Scale in Phases",
+    description: "Start with one high-impact workflow, then expand into a connected operating system.",
   },
 ];
 
-const detailedScope = [
-  {
-    heading: "CRM and Sales Systems",
-    points: [
-      "CRM implementation and migration",
-      "Lead capture and follow-up workflows",
-      "Quote and customer lifecycle tracking",
-      "Commercial process automation",
-      "Sales reporting dashboards",
-      "Adoption support",
-    ],
-    href: "/services/sales-crm",
-  },
-  {
-    heading: "Operations and ERP",
-    points: [
-      "Job and work-order tracking",
-      "Inventory and warehouse workflows",
-      "ERP module integration",
-      "Process and approval automation",
-      "Operational KPI dashboards",
-      "Supplier and procurement flows",
-    ],
-    href: "/services/software-development#erp",
-  },
-  {
-    heading: "IoT and Asset Intelligence",
-    points: [
-      "Condition monitoring systems",
-      "Edge device and telemetry setup",
-      "Asset performance dashboards",
-      "Alerting and escalation rules",
-      "Predictive maintenance workflows",
-      "Reliability reporting",
-    ],
-    href: "/services/iot-solutions",
-  },
-  {
-    heading: "Digital Intelligence",
-    points: [
-      "Data and document workflows",
-      "Design and reporting automation",
-      "Reliability analytics",
-      "AI-assisted operational tasks",
-      "Cross-team visibility",
-      "Decision support dashboards",
-    ],
-    href: "/services/digital-engineering",
-  },
-  {
-    heading: "Advisory and Implementation",
-    points: [
-      "Digitalization assessment",
-      "Roadmap and sequencing",
-      "Pilot-to-rollout planning",
-      "Integration strategy",
-      "Team enablement",
-      "Managed optimization",
-    ],
-    href: "/contact",
-  },
+const capabilities = [
+  "CRM solutions and lead management",
+  "AI assistants and workflow automation",
+  "Email and SMS automation with Twilio",
+  "Client portals and internal systems",
+  "Reporting dashboards and operational visibility",
+  "Integration with Outlook, Google Workspace, WhatsApp, HubSpot, and APIs",
 ];
 
-const leadershipTeam = [
+const teamHighlights = [
   {
-    name: "Rajagopalan Saravanan",
-    role: "Founder",
-    credential: "25+ years international engineering and industrial leadership experience",
-    badge: "Founder",
-    subtitle: "Founder | Splendid Technology",
-    bio: "Rajagopalan Saravanan is an Engineering Leader, Digital Transformation Consultant, and Founder of Splendid Technology, with more than 25 years of international experience spanning electrical engineering, rotating machines, reliability engineering, industrial operations, and technology innovation. Throughout his career, Rajagopalan has held technical and leadership positions with global organisations including GE Vernova, Regal Beloit, and Tecumseh. He has led engineering teams, managed multi-million-dollar projects, supported industrial customers across Metals, Oil & Gas, Marine, Mining, and Manufacturing sectors, and delivered solutions ranging from motor and generator design, application engineering, services sales, and Salesforce-enabled commercial process execution to asset reliability and condition monitoring. His expertise also includes end-to-end new product development from design, development, and testing through services and sales, working closely with manufacturing, sourcing, and marketing functions in continuous-process and customer-machine production environments. Through Splendid Technology, Rajagopalan helps SMEs and industrial organisations improve commercial performance, operational efficiency, and decision-making by connecting people, processes, and technology.",
-    skills: [
-      "Digital Transformation & Business Process Improvement",
-      "CRM Strategy & Implementation",
-      "Application Engineering",
-      "Salesforce CRM and Workflow Design",
-      "Technical Services Sales",
-      "Artificial Intelligence & Workflow Automation",
-      "Industrial IoT & Condition Monitoring",
-      "Reliability Engineering & Asset Management",
-      "Electrical Power Systems",
-      "Rotating Machines (Motors & Generators)",
-      "Engineering Leadership & Project Management",
-    ],
-    qualifications: [
-      "MBA (Operations), ICFAI University",
-      "B.E. Electrical & Electronics Engineering",
-      "ISO 9000 Internal Auditor",
-      "Six Sigma Green Belt Trained",
-    ],
+    role: "Founder Leadership",
+    detail:
+      "Built on decades of engineering and commercial process experience, with a clear focus on practical SME transformation.",
   },
   {
-    name: "Shiva Prakhash",
-    role: "Technical Delivery Manager",
-    credential: "MSc Advanced Computer Science, University of Leicester",
-    badge: "Technical Delivery Manager",
-    subtitle: "Technical Delivery Manager — Splendid Technology, Leicester, UK",
-    bio: "Responsible for the successful delivery of client projects, including website development, hosting, deployment, maintenance, and technical support. Works closely with clients and the business development team to translate requirements into reliable, secure, and scalable digital solutions.",
-    skills: [
-      "Website Development",
-      "Technical Project Delivery",
-      "Web Hosting",
-      "Deployment and Release Management",
-      "Technical Support",
-      "System Administration",
-      "Cloud Hosting",
-      "Website Maintenance",
-      "Application Troubleshooting",
-      "Performance Optimization",
-      "Security and SSL Management",
-      "Client Support",
-    ],
+    role: "Technical Delivery",
+    detail:
+      "Modern web architecture, secure cloud deployments, and reliable implementation across CRM and automation systems.",
   },
   {
-    name: "Arun Prakash",
-    role: "Business Development Manager",
-    credential: "MSc International Business, University of Leicester",
-    badge: "Business Development Manager",
-    subtitle: "Business Development Manager — Splendid Technology, Leicester, UK",
-    bio: "Responsible for lead generation, prospect research, CRM management, customer engagement, quotation preparation, and supporting business growth initiatives. Focused on identifying opportunities, understanding customer requirements, nurturing prospects, and helping convert enquiries into business opportunities.",
-    skills: [
-      "Lead Generation",
-      "Prospect Research",
-      "CRM Management",
-      "Customer Engagement",
-      "Quotation Preparation",
-      "Appointment Scheduling",
-      "Pipeline Development",
-      "Follow-Up Management",
-      "Opportunity Qualification",
-      "Business Growth Support",
-      "Client Communication",
-      "Sales Coordination",
-    ],
+    role: "Commercial Execution",
+    detail:
+      "Pipeline discipline, follow-up workflows, and customer journey design that turns enquiries into opportunities.",
   },
 ];
 
 export default function AboutPage() {
-  const founderSchema = {
+  const orgSchema = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Rajagopalan Saravanan",
-    jobTitle: "Founder",
-    worksFor: {
-      "@type": "Organization",
-      name: "Splendid Technology",
-      url: "https://www.splendidtechnology.co.uk",
-    },
+    "@type": "Organization",
+    name: "Splendid Technology Ltd",
+    url: "https://www.splendidtechnology.co.uk/",
     description:
-      "Engineering leader and Digital Transformation Consultant in the UK with 25+ years of experience in application engineering, services sales, Salesforce workflows, reliability engineering, industrial operations, CRM, AI, and Industrial IoT.",
+      "A CRM and AI Automation partner for SMEs, helping teams improve sales execution, workflows, and operations visibility.",
+    areaServed: "United Kingdom",
     knowsAbout: [
-      "Digital Transformation Consultant UK",
-      "CRM Consultant UK",
-      "Application Engineering",
-      "Salesforce",
-      "Services Sales",
-      "Industrial IoT Consultant UK",
-      "Reliability Engineering",
-      "Manufacturing Digitalisation",
+      "CRM implementation",
+      "AI workflow automation",
+      "lead management",
+      "client portals",
+      "business systems integrations",
     ],
   };
 
-  const renderLeaderCard = (member: (typeof leadershipTeam)[number]) => (
-    <article key={member.name} className="rounded-2xl border border-slate-200 bg-white p-6">
-      {("badge" in member && member.badge) ? (
-        <p className="inline-block rounded-full border border-green-300 bg-green-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-green-700">
-          {member.badge}
-        </p>
-      ) : null}
-      <h3 className="text-lg font-bold text-[#0b1f3a]">{member.name}</h3>
-      <p className="mt-1 text-sm font-semibold text-green-700">{member.role}</p>
-      {("subtitle" in member && member.subtitle) ? (
-        <p className="mt-1 text-xs text-slate-500">{member.subtitle}</p>
-      ) : null}
-      <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500">{member.credential}</p>
-      <p className="mt-3 text-sm leading-6 text-slate-700">{member.bio}</p>
-      {("skills" in member && member.skills) ? (
-        <div className="mt-4">
-          <p className="text-xs font-semibold uppercase tracking-wide text-[#0b3d91]">Key Skills</p>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {member.skills.map((skill) => (
-              <span
-                key={skill}
-                className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-700"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-      ) : null}
-      {("qualifications" in member && member.qualifications) ? (
-        <div className="mt-4">
-          <p className="text-xs font-semibold uppercase tracking-wide text-[#0b3d91]">Qualifications</p>
-          <ul className="mt-2 space-y-1">
-            {member.qualifications.map((qualification) => (
-              <li key={qualification} className="text-xs text-slate-700">
-                {qualification}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-    </article>
-  );
-
   return (
-    <div className="bg-white">
+    <div className="w-full bg-[var(--background)]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(founderSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
       />
 
-      {/* Hero */}
-      <section className="bg-[#0b1f3a] py-16 text-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">About Us</p>
-          <h1 className="text-4xl font-bold leading-tight sm:text-5xl">Splendid Technology Ltd</h1>
-          <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
-            A digital solutions company helping engineering and manufacturing SMEs connect sales,
-            operations, assets, and workflows into one practical operating model.
+      <section className="border-b border-[#dce8ff] bg-[radial-gradient(circle_at_20%_20%,#dbe9ff_0%,#f5f8ff_55%,#ecfff8_100%)] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <div className="mx-auto w-full max-w-6xl">
+          <p className="inline-flex rounded-full border border-[#b6cbff] bg-white/70 px-4 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#1147bf]">
+            About Splendid Technology
           </p>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-400">
-            We focus on practical implementation, measurable outcomes, and scalable systems
-            that improve reliability, productivity, and operational visibility.
+          <h1 className="mt-4 max-w-4xl text-balance text-4xl font-bold leading-tight text-[#0e1629] sm:text-5xl">
+            We Help SMEs Grow with CRM and AI Automation Systems
+          </h1>
+          <p className="mt-4 max-w-3xl text-lg leading-8 text-[#37486e]">
+            Splendid Technology is a CRM and AI Automation partner for SMEs. We design and implement connected systems that improve lead flow, follow-up discipline, and operational execution.
           </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button asChild size="lg">
+              <Link href="/demo">Book a Demo</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <Link href="/contact">Schedule a Call</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Meet the Founder */}
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-        <p className="text-xs font-bold uppercase tracking-widest text-green-700">Meet the Founder</p>
-        <h2 className="mt-2 text-3xl font-bold text-[#0b1f3a]">Rajagopalan Saravanan</h2>
-        <p className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-7 text-slate-700">
-          Rajagopalan Saravanan founded Splendid Technology after more than 25 years working in engineering,
-          reliability, asset management, and industrial operations. Having held leadership roles at Baker Hughes and
-          GE Power Conversion, he combines deep industrial expertise with modern digital technologies including CRM,
-          AI, Industrial IoT, and business process automation. His mission is to help SMEs adopt practical digital
-          systems that improve sales performance, operational visibility, and sustainable growth.
+      <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-[#0e1629]">What We Stand For</h2>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          {values.map((value) => (
+            <article key={value.title} className="rounded-2xl border border-[#dce8ff] bg-white p-6">
+              <h3 className="text-base font-bold text-[#132446]">{value.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#4d5d80]">{value.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y border-[#dce8ff] bg-white/70 py-16">
+        <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:px-8">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#1f6dff]">Capabilities</p>
+            <h2 className="mt-2 text-3xl font-bold text-[#0e1629]">How We Help Teams Execute Better</h2>
+            <ul className="mt-6 space-y-2.5">
+              {capabilities.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm text-[#334769]">
+                  <span className="mt-0.5 text-[#00a87f]">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-[#dce8ff] bg-white p-6">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#1f6dff]">Positioning</p>
+            <h3 className="mt-2 text-xl font-bold text-[#0e1629]">One Clear Identity</h3>
+            <p className="mt-3 text-sm leading-6 text-[#4d5d80]">
+              We are not a general engineering consultancy. We are a focused CRM and AI Automation partner for SMEs that want repeatable growth systems.
+            </p>
+            <p className="mt-3 text-sm leading-6 text-[#4d5d80]">
+              That focus strengthens website clarity, proposal quality, and implementation outcomes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+        <p className="text-xs font-bold uppercase tracking-widest text-[#1f6dff]">Team Strength
         </p>
-        <div className="mt-5 flex flex-wrap gap-2">
-          {founderHighlights.map((item) => (
-            <span
-              key={item}
-              className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-        <div className="mt-6">
-          <Link
-            href="/about/rajagopalan-saravanan"
-            className="inline-flex rounded-full border border-[#0b1f3a] px-5 py-2 text-xs font-semibold uppercase tracking-wide text-[#0b1f3a] hover:bg-[#0b1f3a] hover:text-white"
-          >
-            View Full Founder Profile
-          </Link>
-        </div>
-      </section>
-
-      {/* Why We Exist */}
-      <section className="bg-slate-50 py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#0b1f3a]">Why Splendid Technology Exists</h2>
-          <p className="mt-4 max-w-4xl text-sm leading-7 text-slate-700">
-            Splendid Technology was founded to bridge the gap between engineering excellence and digital
-            transformation. Many SMEs struggle with disconnected systems, manual processes, and limited visibility
-            across sales and operations. We help organisations implement practical CRM, automation, AI, and Industrial
-            IoT solutions that deliver measurable business outcomes.
-          </p>
-          <p className="mt-3 max-w-4xl text-sm leading-7 text-slate-700">
-            Our consulting and implementation approach supports businesses looking for a Digital Transformation
-            Consultant UK, CRM Consultant UK, and Industrial IoT Consultant UK partner with real industrial experience.
-          </p>
-        </div>
-      </section>
-
-      {/* Service Lines */}
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-[#0b1f3a]">What We Do</h2>
-        <p className="mt-2 text-sm text-slate-500">Five digital solution categories with clear implementation scope.</p>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {pillars.map((pillar) => (
-            <Link
-              key={pillar.title}
-              href={pillar.href}
-              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:border-green-400 hover:shadow-md"
-            >
-              <h3 className="font-semibold text-[#0b1f3a] group-hover:text-green-700">{pillar.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{pillar.desc}</p>
-              <span className="mt-4 inline-block text-xs font-medium text-green-600 group-hover:underline">
-                Learn more &rarr;
-              </span>
-            </Link>
+        <h2 className="mt-2 text-3xl font-bold text-[#0e1629]">Commercial, Technical, and Delivery Capability</h2>
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          {teamHighlights.map((item) => (
+            <article key={item.role} className="rounded-2xl border border-[#dce8ff] bg-white p-6">
+              <h3 className="text-base font-bold text-[#132446]">{item.role}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#4d5d80]">{item.detail}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* Expanded Scope */}
-      <section className="bg-slate-50 py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#0b1f3a]">Expanded Delivery Scope</h2>
-          <p className="mt-2 max-w-2xl text-sm text-slate-600">
-            Each service line includes concrete deliverables so clients can align technical scope,
-            budget, and outcomes before implementation begins.
+      <section className="bg-[#0f2041] py-16 text-white">
+        <div className="mx-auto w-full max-w-6xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold">Build the Right System, Then Scale It</h2>
+          <p className="mx-auto mt-4 max-w-3xl text-base text-white/80">
+            Start with one workflow that moves revenue or operations. Prove value, then expand with confidence.
           </p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {detailedScope.map((scope) => (
-              <div key={scope.heading} className="rounded-2xl border border-slate-200 bg-white p-6">
-                <h3 className="text-lg font-semibold text-[#0b1f3a]">{scope.heading}</h3>
-                <ul className="mt-4 space-y-2">
-                  {scope.points.map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-sm text-slate-700">
-                      <span className="mt-0.5 font-bold text-green-600">+</span>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-                <Link href={scope.href} className="mt-5 inline-block text-xs font-semibold uppercase tracking-wide text-green-700 hover:underline">
-                  View service details &rarr;
-                </Link>
-              </div>
-            ))}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <Button asChild size="lg">
+              <Link href="/contact">Talk to a Specialist</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="border-white/30 bg-transparent text-white hover:bg-white/10">
+              <Link href="/services">View Services</Link>
+            </Button>
           </div>
         </div>
       </section>
-
-      {/* Our Approach */}
-      <section className="py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-2">
-            <div>
-              <h2 className="text-2xl font-bold text-[#0b1f3a]">Our Approach</h2>
-              <p className="mt-4 text-sm leading-7 text-slate-600">
-                We focus on practical digitalization rather than generic software rollouts.
-                Every project starts with the real operational bottleneck, then maps to the
-                minimum viable system change that creates measurable impact.
-              </p>
-              <p className="mt-3 text-sm leading-7 text-slate-600">
-                Our delivery model connects commercial, operational, and asset data so teams
-                can make faster decisions with better visibility across the business.
-              </p>
-              <p className="mt-3 text-sm leading-7 text-slate-600">
-                We provide <strong>end-to-end support</strong> &mdash; from assessment and roadmap definition
-                through implementation, adoption, and optimization.
-              </p>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-[#0b1f3a]">How We Work</h2>
-              <ul className="mt-4 space-y-3">
-                {[
-                  "Rapid discovery and scope definition",
-                  "Practical implementation with no unnecessary complexity",
-                  "Clear workflow and data ownership",
-                  "Phased rollout with measurable outcomes",
-                  "Visibility at every stage",
-                  "Scalable architecture that grows with operations",
-                  "Long-term optimization support",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
-                    <span className="mt-0.5 text-green-500">&#10003;</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries and Proof */}
-      <section className="bg-slate-50 py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#0b1f3a]">Industries Served</h2>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {industriesServed.map((industry) => (
-              <div
-                key={industry}
-                className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700"
-              >
-                {industry}
-              </div>
-            ))}
-          </div>
-
-          <h3 className="mt-10 text-xl font-bold text-[#0b1f3a]">Operational Credibility</h3>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {credibilityMetrics.map((metric) => (
-              <div key={metric.label} className="rounded-2xl border border-slate-200 bg-white p-5">
-                <p className="text-2xl font-bold text-green-700">{metric.value}</p>
-                <p className="mt-1 text-xs uppercase tracking-wide text-slate-500">{metric.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Leadership Team */}
-      <section className="bg-slate-50 py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#0b1f3a]">Leadership Team</h2>
-          <p className="mt-2 max-w-2xl text-sm text-slate-600">
-            Delivery and growth leadership focused on practical implementation for UK SMEs.
-          </p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            {leadershipTeam.slice(1).map((member) => renderLeaderCard(member))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-[#0b1f3a] py-16 text-white">
-        <div className="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold">Work with us</h2>
-          <p className="mt-3 text-slate-300">
-            Whether you need CRM, ERP workflows, IoT monitoring, or implementation support,
-            we&rsquo;d love to hear about your project.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="rounded-full bg-green-600 px-7 py-3 text-sm font-semibold text-white hover:bg-green-700"
-            >
-              Get in Touch
-            </Link>
-            <Link
-              href="/services"
-              className="rounded-full border border-white px-7 py-3 text-sm font-semibold text-white hover:bg-white/10"
-            >
-              Explore Services
-            </Link>
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 }

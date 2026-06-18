@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { getAllCaseStudies } from "@/lib/caseStudies";
 
 export const metadata: Metadata = {
-  title: "Engineering Case Studies | Splendid Technology",
+  title: "Implementation Case Studies | Splendid Technology",
   description:
-    "Detailed case studies across CRM, digitalisation, AI, supply chain workflows, and Industrial IoT for UK manufacturing and engineering SMEs.",
+    "Detailed case studies across CRM implementation, AI automation, workflow integrations, and business operations systems for UK SMEs.",
   alternates: {
     canonical: "/engineering-case-studies",
   },
@@ -19,14 +19,14 @@ export default function EngineeringCaseStudiesPage() {
       <section className="bg-[#0b1f3a] py-16 text-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">
-            Advanced Engineering Analysis
+            Implementation Stories
           </p>
           <h1 className="text-4xl font-bold leading-tight sm:text-5xl">
-            Engineering Case Studies
+            CRM and AI Automation Case Studies
           </h1>
           <p className="mt-4 max-w-3xl text-lg text-slate-300">
-            Detailed implementation stories covering CRM, digitalisation,
-            Industrial IoT, AI workflow automation, and supply chain process design.
+            Detailed implementation stories covering CRM rollout,
+            AI workflow automation, integration delivery, and process redesign.
           </p>
         </div>
       </section>
@@ -126,11 +126,11 @@ export default function EngineeringCaseStudiesPage() {
             <div>
               <p className="text-sm font-semibold text-[#0b3d91]">Industrial IoT and Reliability</p>
               <p className="mt-1 text-sm text-slate-700">
-                Condition monitoring, alerting workflows, and predictive maintenance deployment.
+                Operational monitoring, alerting workflows, and reliability improvement deployment.
               </p>
             </div>
             <div>
-              <p className="text-sm font-semibold text-[#0b3d91]">Digitalisation and Supply Chain</p>
+              <p className="text-sm font-semibold text-[#0b3d91]">Workflow Design and Integrations</p>
               <p className="mt-1 text-sm text-slate-700">
                 Quote-to-order process redesign and supplier qualification system implementation.
               </p>
@@ -149,8 +149,8 @@ export default function EngineeringCaseStudiesPage() {
         <div className="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold">Need analysis support for a project?</h2>
           <p className="mt-3 text-slate-300">
-            We provide practical, decision-ready engineering analysis for
-            rotating equipment and industrial systems.
+            We provide practical, decision-ready implementation support for
+            CRM, automation, and business workflow systems.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link

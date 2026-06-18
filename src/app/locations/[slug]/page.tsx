@@ -27,59 +27,55 @@ export async function generateMetadata({
 
   const cityMeta: Record<string, CityMeta> = {
     leicester: {
-      title: "CRM Consultant Leicester | CRM and Digitalisation Services | Splendid Technology",
+      title: "CRM Consultant Leicester | AI Automation and Workflow Systems | Splendid Technology",
       description:
-        "Splendid Technology provides CRM consultancy, digitalisation services, and workflow automation for Leicester SMEs and manufacturers.",
+        "Splendid Technology provides CRM consultancy, AI automation, and workflow systems for Leicester SMEs.",
       keywords: [
         "crm consultant leicester",
         "crm implementation leicester",
-        "digitalisation consultant leicester",
+        "ai automation leicester",
         "workflow automation leicester",
-        "crm for manufacturers leicester",
-        "digital transformation leicestershire",
+        "crm for smes leicester",
+        "automation partner leicestershire",
       ],
     },
     birmingham: {
-      title: "CRM Consultant Birmingham | CRM and Digitalisation Services | Splendid Technology",
+      title: "CRM Consultant Birmingham | AI Automation and Workflow Systems | Splendid Technology",
       description:
-        "CRM consultancy and digitalisation services for Birmingham SMEs and engineering teams, including pipeline workflows and automation.",
+        "CRM consultancy and AI automation services for Birmingham SMEs, including pipeline workflows and integrations.",
       keywords: [
         "crm consultant birmingham",
         "crm implementation birmingham",
-        "digitalisation consultant birmingham",
+        "ai automation birmingham",
         "workflow automation west midlands",
-        "crm for manufacturers birmingham",
-        "digital transformation birmingham",
+        "crm for smes birmingham",
+        "crm integrations birmingham",
       ],
     },
     manchester: {
-      title: "CRM Consultant Manchester | CRM and Digitalisation Services | Splendid Technology",
+      title: "CRM Consultant Manchester | AI Automation and Workflow Systems | Splendid Technology",
       description:
-        "CRM consultancy and digitalisation services for Manchester SMEs and industrial teams, including sales pipeline workflows and automation.",
+        "CRM consultancy and AI automation services for Manchester SMEs, including sales pipeline workflows and integrations.",
       keywords: [
         "crm consultant manchester",
         "crm implementation manchester",
-        "digitalisation consultant manchester",
+        "ai automation manchester",
         "workflow automation manchester",
-        "crm for engineering companies manchester",
-        "digital transformation manchester",
+        "crm for smes manchester",
+        "crm integrations manchester",
       ],
     },
     london: {
-      title: "Web Developer London | Custom Web Apps & SaaS Development | Splendid Technology",
+      title: "CRM Consultant London | AI Automation and Workflow Systems | Splendid Technology",
       description:
-        "Splendid Technology delivers custom web applications, SaaS platforms, and business websites for London businesses. Affordable UK web developer and software specialist serving London SMEs.",
+        "Splendid Technology delivers CRM consultancy, AI automation, and workflow systems for London SMEs.",
       keywords: [
-        "web developer London",
-        "software developer London",
-        "SaaS development London",
-        "custom web applications London",
-        "web development company London",
-        "web app development UK",
-        "bespoke software London",
-        "small business website London",
-        "website hosting for SMEs UK",
-        "custom software development London",
+        "crm consultant london",
+        "crm implementation london",
+        "ai automation london",
+        "workflow automation london",
+        "crm for smes london",
+        "twilio crm integration london",
       ],
     },
   };
@@ -88,20 +84,20 @@ export async function generateMetadata({
 
   const title = featured
     ? featured.title
-    : `Web Development in ${loc.name} (UK) — Websites, Web Apps, Automation`;
+    : `CRM and AI Automation in ${loc.name} (UK) | Splendid Technology`;
 
   const description = featured
     ? featured.description
-    : `Web development services for ${loc.name} businesses: websites, web apps, ecommerce, and automation. Serving ${loc.name} and nearby areas like ${loc.nearby.join(", ")}.`;
+    : `CRM, AI automation, and workflow integration services for ${loc.name} businesses. Serving ${loc.name} and nearby areas like ${loc.nearby.join(", ")}.`;
 
   const keywords = featured
     ? featured.keywords
     : [
-        `web development ${loc.name}`,
-        `website development ${loc.name}`,
-        `web app development ${loc.name}`,
-        "custom web development uk",
-        "web development company uk",
+        `crm consultant ${loc.name}`,
+        `ai automation ${loc.name}`,
+        `workflow automation ${loc.name}`,
+        "crm implementation uk",
+        "crm automation partner uk",
       ];
 
   return {
@@ -156,44 +152,44 @@ export default async function LocationPage({
 
   const cityIntro: Record<string, { heading: string; para: string }> = {
     leicester: {
-      heading: "Web developer & software specialist in Leicester",
-      para: "Splendid Technology is Leicester-based. We build custom web applications, SaaS platforms, and managed business websites for SMEs across Leicester and Leicestershire — and we can meet locally when needed.",
+      heading: "CRM and AI automation partner in Leicester",
+      para: "Splendid Technology is Leicester-based. We help SMEs across Leicester and Leicestershire improve lead management, follow-up workflows, and business systems execution.",
     },
     birmingham: {
-      heading: "Web developer & software specialist serving Birmingham",
-      para: "We build custom web applications, SaaS platforms, and business websites for Birmingham SMEs and West Midlands businesses. Delivered remotely with UK-based support and transparent pricing.",
+      heading: "CRM and AI automation support for Birmingham",
+      para: "We deliver CRM implementation and AI automation for Birmingham SMEs and West Midlands businesses, with practical rollout support.",
     },
     london: {
-      heading: "Web developer & software specialist serving London",
-      para: "We build custom web applications, SaaS platforms, and business websites for London businesses — without London agency prices. Delivered remotely with UK-based support and a clear process.",
+      heading: "CRM and AI automation support for London",
+      para: "We deliver CRM implementation and AI automation for London SMEs with UK-based support and clear implementation phases.",
     },
   };
 
   const intro = cityIntro[loc.slug] ?? {
-    heading: `Web development for ${loc.name}`,
-    para: `We build fast, maintainable websites, web apps, ecommerce stores, and automations for ${loc.name} businesses. ${isLeicester ? "We're Leicester-based and can also meet locally when needed." : "We deliver projects remotely across the UK."}`,
+    heading: `CRM and AI automation for ${loc.name}`,
+    para: `We design practical CRM and workflow automation systems for ${loc.name} businesses. ${isLeicester ? "We are Leicester-based and can also meet locally when needed." : "We deliver projects remotely across the UK."}`,
   };
 
   const localSchemaByCity: Record<string, { name: string; description: string }> = {
     leicester: {
-      name: "CRM Consultant Leicester - Splendid Technology",
+      name: "CRM and AI Automation Consultant Leicester - Splendid Technology",
       description:
-        "CRM consultancy and digitalisation services for Leicester SMEs and manufacturers.",
+        "CRM consultancy and AI automation services for Leicester SMEs.",
     },
     birmingham: {
-      name: "CRM Consultant Birmingham - Splendid Technology",
+      name: "CRM and AI Automation Consultant Birmingham - Splendid Technology",
       description:
-        "CRM consultancy and digitalisation services for Birmingham SMEs and engineering teams.",
+        "CRM consultancy and AI automation services for Birmingham SMEs.",
     },
     manchester: {
-      name: "CRM Consultant Manchester - Splendid Technology",
+      name: "CRM and AI Automation Consultant Manchester - Splendid Technology",
       description:
-        "CRM consultancy and digitalisation services for Manchester SMEs and industrial teams.",
+        "CRM consultancy and AI automation services for Manchester SMEs.",
     },
     london: {
-      name: "CRM Consultant London - Splendid Technology",
+      name: "CRM and AI Automation Consultant London - Splendid Technology",
       description:
-        "CRM consultancy and digitalisation services for London SMEs and engineering businesses.",
+        "CRM consultancy and AI automation services for London SMEs.",
     },
   };
 
@@ -222,8 +218,8 @@ export default async function LocationPage({
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: `CRM and Digitalisation Services in ${loc.name}`,
-    serviceType: ["CRM consultancy", "Digitalisation", "Workflow automation"],
+    name: `CRM and AI Automation Services in ${loc.name}`,
+    serviceType: ["CRM consultancy", "AI automation", "Workflow automation"],
     areaServed: {
       "@type": "City",
       name: loc.name,
@@ -264,9 +260,9 @@ export default async function LocationPage({
       {isFeaturedCity && (
         <section className="grid gap-4 sm:grid-cols-3">
           {[
-            { label: "Web Developer", desc: `Custom websites & web apps for ${loc.name} businesses` },
-            { label: "Software Developer", desc: "Bespoke software, SaaS & automation platforms" },
-            { label: "SME Hosting", desc: "Managed domain, cloud hosting & SSL — fully handled" },
+            { label: "CRM Delivery", desc: `Custom CRM setup and migration for ${loc.name} SMEs` },
+            { label: "AI Automation", desc: "Workflow automation, assistants, and messaging sequences" },
+            { label: "Integrations", desc: "Outlook, Google Workspace, Twilio, WhatsApp, and APIs" },
           ].map((card) => (
             <div key={card.label} className="rounded-xl border border-black/10 bg-white p-4">
               <p className="text-xs font-bold uppercase tracking-widest text-green-600">{card.label}</p>
@@ -286,26 +282,25 @@ export default async function LocationPage({
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">What we build for {loc.name} businesses</h2>
         <ul className="list-disc space-y-2 pl-5 text-sm text-black/70">
-          <li><strong>Custom web applications</strong> — portals, dashboards, and SaaS tools with user accounts and role-based access.</li>
-          <li><strong>Business websites</strong> — fast, SEO-ready, mobile-first sites with managed hosting and SSL included.</li>
-          <li><strong>SaaS development</strong> — multi-tenant platforms with subscription billing, analytics, and API integrations.</li>
-          <li><strong>Ecommerce</strong> — Shopify builds or fully custom stores with payment processing and inventory management.</li>
-          <li><strong>Automation &amp; integrations</strong> — connect your CRM, email, payments, and reporting tools.</li>
+          <li><strong>CRM implementation</strong> — lead capture, pipeline stages, and follow-up workflows aligned to your sales process.</li>
+          <li><strong>AI automation</strong> — automate repetitive sales and operations tasks with assistant-led workflows.</li>
+          <li><strong>Customer and team portals</strong> — role-based access to documents, tasks, and status updates.</li>
+          <li><strong>Reporting dashboards</strong> — operational and commercial visibility in one shared system.</li>
+          <li><strong>Messaging and system integrations</strong> — connect email, SMS, calls, and APIs to your CRM workflows.</li>
         </ul>
       </section>
 
       {isFeaturedCity && (
         <section className="space-y-3">
-          <h2 className="text-xl font-semibold">Why choose a specialist over a local agency?</h2>
+          <h2 className="text-xl font-semibold">Why choose a focused CRM and automation partner?</h2>
           <p className="text-sm leading-6 text-black/70">
-            Many {loc.name} web agencies outsource development or rely on page-builders with hidden limitations.
-            Splendid Technology builds everything in-house using modern frameworks (Next.js, React, Node.js)
-            — giving you a faster site, cleaner code, and a team that understands what they built.
+            Many providers offer generic digital services. Splendid Technology focuses on CRM and AI automation implementation for SMEs,
+            giving you a clearer roadmap, faster adoption, and stronger execution outcomes.
           </p>
           <ul className="list-disc space-y-2 pl-5 text-sm text-black/70">
-            <li>Transparent fixed-price quotes — no surprise invoices.</li>
-            <li>Managed hosting with domain registration and SSL included.</li>
-            <li>IoT, reliability engineering, and software products if you ever need them.</li>
+            <li>Transparent implementation scopes with practical milestones.</li>
+            <li>CRM and workflow strategy tied to measurable outcomes.</li>
+            <li>Integration-first delivery without disruptive system replacement.</li>
             <li>UK-based team with clear communication throughout.</li>
           </ul>
         </section>
@@ -314,10 +309,10 @@ export default async function LocationPage({
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">A simple delivery approach</h2>
         <ol className="list-decimal space-y-2 pl-5 text-sm text-black/70">
-          <li>Short discovery call to confirm goals, scope, and timeline.</li>
-          <li>Define pages/screens + integrations and agree v1 deliverables.</li>
-          <li>Build in milestones with demos and clear feedback rounds.</li>
-          <li>QA, launch checklist, and a clean handover.</li>
+          <li>Discovery call to confirm goals, systems, and bottlenecks.</li>
+          <li>Define CRM and automation scope with prioritized phases.</li>
+          <li>Implement in milestones with visible progress and feedback loops.</li>
+          <li>Train teams and optimize adoption after rollout.</li>
         </ol>
       </section>
 
@@ -342,17 +337,17 @@ export default async function LocationPage({
       ) : null}
 
       <section className="rounded-2xl border border-black/10 bg-white p-6">
-        <h2 className="text-lg font-semibold">Get a quote for {loc.name}</h2>
+        <h2 className="text-lg font-semibold">Book a discovery call for {loc.name}</h2>
         <p className="mt-2 text-sm leading-6 text-black/70">
-          Share your goals, required pages/features, and any examples you like.
-          We'll respond with a realistic scope, timeline, and estimate.
+          Share your goals, current tools, and target outcomes.
+          We will respond with recommended next steps and scope.
         </p>
         <div className="mt-4">
           <Link
             className="inline-flex h-11 items-center justify-center rounded-full bg-blue-600 px-5 text-sm font-medium text-white hover:bg-blue-700"
             href="/contact"
           >
-            Request a Quote
+            Request Discovery Call
           </Link>
         </div>
       </section>

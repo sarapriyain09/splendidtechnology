@@ -5,9 +5,9 @@ import { getAllLocations } from "@/lib/locations";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Locations (UK) — Web Development by City",
+  title: "Locations (UK) | CRM and AI Automation Support",
   description:
-    "UK-wide web development, ecommerce, automation, and AI integration services. Browse major UK cities we serve.",
+    "UK-wide CRM implementation, AI automation, and workflow integration support. Browse major UK cities we serve.",
   alternates: {
     canonical: "/locations",
   },
@@ -22,8 +22,8 @@ export default function LocationsPage() {
         <h1 className="text-3xl font-semibold tracking-tight">Locations</h1>
         <p className="max-w-3xl text-sm leading-6 text-black/70">
           We work with UK businesses remotely across the entire country. Choose your
-          city to see a short overview and the fastest way to scope a website, web
-          app, ecommerce build, or automation.
+          city to see a short overview and the fastest way to scope CRM, AI automation,
+          workflow integration, and business operations improvements.
         </p>
       </header>
 
@@ -56,15 +56,15 @@ export default function LocationsPage() {
       <section className="rounded-2xl border border-black/10 bg-white p-6">
         <h2 className="text-lg font-semibold">Not sure where to start?</h2>
         <p className="mt-2 text-sm leading-6 text-black/70">
-          Share your goals, timeline, and any examples you like. We’ll respond with a
-          realistic scope and estimate.
+          Share your goals, current tools, and target timeline. We will respond with
+          a practical CRM and AI automation scope.
         </p>
         <div className="mt-4">
           <Link
             className="inline-flex h-11 items-center justify-center rounded-full bg-blue-600 px-5 text-sm font-medium text-white hover:bg-blue-700"
             href="/contact"
           >
-            Request a Quote
+            Book Discovery Call
           </Link>
         </div>
       </section>

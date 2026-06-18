@@ -2,17 +2,16 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Industries We Serve | Manufacturing, Engineering, SME | Splendid Technology",
+  title: "Industries We Support | CRM and AI Automation for SMEs",
   description:
-    "Splendid Technology serves UK manufacturers, engineering businesses, industrial SMEs, and professional services firms — delivering web apps, IoT solutions, supply chain systems, and business software.",
+    "Splendid Technology supports UK SMEs with CRM implementation, AI automation, workflow systems, and business integrations across multiple sectors.",
   keywords: [
-    "industrial technology solutions uk",
-    "manufacturing software uk",
-    "engineering business software uk",
-    "sme digital transformation uk",
-    "supply chain digitalisation uk",
-    "industrial iot manufacturing uk",
-    "reliability engineering manufacturing uk",
+    "crm for smes uk",
+    "ai automation for smes uk",
+    "workflow automation by industry",
+    "crm integrations uk",
+    "business operations systems uk",
+    "sme automation partner uk",
   ],
   alternates: { canonical: "/industries" },
 };
@@ -90,12 +89,11 @@ export default function IndustriesPage() {
             Industries We Serve
           </p>
           <h1 className="mt-4 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-            Technology for Industrial &amp; Engineering Businesses
+            CRM and AI Automation by Industry
           </h1>
           <p className="mt-4 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-            We work with manufacturers, engineering contractors, utilities, and SMEs across
-            the UK — delivering web applications, IoT monitoring, supply chain systems,
-            and business software sized for your industry.
+            We work with SMEs across the UK to implement CRM systems, AI automation,
+            workflow integrations, and reporting platforms tailored to industry context.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
@@ -119,8 +117,8 @@ export default function IndustriesPage() {
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-[#0b1f3a]">Industries</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Not every industry needs the same solution. We tailor our services and products
-            to the specific challenges your sector faces.
+            Not every sector needs the same workflow model. We tailor CRM and automation
+            systems to the commercial and operational realities of your industry.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {industries.map((ind) => (
@@ -170,9 +168,9 @@ export default function IndustriesPage() {
               <p className="text-xs font-bold uppercase tracking-widest text-green-400">UK-Based</p>
               <h2 className="mt-2 text-2xl font-bold text-white">Serving UK Manufacturers Nationwide</h2>
               <p className="mt-3 text-sm leading-6 text-white/70">
-                We&apos;re a UK-based technology company. We understand UK regulations, the MTD
-                requirements, UK manufacturing challenges, and the realities of running an
-                SME in Britain. No offshore teams, no timezone friction.
+                We&apos;re a UK-based CRM and AI automation company. We understand UK compliance,
+                operational constraints, and the realities of growing an SME in Britain.
+                No offshore teams, no timezone friction.
               </p>
               <div className="mt-6">
                 <Link
@@ -184,7 +182,7 @@ export default function IndustriesPage() {
               </div>
             </div>
             <div className="grid gap-3">
-              {["On-site visits and assessments available nationwide", "UK tax, VAT, and MTD compliance built in", "GDPR-compliant data handling as standard", "UK engineering team with nationwide reach"].map((point) => (
+              {["On-site visits and assessments available nationwide", "UK tax, VAT, and MTD compliance built in", "GDPR-compliant data handling as standard", "UK CRM and automation team with nationwide reach"].map((point) => (
                 <div key={point} className="flex items-center gap-3 rounded-xl bg-white/5 px-5 py-4">
                   <span className="font-bold text-green-400">✔</span>
                   <span className="text-sm text-white/80">{point}</span>

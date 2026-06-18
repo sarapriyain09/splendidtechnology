@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -7,10 +7,16 @@ import { ChatWidget } from "@/components/ChatWidget";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 
-const roboto = Roboto({
-  variable: "--font-roboto",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  weight: ["600", "700"],
 });
 
 function getSiteUrl(): string {
@@ -26,37 +32,36 @@ function getSiteUrl(): string {
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Splendid Technology | CRM, Digitalisation, Web Apps & AI Solutions",
+    default: "Splendid Technology | CRM and AI Automation for SMEs",
     template: "%s | Splendid Technology",
   },
   description:
-    "Splendid Technology Ltd is a digital company providing CRM implementation, digitalisation services, workflow automation, SaaS and web app development, and AI solutions for UK SMEs.",
+    "Splendid Technology helps SMEs grow with CRM implementation, AI automation, workflow systems, and practical business integrations.",
   keywords: [
     "crm for smes uk",
-    "digitalisation services uk",
+    "crm development uk",
+    "ai automation for business",
     "workflow automation uk",
-    "saas development uk",
-    "custom web app development uk",
-    "ai process automation uk",
-    "business systems integration uk",
-    "digital transformation for small business uk",
-    "leicester crm development",
+    "lead management crm",
+    "client portal development",
+    "twilio crm integration",
+    "sme automation partner",
   ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
-    title: "Splendid Technology | CRM, Digitalisation, Web Apps & AI Solutions",
+    title: "Splendid Technology | CRM and AI Automation for SMEs",
     description:
-      "CRM, workflow automation, SaaS and web app development, and AI-enabled digital solutions for UK SMEs.",
+      "CRM, AI automation, client portals, and workflow integrations for growing SMEs.",
     url: "/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Splendid Technology | CRM, Digitalisation, Web Apps & AI Solutions",
+    title: "Splendid Technology | CRM and AI Automation for SMEs",
     description:
-      "CRM, workflow automation, SaaS and web app development, and AI-enabled digital solutions for UK SMEs.",
+      "CRM, AI automation, client portals, and workflow integrations for growing SMEs.",
   },
   robots: {
     index: true,
@@ -107,10 +112,10 @@ export default function RootLayout({
     priceRange: "$$",
     serviceType: [
       "CRM implementation",
-      "Digitalisation services",
       "AI automation solutions",
-      "Industrial IoT solutions",
-      "Web application development",
+      "Workflow automation",
+      "Client portal development",
+      "Business systems integration",
     ],
   };
 
@@ -147,7 +152,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${roboto.variable} min-h-screen antialiased`}>
+      <body className={`${manrope.variable} ${spaceGrotesk.variable} min-h-screen antialiased`}>
         <SiteHeader />
         <main className="w-full">{children}</main>
         <SiteFooter />

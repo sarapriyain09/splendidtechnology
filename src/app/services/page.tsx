@@ -2,344 +2,252 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Engineering Digitalization Services UK | CRM, ERP, Supply Chain, IoT & Web App Development | Splendid Technology",
+  title: "CRM and AI Automation Services for SMEs | Splendid Technology",
   description:
-    "Digital solutions for UK engineering and manufacturing SMEs across CRM, operations, ERP and supply chain workflows, IoT asset intelligence, and web app development.",
+    "Explore Splendid Technology services for CRM systems, AI automation, client portals, workflow solutions, and business integrations for growing SMEs.",
   keywords: [
-    "engineering digitalization uk",
-    "manufacturing digital transformation uk",
-    "crm for engineering companies uk",
-    "erp workflow automation uk",
-    "supply chain digitalisation uk",
-    "industrial iot solutions uk",
-    "web app development uk",
-    "crm erp solutions uk",
-    "digital solutions for manufacturers",
+    "crm services uk",
+    "ai automation services uk",
+    "workflow automation for smes",
+    "client portal development uk",
+    "twilio crm integration",
+    "business systems integration uk",
   ],
   alternates: {
     canonical: "/services",
   },
 };
 
-const engineeringServiceLines = [
+const serviceLines = [
   {
     icon: "📈",
     label: "CRM",
-    title: "CRM and Sales Systems",
+    title: "CRM Solutions",
     description:
-      "Lead capture, customer management, quote workflows, and commercial dashboards to improve sales execution.",
+      "Design and implement CRM systems that improve lead management, pipeline visibility, and customer follow-up discipline.",
     bullets: [
-      "CRM implementation and migration",
-      "Lead and follow-up automation",
-      "Quote and proposal workflows",
-      "Customer lifecycle tracking",
-      "Pipeline reporting",
-      "Commercial process standardization",
+      "Custom CRM development",
+      "Lead management workflows",
+      "Sales pipeline setup",
+      "Customer portals",
+      "Dashboard reporting",
     ],
     href: "/services/sales-crm",
-    cta: "CRM and Sales Systems",
-    highlight: true,
-  },
-  {
-    icon: "🏭",
-    label: "ERP",
-    title: "Operations, ERP and Supply Chain",
-    description:
-      "Digitize job execution, inventory, warehouse, and supply chain workflows with practical ERP-aligned systems.",
-    bullets: [
-      "Job and work-order tracking",
-      "Inventory and warehouse workflows",
-      "Supply chain visibility and planning",
-      "ERP module setup and integration",
-      "Approval and handoff automation",
-      "Operational KPI dashboards",
-      "Supplier and procurement process flows",
-    ],
-    href: "/services/software-development#erp",
-    cta: "Operations, ERP and Supply Chain",
-    highlight: true,
   },
   {
     icon: "🧠",
     label: "AI",
-    title: "AI Solutions for SMEs",
+    title: "AI Automation",
     description:
-      "Implement practical AI assistants, CRM AI workflows, document processing, and customer support automation.",
+      "Deploy practical AI workflows that remove repetitive work and accelerate sales and operations response time.",
     bullets: [
-      "AI assistants for internal teams",
-      "CRM AI and lead workflow automation",
-      "Document processing and extraction",
-      "Quotation generation workflows",
-      "Knowledge base systems",
-      "Customer support AI",
+      "AI assistants",
+      "Workflow automation",
+      "Email automation",
+      "SMS and Twilio integration",
+      "AI agents",
     ],
     href: "/services/ai-solutions",
-    cta: "AI Solutions for SMEs",
-    highlight: true,
   },
   {
-    icon: "📡",
-    label: "IoT",
-    title: "IoT, Digital Twin and Asset Intelligence",
+    icon: "🧩",
+    label: "Operations",
+    title: "Business Operations Systems",
     description:
-      "Connect critical equipment to telemetry, digital twin models, dashboards, and predictive maintenance workflows.",
+      "Build internal systems that unify delivery, documentation, and visibility across customer-facing teams.",
     bullets: [
-      "Condition monitoring systems",
-      "Raspberry Pi and edge deployment",
-      "Asset telemetry dashboards",
-      "Digital twin modelling and synchronization",
-      "Alerting and escalation logic",
-      "Predictive maintenance workflows",
-      "Reliability performance reporting",
-    ],
-    href: "/services/iot-solutions",
-    cta: "IoT and Asset Intelligence",
-    highlight: false,
-  },
-  {
-    icon: "🧠",
-    label: "Web Apps",
-    title: "Web App Development",
-    description:
-      "Build customer portals, internal tools, workflow apps, and scalable SaaS systems.",
-    bullets: [
-      "Custom web application development",
-      "Customer and partner portals",
-      "Internal workflow applications",
-      "SaaS product development",
-      "API integration and automation",
-      "Post-launch support and iteration",
+      "Client portals",
+      "Document management",
+      "Internal systems",
+      "Operational reporting",
+      "Role-based access workflows",
     ],
     href: "/services/web-app-development",
-    cta: "Web App Development",
-    highlight: false,
   },
   {
-    icon: "🤝",
-    label: "Delivery",
-    title: "Advisory and Implementation",
+    icon: "🔌",
+    label: "Integrations",
+    title: "Business Integrations",
     description:
-      "From assessment to rollout, we design phased implementation plans with clear business outcomes.",
+      "Connect your CRM and automation platform with messaging, productivity, and communication tools.",
     bullets: [
-      "Digitalization assessment",
-      "Systems architecture and roadmap",
-      "Pilot-to-rollout planning",
-      "Integration sequencing",
-      "Team enablement",
-      "Managed optimization support",
+      "Outlook integration",
+      "Google Workspace integration",
+      "WhatsApp automation",
+      "Twilio voice and SMS",
+      "HubSpot and custom APIs",
     ],
     href: "/contact",
-    cta: "Advisory and Implementation",
-    highlight: false,
+  },
+];
+
+const integrationStack = [
+  "Outlook",
+  "Google Workspace",
+  "WhatsApp",
+  "Twilio",
+  "HubSpot",
+  "REST APIs",
+  "Webhooks",
+  "Stripe",
+];
+
+const deliveryModel = [
+  {
+    step: "01",
+    title: "Discovery",
+    description: "Map current sales and operations workflows and identify high-friction bottlenecks.",
+  },
+  {
+    step: "02",
+    title: "Blueprint",
+    description: "Design your CRM, AI automation, and integration architecture with clear rollout priorities.",
+  },
+  {
+    step: "03",
+    title: "Implementation",
+    description: "Build and deploy high-impact workflows, dashboards, and portal modules in phases.",
+  },
+  {
+    step: "04",
+    title: "Optimization",
+    description: "Train teams, refine automations, and scale systems using real performance data.",
   },
 ];
 
 export default function ServicesPage() {
   return (
     <div className="w-full">
-
-      {/* Hero */}
       <section className="bg-[#0b1f3a] px-4 py-16 text-white sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl">
           <p className="inline-block rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-green-400">
-            Engineering Digitalization Services
+            Services
           </p>
           <h1 className="mt-4 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-            Digital Solutions for Engineering and Manufacturing SMEs
+            CRM and AI Automation Services for Growing SMEs
           </h1>
           <p className="mt-4 max-w-2xl text-pretty text-lg leading-7 text-white/80">
-            We help engineering and manufacturing businesses digitize sales, operations,
-            assets, and engineering workflows through practical CRM, ERP, supply chain, IoT, and
-            web app systems.
+            We help businesses grow through CRM, AI automation, workflow systems, and integrations
+            that connect sales, operations, and customer delivery.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
-              href="/contact"
+              href="/demo"
               className="inline-flex items-center justify-center rounded-lg bg-green-600 px-7 py-3 font-bold text-white hover:bg-green-700"
             >
-              Book a Digitalization Assessment
+              Book a Demo
             </Link>
             <Link
-              href="/services/web-app-development"
+              href="/contact"
               className="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-3 font-bold text-white hover:bg-white/10"
             >
-              Explore Web App Development
+              Schedule a Call
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Service Areas Grid */}
       <section className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Digitalization Service Categories</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Core Service Areas</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
-            Structured around the business systems engineering and manufacturing SMEs need
-            to improve speed, visibility, reliability, and decision quality.
+            Four connected service pillars designed to create one operating system for growth.
           </p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {engineeringServiceLines.map((s) => (
-              <div
-                key={s.title}
-                className={`flex flex-col rounded-2xl border p-7 ${
-                  s.highlight ? "border-green-400 bg-[#0b1f3a] text-white" : "border-black/10 bg-white"
-                }`}
-              >
+          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+            {serviceLines.map((line) => (
+              <article key={line.title} className="rounded-2xl border border-black/10 bg-white p-7 shadow-sm">
                 <div className="flex items-start justify-between">
-                  <span className="text-3xl">{s.icon}</span>
-                  <span
-                    className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
-                      s.highlight ? "bg-green-500/20 text-green-300" : "bg-[#0b1f3a]/10 text-[#0b1f3a]/60"
-                    }`}
-                  >
-                    {s.label}
+                  <span className="text-3xl">{line.icon}</span>
+                  <span className="rounded-full bg-[#0b1f3a]/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#0b1f3a]/70">
+                    {line.label}
                   </span>
                 </div>
-                <h3 className={`mt-4 text-xl font-bold ${s.highlight ? "text-white" : "text-[#0b1f3a]"}`}>
-                  {s.title}
-                </h3>
-                <p className={`mt-2 text-sm leading-6 ${s.highlight ? "text-white/70" : "text-black/60"}`}>
-                  {s.description}
-                </p>
-                <ul className="mt-4 flex-1 space-y-1.5">
-                  {s.bullets.map((b) => (
-                    <li
-                      key={b}
-                      className={`flex items-start gap-2 text-sm ${s.highlight ? "text-white/70" : "text-black/70"}`}
-                    >
-                      <span className="mt-0.5 font-bold text-green-500">&#10004;</span>
-                      {b}
+                <h3 className="mt-4 text-xl font-bold text-[#0b1f3a]">{line.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-black/65">{line.description}</p>
+                <ul className="mt-4 space-y-1.5">
+                  {line.bullets.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-black/70">
+                      <span className="mt-0.5 text-green-600">+</span>
+                      {item}
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href={s.href}
-                  className={`mt-6 inline-flex items-center gap-1 text-sm font-semibold ${
-                    s.highlight ? "text-green-400 hover:text-green-300" : "text-[#0b1f3a] hover:text-green-700"
-                  }`}
-                >
-                  Learn more about {s.cta} &rarr;
+                <Link href={line.href} className="mt-6 inline-flex text-sm font-semibold text-[#0b3d91] hover:underline">
+                  Explore {line.title} →
                 </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f7f7f7] py-14">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Integration Ecosystem</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-black/60">
+            We integrate with your existing tools so your team can automate without disruptive re-platforming.
+          </p>
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {integrationStack.map((tool) => (
+              <div
+                key={tool}
+                className="rounded-xl border border-black/10 bg-white px-4 py-4 text-center text-sm font-semibold text-[#0b1f3a]"
+              >
+                {tool}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#f7f7f7] py-12">
+      <section className="py-16">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#0b1f3a]">Manufacturing-Focused Pages</h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-black/60">
-            Explore our dedicated pages for high-intent manufacturing search topics.
-          </p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <Link
-              href="/services/crm-for-manufacturers-uk"
-              className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-shadow hover:shadow-md"
-            >
-              <p className="text-xs font-bold uppercase tracking-wider text-green-600">CRM</p>
-              <h3 className="mt-2 text-lg font-bold text-[#0b1f3a]">CRM for Manufacturers UK</h3>
-              <p className="mt-2 text-sm leading-6 text-black/70">
-                Lead capture, quote workflows, and commercial reporting tailored to UK manufacturing SMEs.
-              </p>
-              <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
-            </Link>
-            <Link
-              href="/services/industrial-iot-for-manufacturers-uk"
-              className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-shadow hover:shadow-md"
-            >
-              <p className="text-xs font-bold uppercase tracking-wider text-green-600">Industrial IoT</p>
-              <h3 className="mt-2 text-lg font-bold text-[#0b1f3a]">Industrial IoT for Manufacturers UK</h3>
-              <p className="mt-2 text-sm leading-6 text-black/70">
-                Condition monitoring and predictive maintenance workflows for reliability-focused teams.
-              </p>
-              <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
-            </Link>
-            <Link
-              href="/services/crm-for-engineering-companies-uk"
-              className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-shadow hover:shadow-md"
-            >
-              <p className="text-xs font-bold uppercase tracking-wider text-green-600">CRM</p>
-              <h3 className="mt-2 text-lg font-bold text-[#0b1f3a]">CRM for Engineering Companies UK</h3>
-              <p className="mt-2 text-sm leading-6 text-black/70">
-                Structured lead and quote workflows for engineering firms with complex B2B sales cycles.
-              </p>
-              <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
-            </Link>
-            <Link
-              href="/services/digital-transformation-for-manufacturers-uk"
-              className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-shadow hover:shadow-md"
-            >
-              <p className="text-xs font-bold uppercase tracking-wider text-green-600">Digitalisation</p>
-              <h3 className="mt-2 text-lg font-bold text-[#0b1f3a]">Digital Transformation for Manufacturers UK</h3>
-              <p className="mt-2 text-sm leading-6 text-black/70">
-                Practical digitalisation roadmaps and phased implementation for UK manufacturing SMEs.
-              </p>
-              <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
-            </Link>
-            <Link
-              href="/services/reliability-engineering-services"
-              className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-shadow hover:shadow-md"
-            >
-              <p className="text-xs font-bold uppercase tracking-wider text-green-600">Reliability</p>
-              <h3 className="mt-2 text-lg font-bold text-[#0b1f3a]">Reliability Engineering Services</h3>
-              <p className="mt-2 text-sm leading-6 text-black/70">
-                Structured reliability engineering support for critical assets, maintenance strategy, and KPI visibility.
-              </p>
-              <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
-            </Link>
-            <Link
-              href="/services/predictive-maintenance-solutions-uk"
-              className="rounded-2xl border border-black/10 bg-white p-6 text-left transition-shadow hover:shadow-md"
-            >
-              <p className="text-xs font-bold uppercase tracking-wider text-green-600">Predictive Maintenance</p>
-              <h3 className="mt-2 text-lg font-bold text-[#0b1f3a]">Predictive Maintenance Solutions UK</h3>
-              <p className="mt-2 text-sm leading-6 text-black/70">
-                Condition-led maintenance planning and anomaly-driven intervention to reduce unplanned downtime.
-              </p>
-              <p className="mt-4 text-sm font-semibold text-[#0b1f3a]">Explore page &rarr;</p>
-            </Link>
+          <p className="text-xs font-bold uppercase tracking-widest text-green-600">Delivery Model</p>
+          <h2 className="mt-2 text-3xl font-bold text-[#0b1f3a]">How We Implement Systems That Stick</h2>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {deliveryModel.map((phase) => (
+              <article key={phase.step} className="rounded-2xl border border-black/10 bg-white p-6 shadow-sm">
+                <p className="text-3xl font-bold text-green-600/30">{phase.step}</p>
+                <h3 className="mt-2 text-base font-bold text-[#0b1f3a]">{phase.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-black/60">{phase.description}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Positioning strip */}
-      <section className="bg-[#0b1f3a] px-4 py-14 sm:px-6 lg:px-8">
-        <div className="mx-auto w-full max-w-6xl text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-green-400">Our Positioning</p>
+      <section className="bg-[#0b1f3a] px-4 py-14 text-center sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-6xl">
+          <p className="text-xs font-bold uppercase tracking-widest text-green-400">Positioning</p>
           <blockquote className="mx-auto mt-4 max-w-3xl text-xl font-semibold leading-8 text-white">
-            &ldquo;We help engineering and manufacturing SMEs make better decisions through
-            connected sales, operational, asset, and web application systems.
-            Every rollout phase is tied to measurable business outcomes.&rdquo;
+            We are a CRM and AI Automation partner for SMEs. We build connected systems that improve lead flow,
+            team execution, and operational visibility.
           </blockquote>
         </div>
       </section>
 
-      {/* CTA */}
       <section className="bg-[#f7f7f7] py-14 text-center">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Not sure where to start?</h2>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Start with One High-Impact Workflow</h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-black/60">
-            Start with a digitalization assessment. We identify your biggest bottlenecks,
-            then define a phased roadmap and implementation priorities with measurable ROI.
+            We help you choose the right first implementation so your team sees measurable value quickly.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="/contact"
+              href="/demo"
               className="inline-flex items-center justify-center rounded-lg bg-[#0b1f3a] px-8 py-3 font-bold text-white hover:bg-[#0b3d91]"
             >
-              Book Assessment
+              Book Demo
             </Link>
             <Link
-              href="/services"
+              href="/contact"
               className="inline-flex items-center justify-center rounded-lg border border-[#0b1f3a]/30 px-8 py-3 font-bold text-[#0b1f3a] hover:bg-[#0b1f3a]/5"
             >
-              Review Categories
+              Talk to a Specialist
             </Link>
           </div>
         </div>
       </section>
-
     </div>
   );
 }
