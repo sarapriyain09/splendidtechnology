@@ -94,11 +94,65 @@ const solutionTiles = [
   },
   {
     title: "AI Automation (Add-On)",
-    body: "Add assistant-driven follow-up and workflow automation after CRM foundations are in place.",
+    body: "Add AI Assistant actions for automatic email drafting, sending, and follow-up after CRM foundations are in place.",
   },
   {
     title: "Integrations",
     body: "Connect CRM with Outlook, Google Workspace, WhatsApp, Twilio, HubSpot, and APIs.",
+  },
+];
+
+const rolloutBenchmarks = {
+  splendid: {
+    implementation: "2-6 Weeks",
+    roi: "6-10 Weeks",
+  },
+  market: {
+    implementation: "3-6 Months",
+    roi: "9-14 Months",
+  },
+};
+
+const aiAssistantActions = [
+  "Automatic email drafting based on CRM context and deal stage",
+  "One-click or rules-based email sending for faster response cycles",
+  "Automated follow-up reminders and next-action suggestions",
+  "Reduced manual intervention for repetitive communication tasks",
+];
+
+const aiAssistantVisuals = [
+  {
+    title: "Draft",
+    icon: "AI",
+    detail: "Generate context-aware replies from pipeline stage, customer history, and prior messages.",
+  },
+  {
+    title: "Send",
+    icon: "->",
+    detail: "Send instantly with one click or schedule by rules for timing, segment, and priority.",
+  },
+  {
+    title: "Follow-Up",
+    icon: "FU",
+    detail: "Trigger reminders and next-action tasks automatically when no reply is detected.",
+  },
+];
+
+const implementationPhases = [
+  {
+    week: "Week 1",
+    title: "Process Mapping",
+    detail: "Map marketing, sales, and customer handoffs and define your CRM stages.",
+  },
+  {
+    week: "Week 2-3",
+    title: "CRM Setup",
+    detail: "Configure pipeline, fields, automations, templates, and user permissions.",
+  },
+  {
+    week: "Week 4-6",
+    title: "Go Live + AI Add-On",
+    detail: "Launch team workflows, then enable AI drafting, sending, and follow-up actions.",
   },
 ];
 
@@ -119,6 +173,7 @@ const demoItems = [
 ];
 
 const focusTags = ["CRM", "Marketing", "Sales", "Customer Management", "AI Add-On"];
+const crmVideoUrl = "https://www.youtube.com/embed/IjFkPyT6mns";
 
 export default function Home() {
   const latestPosts = getAllBlogPosts().slice(0, 2);
@@ -256,6 +311,102 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="border-y border-[#ffd9c7] bg-[linear-gradient(160deg,#fff9f5_0%,#ffffff_100%)] py-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 className="text-3xl font-bold text-[#0e1629]">Implementation Time You Can Plan Around</h2>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-[#4a5a7a]">
+                Our CRM-first approach is built for rapid rollout. Most teams go live in weeks, not months.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-5 lg:grid-cols-2">
+            <article className="rounded-2xl border border-[#ffd9c7] bg-white p-6 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#e2571a]">Go-Live Time</p>
+              <div className="mt-5 space-y-4">
+                <div className="rounded-xl border border-[#ffd9c7] bg-[#fff4ec] px-4 py-4">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-[#b94a1a]">Splendid CRM</p>
+                  <p className="mt-1 text-3xl font-bold text-[#111827]">{rolloutBenchmarks.splendid.implementation}</p>
+                </div>
+                <div className="rounded-xl border border-[#e7ecf6] bg-[#f8faff] px-4 py-4">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-[#5a6a8f]">Typical Market Rollout</p>
+                  <p className="mt-1 text-3xl font-bold text-[#223252]">{rolloutBenchmarks.market.implementation}</p>
+                </div>
+              </div>
+            </article>
+
+            <article className="rounded-2xl border border-[#ffd9c7] bg-white p-6 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#e2571a]">Time to ROI</p>
+              <div className="mt-5 space-y-4">
+                <div className="rounded-xl border border-[#ffd9c7] bg-[#fff4ec] px-4 py-4">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-[#b94a1a]">Splendid CRM</p>
+                  <p className="mt-1 text-3xl font-bold text-[#111827]">{rolloutBenchmarks.splendid.roi}</p>
+                </div>
+                <div className="rounded-xl border border-[#e7ecf6] bg-[#f8faff] px-4 py-4">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-[#5a6a8f]">Typical Market ROI Window</p>
+                  <p className="mt-1 text-3xl font-bold text-[#223252]">{rolloutBenchmarks.market.roi}</p>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p className="mt-5 text-xs text-[#6a7897]">
+            Timelines depend on scope, data quality, and integrations, but focused CRM projects can be delivered quickly with phased rollout.
+          </p>
+
+          <div className="mt-7 grid gap-3 md:grid-cols-3">
+            {implementationPhases.map((phase) => (
+              <article key={phase.week} className="rounded-xl border border-[#ffd9c7] bg-white px-4 py-4">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#e2571a]">{phase.week}</p>
+                <h3 className="mt-2 text-base font-bold text-[#0e1629]">{phase.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#4a5a7a]">{phase.detail}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+        <article className="rounded-2xl border border-[#ffd9c7] bg-[linear-gradient(160deg,#fff6ef_0%,#ffffff_100%)] p-6 shadow-sm sm:p-8">
+          <p className="inline-flex rounded-full border border-[#ffc9a9] bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#e2571a]">
+            Special Feature
+          </p>
+          <h2 className="mt-4 text-3xl font-bold text-[#0e1629]">AI Assistant Actions to Reduce Manual Intervention</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-[#4a5a7a]">
+            Add AI Assistant support to automate communication work across marketing, sales, and customer management without changing your full process.
+          </p>
+          <div className="mt-6 grid gap-3 md:grid-cols-3">
+            {aiAssistantVisuals.map((item) => (
+              <article key={item.title} className="rounded-xl border border-[#ffd8c3] bg-white px-4 py-4">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-[#fff1e8] text-xs font-bold tracking-wider text-[#e2571a]">
+                    {item.icon}
+                  </span>
+                  <h3 className="text-base font-bold text-[#13233f]">{item.title}</h3>
+                </div>
+                <p className="mt-3 text-sm leading-6 text-[#4b5e81]">{item.detail}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-6 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#b55424]">
+            <span className="rounded-full border border-[#ffd4bc] bg-white px-3 py-1">Draft</span>
+            <span>to</span>
+            <span className="rounded-full border border-[#ffd4bc] bg-white px-3 py-1">Send</span>
+            <span>to</span>
+            <span className="rounded-full border border-[#ffd4bc] bg-white px-3 py-1">Follow-Up</span>
+          </div>
+          <ul className="mt-6 grid gap-3 md:grid-cols-2">
+            {aiAssistantActions.map((feature) => (
+              <li key={feature} className="rounded-xl border border-[#ffe1cf] bg-white px-4 py-3 text-sm text-[#2f4469]">
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </article>
+      </section>
+
       <section className="bg-[#0f2041] py-16 text-white">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold">Why Splendid Technology</h2>
@@ -326,6 +477,39 @@ export default function Home() {
                 className="h-52 w-full object-cover"
               />
               <p className="px-4 py-3 text-sm font-semibold text-[#20345f]">Automation and Reporting Analytics</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-[#dce8ff] bg-[linear-gradient(160deg,#f7fbff_0%,#ffffff_100%)] py-16">
+        <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:px-8">
+          <div>
+            <p className="inline-flex rounded-full border border-[#cfe0ff] bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#1b57c9]">
+              Recommended Video
+            </p>
+            <h2 className="mt-4 text-3xl font-bold text-[#0e1629]">Why CRM Is Important for Startups and SMEs</h2>
+            <p className="mt-3 text-sm leading-7 text-[#4a5a7a]">
+              This video explains why a strong CRM foundation helps startups and SMEs track leads, improve sales conversion, and reduce missed follow-ups.
+            </p>
+            <ul className="mt-5 space-y-2 text-sm text-[#2f4469]">
+              <li className="flex items-start gap-2"><span className="mt-0.5 text-[#1f6dff]">●</span> Build a repeatable marketing-to-sales process</li>
+              <li className="flex items-start gap-2"><span className="mt-0.5 text-[#1f6dff]">●</span> Keep customer communication in one timeline</li>
+              <li className="flex items-start gap-2"><span className="mt-0.5 text-[#1f6dff]">●</span> Add AI assistant actions after CRM basics are in place</li>
+            </ul>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-[#d7e5ff] bg-white shadow-sm">
+            <div className="aspect-video w-full">
+              <iframe
+                className="h-full w-full"
+                src={crmVideoUrl}
+                title="Why CRM is important for startups and SMEs"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
             </div>
           </div>
         </div>

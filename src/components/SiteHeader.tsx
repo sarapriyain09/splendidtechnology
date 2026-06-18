@@ -18,9 +18,9 @@ const crmItems: NavItem[] = [
 
 const aiItems: NavItem[] = [
   { isLabel: true, label: "AI Automation" },
-  { href: "/services/ai-solutions", label: "AI Assistants", desc: "Deploy assistants for support and internal workflows" },
+  { href: "/services/ai-solutions", label: "AI Assistants", desc: "Deploy assistants for support, drafting, and next-action workflows" },
   { href: "/services/ai-solutions", label: "Workflow Automation", desc: "Automate repetitive handoffs and manual tasks" },
-  { href: "/services/ai-solutions", label: "Email and SMS Automation", desc: "Set up follow-up flows and trigger-based messaging" },
+  { href: "/services/ai-solutions", label: "Email and SMS Automation", desc: "Automatic email drafting, sending, and follow-up messaging" },
   { href: "/services/ai-solutions", label: "Custom AI Solutions", desc: "Design AI workflows for your exact business process" },
   { href: "/services", label: "CRM Integrations", desc: "Connect CRM, forms, calls, messaging, and reporting tools" },
 ];
