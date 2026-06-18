@@ -33,32 +33,38 @@ const cardFade = {
 const solutionCards = [
   {
     title: "CRM",
+    href: "/crm",
     description: "Manage customers and relationships.",
     items: ["Contacts", "Companies", "Activities", "Tasks", "Notes", "Documents"],
   },
   {
     title: "Sales",
+    href: "/sales",
     description: "Convert leads into revenue.",
     items: ["Leads", "Opportunities", "Pipelines", "Quotations", "Forecasts", "Follow-ups"],
   },
   {
     title: "CallCRM",
+    href: "/callcrm",
     description: "Engage customers and power outbound sales.",
     items: ["Click-to-call", "Call Campaigns", "Call Logging", "Recordings", "Agent Dashboards", "Follow-up Sequences"],
   },
   {
     title: "Marketing",
+    href: "/marketing",
     description: "Generate and nurture leads.",
     items: ["LinkedIn Campaigns", "Email Campaigns", "SMS Campaigns", "Segmentation", "Forms", "Landing Pages", "Newsletters"],
   },
   {
     title: "Automation",
+    href: "/automation",
     description: "AI-powered workflows and productivity.",
     comingSoon: true,
     items: ["Workflow Builder", "AI Assistant", "Meeting Summaries", "Email Generation", "Follow-up Recommendations"],
   },
   {
     title: "Analytics",
+    href: "/analytics",
     description: "Measure and improve performance.",
     comingSoon: true,
     items: ["Sales Analytics", "Campaign Analytics", "Call Analytics", "Revenue Forecasting", "Conversion Metrics"],
@@ -102,11 +108,15 @@ const appPreviewByTitle: Record<string, string> = {
 
 const sectionAnchors = [
   { label: "Hero", href: "#hero" },
-  { label: "Apps", href: "#apps" },
+  { label: "Need of CRM", href: "#need-of-crm" },
+  { label: "Products", href: "#products" },
   { label: "Journey", href: "#journey" },
   { label: "Why", href: "#why" },
   { label: "Demo", href: "#ready" },
 ];
+
+const crmVideoUrl = "https://www.youtube.com/watch?v=IjFkPyT6mns";
+const crmVideoEmbed = "https://www.youtube-nocookie.com/embed/IjFkPyT6mns?rel=0&modestbranding=1&playsinline=1";
 
 export function HomePageContent() {
   const [fabOpen, setFabOpen] = useState(false);
@@ -146,8 +156,8 @@ export function HomePageContent() {
               <Link href="/services/ai-solutions" className="rounded-full border border-[#d9e6ff] bg-white px-3 py-1.5 hover:bg-[#f3f8ff]">
                 AI Automation
               </Link>
-              <Link href="/demo" className="rounded-full border border-[#d9e6ff] bg-white px-3 py-1.5 hover:bg-[#f3f8ff]">
-                DemoCRM
+              <Link href="#products" className="rounded-full border border-[#d9e6ff] bg-white px-3 py-1.5 hover:bg-[#f3f8ff]">
+                Products
               </Link>
               <Link href="/blog" className="rounded-full border border-[#d9e6ff] bg-white px-3 py-1.5 hover:bg-[#f3f8ff]">
                 Blog
@@ -190,11 +200,56 @@ export function HomePageContent() {
         </nav>
       </div>
 
+      <motion.section id="need-of-crm" variants={sectionFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-18 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-[1.06fr_1fr] lg:items-center">
+          <div className="overflow-hidden rounded-3xl border border-[#dce8ff] bg-white p-3 shadow-[0_16px_42px_rgba(16,39,88,0.14)]">
+            <div className="relative aspect-video overflow-hidden rounded-2xl border border-[#dce8ff] bg-[#f8fbff]">
+              <iframe
+                src={crmVideoEmbed}
+                title="Need of CRM for growing businesses"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="h-full w-full"
+              />
+            </div>
+          </div>
 
-      <motion.section id="apps" variants={sectionFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="border-y border-[#dce8ff] bg-white/70 py-16 sm:py-18">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#46618f]">Need of CRM</p>
+            <h2 className="mt-2 text-3xl font-bold text-[#0e1629] sm:text-4xl">Why Growing Businesses Need a CRM</h2>
+            <p className="mt-4 text-base leading-7 text-[#44567a]">
+              A CRM helps you stop lead leakage, structure follow-ups, and give every team one shared view of customers and opportunities.
+            </p>
+            <ul className="mt-5 grid gap-2 text-sm text-[#2b426d] sm:grid-cols-2">
+              <li className="rounded-xl border border-[#e1ebff] bg-white px-3 py-2">Never miss a follow-up</li>
+              <li className="rounded-xl border border-[#e1ebff] bg-white px-3 py-2">Track leads through every stage</li>
+              <li className="rounded-xl border border-[#e1ebff] bg-white px-3 py-2">Improve team collaboration</li>
+              <li className="rounded-xl border border-[#e1ebff] bg-white px-3 py-2">Automate repetitive sales tasks</li>
+            </ul>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button asChild>
+                <Link href="/demo">Book a Demo</Link>
+              </Button>
+              <a
+                href={crmVideoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-md border border-[#cfe0ff] bg-white px-4 py-2 text-sm font-semibold text-[#2c4d87] hover:bg-[#f4f8ff]"
+              >
+                Watch on YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+
+      <motion.section id="products" variants={sectionFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="border-y border-[#dce8ff] bg-white/70 py-16 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0e1629] sm:text-4xl">Platform Apps</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-[#4a5a7a]">All core growth functions are connected to one customer record, giving your team full visibility from first touch to repeat business.</p>
+          <h2 className="text-3xl font-bold text-[#0e1629] sm:text-4xl">Products</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-[#4a5a7a]">Explore all six integrated products: CRM, Sales, CallCRM, Marketing, Automation, and Analytics.</p>
           <motion.div variants={staggerWrap} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {solutionCards.map((card) => (
               <motion.article key={card.title} variants={cardFade} whileHover={{ y: -5 }} transition={{ duration: 0.2 }} className="rounded-2xl border border-[#dce8ff] bg-[linear-gradient(160deg,#ffffff_0%,#f4f9ff_100%)] p-5 shadow-sm sm:p-6">
@@ -227,6 +282,14 @@ export function HomePageContent() {
                     </li>
                   ))}
                 </ul>
+                <div className="mt-5">
+                  <Link
+                    href={card.href}
+                    className="inline-flex items-center rounded-md border border-[#cfe0ff] bg-white px-3 py-1.5 text-xs font-semibold text-[#2c4d87] transition hover:bg-[#f4f8ff]"
+                  >
+                    Explore {card.title}
+                  </Link>
+                </div>
               </motion.article>
             ))}
           </motion.div>
