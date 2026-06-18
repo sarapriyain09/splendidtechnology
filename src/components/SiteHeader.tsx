@@ -18,7 +18,12 @@ const solutionItems: MenuItem[] = [
 ];
 
 const productItems: MenuItem[] = [
-  { href: "/demo", label: "DemoCRM", description: "See pipeline, dashboard, and activity flows" },
+  { href: "/crm", label: "CRM", description: "Contacts, companies, tasks, and customer records" },
+  { href: "/sales", label: "Sales", description: "Leads, opportunities, pipelines, and quotations" },
+  { href: "/marketing", label: "Marketing", description: "LinkedIn, email, SMS, forms, and campaigns" },
+  { href: "/callcrm", label: "CallCRM", description: "Click-to-call, call logging, and follow-up sequences" },
+  { href: "/automation", label: "Automation", description: "AI workflows, summaries, and recommendations" },
+  { href: "/analytics", label: "Analytics", description: "Revenue, conversion, and performance insights" },
 ];
 
 function DesktopDropdown({ label, items }: { label: string; items: MenuItem[] }) {

@@ -7,7 +7,14 @@ const footerGroups = {
     { href: "/services", label: "Business Systems" },
     { href: "/contact", label: "Integrations" },
   ],
-  products: [{ href: "/demo", label: "DemoCRM" }],
+  products: [
+    { href: "/crm", label: "CRM" },
+    { href: "/sales", label: "Sales" },
+    { href: "/marketing", label: "Marketing" },
+    { href: "/callcrm", label: "CallCRM" },
+    { href: "/automation", label: "Automation" },
+    { href: "/analytics", label: "Analytics" },
+  ],
   resources: [
     { href: "/blog", label: "Blog" },
     { href: "/blog", label: "Guides" },
