@@ -13,7 +13,6 @@ type MenuItem = {
 const solutionItems: MenuItem[] = [
   { href: "/services/sales-crm", label: "CRM Solutions", description: "Lead, sales, and customer workflows" },
   { href: "/services/ai-solutions", label: "AI Automation", description: "Email, SMS, and assistant automations" },
-  { href: "/services", label: "Business Systems", description: "Portals, reporting, and internal tools" },
 ];
 
 const productItems: MenuItem[] = [
@@ -83,9 +82,6 @@ export function SiteHeader() {
           </Link>
           <DesktopDropdown label="Solutions" items={solutionItems} />
           <DesktopDropdown label="Products" items={productItems} />
-          <Link href="/industries" className="rounded-lg px-3 py-2 text-sm font-semibold text-[#223252] transition hover:bg-white/80">
-            Industries
-          </Link>
           <Link href="/about" className="rounded-lg px-3 py-2 text-sm font-semibold text-[#223252] transition hover:bg-white/80">
             About
           </Link>
@@ -150,10 +146,6 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-
-            <Link href="/industries" onClick={() => setMobileOpen(false)} className="block rounded-lg px-2 py-2 text-sm text-[#2d4168] hover:bg-[#f5f9ff]">
-              Industries
-            </Link>
             <Link href="/about" onClick={() => setMobileOpen(false)} className="block rounded-lg px-2 py-2 text-sm text-[#2d4168] hover:bg-[#f5f9ff]">
               About
             </Link>

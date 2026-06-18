@@ -9,13 +9,13 @@ const footerGroups = {
   products: [{ href: "/demo", label: "DemoCRM" }],
   resources: [
     { href: "/blog", label: "Blog" },
-    { href: "/engineering-case-studies", label: "Case Studies" },
+    { href: "/blog", label: "Guides" },
     { href: "/portfolio", label: "Product Demos" },
   ],
   company: [
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
-    { href: "/industries", label: "Industries" },
+    { href: "/services", label: "Solutions" },
   ],
 };
 
