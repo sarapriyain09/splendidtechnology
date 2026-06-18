@@ -51,8 +51,8 @@ const serviceLines = [
   },
   {
     icon: "🧩",
-    label: "Operations",
-    title: "Business Operations Systems",
+    label: "Business Systems",
+    title: "Business Systems",
     description:
       "Build internal systems that unify delivery, documentation, and visibility across customer-facing teams.",
     bullets: [
@@ -67,7 +67,7 @@ const serviceLines = [
   {
     icon: "🔌",
     label: "Integrations",
-    title: "Business Integrations",
+    title: "Integrations",
     description:
       "Connect your CRM and automation platform with messaging, productivity, and communication tools.",
     bullets: [
@@ -89,8 +89,6 @@ const integrationStack = [
   "WhatsApp",
   "Twilio",
   "OpenAI",
-  "REST APIs",
-  "Webhooks",
 ];
 
 const deliveryModel = [

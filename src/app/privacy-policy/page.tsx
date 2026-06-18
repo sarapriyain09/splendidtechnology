@@ -13,7 +13,7 @@ const sections = [
   {
     heading: "1. Who We Are",
     body: [
-      "Splendid Technology Ltd is a technology company registered in England and Wales, based in Leicester, UK. We deliver Industrial IoT solutions, predictive maintenance systems, and AI-powered business process automation for manufacturers and industrial SMEs.",
+      "Splendid Technology Ltd is a technology company registered in England and Wales, based in Leicester, UK. We deliver CRM, AI automation, workflow automation, and business systems solutions for growing SMEs.",
       "For the purposes of UK data protection law, Splendid Technology Ltd is the data controller responsible for your personal data.",
       "Contact: info@splendidtechnology.co.uk | +44 7723 144910",
     ],
@@ -69,18 +69,18 @@ const sections = [
     ],
   },
   {
-    heading: "6. Industrial IoT & Monitoring Activities",
+    heading: "6. CRM, AI and Workflow Automation Activities",
     body: [
-      "As part of our Industrial IoT services, we may collect and process operational data from equipment installed at your site during pilot engagements and live deployments. This section explains how that data is handled.",
+      "As part of our CRM, AI automation, and business systems services, we may collect and process platform activity data during pilot engagements and live deployments. This section explains how that data is handled.",
     ],
     bullets: [
-      "Machine operational data: vibration, temperature, current draw, and other sensor readings captured from monitored equipment",
-      "Predictive maintenance analytics: processed data used to generate condition scores, fault indicators, and maintenance recommendations",
-      "Cloud dashboard data: aggregated operational metrics transmitted to secure cloud platforms for analysis and reporting",
+      "CRM activity data: lead updates, follow-up actions, and customer workflow records processed in agreed systems",
+      "Workflow automation analytics: processed data used to generate execution status, task routing, and performance recommendations",
+      "Cloud dashboard data: aggregated business metrics transmitted to secure cloud platforms for analysis and reporting",
       "Pilot engagement data: data collected during agreed trial periods, retained only for the duration of the pilot unless extended by mutual agreement",
-      "Site contact data: names and contact details of site personnel involved in the installation or review of monitoring systems",
+      "Team contact data: names and contact details of personnel involved in implementation and review of business systems",
     ],
-    note: "Monitoring insights and predictive maintenance recommendations are intended to support maintenance decision-making and should not replace standard engineering inspections, operational procedures, or safety practices. All operational data is processed under a contractual agreement with your organisation and is not shared with third parties without your consent.",
+    note: "Workflow insights and automation recommendations are intended to support business decision-making and should not replace your organisation's internal governance or compliance procedures. All operational data is processed under a contractual agreement with your organisation and is not shared with third parties without your consent.",
   },
   {
     heading: "7. Who We Share Your Data With",

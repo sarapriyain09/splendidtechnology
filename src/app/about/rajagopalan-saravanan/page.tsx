@@ -4,36 +4,36 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Rajagopalan Saravanan | Founder | Splendid Technology UK",
   description:
-    "Rajagopalan Saravanan is a UK-based engineering leader and digital transformation consultant with 25+ years of experience in application engineering, services sales, Salesforce workflows, reliability engineering, rotating machines, CRM, AI, and Industrial IoT.",
+    "Rajagopalan Saravanan is a UK-based business systems and CRM leader with 25+ years of experience in application engineering, services sales, Salesforce workflows, customer management, and AI automation.",
   alternates: {
     canonical: "/about/rajagopalan-saravanan",
   },
   keywords: [
     "Rajagopalan Saravanan",
-    "Digital Transformation Consultant UK",
+    "Workflow Automation Consultant UK",
     "CRM Consultant UK",
-    "Industrial IoT Consultant UK",
-    "Reliability Engineering Consultant",
-    "Manufacturing Digitalisation",
+    "AI Automation Consultant UK",
+    "Business Systems Consultant",
+    "Workflow Automation",
   ],
   openGraph: {
     title: "Rajagopalan Saravanan | Founder | Splendid Technology UK",
     description:
-      "Founder profile: 25+ years across engineering leadership, reliability, rotating machines, asset management, and practical digital transformation for SMEs.",
+      "Founder profile: 25+ years across engineering leadership, CRM, AI automation, and practical business systems for SMEs.",
     type: "profile",
     url: "https://www.splendidtechnology.co.uk/about/rajagopalan-saravanan",
   },
 };
 
 const expertise = [
-  "Digital Transformation & Business Process Improvement",
+  "Workflow Automation & Business Process Improvement",
   "CRM Strategy & Implementation",
   "Application Engineering",
   "Salesforce CRM and Workflow Design",
   "Technical Services Sales",
   "Artificial Intelligence & Workflow Automation",
-  "Industrial IoT & Condition Monitoring",
-  "Reliability Engineering & Asset Management",
+  "Business Systems Architecture",
+  "Customer Data and Process Integration",
   "Electrical Power Systems",
   "Rotating Machines (Motors & Generators)",
   "Engineering Leadership & Project Management",
@@ -75,16 +75,16 @@ export default function FounderPage() {
       },
     ],
     description:
-      "Engineering leader and Digital Transformation Consultant with 25+ years of international experience across application engineering, services sales, Salesforce workflow leadership, reliability engineering, rotating machines, asset management, CRM, AI, and Industrial IoT.",
+      "Engineering leader and Workflow Automation Consultant with 25+ years of international experience across application engineering, services sales, Salesforce workflow leadership, CRM, AI, and business systems implementation.",
     knowsAbout: [
-      "Digital Transformation Consultant UK",
+      "Workflow Automation Consultant UK",
       "CRM Consultant UK",
       "Application Engineering",
       "Salesforce",
       "Services Sales",
-      "Industrial IoT Consultant UK",
-      "Reliability Engineering",
-      "Manufacturing Digitalisation",
+      "AI Automation Consultant UK",
+      "Business Systems",
+      "Workflow Automation",
       "Rotating Machines",
       "Asset Management",
     ],
@@ -132,19 +132,19 @@ export default function FounderPage() {
           <h1 className="mt-2 text-4xl font-bold leading-tight sm:text-5xl">Rajagopalan Saravanan</h1>
           <p className="mt-4 max-w-4xl text-lg leading-8 text-slate-300">
             Founder of Splendid Technology and engineering leader with 25+ years of international experience across
-            application engineering, services sales, Salesforce-enabled commercial workflows, reliability engineering,
-            rotating machines, asset management, and industrial operations across India, France, the Netherlands,
+            application engineering, services sales, Salesforce-enabled commercial workflows, customer management,
+            rotating machines, asset management, and operations systems across India, France, the Netherlands,
             and the Czech Republic.
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
             <span className="rounded-full border border-green-300 bg-green-50 px-3 py-1 text-xs font-semibold text-green-800">
-              Digital Transformation Consultant UK
+              Workflow Automation Consultant UK
             </span>
             <span className="rounded-full border border-green-300 bg-green-50 px-3 py-1 text-xs font-semibold text-green-800">
               CRM Consultant UK
             </span>
             <span className="rounded-full border border-green-300 bg-green-50 px-3 py-1 text-xs font-semibold text-green-800">
-              Industrial IoT Consultant UK
+              AI Automation Consultant UK
             </span>
           </div>
         </div>
@@ -153,9 +153,9 @@ export default function FounderPage() {
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <h2 className="text-2xl font-bold text-[#0b1f3a]">Professional Background</h2>
         <p className="mt-4 text-sm leading-7 text-slate-700">
-          Rajagopalan Saravanan is an Engineering Leader, Digital Transformation Consultant, and Founder of Splendid
+          Rajagopalan Saravanan is an Engineering Leader, Workflow Automation Consultant, and Founder of Splendid
           Technology, with more than 25 years of international experience spanning electrical engineering, rotating
-          machines, reliability engineering, industrial operations, and technology innovation.
+          machines, customer systems, operations workflows, and technology innovation.
         </p>
         <p className="mt-3 text-sm leading-7 text-slate-700">
           Throughout his career, Rajagopalan has held technical and leadership positions with global organisations
@@ -163,7 +163,7 @@ export default function FounderPage() {
           managed multi-million-dollar projects, supported industrial customers across Metals, Oil & Gas, Marine,
           Mining, and Manufacturing sectors, and delivered solutions ranging from motor and generator design,
           application engineering, services sales, and Salesforce-enabled commercial process execution to asset
-          reliability and condition monitoring.
+          performance and workflow automation.
         </p>
         <p className="mt-3 text-sm leading-7 text-slate-700">
           His experience also covers end-to-end new product development across design, development, testing,
@@ -173,7 +173,7 @@ export default function FounderPage() {
         <p className="mt-3 text-sm leading-7 text-slate-700">
           Through Splendid Technology, he helps SMEs and industrial organisations improve commercial performance,
           operational efficiency, and decision-making by connecting people, processes, and technology through practical
-          CRM, AI, Industrial IoT, and workflow automation solutions.
+          CRM, AI automation, business systems, and workflow automation solutions.
         </p>
       </section>
 
@@ -219,8 +219,8 @@ export default function FounderPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-[#0b1f3a]">Work With Splendid Technology</h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-700">
-            If you are looking to improve enquiry-to-quote conversion, operational visibility, reliability performance,
-            or connected asset intelligence, our team can help you design and implement a practical roadmap.
+            If you are looking to improve enquiry-to-quote conversion, operational visibility, and customer workflow
+            execution, our team can help you design and implement a practical roadmap.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
@@ -230,10 +230,10 @@ export default function FounderPage() {
               Book a Consultation
             </Link>
             <Link
-              href="/services/crm-for-manufacturers-uk"
+              href="/services/sales-crm"
               className="rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-100"
             >
-              Explore CRM for Manufacturers
+              Explore CRM Solutions
             </Link>
           </div>
         </div>

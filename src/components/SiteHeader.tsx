@@ -13,6 +13,8 @@ type MenuItem = {
 const solutionItems: MenuItem[] = [
   { href: "/services/sales-crm", label: "CRM Solutions", description: "Lead, sales, and customer workflows" },
   { href: "/services/ai-solutions", label: "AI Automation", description: "Email, SMS, and assistant automations" },
+  { href: "/services", label: "Business Systems", description: "Portals, internal tools, and reporting systems" },
+  { href: "/contact", label: "Integrations", description: "Outlook, Microsoft 365, Twilio, WhatsApp, OpenAI" },
 ];
 
 const productItems: MenuItem[] = [

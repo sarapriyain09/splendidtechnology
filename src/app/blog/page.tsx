@@ -36,6 +36,34 @@ const crmAuthorityLinks = [
   },
 ];
 
+const blogClusters = [
+  {
+    title: "CRM",
+    terms: ["crm", "customer relationship"],
+    href: "/services/sales-crm",
+  },
+  {
+    title: "AI Automation",
+    terms: ["ai", "automation"],
+    href: "/services/ai-solutions",
+  },
+  {
+    title: "Sales Automation",
+    terms: ["sales", "pipeline", "lead"],
+    href: "/services/sales-crm",
+  },
+  {
+    title: "Customer Management",
+    terms: ["customer", "contact", "account"],
+    href: "/services/sales-crm",
+  },
+  {
+    title: "Workflow Automation",
+    terms: ["workflow", "process", "automation"],
+    href: "/services/ai-solutions",
+  },
+];
+
 export const metadata: Metadata = {
   title: "CRM and AI Automation Insights | Splendid Technology Blog",
   description:
@@ -62,6 +90,20 @@ export const metadata: Metadata = {
 export default function BlogIndexPage() {
   const posts = getAllBlogPosts();
   const siteUrl = getSiteUrl().replace(/\/$/, "");
+
+  const clusterCards = blogClusters.map((cluster) => {
+    const featured = posts
+      .filter((post) => {
+        const haystack = `${post.title} ${post.description} ${post.keywords.join(" ")}`.toLowerCase();
+        return cluster.terms.some((term) => haystack.includes(term));
+      })
+      .slice(0, 3);
+
+    return {
+      ...cluster,
+      featured,
+    };
+  });
 
   const blogSchema = {
     "@context": "https://schema.org",
@@ -167,6 +209,39 @@ export default function BlogIndexPage() {
               <p className="text-sm font-semibold text-[#173567]">{item.title}</p>
               <p className="mt-1 text-xs leading-5 text-black/70">{item.description}</p>
             </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="rounded-2xl border border-black/10 bg-white p-6">
+        <h2 className="text-xl font-semibold tracking-tight text-[#102850]">Blog Clusters</h2>
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-black/70">
+          Explore articles grouped by our core topic clusters: CRM, AI Automation, Sales Automation,
+          Customer Management, and Workflow Automation.
+        </p>
+        <div className="mt-5 grid gap-4 lg:grid-cols-2">
+          {clusterCards.map((cluster) => (
+            <article key={cluster.title} className="rounded-xl border border-[#dbe7ff] bg-[#f8fbff] p-4">
+              <h3 className="text-sm font-semibold text-[#173567]">{cluster.title}</h3>
+              <ul className="mt-2 space-y-1">
+                {cluster.featured.length > 0 ? (
+                  cluster.featured.map((post) => (
+                    <li key={post.slug}>
+                      <Link className="text-xs text-blue-700 hover:underline" href={`/blog/${post.slug}`}>
+                        {post.title}
+                      </Link>
+                    </li>
+                  ))
+                ) : (
+                  <li className="text-xs text-black/60">New articles for this cluster are being added.</li>
+                )}
+              </ul>
+              <div className="mt-3">
+                <Link className="text-xs font-medium text-blue-700 hover:underline" href={cluster.href}>
+                  Explore related service
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
       </section>

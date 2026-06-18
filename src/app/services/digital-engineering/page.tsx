@@ -4,15 +4,15 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Digital Engineering Services UK | CRM, ERP, WMS | Splendid Technology",
   description:
-    "Digital engineering services for UK businesses including CRM, ERP, warehouse management systems, supply chain digitalisation, and workflow automation.",
+    "Business systems services for UK businesses including CRM, ERP, warehouse management systems, operations workflows, and workflow automation.",
   keywords: [
     "digital engineering services uk",
     "crm solutions uk",
     "erp solutions uk",
     "warehouse management systems uk",
-    "supply chain digitalisation uk",
+    "operations workflow systems uk",
     "workflow automation uk",
-    "business process digitalisation uk",
+    "business systems implementation uk",
   ],
   alternates: {
     canonical: "/services/digital-engineering",
@@ -33,8 +33,8 @@ const services = [
     body: "Stock visibility, bin control, pick-pack workflows, and dispatch controls that reduce manual handling errors.",
   },
   {
-    title: "Supply Chain Digitalisation",
-    body: "Digitise order, supplier, and logistics workflows with practical dashboards, alerts, and process traceability.",
+    title: "Operations Workflow Systems",
+    body: "Streamline order, supplier, and logistics workflows with practical dashboards, alerts, and process traceability.",
   },
 ];
 
@@ -58,7 +58,7 @@ export default function DigitalEngineeringPage() {
               Explore CRM Solutions
             </Link>
             <Link href="/contact" className="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-3 font-bold text-white hover:bg-white/10">
-              Discuss Digital Project
+              Discuss Business Systems Project
             </Link>
           </div>
         </div>

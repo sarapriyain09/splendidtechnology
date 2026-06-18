@@ -5,6 +5,7 @@ const footerGroups = {
     { href: "/services/sales-crm", label: "CRM Solutions" },
     { href: "/services/ai-solutions", label: "AI Automation" },
     { href: "/services", label: "Business Systems" },
+    { href: "/contact", label: "Integrations" },
   ],
   products: [{ href: "/demo", label: "DemoCRM" }],
   resources: [
