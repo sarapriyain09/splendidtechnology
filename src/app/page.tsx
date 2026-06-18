@@ -2,31 +2,31 @@ import type { Metadata } from "next";
 import { HomePageContent } from "@/components/home/HomePageContent";
 
 export const metadata: Metadata = {
-  title: "CRM for Marketing, Sales and Customer Management | Splendid Technology",
+  title: "CRM & AI Automation for Growing Businesses | Splendid Technology",
   description:
-    "CRM and AI automation solutions for UK SMEs. Streamline customer management, automate workflows, and improve sales performance with practical business systems.",
+    "CRM and AI automation for growing businesses. Improve sales automation, customer management, and workflow automation with practical systems from Splendid Technology.",
   keywords: [
-    "crm solutions uk",
-    "crm for smes",
-    "ai automation for smes",
-    "sales pipeline crm",
-    "customer management software",
+    "crm",
+    "ai automation",
+    "sales automation",
+    "customer management",
+    "workflow automation",
   ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
-    title: "CRM for Marketing, Sales and Customer Management",
+    title: "CRM & AI Automation for Growing Businesses",
     description:
-      "CRM and AI automation solutions for UK SMEs with practical business systems and faster sales performance.",
+      "CRM and AI automation for growing businesses with practical systems for sales automation and customer management.",
     url: "https://www.splendidtechnology.co.uk/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CRM for Marketing, Sales and Customer Management",
+    title: "CRM & AI Automation for Growing Businesses",
     description:
-      "CRM and AI automation solutions for UK SMEs with practical business systems and faster sales performance.",
+      "CRM and AI automation for growing businesses with practical systems for sales automation and customer management.",
   },
 };
 

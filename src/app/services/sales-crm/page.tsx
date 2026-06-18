@@ -4,25 +4,25 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Sales CRM Platform for SMEs | Splendid Technology",
+  title: "CRM Solutions for Sales Automation and Customer Management | Splendid Technology",
   description:
-    "Custom CRM systems for SMEs with lead management, sales pipelines, automation, and reporting dashboards that help teams close faster.",
+    "CRM solutions for growing businesses focused on sales automation, customer management, and workflow automation.",
   keywords: [
-    "sales crm uk",
-    "crm platform for smes",
-    "lead management crm",
-    "pipeline crm software",
-    "crm automation workflows",
-    "custom crm development uk",
+    "crm",
+    "sales automation",
+    "customer management",
+    "workflow automation",
+    "crm solutions uk",
+    "crm implementation",
   ],
   alternates: {
     canonical: "/services/sales-crm",
   },
   openGraph: {
     type: "website",
-    title: "Sales CRM Platform for SMEs",
+    title: "CRM Solutions for Sales Automation and Customer Management",
     description:
-      "Build a CRM that matches your sales process with automation, dashboards, and integrations.",
+      "Build CRM systems for sales automation, customer management, and workflow execution.",
     url: "https://www.splendidtechnology.co.uk/services/sales-crm",
   },
 };
@@ -127,6 +127,20 @@ export default function SalesCRMPage() {
                 <Link href="/contact">Schedule a Call</Link>
               </Button>
             </div>
+            <div className="mt-6 flex flex-wrap gap-3 pt-1">
+              <Link className="text-sm font-medium text-blue-700 hover:underline" href="/">
+                Homepage
+              </Link>
+              <Link className="text-sm font-medium text-blue-700 hover:underline" href="/demo">
+                DemoCRM
+              </Link>
+              <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services/ai-solutions">
+                AI Automation
+              </Link>
+              <Link className="text-sm font-medium text-blue-700 hover:underline" href="/blog">
+                Blog
+              </Link>
+            </div>
           </div>
           <div className="overflow-hidden rounded-3xl border border-[#dce8ff] bg-white shadow-[0_26px_70px_rgba(17,71,191,0.16)]">
             <Image
@@ -135,7 +149,7 @@ export default function SalesCRMPage() {
               width={1400}
               height={900}
               className="h-full w-full object-cover"
-              priority
+              loading="lazy"
             />
           </div>
         </div>
@@ -177,7 +191,7 @@ export default function SalesCRMPage() {
               We integrate CRM with Outlook, Google Workspace, Twilio, WhatsApp, forms, and your internal systems so your team can automate without disruption.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
-              {["Outlook", "Google Workspace", "Twilio", "WhatsApp", "HubSpot", "APIs"].map((item) => (
+              {["Outlook", "Microsoft 365", "Twilio", "WhatsApp", "OpenAI", "Google Workspace"].map((item) => (
                 <span key={item} className="rounded-full border border-[#dce8ff] bg-[#f5f8ff] px-3 py-1 text-xs font-semibold text-[#31476f]">
                   {item}
                 </span>

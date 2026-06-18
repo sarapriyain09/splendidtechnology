@@ -14,6 +14,10 @@ export const metadata: Metadata = {
     description:
       "Edge-based monitoring, cloud analytics, anomaly detection, and real-time dashboard visualisation — demonstrated on Raspberry Pi and AWS.",
   },
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 const demonstrated = [

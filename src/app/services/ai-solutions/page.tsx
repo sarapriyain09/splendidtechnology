@@ -3,25 +3,25 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "AI Automation Solutions for SMEs | Splendid Technology",
+  title: "AI Automation for Sales and Customer Workflows | Splendid Technology",
   description:
-    "AI automation for SMEs including assistants, workflow automations, email and SMS sequences, document processing, and CRM-integrated AI workflows.",
+    "AI automation services for growing businesses: AI assistant, workflow automation, email automation, SMS automation, reporting, and CRM integrations.",
   keywords: [
-    "ai automation uk",
-    "ai solutions for smes",
+    "ai automation",
+    "workflow automation",
+    "sales automation",
+    "customer management",
     "crm ai workflows",
-    "email automation services",
-    "sms twilio automation",
-    "ai agents for business",
+    "email automation",
   ],
   alternates: {
     canonical: "/services/ai-solutions",
   },
   openGraph: {
     type: "website",
-    title: "AI Automation Solutions for SMEs",
+    title: "AI Automation for Sales and Customer Workflows",
     description:
-      "Deploy practical AI workflows that reduce manual work and speed up sales and operations.",
+      "Deploy practical AI workflows to reduce manual work and improve sales execution.",
     url: "https://www.splendidtechnology.co.uk/services/ai-solutions",
   },
 };
@@ -40,16 +40,16 @@ const capabilities = [
     description: "Trigger personalized follow-up sequences from lead, stage, and activity events.",
   },
   {
-    title: "SMS and Twilio Integration",
-    description: "Build SMS reminders, call workflows, and message logging tied to CRM records.",
+    title: "SMS Automation",
+    description: "Build SMS reminders and message logging workflows tied to CRM records.",
   },
   {
-    title: "Document Intelligence",
-    description: "Extract and structure data from forms, PDFs, and inbound messages.",
+    title: "Intelligent Reporting",
+    description: "Convert workflow and CRM data into practical dashboards and action-ready reports.",
   },
   {
-    title: "AI Agents",
-    description: "Deploy focused agents to monitor, route, and execute routine business actions.",
+    title: "Third-party Integrations",
+    description: "Integrate Outlook, Microsoft 365, Twilio, WhatsApp, OpenAI, and Google Workspace.",
   },
 ];
 
@@ -106,6 +106,20 @@ export default function AISolutionsPage() {
               <Link href="/demo">See Demo Workflows</Link>
             </Button>
           </div>
+          <div className="mt-6 flex flex-wrap gap-3 pt-1">
+            <Link className="text-sm font-medium text-blue-700 hover:underline" href="/">
+              Homepage
+            </Link>
+            <Link className="text-sm font-medium text-blue-700 hover:underline" href="/demo">
+              DemoCRM
+            </Link>
+            <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services/sales-crm">
+              CRM Solutions
+            </Link>
+            <Link className="text-sm font-medium text-blue-700 hover:underline" href="/blog">
+              Blog
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -145,7 +159,7 @@ export default function AISolutionsPage() {
               Connect Outlook, Google Workspace, Twilio, WhatsApp, and CRM data streams to run one cohesive automation engine.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
-              {["Outlook", "Google Workspace", "Twilio", "WhatsApp", "HubSpot", "APIs"].map((item) => (
+              {["Outlook", "Microsoft 365", "Twilio", "WhatsApp", "OpenAI", "Google Workspace"].map((item) => (
                 <span key={item} className="rounded-full border border-[#dce8ff] bg-[#f5f8ff] px-3 py-1 text-xs font-semibold text-[#31476f]">
                   {item}
                 </span>

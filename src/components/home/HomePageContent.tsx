@@ -56,7 +56,7 @@ const solutionCards = [
   },
   {
     title: "Integrations",
-    items: ["Outlook", "Gmail", "WhatsApp", "Twilio", "Microsoft 365", "APIs"],
+    items: ["Outlook", "Microsoft 365", "Twilio", "WhatsApp", "OpenAI", "Google Workspace"],
   },
 ];
 
@@ -108,8 +108,8 @@ const aiAutomationCards = [
   },
   {
     icon: "📱",
-    title: "SMS and WhatsApp",
-    description: "Communicate with customers across multiple channels.",
+    title: "SMS Automation",
+    description: "Automate SMS reminders and response workflows for timely follow-up.",
   },
   {
     icon: "📊",
@@ -118,12 +118,12 @@ const aiAutomationCards = [
   },
   {
     icon: "🔗",
-    title: "Integrations",
-    description: "Connect Outlook, Gmail, Twilio, Microsoft 365, and third-party APIs.",
+    title: "Third-party Integrations",
+    description: "Connect Outlook, Microsoft 365, Twilio, WhatsApp, OpenAI, and Google Workspace.",
   },
 ];
 
-const integrationLogos = ["Outlook", "Microsoft 365", "Gmail", "Twilio", "WhatsApp", "OpenAI", "Google Workspace", "APIs"];
+const integrationLogos = ["Outlook", "Microsoft 365", "Twilio", "WhatsApp", "OpenAI", "Google Workspace"];
 
 const testimonials = [
   {
@@ -192,10 +192,10 @@ export function HomePageContent() {
         >
           <div>
             <h1 className="text-balance text-4xl font-bold leading-tight text-[#0e1629] sm:text-5xl lg:text-6xl">
-              CRM for Marketing, Sales, and Customer Management
+              CRM and AI Automation for Growing Businesses
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-[#37486e]">
-              Simplify operations, automate workflows, and build stronger customer relationships with intelligent CRM and AI solutions.
+              Improve sales automation, customer management, and workflow automation with practical CRM and AI systems.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg">
@@ -238,6 +238,7 @@ export function HomePageContent() {
                 alt="CRM main page dashboard screenshot in browser frame"
                 width={1280}
                 height={780}
+                loading="lazy"
                 className="h-auto w-full rounded-b-2xl object-cover"
               />
             </div>
@@ -385,7 +386,7 @@ export function HomePageContent() {
                 <p className="text-xs font-semibold text-[#5e6d8f]">{card.title}</p>
               </div>
               <div className="overflow-hidden">
-                <Image src={card.image} alt={`${card.title} screenshot`} width={900} height={620} className="h-44 w-full object-cover transition duration-300 hover:scale-105" />
+                <Image src={card.image} alt={`${card.title} screenshot`} width={900} height={620} loading="lazy" className="h-44 w-full object-cover transition duration-300 hover:scale-105" />
               </div>
             </motion.article>
           ))}

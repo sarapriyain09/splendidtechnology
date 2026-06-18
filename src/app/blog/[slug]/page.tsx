@@ -30,7 +30,14 @@ export async function generateMetadata({
   return {
     title: meta.title,
     description: meta.description,
-    keywords: meta.keywords,
+    keywords: [
+      ...meta.keywords,
+      "crm",
+      "ai automation",
+      "sales automation",
+      "customer management",
+      "workflow automation",
+    ],
     openGraph: {
       title: meta.title,
       description: meta.description,
@@ -135,9 +142,9 @@ export default async function BlogPostPage({
             src={meta.featuredImage}
             alt={meta.title}
             fill
+            loading="lazy"
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 768px"
-            priority
           />
         </div>
       ) : null}

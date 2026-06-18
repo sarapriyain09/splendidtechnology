@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "CRM Demo Access | Splendid Technology",
+  title: "DemoCRM Access | CRM and AI Automation Demo | Splendid Technology",
   description:
-    "Access the Splendid Technology CRM demo environment and explore core workflows for lead capture, call handling, and customer follow-up.",
+    "Access DemoCRM and explore CRM, sales automation, customer management, and AI automation workflows.",
   keywords: [
-    "crm demo",
-    "splendid crm demo",
-    "crm workflow demo uk",
-    "sales crm demo",
+    "demo crm",
+    "crm automation demo",
+    "sales automation demo",
+    "customer management demo",
+    "ai automation demo",
   ],
   alternates: {
     canonical: "/demo",
@@ -28,6 +30,20 @@ export default function DemoPage() {
         <p className="max-w-2xl text-sm leading-6 text-black/70">
           Use the link below to access our CRM demo instance and review practical workflows for lead tracking, call management, and follow-up automation.
         </p>
+        <div className="flex flex-wrap gap-3 pt-1">
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/">
+            Homepage
+          </Link>
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services/sales-crm">
+            CRM Solutions
+          </Link>
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services/ai-solutions">
+            AI Automation
+          </Link>
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/blog">
+            Blog
+          </Link>
+        </div>
       </header>
 
       <section className="rounded-2xl border border-black/10 bg-white p-6 sm:p-8">

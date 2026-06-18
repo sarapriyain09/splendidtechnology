@@ -40,6 +40,20 @@ export const metadata: Metadata = {
   title: "CRM and AI Automation Insights | Splendid Technology Blog",
   description:
     "Practical guides on CRM implementation, lead management, sales pipeline workflows, and AI automation for UK SMEs.",
+  keywords: [
+    "crm",
+    "ai automation",
+    "sales automation",
+    "customer management",
+    "workflow automation",
+  ],
+  openGraph: {
+    type: "website",
+    title: "CRM and AI Automation Insights",
+    description:
+      "Practical CRM, AI automation, sales automation, and customer management guides for growing businesses.",
+    url: "https://www.splendidtechnology.co.uk/blog",
+  },
   alternates: {
     canonical: "/blog",
   },
@@ -105,6 +119,7 @@ export default function BlogIndexPage() {
                   src={post.featuredImage}
                   alt={post.title}
                   fill
+                  loading="lazy"
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />

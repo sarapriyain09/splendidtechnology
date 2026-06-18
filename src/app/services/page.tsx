@@ -4,14 +4,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "CRM and AI Automation Services for SMEs | Splendid Technology",
   description:
-    "Explore Splendid Technology services for CRM systems, AI automation, client portals, workflow solutions, and business integrations for growing SMEs.",
+    "Explore CRM and AI automation services for growing businesses focused on sales automation, customer management, and workflow automation.",
   keywords: [
+    "crm",
+    "ai automation",
+    "sales automation",
+    "customer management",
+    "workflow automation",
     "crm services uk",
-    "ai automation services uk",
-    "workflow automation for smes",
-    "client portal development uk",
-    "twilio crm integration",
-    "business systems integration uk",
   ],
   alternates: {
     canonical: "/services",
@@ -72,10 +72,11 @@ const serviceLines = [
       "Connect your CRM and automation platform with messaging, productivity, and communication tools.",
     bullets: [
       "Outlook integration",
+      "Microsoft 365 integration",
       "Google Workspace integration",
       "WhatsApp automation",
       "Twilio voice and SMS",
-      "HubSpot and custom APIs",
+      "OpenAI and custom APIs",
     ],
     href: "/contact",
   },
@@ -83,13 +84,13 @@ const serviceLines = [
 
 const integrationStack = [
   "Outlook",
+  "Microsoft 365",
   "Google Workspace",
   "WhatsApp",
   "Twilio",
-  "HubSpot",
+  "OpenAI",
   "REST APIs",
   "Webhooks",
-  "Stripe",
 ];
 
 const deliveryModel = [
