@@ -2,379 +2,270 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Pricing | Splendid Technology",
+  title: "Splendid Growth Platform Pricing | Splendid Technology",
   description:
-    "Affordable website pricing for UK tradespeople and small businesses. Starter websites from £199, monthly care plans from £15/month. Includes domain, hosting, SSL, and ongoing maintenance.",
+    "Simple modular pricing for SMEs: base CRM plus Sales, CallCRM, Marketing, Automation, and Analytics apps.",
   alternates: {
     canonical: "/pricing",
   },
 };
 
-const webTiers = [
+const platformPlans = [
   {
-    name: "Starter Website",
-    from: "£199",
-    desc: "Perfect for sole traders, electricians, plumbers, and builders who need a professional online presence quickly.",
+    name: "Starter",
+    price: "£19/user/month",
+    idealFor: "Ideal for small businesses starting with customer management.",
+    includedApps: ["CRM"],
     features: [
-      "3–5 pages (Home, About, Services, Contact)",
-      "Mobile-friendly responsive design",
-      "Contact form & Google Maps",
-      "WhatsApp integration",
-      "Domain registration included",
+      "Contacts",
+      "Companies",
+      "Activities",
+      "Tasks",
+      "Notes",
+      "Documents",
     ],
-    cta: "Get a Quote",
-    highlight: false,
   },
   {
-    name: "Business Website",
-    from: "£399",
-    desc: "For established tradespeople and small businesses that need more pages, a gallery, and lead capture.",
+    name: "Growth",
+    price: "£39/user/month",
+    idealFor: "Ideal for growing sales teams.",
+    includedApps: ["CRM", "Sales"],
     features: [
-      "Up to 10 pages",
-      "Gallery & portfolio section",
-      "Lead capture & enquiry forms",
-      "Google Analytics setup",
-      "WhatsApp integration",
-      "Domain registration included",
+      "Leads",
+      "Opportunities",
+      "Pipeline",
+      "Quotations",
+      "Forecasts",
     ],
-    cta: "Get a Quote",
-    highlight: true,
   },
   {
-    name: "Professional Website",
-    from: "£599",
-    desc: "A fully optimised site with SEO, blog, and everything you need to grow your online presence.",
+    name: "Engagement",
+    price: "£59/user/month",
+    idealFor: "Ideal for outbound sales teams.",
+    includedApps: ["CRM", "Sales", "CallCRM"],
     features: [
-      "Up to 15 pages",
-      "SEO setup & on-page optimisation",
-      "Blog & news section",
-      "Google Analytics & Search Console",
-      "WhatsApp integration",
-      "Domain registration included",
+      "Click-to-call",
+      "Call campaigns",
+      "Call logging",
+      "Agent dashboard",
+      "Telephony charges separate",
     ],
-    cta: "Get a Quote",
-    highlight: false,
+  },
+  {
+    name: "Marketing Pro",
+    price: "£79/user/month",
+    idealFor: "Ideal for companies generating leads continuously.",
+    includedApps: ["CRM", "Sales", "CallCRM", "Marketing"],
+    features: [
+      "LinkedIn campaigns",
+      "Email campaigns",
+      "SMS campaigns",
+      "Forms",
+      "Landing pages",
+      "Newsletters",
+    ],
+  },
+  {
+    name: "AI Growth",
+    price: "£99/user/month",
+    idealFor: "Ideal for companies wanting AI-driven growth.",
+    includedApps: ["CRM", "Sales", "CallCRM", "Marketing", "Automation"],
+    features: [
+      "AI assistant",
+      "Meeting summaries",
+      "Email generation",
+      "Workflow builder",
+    ],
+  },
+  {
+    name: "Enterprise",
+    price: "Custom Pricing",
+    idealFor: "Designed for complex teams and advanced rollout requirements.",
+    includedApps: ["All apps"],
+    features: [
+      "Analytics",
+      "Custom integrations",
+      "API access",
+      "Multi-company",
+      "White-label",
+      "Dedicated support",
+    ],
   },
 ];
 
-const appTiers = [
-  {
-    name: "Custom Portal / Web App",
-    from: "£5,000",
-    desc: "Bespoke web applications with user logins, dashboards, and integrations — built to your exact business logic.",
-    features: [
-      "User authentication & roles",
-      "Database design & integration",
-      "Reporting & data dashboards",
-      "Third-party API integrations",
-      "Cloud deployment & hosting",
-    ],
-    badge: null,
-  },
-  {
-    name: "MVP SaaS Platform",
-    from: "£10,000",
-    desc: "A complete multi-user SaaS product — subscription billing, admin dashboard, and cloud infrastructure included.",
-    features: [
-      "Multi-user platform architecture",
-      "Subscription & billing management",
-      "Admin & analytics dashboard",
-      "Cloud hosting & CI/CD setup",
-      "Scalable from day one",
-    ],
-    badge: "Most Comprehensive",
-  },
+const appPricing = [
+  { app: "CRM", price: "£19/user/month" },
+  { app: "Sales", price: "+£15" },
+  { app: "CallCRM", price: "+£20" },
+  { app: "Marketing", price: "+£20" },
+  { app: "Automation", price: "+£20" },
+  { app: "Analytics", price: "+£10" },
 ];
 
-const supportTiers = [
-  {
-    name: "Monthly Care Plan",
-    price: "£15/mo",
-    features: [
-      "Hosting & cloud infrastructure",
-      "SSL certificate",
-      "Security updates",
-      "Monthly backups",
-      "Uptime monitoring",
-    ],
-  },
-  {
-    name: "Business Care Plan",
-    price: "£29/mo",
-    features: [
-      "Everything in Monthly Care",
-      "Content updates (up to 30 min/month)",
-      "Priority support",
-    ],
-  },
-  {
-    name: "Growth Care Plan",
-    price: "£49/mo",
-    features: [
-      "Everything in Business Care",
-      "Monthly SEO checks",
-      "Google Business Profile support",
-      "Up to 1 hour of changes/month",
-    ],
-  },
+const recommendationBundles = [
+  { name: "CRM", price: "£19/user/month" },
+  { name: "CRM + Sales", price: "£39/user/month" },
+  { name: "CRM + Sales + CallCRM", price: "£59/user/month" },
+  { name: "CRM + Sales + CallCRM + Marketing", price: "£79/user/month" },
+  { name: "All Apps", price: "£99/user/month" },
+];
+
+const offerPoints = [
+  "14-day free trial",
+  "No setup fee",
+  "Monthly or annual billing",
+  "Annual plan = 2 months free",
 ];
 
 export default function PricingPage() {
   return (
-    <div className="bg-white">
-
-      {/* Hero */}
+    <div className="bg-[#f7faff]">
       <section className="bg-[#0b1f3a] py-16 text-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">Pricing</p>
-          <h1 className="text-4xl font-bold leading-tight sm:text-5xl">Transparent Starting Prices</h1>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">Splendid Growth Platform Pricing</p>
+          <h1 className="text-4xl font-bold leading-tight sm:text-5xl">Simple, Modular Pricing for SMEs</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-300">
-            Every project is different &mdash; these are indicative starting prices to help you plan.
-            Contact us for a free consultation and tailored quotation.
+            Start with a base platform and scale with the apps you need. Designed to stay clear, flexible, and affordable.
           </p>
-
-          {/* Quick summary strip */}
-          <div className="mt-10 flex flex-wrap gap-4">
-            {[
-              { label: "Starter Website", from: "From £199" },
-              { label: "Business Website", from: "From £399" },
-              { label: "Professional Website", from: "From £599" },
-              { label: "Custom Web Apps", from: "From £5,000" },
-              { label: "SaaS Development", from: "From £10,000" },
-              { label: "Monthly Care Plan", from: "From £15/mo" },
-            ].map((item) => (
-              <div key={item.label} className="rounded-xl border border-white/10 bg-white/5 px-5 py-3">
-                <p className="text-xs text-slate-400">{item.label}</p>
-                <p className="mt-0.5 text-sm font-bold text-green-400">{item.from}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* Web Development */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-[#0b1f3a]">Website Setup</h2>
-        <p className="mt-2 text-sm text-slate-500">
-          One-time setup fee. We handle everything &mdash; domain registration, cloud hosting, SSL certificate, and ongoing maintenance. No technical knowledge needed.
-        </p>
-        <div className="mt-8 grid gap-6 sm:grid-cols-3">
-          {webTiers.map((tier) => (
+        <h2 className="text-3xl font-bold text-[#0b1f3a]">Platform Plans</h2>
+        <p className="mt-2 text-sm text-slate-600">Choose the plan that matches your current growth stage.</p>
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          {platformPlans.map((plan, index) => (
             <div
-              key={tier.name}
+              key={plan.name}
               className={`relative flex flex-col rounded-2xl border p-6 ${
-                tier.highlight
+                plan.name === "AI Growth"
                   ? "border-green-500 bg-[#0b1f3a] text-white shadow-lg"
-                  : "border-slate-200 bg-white"
+                  : "border-[#d8e4ff] bg-white"
               }`}
             >
-              {tier.highlight && (
+              {plan.name === "AI Growth" && (
                 <span className="absolute -top-3 left-6 rounded-full bg-green-500 px-3 py-1 text-xs font-bold text-white">
-                  Most Popular
+                  Recommended
                 </span>
               )}
-              <p className={`text-xs font-semibold uppercase tracking-widest ${tier.highlight ? "text-green-400" : "text-slate-400"}`}>
-                {tier.name}
+              <p className={`text-xs font-semibold uppercase tracking-widest ${plan.name === "AI Growth" ? "text-green-300" : "text-[#4c6188]"}`}>
+                {plan.name}
               </p>
-              <p className={`mt-2 text-3xl font-bold ${tier.highlight ? "text-white" : "text-[#0b1f3a]"}`}>
-                {tier.from}
+              <p className={`mt-2 text-3xl font-bold ${plan.name === "AI Growth" ? "text-white" : "text-[#0b1f3a]"}`}>
+                {plan.price}
               </p>
-              <p className={`mt-3 text-sm leading-6 ${tier.highlight ? "text-slate-300" : "text-slate-500"}`}>
-                {tier.desc}
-              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {plan.includedApps.map((app) => (
+                  <span
+                    key={app}
+                    className={`rounded-full px-2.5 py-1 text-xs font-semibold ${
+                      plan.name === "AI Growth" ? "bg-white/15 text-white" : "bg-[#edf4ff] text-[#23457e]"
+                    }`}
+                  >
+                    {app}
+                  </span>
+                ))}
+              </div>
               <ul className="mt-5 flex-1 space-y-2">
-                {tier.features.map((f) => (
-                  <li key={f} className={`flex items-start gap-2 text-sm ${tier.highlight ? "text-slate-300" : "text-slate-700"}`}>
+                {plan.features.map((feature) => (
+                  <li key={feature} className={`flex items-start gap-2 text-sm ${plan.name === "AI Growth" ? "text-slate-200" : "text-slate-700"}`}>
                     <span className="mt-0.5 text-green-500">&#10003;</span>
-                    {f}
+                    {feature}
                   </li>
                 ))}
               </ul>
+              <p className={`mt-4 text-sm ${plan.name === "AI Growth" ? "text-slate-300" : "text-slate-600"}`}>
+                {plan.idealFor}
+              </p>
               <Link
                 href="/contact"
                 className={`mt-8 block rounded-full py-2.5 text-center text-sm font-semibold ${
-                  tier.highlight
+                  plan.name === "AI Growth"
                     ? "bg-green-600 text-white hover:bg-green-700"
                     : "border border-[#0b1f3a] text-[#0b1f3a] hover:bg-slate-50"
                 }`}
               >
-                {tier.cta}
+                {index === platformPlans.length - 1 ? "Talk to Sales" : "Start Free Trial"}
               </Link>
             </div>
           ))}
         </div>
       </section>
 
-      {/* All-in-One Bundle */}
-      <section className="bg-green-50 py-14">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-green-600">Best Value</p>
-          <h2 className="mt-2 text-2xl font-bold text-[#0b1f3a] sm:text-3xl">Professional Website</h2>
-          <div className="mt-2 flex items-baseline justify-center gap-2">
-            <span className="text-4xl font-extrabold text-[#0b1f3a]">£199</span>
-            <span className="text-lg text-slate-500">setup</span>
-            <span className="text-2xl font-bold text-slate-400">+</span>
-            <span className="text-4xl font-extrabold text-green-600">£19</span>
-            <span className="text-lg text-slate-500">/month</span>
-          </div>
-          <p className="mt-3 text-sm text-slate-500 max-w-xl mx-auto">
-            Low upfront cost, everything included. The easiest way to get your business online and keep it running.
-          </p>
-          <ul className="mt-8 inline-grid grid-cols-1 gap-3 text-left sm:grid-cols-2">
-            {[
-              "3–5 Pages",
-              "Mobile Friendly",
-              "Contact Form & Google Maps",
-              "WhatsApp Integration",
-              "Domain Included",
-              "Hosting Included",
-              "SSL Certificate",
-              "Ongoing Maintenance & Security Updates",
-            ].map((f) => (
-              <li key={f} className="flex items-center gap-2 text-sm font-medium text-slate-700">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 text-white text-xs font-bold">&#10003;</span>
-                {f}
-              </li>
+      <section className="bg-white py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">Alternative: App-Based Pricing</h2>
+          <p className="mt-2 text-sm text-slate-600">Build your own stack by starting with CRM and adding modules.</p>
+          <div className="mt-7 overflow-hidden rounded-2xl border border-[#d8e4ff] bg-white">
+            <div className="grid grid-cols-2 border-b border-[#e3edff] bg-[#f7fbff] px-5 py-3 text-sm font-semibold text-[#264478]">
+              <p>App</p>
+              <p>Price</p>
+            </div>
+            {appPricing.map((item) => (
+              <div key={item.app} className="grid grid-cols-2 border-b border-[#eef3ff] px-5 py-3 text-sm text-[#344d7a] last:border-0">
+                <p>{item.app}</p>
+                <p className="font-semibold text-[#153467]">{item.price}</p>
+              </div>
             ))}
-          </ul>
-          <div className="mt-8">
-            <Link
-              href="/contact"
-              className="inline-block rounded-full bg-green-600 px-8 py-3 text-sm font-semibold text-white hover:bg-green-700"
-            >
-              Get Started Today
-            </Link>
+          </div>
+
+          <div className="mt-6 rounded-xl border border-[#cfe0ff] bg-[#f3f8ff] px-5 py-4 text-sm text-[#243f70]">
+            <p className="font-semibold">Example</p>
+            <p className="mt-1">CRM + Sales + CallCRM = £19 + £15 + £20 = <span className="font-bold">£54/user/month</span></p>
           </div>
         </div>
       </section>
 
-      {/* Custom Apps & SaaS */}
-      <section className="bg-slate-50 py-16">
+      <section className="bg-[#f0f6ff] py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#0b1f3a]">Custom Web Applications &amp; SaaS</h2>
-          <p className="mt-2 text-sm text-slate-500">
-            For complex platforms, portals, and multi-user SaaS products. Priced based on scope &mdash; these are indicative starting points.
-          </p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            {appTiers.map((tier) => (
-              <div key={tier.name} className="relative rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-                {tier.badge && (
-                  <span className="absolute -top-3 left-6 rounded-full bg-amber-400 px-3 py-1 text-xs font-bold text-[#0b1f3a]">
-                    {tier.badge}
-                  </span>
-                )}
-                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">{tier.name}</p>
-                <p className="mt-2 text-4xl font-bold text-[#0b1f3a]">{tier.from}</p>
-                <p className="mt-3 text-sm leading-6 text-slate-500">{tier.desc}</p>
-                <ul className="mt-6 space-y-2">
-                  {tier.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-slate-700">
-                      <span className="mt-0.5 text-green-500">&#10003;</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/contact"
-                  className="mt-8 inline-block rounded-full bg-[#0b1f3a] px-6 py-2.5 text-sm font-semibold text-white hover:bg-[#162d50]"
-                >
-                  Discuss Your Project
-                </Link>
+          <h2 className="text-3xl font-bold text-[#0b1f3a]">My Recommendation</h2>
+          <p className="mt-2 text-sm text-slate-600">Start simple and scale module by module as your sales process matures.</p>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {recommendationBundles.map((bundle) => (
+              <div key={bundle.name} className="rounded-xl border border-[#d4e3ff] bg-white p-5">
+                <p className="text-sm font-semibold text-[#223d6d]">{bundle.name}</p>
+                <p className="mt-1 text-2xl font-bold text-[#0b1f3a]">{bundle.price}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Support */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-[#0b1f3a]">Monthly Care Plans</h2>
-        <p className="mt-2 text-sm text-slate-500">
-          Keep your website secure, fast, and up to date. All plans include hosting, SSL, and security updates. Feels like paying for a utility &mdash; and keeps your site running perfectly all year.
-        </p>
-        <div className="mt-8 grid gap-6 sm:grid-cols-3">
-          {supportTiers.map((tier, i) => (
-            <div
-              key={tier.name}
-              className={`rounded-2xl border p-6 ${i === 1 ? "border-green-400 bg-green-50" : "border-slate-200 bg-white"}`}
-            >
-              <p className="text-sm font-semibold uppercase tracking-widest text-slate-400">{tier.name}</p>
-              <p className="mt-2 text-3xl font-bold text-[#0b1f3a]">{tier.price}</p>
-              <ul className="mt-5 space-y-2">
-                {tier.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-slate-700">
-                    <span className="mt-0.5 text-green-500">&#10003;</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/contact"
-                className="mt-6 block rounded-full border border-[#0b1f3a] py-2.5 text-center text-sm font-semibold text-[#0b1f3a] hover:bg-slate-50"
-              >
-                Get Started
-              </Link>
+        <h2 className="text-3xl font-bold text-[#0b1f3a]">Included in Every Plan</h2>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {offerPoints.map((item) => (
+            <div key={item} className="rounded-xl border border-[#dbe7ff] bg-white px-4 py-3 text-sm font-medium text-[#2a446f]">
+              &#10003; {item}
             </div>
           ))}
         </div>
       </section>
 
-      {/* IoT and Digital Platforms — Quote Only */}
       <section className="bg-[#0b1f3a] py-16 text-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">
-                IoT, Reliability &amp; Digital Platforms
-              </p>
-              <h2 className="text-3xl font-bold">Priced on Enquiry</h2>
-              <p className="mt-4 text-slate-300">
-                Our Industrial IoT solutions, reliability analytics services, and SaaS products
-                (Splendid Monitor, Splendid Reliability, Splendid Asset Manager) are scoped and
-                priced individually &mdash; because hardware, installation complexity, and site
-                conditions vary significantly between projects.
-              </p>
-              <p className="mt-3 text-slate-400 text-sm">
-                Request a demo or get in touch and we&rsquo;ll provide a tailored quotation based on
-                your assets, site, and objectives.
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {[
-                { label: "IoT & Condition Monitoring", href: "/services/iot-solutions" },
-                { label: "Reliability Engineering", href: "/services/reliability-engineering" },
-                { label: "Splendid Monitor", href: "/products/splendid-monitor" },
-                { label: "Splendid Reliability", href: "/products/splendid-reliability" },
-                { label: "Splendid Asset Manager", href: "/products/splendid-asset-manager" },
-                { label: "Splendid Accounting", href: "/products/splendid-accounting" },
-              ].map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white hover:bg-white/10 hover:border-green-500/40"
-                >
-                  {item.label} &rarr;
-                </Link>
-              ))}
-            </div>
-          </div>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">Competitive Positioning</p>
+          <h2 className="text-3xl font-bold">Built to Be Simpler and More Affordable for SMEs</h2>
+          <p className="mt-4 max-w-3xl text-slate-300">
+            This pricing keeps Splendid below enterprise-heavy platforms while differentiating through stronger outbound engagement with CallCRM and integrated workflows.
+          </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
               href="/contact"
               className="rounded-full bg-green-600 px-7 py-3 text-sm font-semibold text-white hover:bg-green-700"
             >
-              Request a Demo
+              Start 14-Day Free Trial
             </Link>
             <Link
               href="/contact"
               className="rounded-full border border-white px-7 py-3 text-sm font-semibold text-white hover:bg-white/10"
             >
-              Contact Us for Pricing
+              Talk to Sales
             </Link>
           </div>
         </div>
       </section>
-
     </div>
   );
 }
