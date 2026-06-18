@@ -89,6 +89,9 @@ export function SiteHeader() {
           </Link>
           <DesktopDropdown label="Solutions" items={solutionItems} />
           <DesktopDropdown label="Products" items={productItems} />
+          <Link href="/pricing" className="rounded-lg px-3 py-2 text-sm font-semibold text-[#223252] transition hover:bg-white/80">
+            Pricing
+          </Link>
           <Link href="/about" className="rounded-lg px-3 py-2 text-sm font-semibold text-[#223252] transition hover:bg-white/80">
             About
           </Link>
@@ -153,6 +156,9 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <Link href="/pricing" onClick={() => setMobileOpen(false)} className="block rounded-lg px-2 py-2 text-sm text-[#2d4168] hover:bg-[#f5f9ff]">
+              Pricing
+            </Link>
             <Link href="/about" onClick={() => setMobileOpen(false)} className="block rounded-lg px-2 py-2 text-sm text-[#2d4168] hover:bg-[#f5f9ff]">
               About
             </Link>

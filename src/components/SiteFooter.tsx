@@ -22,6 +22,7 @@ const footerGroups = {
   ],
   company: [
     { href: "/about", label: "About" },
+    { href: "/pricing", label: "Pricing" },
     { href: "/contact", label: "Contact" },
     { href: "/services", label: "Solutions" },
   ],
