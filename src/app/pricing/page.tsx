@@ -93,23 +93,6 @@ const platformPlans = [
   },
 ];
 
-const appPricing = [
-  { app: "CRM", price: "£19/user/month" },
-  { app: "Sales", price: "+£15" },
-  { app: "CallCRM", price: "+£20" },
-  { app: "Marketing", price: "+£20" },
-  { app: "Automation", price: "+£20" },
-  { app: "Analytics", price: "+£10" },
-];
-
-const recommendationBundles = [
-  { name: "CRM", price: "£19/user/month" },
-  { name: "CRM + Sales", price: "£39/user/month" },
-  { name: "CRM + Sales + CallCRM", price: "£59/user/month" },
-  { name: "CRM + Sales + CallCRM + Marketing", price: "£79/user/month" },
-  { name: "All Apps", price: "£99/user/month" },
-];
-
 const offerPoints = [
   "14-day free trial",
   "No setup fee",
@@ -189,46 +172,6 @@ export default function PricingPage() {
               </Link>
             </div>
           ))}
-        </div>
-      </section>
-
-      <section className="bg-white py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">Alternative: App-Based Pricing</h2>
-          <p className="mt-2 text-sm text-slate-600">Build your own stack by starting with CRM and adding modules.</p>
-          <div className="mt-7 overflow-hidden rounded-2xl border border-[#d8e4ff] bg-white">
-            <div className="grid grid-cols-2 border-b border-[#e3edff] bg-[#f7fbff] px-5 py-3 text-sm font-semibold text-[#264478]">
-              <p>App</p>
-              <p>Price</p>
-            </div>
-            {appPricing.map((item) => (
-              <div key={item.app} className="grid grid-cols-2 border-b border-[#eef3ff] px-5 py-3 text-sm text-[#344d7a] last:border-0">
-                <p>{item.app}</p>
-                <p className="font-semibold text-[#153467]">{item.price}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 rounded-xl border border-[#cfe0ff] bg-[#f3f8ff] px-5 py-4 text-sm text-[#243f70]">
-            <p className="font-semibold">Example</p>
-            <p className="mt-1">CRM + Sales + CallCRM = £19 + £15 + £20 = <span className="font-bold">£54/user/month</span></p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#f0f6ff] py-16">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0b1f3a]">My Recommendation</h2>
-          <p className="mt-2 text-sm text-slate-600">Start simple and scale module by module as your sales process matures.</p>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {recommendationBundles.map((bundle) => (
-              <div key={bundle.name} className="rounded-xl border border-[#d4e3ff] bg-white p-5">
-                <p className="text-sm font-semibold text-[#223d6d]">{bundle.name}</p>
-                <p className="mt-1 text-2xl font-bold text-[#0b1f3a]">{bundle.price}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
