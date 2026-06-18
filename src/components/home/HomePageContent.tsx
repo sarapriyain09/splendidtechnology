@@ -61,11 +61,11 @@ const solutionCards = [
 ];
 
 const demoCards = [
-  { title: "Dashboard", image: "/images/projects/CRM.png" },
-  { title: "Pipeline", image: "/images/projects/callcrm.png" },
-  { title: "Contacts", image: "/images/projects/ERP.png" },
-  { title: "Activities", image: "/images/projects/warehousemanagement.png" },
-  { title: "Reports", image: "/images/projects/callcrm.png" },
+  { title: "Campaign Planner", image: "/images/projects/CRM%20Campaign%20.png" },
+  { title: "Pipeline", image: "/images/projects/CRM%20pipeline.png" },
+  { title: "Prospect Finder", image: "/images/projects/crm%20prospect%20finder.png" },
+  { title: "Prospects", image: "/images/projects/CRM%20prospects.png" },
+  { title: "Prospect Generator", image: "/images/projects/CRM-%20propspect%20generator.png" },
 ];
 
 const features = [
@@ -150,6 +150,29 @@ const stats = [
   { value: 100, suffix: "%", label: "Cloud-Based" },
 ];
 
+const faqs = [
+  {
+    q: "What is a CRM?",
+    a: "A CRM is a platform that keeps customer data, lead activity, and sales progress in one connected system.",
+  },
+  {
+    q: "Why do SMEs need a CRM?",
+    a: "SMEs use CRM to improve follow-up consistency, visibility, and customer management across growing teams.",
+  },
+  {
+    q: "Can CRM automate follow-ups?",
+    a: "Yes. CRM can automate reminders, task handoffs, and communication sequences.",
+  },
+  {
+    q: "Does DemoCRM integrate with Outlook?",
+    a: "Yes. DemoCRM supports Outlook integrations as part of practical sales workflow setup.",
+  },
+  {
+    q: "Can AI improve customer management?",
+    a: "Yes. AI supports response drafting, summaries, and workflow actions to reduce repetitive effort.",
+  },
+];
+
 const whyBusinessVideoEmbed = "https://www.youtube.com/embed/IjFkPyT6mns";
 
 export function HomePageContent() {
@@ -182,6 +205,20 @@ export function HomePageContent() {
                 <Link href="/contact">Schedule a Consultation</Link>
               </Button>
             </div>
+            <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-[#4a5a7a]">
+              <Link href="/services/sales-crm" className="rounded-full border border-[#d9e6ff] bg-white px-3 py-1 hover:bg-[#f3f8ff]">
+                CRM Solutions
+              </Link>
+              <Link href="/services/ai-solutions" className="rounded-full border border-[#d9e6ff] bg-white px-3 py-1 hover:bg-[#f3f8ff]">
+                AI Automation
+              </Link>
+              <Link href="/demo" className="rounded-full border border-[#d9e6ff] bg-white px-3 py-1 hover:bg-[#f3f8ff]">
+                DemoCRM
+              </Link>
+              <Link href="/blog" className="rounded-full border border-[#d9e6ff] bg-white px-3 py-1 hover:bg-[#f3f8ff]">
+                Blog
+              </Link>
+            </div>
           </div>
 
           <motion.div
@@ -194,11 +231,11 @@ export function HomePageContent() {
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ff7d51]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ffc54a]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#59c88a]" />
-                <p className="ml-3 text-xs font-semibold text-[#5e6d8f]">DemoCRM Dashboard</p>
+                <p className="ml-3 text-xs font-semibold text-[#5e6d8f]">CRM Main Page</p>
               </div>
               <Image
-                src="/images/projects/callcrm.png"
-                alt="DemoCRM dashboard screenshot in browser frame"
+                src="/images/projects/CRM%20main%20page.png"
+                alt="CRM main page dashboard screenshot in browser frame"
                 width={1280}
                 height={780}
                 className="h-auto w-full rounded-b-2xl object-cover"
@@ -418,6 +455,20 @@ export function HomePageContent() {
             </motion.article>
           ))}
         </motion.div>
+      </motion.section>
+
+      <motion.section variants={sectionFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="border-y border-[#dce8ff] bg-white/70 py-18">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0e1629] sm:text-4xl">FAQ</h2>
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            {faqs.map((item) => (
+              <article key={item.q} className="rounded-2xl border border-[#dce8ff] bg-white p-5 shadow-sm">
+                <h3 className="text-base font-bold text-[#1a3158]">{item.q}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#4b5d80]">{item.a}</p>
+              </article>
+            ))}
+          </div>
+        </div>
       </motion.section>
 
       <motion.section variants={sectionFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mx-auto w-full max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">

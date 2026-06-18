@@ -3,6 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { getAllBlogPosts, getBlogPostHtml } from "@/lib/blog";
 
+function getSiteUrl(): string {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
+  if (explicit) return explicit;
+
+  const vercelUrl = process.env.VERCEL_URL;
+  if (vercelUrl) return `https://${vercelUrl}`;
+
+  return "http://localhost:3000";
+}
+
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
@@ -46,9 +56,41 @@ export default async function BlogPostPage({
 }) {
   const { slug } = await params;
   const { meta, html } = await getBlogPostHtml(slug);
+  const siteUrl = getSiteUrl().replace(/\/$/, "");
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: meta.title,
+    description: meta.description,
+    datePublished: meta.date,
+    dateModified: meta.date,
+    mainEntityOfPage: `${siteUrl}/blog/${meta.slug}`,
+    image: meta.featuredImage ? [meta.featuredImage] : undefined,
+    author: {
+      "@type": "Organization",
+      name: "Splendid Technology Ltd",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Splendid Technology Ltd",
+      url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/images/hero/logo.png`,
+      },
+    },
+    articleSection: "CRM and AI Automation",
+    keywords: meta.keywords,
+  };
 
   return (
     <div className="mx-auto w-full max-w-3xl space-y-8 px-4 py-10 sm:px-6 lg:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
       <header className="space-y-3">
         <p className="text-xs text-black/60">
           {new Date(meta.date).toLocaleDateString("en-GB", {
@@ -69,8 +111,14 @@ export default async function BlogPostPage({
           <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services/sales-crm">
             CRM Services
           </Link>
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services/call-crm">
+            Call CRM
+          </Link>
           <Link className="text-sm font-medium text-blue-700 hover:underline" href="/services/ai-solutions">
             AI Automation
+          </Link>
+          <Link className="text-sm font-medium text-blue-700 hover:underline" href="/demo">
+            Book Demo
           </Link>
           <Link className="text-sm font-medium text-blue-700 hover:underline" href="/contact">
             Contact

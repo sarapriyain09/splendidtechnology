@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
-import { getAllCaseStudies } from "@/lib/caseStudies";
 import { getAllLocations } from "@/lib/locations";
 
 function getSiteUrl(): string {
@@ -18,7 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteUrl.replace(/\/$/, "");
   const lastModified = new Date();
   const posts = getAllBlogPosts();
-  const caseStudies = getAllCaseStudies();
   const locations = getAllLocations();
 
   return [
@@ -28,11 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/services/sales-crm`, lastModified },
     { url: `${base}/services/call-crm`, lastModified },
     { url: `${base}/services/ai-solutions`, lastModified },
-    { url: `${base}/services/crm-for-manufacturers-uk`, lastModified },
-    { url: `${base}/services/crm-for-engineering-companies-uk`, lastModified },
-    { url: `${base}/industries/crm-for-engineering-companies`, lastModified },
     { url: `${base}/portfolio`, lastModified },
-    { url: `${base}/engineering-case-studies`, lastModified },
     { url: `${base}/about`, lastModified },
     { url: `${base}/about/rajagopalan-saravanan`, lastModified },
     { url: `${base}/pricing`, lastModified },
@@ -48,10 +42,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...posts.map((post) => ({
       url: `${base}/blog/${post.slug}`,
       lastModified: new Date(post.date),
-    })),
-    ...caseStudies.map((study) => ({
-      url: `${base}/engineering-case-studies/${study.slug}`,
-      lastModified,
     })),
     ...locations.map((loc) => ({
       url: `${base}/locations/${loc.slug}`,

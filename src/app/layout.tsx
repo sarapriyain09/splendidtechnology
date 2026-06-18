@@ -36,16 +36,16 @@ export const metadata: Metadata = {
     template: "%s | Splendid Technology",
   },
   description:
-    "Splendid Technology helps SMEs grow with CRM implementation, AI automation, workflow systems, and practical business integrations.",
+    "Splendid Technology helps UK SMEs grow with CRM, sales automation, customer management, and AI workflow automation.",
   keywords: [
     "crm for smes uk",
-    "crm development uk",
-    "ai automation for business",
+    "crm implementation uk",
+    "ai automation for smes",
+    "sales automation uk",
+    "customer management software uk",
     "workflow automation uk",
-    "lead management crm",
-    "client portal development",
     "twilio crm integration",
-    "sme automation partner",
+    "outlook crm integration",
   ],
   alternates: {
     canonical: "/",
@@ -54,14 +54,14 @@ export const metadata: Metadata = {
     type: "website",
     title: "Splendid Technology | CRM and AI Automation for SMEs",
     description:
-      "CRM, AI automation, client portals, and workflow integrations for growing SMEs.",
+      "CRM, AI automation, and workflow integrations for growing UK SMEs.",
     url: "/",
   },
   twitter: {
     card: "summary_large_image",
     title: "Splendid Technology | CRM and AI Automation for SMEs",
     description:
-      "CRM, AI automation, client portals, and workflow integrations for growing SMEs.",
+      "CRM, AI automation, and workflow integrations for growing UK SMEs.",
   },
   robots: {
     index: true,
@@ -98,7 +98,7 @@ export default function RootLayout({
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "LocalBusiness",
     name: "Splendid Technology Ltd",
     url: siteUrl,
     image: `${siteUrl}/images/hero/logo.png`,
@@ -114,7 +114,7 @@ export default function RootLayout({
       "CRM implementation",
       "AI automation solutions",
       "Workflow automation",
-      "Client portal development",
+      "Sales automation",
       "Business systems integration",
     ],
   };

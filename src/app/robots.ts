@@ -14,10 +14,22 @@ export default function robots(): MetadataRoute.Robots {
   const siteUrl = getSiteUrl();
 
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: [
+          "/industrial-iot/",
+          "/engineering-case-studies/",
+          "/tools/mtbf/",
+          "/crm-for-engineering-companies/",
+          "/lead-management-software/",
+          "/sales-pipeline-management/",
+          "/industries/industrial-iot-for-manufacturers/",
+          "/industries/digital-transformation-for-manufacturers/",
+        ],
+      },
+    ],
     sitemap: `${siteUrl.replace(/\/$/, "")}/sitemap.xml`,
   };
 }
