@@ -37,6 +37,19 @@ function setConsentCookie(choice: ConsentChoice): void {
   document.cookie = `${STORAGE_KEY}=${choice}; Max-Age=31536000; Path=/; SameSite=Lax`;
 }
 
+function getConsentFromCookie(): ConsentChoice | null {
+  if (typeof document === "undefined") return null;
+
+  const cookie = document.cookie
+    .split(";")
+    .map((part) => part.trim())
+    .find((part) => part.startsWith(`${STORAGE_KEY}=`));
+
+  if (!cookie) return null;
+  const value = cookie.split("=")[1];
+  return value === "accepted" || value === "rejected" ? value : null;
+}
+
 function updateGoogleConsent(choice: ConsentChoice): void {
   if (!window.gtag) return;
 
@@ -46,12 +59,17 @@ function updateGoogleConsent(choice: ConsentChoice): void {
 export function CookieConsentBanner() {
   const [consentChoice, setConsentChoice] = useState<ConsentChoice | null>(() => {
     if (typeof window === "undefined") return null;
+
     try {
-      const saved = window.localStorage.getItem(STORAGE_KEY) as ConsentChoice | null;
-      return saved === "accepted" || saved === "rejected" ? saved : null;
+      const localValue = window.localStorage.getItem(STORAGE_KEY) as ConsentChoice | null;
+      if (localValue === "accepted" || localValue === "rejected") {
+        return localValue;
+      }
     } catch {
-      return null;
+      // Ignore localStorage failures and fall back to cookie.
     }
+
+    return getConsentFromCookie();
   });
 
   useEffect(() => {

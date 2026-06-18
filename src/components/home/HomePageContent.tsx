@@ -173,7 +173,8 @@ const faqs = [
   },
 ];
 
-const whyBusinessVideoEmbed = "https://www.youtube.com/embed/IjFkPyT6mns";
+const whyBusinessVideoUrl = "https://www.youtube.com/watch?v=IjFkPyT6mns";
+const whyBusinessVideoEmbed = "https://www.youtube-nocookie.com/embed/IjFkPyT6mns?rel=0&modestbranding=1&playsinline=1";
 
 export function HomePageContent() {
   const [fabOpen, setFabOpen] = useState(false);
@@ -260,7 +261,7 @@ export function HomePageContent() {
                 src={whyBusinessVideoEmbed}
                 title="Why growing businesses need a CRM"
                 loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
                 className="h-full w-full"
@@ -271,6 +272,16 @@ export function HomePageContent() {
                     <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z" />
                   </svg>
                 </div>
+              </div>
+              <div className="absolute bottom-3 right-3 sm:hidden">
+                <a
+                  href={whyBusinessVideoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-black/70 px-3 py-1.5 text-xs font-semibold text-white"
+                >
+                  Watch on YouTube
+                </a>
               </div>
             </div>
           </div>
