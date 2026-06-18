@@ -210,7 +210,7 @@ export default function IndustrialIoTPage() {
           <h2 className="text-xl font-bold text-[#0b1f3a]">Why Splendid Technology</h2>
           <p className="mt-3 max-w-2xl text-sm leading-7 text-black/70">
             We are a UK engineering technology company serving manufacturers nationwide. We build
-            custom systems — we don't sell generic off-the-shelf boxes. Our Industrial
+            custom systems — we don&apos;t sell generic off-the-shelf boxes. Our Industrial
             IoT solutions are designed around your specific equipment, workflows, and
             budget. We work with you from pilot to full production deployment.
           </p>

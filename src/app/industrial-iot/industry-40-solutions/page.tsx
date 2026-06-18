@@ -104,7 +104,7 @@ export default function Industry40SolutionsPage() {
           Industry 4.0 Solutions for UK SMEs
         </h1>
         <p className="max-w-2xl text-base leading-7 text-black/70">
-          Smart factory technology doesn't have to mean enterprise complexity or
+          Smart factory technology doesn&apos;t have to mean enterprise complexity or
           enterprise cost. We build practical Industry 4.0 solutions for UK small and
           medium manufacturers — starting with what you need most, and growing from
           there.
@@ -171,9 +171,9 @@ export default function Industry40SolutionsPage() {
 
       {/* Roadmap */}
       <section className="rounded-2xl border border-black/10 bg-white p-6 sm:p-8">
-        <h2 className="text-xl font-semibold">Where We're Going</h2>
+        <h2 className="text-xl font-semibold">Where We&apos;re Going</h2>
         <p className="mt-2 text-sm leading-6 text-black/70">
-          We're starting focused — smart motor monitoring and predictive maintenance
+          We&apos;re starting focused — smart motor monitoring and predictive maintenance
           first. From there we expand to cover more of your site.
         </p>
         <ol className="mt-5 space-y-3">
@@ -200,10 +200,10 @@ export default function Industry40SolutionsPage() {
 
       {/* CTA */}
       <section className="rounded-2xl border border-[#0b3d91]/20 bg-[#0b3d91]/5 p-6 sm:p-8">
-        <h2 className="text-xl font-semibold">Let's Start Small and Prove It</h2>
+        <h2 className="text-xl font-semibold">Let&apos;s Start Small and Prove It</h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-black/70">
-          The best Industry 4.0 implementations don't start with a masterplan — they
-          start with a focused pilot that delivers measurable value quickly. We'll help
+          The best Industry 4.0 implementations don&apos;t start with a masterplan — they
+          start with a focused pilot that delivers measurable value quickly. We&apos;ll help
           you identify the highest-impact starting point for your site and build from
           there.
         </p>

@@ -199,7 +199,7 @@ export default function SmartMotorMonitoringPage() {
         <h2 className="text-xl font-semibold">Start With a Pilot</h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-black/70">
           We recommend starting with a small pilot — monitoring 1 to 3 motors. This
-          lets you see the value quickly without a large upfront commitment. We'll work
+          lets you see the value quickly without a large upfront commitment. We&apos;ll work
           with you to design and deploy the right solution for your site.
         </p>
         <Link

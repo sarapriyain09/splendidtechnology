@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { Manrope, Space_Grotesk } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -69,12 +71,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const siteUrl = getSiteUrl();
+  const cookieStore = await cookies();
+  const consentCookie = cookieStore.get("cookie_consent")?.value;
+  const initialConsentChoice =
+    consentCookie === "accepted" || consentCookie === "rejected"
+      ? consentCookie
+      : null;
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -131,10 +139,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-8VJ7HX37V6"
-        ></script>
-        <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -147,7 +151,104 @@ export default function RootLayout({
                 ad_personalization: 'denied',
                 wait_for_update: 500
               });
-              gtag('config', 'G-8VJ7HX37V6');
+            `,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                var KEY = 'cookie_consent';
+
+                function parseCookieChoice() {
+                  var cookie = document.cookie
+                    .split(';')
+                    .map(function (part) { return part.trim(); })
+                    .find(function (part) { return part.indexOf(KEY + '=') === 0; });
+
+                  if (!cookie) return null;
+                  var value = cookie.split('=')[1];
+                  return value === 'accepted' || value === 'rejected' ? value : null;
+                }
+
+                function getChoice() {
+                  try {
+                    var localValue = window.localStorage.getItem(KEY);
+                    if (localValue === 'accepted' || localValue === 'rejected') {
+                      return localValue;
+                    }
+                  } catch (e) {
+                    // Ignore localStorage failures.
+                  }
+
+                  return parseCookieChoice();
+                }
+
+                function updateConsent(choice) {
+                  if (typeof window.gtag !== 'function') return;
+
+                  var granted = {
+                    ad_storage: 'granted',
+                    analytics_storage: 'granted',
+                    ad_user_data: 'granted',
+                    ad_personalization: 'granted'
+                  };
+
+                  var denied = {
+                    ad_storage: 'denied',
+                    analytics_storage: 'denied',
+                    ad_user_data: 'denied',
+                    ad_personalization: 'denied'
+                  };
+
+                  window.gtag('consent', 'update', choice === 'accepted' ? granted : denied);
+                }
+
+                function hideBanner() {
+                  var banner = document.getElementById('cookie-consent-banner');
+                  if (banner) {
+                    banner.style.display = 'none';
+                  }
+                }
+
+                function persistChoice(choice) {
+                  try {
+                    window.localStorage.setItem(KEY, choice);
+                  } catch (e) {
+                    // Ignore localStorage failures.
+                  }
+
+                  document.cookie = KEY + '=' + choice + '; Max-Age=31536000; Path=/; SameSite=Lax';
+                  updateConsent(choice);
+                  hideBanner();
+                }
+
+                function applyExistingChoice() {
+                  var choice = getChoice();
+                  if (!choice) return;
+                  updateConsent(choice);
+                  hideBanner();
+                }
+
+                document.addEventListener('click', function (event) {
+                  var target = event.target;
+                  if (!(target instanceof Element)) return;
+
+                  var choiceButton = target.closest('[data-cookie-choice]');
+                  if (!choiceButton) return;
+
+                  var choice = choiceButton.getAttribute('data-cookie-choice');
+                  if (choice === 'accepted' || choice === 'rejected') {
+                    persistChoice(choice);
+                  }
+                });
+
+                if (document.readyState === 'loading') {
+                  document.addEventListener('DOMContentLoaded', applyExistingChoice);
+                } else {
+                  applyExistingChoice();
+                }
+              })();
             `,
           }}
         />
@@ -156,9 +257,10 @@ export default function RootLayout({
         <SiteHeader />
         <main className="w-full">{children}</main>
         <SiteFooter />
+        <GoogleAnalytics gaId="G-8VJ7HX37V6" />
         <ChatWidget />
         <WhatsAppButton />
-        <CookieConsentBanner />
+        <CookieConsentBanner initialConsentChoice={initialConsentChoice} />
       </body>
     </html>
   );

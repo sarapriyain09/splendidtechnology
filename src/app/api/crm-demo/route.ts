@@ -16,9 +16,17 @@ function isValidEmail(value: string) {
   return /^\S+@\S+\.\S+$/.test(value);
 }
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+  return apiKey ? new Resend(apiKey) : null;
+}
 
 export async function POST(request: Request) {
+  const resend = getResendClient();
+  if (!resend) {
+    return NextResponse.json({ error: "Email service is not configured." }, { status: 503 });
+  }
+
   const body = (await request.json().catch(() => null)) as Partial<DemoPayload> | null;
 
   const name = (body?.name ?? "").trim();

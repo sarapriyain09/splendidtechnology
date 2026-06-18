@@ -189,7 +189,7 @@ export default function PredictiveMaintenancePage() {
           ))}
         </ul>
         <p className="mt-4 text-sm text-black/60">
-          Don't see your equipment listed? Contact us — if it has a measurable
+          Don&apos;t see your equipment listed? Contact us — if it has a measurable
           characteristic, we can monitor it.
         </p>
       </section>

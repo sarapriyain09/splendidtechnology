@@ -152,7 +152,7 @@ export default function SplendidERPLightPage() {
             without the enterprise complexity or price tag.
           </p>
           <blockquote className="mt-6 border-l-2 border-green-400 pl-4 text-white/70 italic">
-            "Simple ERP for growing businesses that don't need SAP complexity."
+            &ldquo;Simple ERP for growing businesses that don&apos;t need SAP complexity.&rdquo;
           </blockquote>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link

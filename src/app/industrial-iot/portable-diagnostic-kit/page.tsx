@@ -322,7 +322,7 @@ export default function PortableDiagnosticKitPage() {
                 Your Downtime Costs More Than the Kit
               </h2>
               <p className="text-sm leading-7 text-black/70">
-                Industrial customers don't compare this system against sensor prices or electronics components.
+                Industrial customers don&apos;t compare this system against sensor prices or electronics components.
                 They compare it against the cost of unplanned downtime — and that calculation changes everything.
               </p>
               <p className="text-sm leading-7 text-black/70">
@@ -368,7 +368,7 @@ export default function PortableDiagnosticKitPage() {
               How We Work With You
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-7 text-black/60">
-              You don't have to buy the kit upfront. We offer four flexible ways to access professional
+              You don&apos;t have to buy the kit upfront. We offer four flexible ways to access professional
               motor diagnostics — starting from a single on-site inspection.
             </p>
           </div>
