@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Sales | Splendid Growth Platform",
+  title: { absolute: "Velynxia Sales | Customer Growth Platform" },
   description:
     "Convert leads into revenue with sales pipelines, opportunities, quotations, forecasts, and follow-up workflows.",
   alternates: {

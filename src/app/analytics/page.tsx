@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Analytics | Splendid Growth Platform",
+  title: { absolute: "Velynxia Analytics | Customer Growth Platform" },
   description:
     "Analytics module for sales analytics, campaign analytics, call analytics, revenue forecasting, and conversion metrics.",
   alternates: {

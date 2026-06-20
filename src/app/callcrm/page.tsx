@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "CallCRM | Splendid Growth Platform",
+  title: { absolute: "Velynxia CallCRM | Customer Growth Platform" },
   description:
     "Engage customers and power outbound sales with click-to-call, campaign lists, call logging, and follow-up sequences.",
   alternates: {

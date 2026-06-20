@@ -1,30 +1,30 @@
 import Link from "next/link";
 
 const footerGroups = {
+  products: [
+    { href: "/crm", label: "Velynxia CRM" },
+    { href: "/sales", label: "Velynxia Sales" },
+    { href: "/callcrm", label: "Velynxia CallCRM" },
+    { href: "/marketing", label: "Velynxia Marketing" },
+    { href: "/automation", label: "Velynxia Automation" },
+    { href: "/analytics", label: "Velynxia Analytics" },
+  ],
   solutions: [
     { href: "/services/sales-crm", label: "CRM Solutions" },
     { href: "/services/ai-solutions", label: "AI Automation" },
     { href: "/services", label: "Business Systems" },
-    { href: "/contact", label: "Integrations" },
-  ],
-  products: [
-    { href: "/crm", label: "CRM" },
-    { href: "/sales", label: "Sales" },
-    { href: "/marketing", label: "Marketing" },
-    { href: "/callcrm", label: "CallCRM" },
-    { href: "/automation", label: "Automation" },
-    { href: "/analytics", label: "Analytics" },
+    { href: "/industries", label: "Industries" },
   ],
   resources: [
     { href: "/blog", label: "Blog" },
-    { href: "/blog", label: "Guides" },
     { href: "/portfolio", label: "Product Demos" },
+    { href: "/demo", label: "Book Demo" },
   ],
   company: [
     { href: "/about", label: "About" },
-    { href: "/pricing", label: "Pricing" },
     { href: "/contact", label: "Contact" },
-    { href: "/services", label: "Solutions" },
+    { href: "/privacy-policy", label: "Privacy Policy" },
+    { href: "/cookie-policy", label: "Cookie Policy" },
   ],
 };
 
@@ -34,9 +34,9 @@ export function SiteFooter() {
       <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d6086]">Solutions</h3>
+            <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d6086]">Products</h3>
             <ul className="mt-4 space-y-2.5">
-              {footerGroups.solutions.map((item) => (
+              {footerGroups.products.map((item) => (
                 <li key={item.href + item.label}>
                   <Link href={item.href} className="text-sm text-[#4f5f82] transition hover:text-[#0e1629]">
                     {item.label}
@@ -47,9 +47,9 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d6086]">Products</h3>
+            <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d6086]">Solutions</h3>
             <ul className="mt-4 space-y-2.5">
-              {footerGroups.products.map((item) => (
+              {footerGroups.solutions.map((item) => (
                 <li key={item.href + item.label}>
                   <Link href={item.href} className="text-sm text-[#4f5f82] transition hover:text-[#0e1629]">
                     {item.label}
@@ -109,7 +109,10 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-10 border-t border-[#dbe6ff] pt-6 text-xs text-[#6a7897]">
-          <p>Copyright {new Date().getFullYear()} Splendid Technology Ltd. All rights reserved.</p>
+          <p>
+            Velynxia is a Customer Growth Platform by Splendid Technology UK Ltd.
+          </p>
+          <p className="mt-1">Copyright {new Date().getFullYear()} Splendid Technology UK Ltd. All rights reserved.</p>
         </div>
       </div>
     </footer>

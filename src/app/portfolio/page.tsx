@@ -10,7 +10,7 @@ export const metadata = {
 const projects = [
   {
     category: "Sales CRM Platform",
-    title: "Splendid CRM Tool",
+    title: "Velynxia CRM",
     summary:
       "A sales CRM platform for lead capture, pipeline tracking, quote workflows, and follow-up automation so teams can convert more enquiries with clear visibility.",
     deliverables: [

@@ -71,7 +71,7 @@ const solutionCards = [
   },
 ];
 
-const whySplendid = [
+const whyVelynxia = [
   {
     title: "One Platform",
     description: "One login. One database. One view of your customers.",
@@ -134,19 +134,19 @@ export function HomePageContent() {
           className="relative mx-auto grid w-full max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-12 lg:px-8 lg:py-20"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#46618f]">Splendid Growth Platform</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#46618f]">Velynxia Growth Platform &middot; Grow Faster. Sell Smarter.</p>
             <h1 className="mt-3 text-balance text-4xl font-bold leading-tight text-[#0e1629] sm:text-5xl lg:text-6xl">
               One Platform for Customer Growth
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-[#37486e]">
-              Manage customers, generate leads, engage prospects and accelerate revenue with integrated CRM, Sales, Calling, Marketing and AI.
+              Manage customers, generate leads, engage prospects, and accelerate revenue with integrated CRM, Sales, CallCRM, Marketing, and AI-powered automation.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg">
-                <Link href="/demo">Book a Demo</Link>
+                <Link href="/demo">Book Demo</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/contact">Schedule a Consultation</Link>
+                <Link href="#products">Explore Platform</Link>
               </Button>
             </div>
             <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-[#4a5a7a]">
@@ -312,9 +312,9 @@ export function HomePageContent() {
       </motion.section>
 
       <motion.section id="why" variants={sectionFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-18 lg:px-8">
-        <h2 className="text-3xl font-bold text-[#0e1629] sm:text-4xl">Why Splendid Growth Platform?</h2>
+        <h2 className="text-3xl font-bold text-[#0e1629] sm:text-4xl">Why Velynxia?</h2>
         <motion.div variants={staggerWrap} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {whySplendid.map((item) => (
+          {whyVelynxia.map((item) => (
             <motion.article key={item.title} variants={cardFade} whileHover={{ y: -5 }} transition={{ duration: 0.2 }} className="rounded-2xl border border-[#dce8ff] bg-[linear-gradient(160deg,#ffffff_0%,#f6fbff_100%)] p-5">
               <h3 className="text-lg font-bold text-[#182c54]">{item.title}</h3>
               <p className="mt-2 text-sm leading-6 text-[#485a7e]">{item.description}</p>
@@ -332,7 +332,7 @@ export function HomePageContent() {
           />
           <h2 className="text-3xl font-bold sm:text-4xl">Ready to Grow?</h2>
           <p className="mt-3 max-w-2xl text-sm text-white/85">
-            Book a demo and discover how Splendid Growth Platform helps SMEs attract, manage and convert customers.
+            Book a demo and discover how Velynxia helps SMEs attract, manage and convert customers.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg">

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { HomePageContent } from "@/components/home/HomePageContent";
 
 export const metadata: Metadata = {
-  title: "CRM & AI Automation for Growing Businesses | Splendid Technology",
+  title: "One Platform for Customer Growth",
   description:
-    "CRM and AI automation for growing businesses. Improve sales automation, customer management, and workflow automation with practical systems from Splendid Technology.",
+    "Velynxia brings CRM, Sales, CallCRM, Marketing, and AI-powered automation into one Customer Growth Platform. Manage customers, generate leads, and accelerate revenue.",
   keywords: [
     "crm",
     "ai automation",
@@ -17,16 +17,17 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "CRM & AI Automation for Growing Businesses",
+    title: "Velynxia | One Platform for Customer Growth",
     description:
-      "CRM and AI automation for growing businesses with practical systems for sales automation and customer management.",
-    url: "https://www.splendidtechnology.co.uk/",
+      "Integrated CRM, Sales, CallCRM, Marketing, and AI automation for growing SMEs. Grow Faster. Sell Smarter.",
+    url: "/",
+    siteName: "Velynxia",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CRM & AI Automation for Growing Businesses",
+    title: "Velynxia | One Platform for Customer Growth",
     description:
-      "CRM and AI automation for growing businesses with practical systems for sales automation and customer management.",
+      "Integrated CRM, Sales, CallCRM, Marketing, and AI automation for growing SMEs. Grow Faster. Sell Smarter.",
   },
 };
 
@@ -36,7 +37,7 @@ export default function Home() {
     "@type": "Organization",
     name: "Splendid Technology Ltd",
     url: "https://www.splendidtechnology.co.uk/",
-    logo: "https://www.splendidtechnology.co.uk/images/brand/logo-splendid.png",
+    logo: "https://www.splendidtechnology.co.uk/images/brand/velynxia-Logo.png",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",

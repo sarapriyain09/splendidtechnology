@@ -34,11 +34,11 @@ function getSiteUrl(): string {
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Splendid Technology | CRM and AI Automation for SMEs",
-    template: "%s | Splendid Technology",
+    default: "Velynxia | One Platform for Customer Growth",
+    template: "%s | Velynxia",
   },
   description:
-    "Splendid Technology helps UK SMEs grow with CRM, sales automation, customer management, and AI workflow automation.",
+    "Velynxia is a Customer Growth Platform with integrated CRM, Sales, CallCRM, Marketing, and AI-powered automation to help SMEs grow faster and sell smarter.",
   keywords: [
     "crm for smes uk",
     "crm implementation uk",
@@ -54,16 +54,17 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Splendid Technology | CRM and AI Automation for SMEs",
+    title: "Velynxia | One Platform for Customer Growth",
     description:
-      "CRM, AI automation, and workflow integrations for growing UK SMEs.",
+      "Integrated CRM, Sales, CallCRM, Marketing, and AI automation for growing SMEs. Grow Faster. Sell Smarter.",
     url: "/",
+    siteName: "Velynxia",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Splendid Technology | CRM and AI Automation for SMEs",
+    title: "Velynxia | One Platform for Customer Growth",
     description:
-      "CRM, AI automation, and workflow integrations for growing UK SMEs.",
+      "Integrated CRM, Sales, CallCRM, Marketing, and AI automation for growing SMEs. Grow Faster. Sell Smarter.",
   },
   robots: {
     index: true,
@@ -88,7 +89,7 @@ export default async function RootLayout({
     "@type": "Organization",
     name: "Splendid Technology Ltd",
     url: siteUrl,
-    logo: `${siteUrl}/images/hero/logo.png`,
+    logo: `${siteUrl}/images/brand/velynxia-Logo.png`,
     email: "info@splendidtechnology.co.uk",
     telephone: "+44 7723 144910",
     contactPoint: [
@@ -109,7 +110,7 @@ export default async function RootLayout({
     "@type": "LocalBusiness",
     name: "Splendid Technology Ltd",
     url: siteUrl,
-    image: `${siteUrl}/images/hero/logo.png`,
+    image: `${siteUrl}/images/brand/velynxia-Logo.png`,
     telephone: "+44 7723 144910",
     email: "info@splendidtechnology.co.uk",
     areaServed: {

@@ -8,6 +8,7 @@ type MenuItem = {
   href: string;
   label: string;
   description?: string;
+  comingSoon?: boolean;
 };
 
 const solutionItems: MenuItem[] = [
@@ -17,13 +18,13 @@ const solutionItems: MenuItem[] = [
   { href: "/contact", label: "Integrations", description: "Outlook, Microsoft 365, Twilio, WhatsApp, OpenAI" },
 ];
 
-const productItems: MenuItem[] = [
+const platformItems: MenuItem[] = [
   { href: "/crm", label: "CRM", description: "Contacts, companies, tasks, and customer records" },
   { href: "/sales", label: "Sales", description: "Leads, opportunities, pipelines, and quotations" },
-  { href: "/marketing", label: "Marketing", description: "LinkedIn, email, SMS, forms, and campaigns" },
   { href: "/callcrm", label: "CallCRM", description: "Click-to-call, call logging, and follow-up sequences" },
-  { href: "/automation", label: "Automation", description: "AI workflows, summaries, and recommendations" },
-  { href: "/analytics", label: "Analytics", description: "Revenue, conversion, and performance insights" },
+  { href: "/marketing", label: "Marketing", description: "LinkedIn, email, SMS, forms, and campaigns" },
+  { href: "/automation", label: "Automation", description: "AI workflows, summaries, and recommendations", comingSoon: true },
+  { href: "/analytics", label: "Analytics", description: "Revenue, conversion, and performance insights", comingSoon: true },
 ];
 
 function DesktopDropdown({ label, items }: { label: string; items: MenuItem[] }) {
@@ -43,7 +44,12 @@ function DesktopDropdown({ label, items }: { label: string; items: MenuItem[] })
             href={item.href}
             className="block rounded-xl px-3 py-2.5 transition hover:bg-[#f5f9ff]"
           >
-            <p className="text-sm font-semibold text-[#0f1f3b]">{item.label}</p>
+            <p className="flex items-center gap-2 text-sm font-semibold text-[#0f1f3b]">
+              {item.label}
+              {item.comingSoon ? (
+                <span className="rounded-full border border-[#ffd6a8] bg-[#fff3e5] px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] text-[#9b5a00]">Soon</span>
+              ) : null}
+            </p>
             {item.description ? <p className="mt-0.5 text-xs text-[#5e6d8f]">{item.description}</p> : null}
           </Link>
         ))}
@@ -74,8 +80,8 @@ export function SiteHeader() {
       <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center">
           <Image
-            src="/images/brand/logo-splendid.png"
-            alt="Splendid Technology"
+            src="/images/brand/velynxia-Logo.png"
+            alt="Velynxia"
             width={620}
             height={248}
             className="h-auto w-[150px] object-contain sm:w-[170px] lg:w-[190px]"
@@ -87,10 +93,16 @@ export function SiteHeader() {
           <Link href="/" className="rounded-lg px-3 py-2 text-sm font-semibold text-[#223252] transition hover:bg-white/80">
             Home
           </Link>
+          <DesktopDropdown label="Platform" items={platformItems} />
           <DesktopDropdown label="Solutions" items={solutionItems} />
-          <DesktopDropdown label="Products" items={productItems} />
+          <Link href="/industries" className="rounded-lg px-3 py-2 text-sm font-semibold text-[#223252] transition hover:bg-white/80">
+            Industries
+          </Link>
           <Link href="/pricing" className="rounded-lg px-3 py-2 text-sm font-semibold text-[#223252] transition hover:bg-white/80">
             Pricing
+          </Link>
+          <Link href="/blog" className="rounded-lg px-3 py-2 text-sm font-semibold text-[#223252] transition hover:bg-white/80">
+            Resources
           </Link>
           <Link href="/about" className="rounded-lg px-3 py-2 text-sm font-semibold text-[#223252] transition hover:bg-white/80">
             About
@@ -133,6 +145,21 @@ export function SiteHeader() {
               Home
             </Link>
 
+            <p className="px-2 pt-3 text-[10px] font-bold uppercase tracking-widest text-[#e25f24]">Platform</p>
+            {platformItems.map((item) => (
+              <Link
+                key={item.href + item.label}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-[#2d4168] hover:bg-[#f5f9ff]"
+              >
+                {item.label}
+                {item.comingSoon ? (
+                  <span className="rounded-full border border-[#ffd6a8] bg-[#fff3e5] px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] text-[#9b5a00]">Soon</span>
+                ) : null}
+              </Link>
+            ))}
+
             <p className="px-2 pt-3 text-[10px] font-bold uppercase tracking-widest text-[#e25f24]">Solutions</p>
             {solutionItems.map((item) => (
               <Link
@@ -145,19 +172,14 @@ export function SiteHeader() {
               </Link>
             ))}
 
-            <p className="px-2 pt-3 text-[10px] font-bold uppercase tracking-widest text-[#e25f24]">Products</p>
-            {productItems.map((item) => (
-              <Link
-                key={item.href + item.label}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className="block rounded-lg px-2 py-2 text-sm text-[#2d4168] hover:bg-[#f5f9ff]"
-              >
-                {item.label}
-              </Link>
-            ))}
+            <Link href="/industries" onClick={() => setMobileOpen(false)} className="block rounded-lg px-2 py-2 text-sm text-[#2d4168] hover:bg-[#f5f9ff]">
+              Industries
+            </Link>
             <Link href="/pricing" onClick={() => setMobileOpen(false)} className="block rounded-lg px-2 py-2 text-sm text-[#2d4168] hover:bg-[#f5f9ff]">
               Pricing
+            </Link>
+            <Link href="/blog" onClick={() => setMobileOpen(false)} className="block rounded-lg px-2 py-2 text-sm text-[#2d4168] hover:bg-[#f5f9ff]">
+              Resources
             </Link>
             <Link href="/about" onClick={() => setMobileOpen(false)} className="block rounded-lg px-2 py-2 text-sm text-[#2d4168] hover:bg-[#f5f9ff]">
               About

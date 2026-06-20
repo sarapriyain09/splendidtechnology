@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Splendid Growth Platform Pricing | Splendid Technology",
+  title: "Velynxia Growth Platform Pricing",
   description:
     "Simple modular pricing for SMEs: base CRM plus Sales, CallCRM, Marketing, Automation, and Analytics apps.",
   alternates: {
@@ -105,7 +105,7 @@ export default function PricingPage() {
     <div className="bg-[#f7faff]">
       <section className="bg-[#0b1f3a] py-16 text-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">Splendid Growth Platform Pricing</p>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">Velynxia Growth Platform Pricing</p>
           <h1 className="text-4xl font-bold leading-tight sm:text-5xl">Simple, Modular Pricing for SMEs</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-300">
             Start with a base platform and scale with the apps you need. Designed to stay clear, flexible, and affordable.
@@ -191,7 +191,7 @@ export default function PricingPage() {
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">Competitive Positioning</p>
           <h2 className="text-3xl font-bold">Built to Be Simpler and More Affordable for SMEs</h2>
           <p className="mt-4 max-w-3xl text-slate-300">
-            This pricing keeps Splendid below enterprise-heavy platforms while differentiating through stronger outbound engagement with CallCRM and integrated workflows.
+            This pricing keeps Velynxia below enterprise-heavy platforms while differentiating through stronger outbound engagement with CallCRM and integrated workflows.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
