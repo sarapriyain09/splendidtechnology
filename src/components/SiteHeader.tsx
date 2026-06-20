@@ -84,7 +84,7 @@ export function SiteHeader() {
             alt="Velynxia"
             width={1044}
             height={639}
-            className="h-auto w-[150px] object-contain sm:w-[170px] lg:w-[190px]"
+            className="h-[60px] w-auto object-contain sm:h-[72px] lg:h-[80px]"
             priority
           />
         </Link>
