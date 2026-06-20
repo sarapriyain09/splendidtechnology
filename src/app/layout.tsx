@@ -59,12 +59,21 @@ export const metadata: Metadata = {
       "Integrated CRM, Sales, CallCRM, Marketing, and AI automation for growing SMEs. Grow Faster. Sell Smarter.",
     url: "/",
     siteName: "Velynxia",
+    images: [
+      {
+        url: "/images/brand/velynxia-og.png",
+        width: 1200,
+        height: 630,
+        alt: "Velynxia | One Platform for Customer Growth",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Velynxia | One Platform for Customer Growth",
     description:
       "Integrated CRM, Sales, CallCRM, Marketing, and AI automation for growing SMEs. Grow Faster. Sell Smarter.",
+    images: ["/images/brand/velynxia-og.png"],
   },
   robots: {
     index: true,
