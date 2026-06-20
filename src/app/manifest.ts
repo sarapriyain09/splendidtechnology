@@ -18,7 +18,7 @@ export default function manifest(): MetadataRoute.Manifest {
       },
       {
         src: "/images/brand/velynxia-Logo.png",
-        sizes: "620x248",
+        sizes: "1044x639",
         type: "image/png",
       },
     ],

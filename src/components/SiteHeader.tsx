@@ -82,8 +82,8 @@ export function SiteHeader() {
           <Image
             src="/images/brand/velynxia-Logo.png"
             alt="Velynxia"
-            width={620}
-            height={248}
+            width={1044}
+            height={639}
             className="h-auto w-[150px] object-contain sm:w-[170px] lg:w-[190px]"
             priority
           />
