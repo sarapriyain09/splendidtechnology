@@ -89,6 +89,6 @@ Industrial SMEs that sequence this transition properly gain speed, consistency, 
 
 Useful resources:
 
-- Engineering digitalisation services: https://www.splendidtechnology.co.uk/services
-- Digitalisation workflow services: https://www.splendidtechnology.co.uk/services/software-development
-- Discuss your rollout plan: https://www.splendidtechnology.co.uk/contact
+- Engineering digitalisation services: https://www.velynxia.com/services
+- Digitalisation workflow services: https://www.velynxia.com/services/software-development
+- Discuss your rollout plan: https://www.velynxia.com/contact

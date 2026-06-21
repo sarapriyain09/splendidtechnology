@@ -85,7 +85,7 @@ export function CrmDemoForm({ defaultPlan = "" }: { defaultPlan?: string }) {
         <h2 className="mt-4 text-xl font-bold text-[#0b1f3a]">Request received!</h2>
         <p className="mt-2 text-sm leading-6 text-black/60">
           We&apos;ll set up your personalised demo on{" "}
-          <span className="font-semibold text-green-700">crm.splendidtechnology.co.uk</span> and
+          <span className="font-semibold text-green-700">crm.velynxia.com</span> and
           send your login details within 1 business day.
         </p>
       </div>

@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Smart Motor Monitoring | Splendid Technology Industrial IoT",
+  title: "Smart Motor Monitoring | Velynxia Industrial IoT",
   description:
     "Real-time motor health monitoring for UK manufacturers. Detect overheating, vibration anomalies, and performance degradation before they cause downtime. Affordable solutions for SMEs.",
   keywords: [

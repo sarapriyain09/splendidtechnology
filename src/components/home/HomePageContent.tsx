@@ -355,7 +355,7 @@ export function HomePageContent() {
               <a href="https://wa.me/447723144910" target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#dce8ff] bg-white px-4 py-2 text-sm font-semibold text-[#1f3158] shadow-sm hover:bg-[#f5f9ff]">
                 WhatsApp
               </a>
-              <a href="mailto:info@splendidtechnology.co.uk" className="rounded-full border border-[#dce8ff] bg-white px-4 py-2 text-sm font-semibold text-[#1f3158] shadow-sm hover:bg-[#f5f9ff]">
+              <a href="mailto:info@velynxia.com" className="rounded-full border border-[#dce8ff] bg-white px-4 py-2 text-sm font-semibold text-[#1f3158] shadow-sm hover:bg-[#f5f9ff]">
                 Email
               </a>
               <Link href="/contact" className="rounded-full border border-[#dce8ff] bg-white px-4 py-2 text-sm font-semibold text-[#1f3158] shadow-sm hover:bg-[#f5f9ff]">

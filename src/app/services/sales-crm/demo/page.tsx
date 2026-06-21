@@ -5,24 +5,24 @@ import { CrmDemoForm } from "./CrmDemoForm";
 type Props = { searchParams: Promise<{ plan?: string }> };
 
 export const metadata: Metadata = {
-  title: "Request a Free CRM Demo | Splendid Technology",
+  title: "Request a Free CRM Demo | Velynxia",
   description:
-    "Request free demo access to our Prospect-to-Quote CRM. We'll set up a personalised account on crm.splendidtechnology.co.uk tailored to your industry and sales process.",
+    "Request free demo access to our Prospect-to-Quote CRM. We'll set up a personalised account on crm.velynxia.com tailored to your industry and sales process.",
   alternates: {
     canonical: "/services/sales-crm/demo",
   },
   openGraph: {
     type: "website",
-    title: "Request a Free CRM Demo | Splendid Technology",
+    title: "Request a Free CRM Demo | Velynxia",
     description:
-      "Get a personalised demo account on crm.splendidtechnology.co.uk — set up to match your industry and sales workflow.",
-    url: "https://www.splendidtechnology.co.uk/services/sales-crm/demo",
+      "Get a personalised demo account on crm.velynxia.com — set up to match your industry and sales workflow.",
+    url: "https://www.velynxia.com/services/sales-crm/demo",
   },
 };
 
 const included = [
   "Personalised setup — configured for your industry",
-  "Live demo account on crm.splendidtechnology.co.uk",
+  "Live demo account on crm.velynxia.com",
   "Lead & contact management out of the box",
   "Quote generation tailored to your workflow",
   "Follow-up reminders & pipeline tracking",
@@ -87,7 +87,7 @@ export default async function CrmDemoPage({ searchParams }: Props) {
                   {[
                     { step: "1", title: "You submit this form", desc: "Takes less than 2 minutes." },
                     { step: "2", title: "We configure your account", desc: "We set up your pipeline, quote templates, and prospect fields for your industry." },
-                    { step: "3", title: "You receive login details", desc: "Email with your username and password for crm.splendidtechnology.co.uk." },
+                    { step: "3", title: "You receive login details", desc: "Email with your username and password for crm.velynxia.com." },
                     { step: "4", title: "We walk you through it", desc: "Optional 20-minute call to show you around and answer questions." },
                   ].map((item) => (
                     <li key={item.step} className="flex gap-3">

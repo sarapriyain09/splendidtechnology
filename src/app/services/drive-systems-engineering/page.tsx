@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Drive Systems Engineering Services UK | LV, MV, DC, AFE | Splendid Technology",
+  title: "Drive Systems Engineering Services UK | LV, MV, DC, AFE | Velynxia",
   description:
     "Drive systems engineering services for UK industry including LV and MV AC drives, DC drives, AFE systems, common DC bus architecture, protection coordination, and FAT support.",
   keywords: [

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Industrial IoT for Manufacturers UK",
     description:
       "Condition monitoring and predictive maintenance solutions for UK manufacturers.",
-    url: "https://www.splendidtechnology.co.uk/services/industrial-iot-for-manufacturers-uk",
+    url: "https://www.velynxia.com/services/industrial-iot-for-manufacturers-uk",
   },
 };
 
@@ -78,10 +78,10 @@ export default function IndustrialIoTForManufacturersUKPage() {
     provider: {
       "@type": "Organization",
       name: "Splendid Technology Ltd",
-      url: "https://www.splendidtechnology.co.uk",
+      url: "https://www.velynxia.com",
     },
     areaServed: "GB",
-    url: "https://www.splendidtechnology.co.uk/services/industrial-iot-for-manufacturers-uk",
+    url: "https://www.velynxia.com/services/industrial-iot-for-manufacturers-uk",
   };
 
   return (

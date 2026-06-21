@@ -45,13 +45,13 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Splendid Technology Ltd",
-    url: "https://www.splendidtechnology.co.uk/",
-    logo: "https://www.splendidtechnology.co.uk/images/brand/velynxia-Logo.png",
+    url: "https://www.velynxia.com/",
+    logo: "https://www.velynxia.com/images/brand/velynxia-Logo.png",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
       telephone: "+44 7723 144910",
-      email: "info@splendidtechnology.co.uk",
+      email: "info@velynxia.com",
       areaServed: "GB",
       availableLanguage: ["en-GB"],
     },
@@ -72,7 +72,7 @@ export default function Home() {
     provider: {
       "@type": "Organization",
       name: "Splendid Technology Ltd",
-      url: "https://www.splendidtechnology.co.uk/",
+      url: "https://www.velynxia.com/",
     },
   };
 

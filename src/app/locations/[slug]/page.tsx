@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllLocations, getLocationBySlug } from "@/lib/locations";
 
@@ -27,7 +27,7 @@ export async function generateMetadata({
 
   const cityMeta: Record<string, CityMeta> = {
     leicester: {
-      title: "CRM Consultant Leicester | AI Automation and Workflow Systems | Splendid Technology",
+      title: "CRM Consultant Leicester | AI Automation and Workflow Systems | Velynxia",
       description:
         "Splendid Technology provides CRM consultancy, AI automation, and workflow systems for Leicester SMEs.",
       keywords: [
@@ -40,7 +40,7 @@ export async function generateMetadata({
       ],
     },
     birmingham: {
-      title: "CRM Consultant Birmingham | AI Automation and Workflow Systems | Splendid Technology",
+      title: "CRM Consultant Birmingham | AI Automation and Workflow Systems | Velynxia",
       description:
         "CRM consultancy and AI automation services for Birmingham SMEs, including pipeline workflows and integrations.",
       keywords: [
@@ -53,7 +53,7 @@ export async function generateMetadata({
       ],
     },
     manchester: {
-      title: "CRM Consultant Manchester | AI Automation and Workflow Systems | Splendid Technology",
+      title: "CRM Consultant Manchester | AI Automation and Workflow Systems | Velynxia",
       description:
         "CRM consultancy and AI automation services for Manchester SMEs, including sales pipeline workflows and integrations.",
       keywords: [
@@ -66,7 +66,7 @@ export async function generateMetadata({
       ],
     },
     london: {
-      title: "CRM Consultant London | AI Automation and Workflow Systems | Splendid Technology",
+      title: "CRM Consultant London | AI Automation and Workflow Systems | Velynxia",
       description:
         "Splendid Technology delivers CRM consultancy, AI automation, and workflow systems for London SMEs.",
       keywords: [
@@ -200,18 +200,18 @@ export default async function LocationPage({
     description:
       localSchemaByCity[loc.slug]?.description ??
       `Digital services for businesses in ${loc.name} and nearby UK areas.`,
-    url: `https://www.splendidtechnology.co.uk/locations/${loc.slug}`,
+    url: `https://www.velynxia.com/locations/${loc.slug}`,
     areaServed: {
       "@type": "City",
       name: loc.name,
     },
     addressCountry: "GB",
-    email: "info@splendidtechnology.co.uk",
+    email: "info@velynxia.com",
     telephone: "+44 7723 144910",
     provider: {
       "@type": "Organization",
       name: "Splendid Technology Ltd",
-      url: "https://www.splendidtechnology.co.uk",
+      url: "https://www.velynxia.com",
     },
   };
 
@@ -227,9 +227,9 @@ export default async function LocationPage({
     provider: {
       "@type": "Organization",
       name: "Splendid Technology Ltd",
-      url: "https://www.splendidtechnology.co.uk",
+      url: "https://www.velynxia.com",
     },
-    url: `https://www.splendidtechnology.co.uk/locations/${loc.slug}`,
+    url: `https://www.velynxia.com/locations/${loc.slug}`,
   };
 
   return (

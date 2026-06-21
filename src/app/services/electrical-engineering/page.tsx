@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Electrical Engineering Services UK | SLD, I/O, Panel Design | Splendid Technology",
+  title: "Electrical Engineering Services UK | SLD, I/O, Panel Design | Velynxia",
   description:
     "Electrical engineering services for UK industrial projects including detailed engineering, single line diagrams, I/O lists, panel design, cable schedules, and protection studies.",
   keywords: [

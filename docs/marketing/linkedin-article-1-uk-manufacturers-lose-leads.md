@@ -101,5 +101,5 @@ If your team is currently relying on inboxes, spreadsheets, or inconsistent remi
 
 Learn more about a practical implementation approach here:
 
-- CRM for manufacturers UK: https://www.splendidtechnology.co.uk/services/crm-for-manufacturers-uk
-- Book a CRM assessment: https://www.splendidtechnology.co.uk/contact
+- CRM for manufacturers UK: https://www.velynxia.com/services/crm-for-manufacturers-uk
+- Book a CRM assessment: https://www.velynxia.com/contact

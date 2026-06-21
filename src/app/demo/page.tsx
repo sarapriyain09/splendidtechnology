@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "DemoCRM Access | CRM and AI Automation Demo | Splendid Technology",
+  title: "DemoCRM Access | CRM and AI Automation Demo | Velynxia",
   description:
     "Access DemoCRM and explore CRM, sales automation, customer management, and AI automation workflows.",
   keywords: [
@@ -51,11 +51,11 @@ export default function DemoPage() {
           <div>
             <h2 className="text-lg font-semibold text-[#0b1f3a]">Open Demo Environment</h2>
             <p className="mt-1 text-sm text-black/60">
-              URL: https://democrm.splendidtechnology.co.uk/
+              URL: https://democrm.velynxia.com/
             </p>
           </div>
           <a
-            href="https://democrm.splendidtechnology.co.uk/"
+            href="https://democrm.velynxia.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-lg bg-green-600 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-green-700"

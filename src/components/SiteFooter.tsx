@@ -89,8 +89,8 @@ export function SiteFooter() {
             <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[#4d6086]">Contact</h3>
             <div className="mt-4 space-y-2.5 text-sm text-[#4f5f82]">
               <p>
-                <a href="mailto:info@splendidtechnology.co.uk" className="transition hover:text-[#0e1629]">
-                  info@splendidtechnology.co.uk
+                <a href="mailto:info@velynxia.com" className="transition hover:text-[#0e1629]">
+                  info@velynxia.com
                 </a>
               </p>
               <p>

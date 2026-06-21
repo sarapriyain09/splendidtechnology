@@ -50,8 +50,8 @@ export async function POST(request: Request) {
   const planLabel = plan || "Not specified";
 
   const { error } = await resend.emails.send({
-    from: "Splendid Technology Website <noreply@splendidtechnology.co.uk>",
-    to: ["info@splendidtechnology.co.uk"],
+    from: "Velynxia Website <noreply@velynxia.com>",
+    to: ["info@velynxia.com"],
     replyTo: email,
     subject: `CRM Demo Request — ${name} (${business})`,
     text: [
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
       `Current process:`,
       `  ${currentProcess || "Not provided"}`,
       ``,
-      `Action: Set up demo account on crm.splendidtechnology.co.uk and reply to ${email}`,
+      `Action: Set up demo account on crm.velynxia.com and reply to ${email}`,
     ].join("\n"),
     html: `
       <h2 style="color:#0b1f3a">CRM Demo Request</h2>
@@ -87,7 +87,7 @@ export async function POST(request: Request) {
       <p style="font-size:14px;color:#333">${currentProcess ? currentProcess.replace(/\n/g, "<br />") : "Not provided"}</p>
       <hr style="margin:24px 0;border:none;border-top:1px solid #eee"/>
       <p style="font-size:13px;color:#16a34a;font-weight:600">
-        &#9654; Action: Set up a demo account on crm.splendidtechnology.co.uk and reply to ${email}
+        &#9654; Action: Set up a demo account on crm.velynxia.com and reply to ${email}
       </p>
     `,
   });

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "CallCRM | Customer Call Management Software UK | Splendid Technology",
+  title: "CallCRM | Customer Call Management Software UK | Velynxia",
   description:
     "CallCRM helps businesses route, track, record, and follow up customer calls from one dashboard. Includes call routing, missed call alerts, call logs, and CRM sync.",
   alternates: {

@@ -6,9 +6,9 @@ Use these articles from leadership or company profiles. Include one contextual b
 
 Title: Why UK Manufacturers Lose Leads Between Enquiry and Quote
 
-Primary link target: https://www.splendidtechnology.co.uk/services/crm-for-manufacturers-uk
+Primary link target: https://www.velynxia.com/services/crm-for-manufacturers-uk
 
-Secondary CTA: https://www.splendidtechnology.co.uk/contact
+Secondary CTA: https://www.velynxia.com/contact
 
 Outline:
 - Where lead leakage happens in industrial sales cycles
@@ -24,9 +24,9 @@ Suggested anchor text:
 
 Title: Predictive Maintenance for SMEs: Start Small, Prove ROI, Scale Fast
 
-Primary link target: https://www.splendidtechnology.co.uk/services/industrial-iot-for-manufacturers-uk
+Primary link target: https://www.velynxia.com/services/industrial-iot-for-manufacturers-uk
 
-Secondary CTA: https://www.splendidtechnology.co.uk/contact
+Secondary CTA: https://www.velynxia.com/contact
 
 Outline:
 - Common downtime cost blind spots
@@ -42,9 +42,9 @@ Suggested anchor text:
 
 Title: CRM vs ERP for Manufacturing SMEs: How to Sequence Digitalisation
 
-Primary link target: https://www.splendidtechnology.co.uk/services/software-development
+Primary link target: https://www.velynxia.com/services/software-development
 
-Secondary CTA: https://www.splendidtechnology.co.uk/services/crm-for-manufacturers-uk
+Secondary CTA: https://www.velynxia.com/services/crm-for-manufacturers-uk
 
 Outline:
 - Bottleneck-based prioritization model
@@ -60,9 +60,9 @@ Suggested anchor text:
 
 Title: From Spreadsheets to Connected Operations in Industrial SMEs
 
-Primary link target: https://www.splendidtechnology.co.uk/services
+Primary link target: https://www.velynxia.com/services
 
-Secondary CTA: https://www.splendidtechnology.co.uk/contact
+Secondary CTA: https://www.velynxia.com/contact
 
 Outline:
 - Why spreadsheet dependence creates hidden operational risk
@@ -78,9 +78,9 @@ Suggested anchor text:
 
 Title: Building a Reliable Supplier Discovery Workflow for Manufacturers
 
-Primary link target: https://www.splendidtechnology.co.uk/blog/supplier-discovery-process-for-manufacturers
+Primary link target: https://www.velynxia.com/blog/supplier-discovery-process-for-manufacturers
 
-Secondary CTA: https://www.splendidtechnology.co.uk/services/software-development#erp
+Secondary CTA: https://www.velynxia.com/services/software-development#erp
 
 Outline:
 - Sourcing process bottlenecks and data problems

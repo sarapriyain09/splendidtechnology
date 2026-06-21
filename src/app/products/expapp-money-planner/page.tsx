@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ExpApp — Free Household Budget & Net Worth Planner | Splendid Technology",
+  title: "ExpApp — Free Household Budget & Net Worth Planner | Velynxia",
   description:
     "ExpApp is a free household budget planner and net worth tracker. Capture monthly income, track expenses, manage EMI loan repayments, and see exactly what you have left over — free forever.",
   keywords: [

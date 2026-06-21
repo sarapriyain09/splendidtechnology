@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "MTBF Calculator & Reliability Tool | Splendid Technology — Launching Soon",
+  title: "MTBF Calculator & Reliability Tool | Velynxia — Launching Soon",
   description:
     "A purpose-built MTBF (Mean Time Between Failures) tool for UK industrial SMEs. Track failure history, calculate reliability metrics, and optimise maintenance intervals — all in one platform.",
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: "/tools/mtbf",
   },
   openGraph: {
-    title: "MTBF Tool — Launching Soon | Splendid Technology",
+    title: "MTBF Tool — Launching Soon | Velynxia",
     description:
       "Track failure history, calculate MTBF, and optimise your maintenance intervals. Built for UK manufacturing and industrial SMEs.",
   },

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AI for Manufacturing SMEs | Practical Automation UK | Splendid Technology",
+  title: "AI for Manufacturing SMEs | Practical Automation UK | Velynxia",
   description:
     "AI for manufacturing SMEs in the UK: automate enquiry triage, workflow routing, and operational reporting with practical implementation.",
   alternates: { canonical: "/industries/ai-for-manufacturing-smes" },

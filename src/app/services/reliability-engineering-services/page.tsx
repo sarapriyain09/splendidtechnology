@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Reliability Engineering Services | UK Industrial SMEs | Splendid Technology",
+  title: "Reliability Engineering Services | UK Industrial SMEs | Velynxia",
   description:
     "Reliability engineering services for UK manufacturers and industrial SMEs: asset criticality, failure analysis, maintenance strategy, and reliability KPI visibility.",
   keywords: [
@@ -61,10 +61,10 @@ export default function ReliabilityEngineeringServicesPage() {
     provider: {
       "@type": "Organization",
       name: "Splendid Technology Ltd",
-      url: "https://www.splendidtechnology.co.uk",
+      url: "https://www.velynxia.com",
     },
     areaServed: "GB",
-    url: "https://www.splendidtechnology.co.uk/services/reliability-engineering-services",
+    url: "https://www.velynxia.com/services/reliability-engineering-services",
   };
 
   return (

@@ -50,8 +50,8 @@ export async function POST(request: Request) {
 
   // Send email notification via Resend
   const { error: emailError } = await resend.emails.send({
-    from: "Splendid Technology Website <noreply@splendidtechnology.co.uk>",
-    to: ["info@splendidtechnology.co.uk"],
+    from: "Velynxia Website <noreply@velynxia.com>",
+    to: ["info@velynxia.com"],
     ...(email ? { replyTo: email } : {}),
     subject: `New chat message${name ? ` from ${name}` : ""}`,
     text: [

@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Splendid Accounting | SME Accounting Software UK | Splendid Technology",
+  title: "Splendid Accounting | SME Accounting Software UK | Velynxia",
   description:
     "Splendid Accounting — purpose-built accounting software for UK SMEs and engineering businesses. Job costing, asset accounting, invoicing, VAT returns, and financial reporting.",
   keywords: [

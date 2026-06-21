@@ -28,7 +28,7 @@ export async function generateMetadata({
       type: "article",
       title: study.title,
       description: study.summary,
-      url: `https://www.splendidtechnology.co.uk/engineering-case-studies/${study.slug}`,
+      url: `https://www.velynxia.com/engineering-case-studies/${study.slug}`,
     },
   };
 }
@@ -54,9 +54,9 @@ export default async function EngineeringCaseStudyDetailPage({
     publisher: {
       "@type": "Organization",
       name: "Splendid Technology Ltd",
-      url: "https://www.splendidtechnology.co.uk",
+      url: "https://www.velynxia.com",
     },
-    mainEntityOfPage: `https://www.splendidtechnology.co.uk/engineering-case-studies/${study.slug}`,
+    mainEntityOfPage: `https://www.velynxia.com/engineering-case-studies/${study.slug}`,
   };
 
   return (

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Rajagopalan Saravanan | Founder | Splendid Technology UK",
+  title: "Rajagopalan Saravanan | Founder | Velynxia UK",
   description:
     "Rajagopalan Saravanan is a UK-based business systems and CRM leader with 25+ years of experience in application engineering, services sales, Salesforce workflows, customer management, and AI automation.",
   alternates: {
@@ -17,11 +17,11 @@ export const metadata: Metadata = {
     "Workflow Automation",
   ],
   openGraph: {
-    title: "Rajagopalan Saravanan | Founder | Splendid Technology UK",
+    title: "Rajagopalan Saravanan | Founder | Velynxia UK",
     description:
       "Founder profile: 25+ years across engineering leadership, CRM, AI automation, and practical business systems for SMEs.",
     type: "profile",
-    url: "https://www.splendidtechnology.co.uk/about/rajagopalan-saravanan",
+    url: "https://www.velynxia.com/about/rajagopalan-saravanan",
   },
 };
 
@@ -61,12 +61,12 @@ export default function FounderPage() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Rajagopalan Saravanan",
-    url: "https://www.splendidtechnology.co.uk/about/rajagopalan-saravanan",
+    url: "https://www.velynxia.com/about/rajagopalan-saravanan",
     jobTitle: "Founder",
     worksFor: {
       "@type": "Organization",
       name: "Splendid Technology",
-      url: "https://www.splendidtechnology.co.uk",
+      url: "https://www.velynxia.com",
     },
     alumniOf: [
       {
@@ -98,19 +98,19 @@ export default function FounderPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.splendidtechnology.co.uk/",
+        item: "https://www.velynxia.com/",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "About",
-        item: "https://www.splendidtechnology.co.uk/about",
+        item: "https://www.velynxia.com/about",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Rajagopalan Saravanan",
-        item: "https://www.splendidtechnology.co.uk/about/rajagopalan-saravanan",
+        item: "https://www.velynxia.com/about/rajagopalan-saravanan",
       },
     ],
   };

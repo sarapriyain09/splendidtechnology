@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "CRM for Manufacturers UK",
     description:
       "Practical CRM implementation for UK manufacturers and industrial SMEs.",
-    url: "https://www.splendidtechnology.co.uk/services/crm-for-manufacturers-uk",
+    url: "https://www.velynxia.com/services/crm-for-manufacturers-uk",
   },
 };
 
@@ -79,10 +79,10 @@ export default function CRMForManufacturersUKPage() {
     provider: {
       "@type": "Organization",
       name: "Splendid Technology Ltd",
-      url: "https://www.splendidtechnology.co.uk",
+      url: "https://www.velynxia.com",
     },
     areaServed: "GB",
-    url: "https://www.splendidtechnology.co.uk/services/crm-for-manufacturers-uk",
+    url: "https://www.velynxia.com/services/crm-for-manufacturers-uk",
   };
 
   return (

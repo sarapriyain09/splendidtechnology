@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "CRM for Engineering Companies in the UK | Splendid Technology",
+  title: "CRM for Engineering Companies in the UK | Velynxia",
   description:
     "CRM for engineering companies in the UK: improve lead tracking, quotation follow-up, and sales pipeline visibility.",
   alternates: {

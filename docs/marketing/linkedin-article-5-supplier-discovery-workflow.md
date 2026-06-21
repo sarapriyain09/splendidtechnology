@@ -83,6 +83,6 @@ If your team is still managing supplier decisions through disconnected files and
 
 Useful resources:
 
-- Supplier discovery framework: https://www.splendidtechnology.co.uk/blog/supplier-discovery-process-for-manufacturers
-- Operations, ERP and supply chain services: https://www.splendidtechnology.co.uk/services/software-development#erp
-- Discuss your implementation plan: https://www.splendidtechnology.co.uk/contact
+- Supplier discovery framework: https://www.velynxia.com/blog/supplier-discovery-process-for-manufacturers
+- Operations, ERP and supply chain services: https://www.velynxia.com/services/software-development#erp
+- Discuss your implementation plan: https://www.velynxia.com/contact

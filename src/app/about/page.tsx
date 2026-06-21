@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "About Splendid Technology | CRM and AI Automation Partner",
+  title: "About Velynxia | CRM and AI Automation Partner",
   description:
     "Learn how Splendid Technology helps SMEs grow with CRM implementation, AI automation, workflow systems, and practical business integrations.",
   alternates: {
@@ -62,7 +62,7 @@ export default function AboutPage() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Splendid Technology Ltd",
-    url: "https://www.splendidtechnology.co.uk/",
+    url: "https://www.velynxia.com/",
     description:
       "A CRM and AI Automation partner for SMEs, helping teams improve sales execution, workflows, and operations visibility.",
     areaServed: "United Kingdom",

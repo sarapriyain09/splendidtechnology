@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Smart Motor Reliability Inspection Kit | Splendid Technology",
+  title: "Smart Motor Reliability Inspection Kit | Velynxia",
   description:
     "Professional portable motor diagnostic solution for UK SMEs and maintenance teams. Book a pilot inspection or request a demo. Prevent costly motor failures with predictive maintenance.",
   keywords: [

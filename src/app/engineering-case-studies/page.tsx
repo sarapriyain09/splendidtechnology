@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { getAllCaseStudies } from "@/lib/caseStudies";
 
 export const metadata: Metadata = {
-  title: "Implementation Case Studies | Splendid Technology",
+  title: "Implementation Case Studies | Velynxia",
   description:
     "Detailed case studies across CRM implementation, AI automation, workflow integrations, and business operations systems for UK SMEs.",
   alternates: {

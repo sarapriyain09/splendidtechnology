@@ -100,6 +100,6 @@ The goal is commercial and operational improvement you can measure every week.
 
 Useful resources:
 
-- Digitalisation services: https://www.splendidtechnology.co.uk/services/software-development
-- CRM implementation for manufacturers: https://www.splendidtechnology.co.uk/services/crm-for-manufacturers-uk
-- Discuss your roadmap: https://www.splendidtechnology.co.uk/contact
+- Digitalisation services: https://www.velynxia.com/services/software-development
+- CRM implementation for manufacturers: https://www.velynxia.com/services/crm-for-manufacturers-uk
+- Discuss your roadmap: https://www.velynxia.com/contact

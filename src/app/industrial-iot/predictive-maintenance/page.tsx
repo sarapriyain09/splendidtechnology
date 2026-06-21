@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Predictive Maintenance Solutions | Splendid Technology Industrial IoT",
+  title: "Predictive Maintenance Solutions | Velynxia Industrial IoT",
   description:
     "Replace reactive repairs with planned, data-driven maintenance. Splendid Technology builds predictive maintenance systems for UK manufacturers and industrial SMEs.",
   keywords: [

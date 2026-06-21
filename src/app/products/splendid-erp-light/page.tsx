@@ -162,7 +162,7 @@ export default function SplendidERPLightPage() {
               Request Early Access
             </Link>
             <Link
-              href="https://erp.splendidtechnology.co.uk/dashboard"
+              href="https://erp.velynxia.com/dashboard"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-3 font-bold text-white hover:bg-white/10"
@@ -187,7 +187,7 @@ export default function SplendidERPLightPage() {
             />
           </div>
           <p className="mt-3 text-center text-xs text-black/40">
-            Splendid ERP Light — live dashboard at erp.splendidtechnology.co.uk
+            Splendid ERP Light — live dashboard at erp.velynxia.com
           </p>
         </div>
       </section>
@@ -380,7 +380,7 @@ export default function SplendidERPLightPage() {
               Request Early Access
             </Link>
             <Link
-              href="https://erp.splendidtechnology.co.uk/dashboard"
+              href="https://erp.velynxia.com/dashboard"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-3 font-bold text-white hover:bg-white/10"

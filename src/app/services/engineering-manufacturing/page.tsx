@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Engineering & Manufacturing Solutions UK | CAD Design, FEA, CFD | Splendid Technology",
+  title: "Engineering & Manufacturing Solutions UK | CAD Design, FEA, CFD | Velynxia",
   description:
     "Engineering design, FEA structural analysis, CFD simulation, reverse engineering, rapid prototyping, and manufacturing support for UK engineering and manufacturing businesses.",
   keywords: [
@@ -24,10 +24,10 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Engineering & Manufacturing Solutions | Splendid Technology",
+    title: "Engineering & Manufacturing Solutions | Velynxia",
     description:
       "CAD design, FEA analysis, CFD simulation, reverse engineering, and rapid prototyping for UK engineering and manufacturing businesses.",
-    url: "https://www.splendidtechnology.co.uk/services/engineering-manufacturing",
+    url: "https://www.velynxia.com/services/engineering-manufacturing",
   },
 };
 

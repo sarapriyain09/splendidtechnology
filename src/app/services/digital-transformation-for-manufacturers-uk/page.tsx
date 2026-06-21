@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Digital Transformation for Manufacturers UK",
     description:
       "Practical digitalisation roadmaps and implementation for UK manufacturing SMEs.",
-    url: "https://www.splendidtechnology.co.uk/services/digital-transformation-for-manufacturers-uk",
+    url: "https://www.velynxia.com/services/digital-transformation-for-manufacturers-uk",
   },
 };
 
@@ -78,10 +78,10 @@ export default function DigitalTransformationForManufacturersUKPage() {
     provider: {
       "@type": "Organization",
       name: "Splendid Technology Ltd",
-      url: "https://www.splendidtechnology.co.uk",
+      url: "https://www.velynxia.com",
     },
     areaServed: "GB",
-    url: "https://www.splendidtechnology.co.uk/services/digital-transformation-for-manufacturers-uk",
+    url: "https://www.velynxia.com/services/digital-transformation-for-manufacturers-uk",
   };
 
   return (

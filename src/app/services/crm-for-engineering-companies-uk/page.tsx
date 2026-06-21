@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "CRM for Engineering Companies UK",
     description:
       "Practical CRM implementation for UK engineering businesses with complex B2B sales cycles.",
-    url: "https://www.splendidtechnology.co.uk/services/crm-for-engineering-companies-uk",
+    url: "https://www.velynxia.com/services/crm-for-engineering-companies-uk",
   },
 };
 
@@ -78,10 +78,10 @@ export default function CRMForEngineeringCompaniesUKPage() {
     provider: {
       "@type": "Organization",
       name: "Splendid Technology Ltd",
-      url: "https://www.splendidtechnology.co.uk",
+      url: "https://www.velynxia.com",
     },
     areaServed: "GB",
-    url: "https://www.splendidtechnology.co.uk/services/crm-for-engineering-companies-uk",
+    url: "https://www.velynxia.com/services/crm-for-engineering-companies-uk",
   };
 
   return (

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | Splendid Technology Ltd",
+  title: "Cookie Policy | Velynxia Ltd",
   description:
     "Cookie Policy for Splendid Technology Ltd — what cookies we use, why, and how to control them.",
   alternates: {
@@ -223,8 +223,8 @@ export default function CookiePolicyPage() {
             <p className="mt-1">36 Glazebrook Road, Leicester, LE3 9NT</p>
             <p className="mt-1">Company No. 17245651 (Registered in England &amp; Wales)</p>
             <p className="mt-1">
-              <a className="text-[#0b1f3a] underline hover:text-[#0b3d91]" href="mailto:info@splendidtechnology.co.uk">
-                info@splendidtechnology.co.uk
+              <a className="text-[#0b1f3a] underline hover:text-[#0b3d91]" href="mailto:info@velynxia.com">
+                info@velynxia.com
               </a>
             </p>
             <p className="mt-1">

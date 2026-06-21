@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Splendid Technology Ltd",
+  title: "Privacy Policy | Velynxia Ltd",
   description:
     "Privacy Policy for Splendid Technology Ltd — how we collect, use, and protect your personal data in accordance with UK GDPR.",
   alternates: {
@@ -15,7 +15,7 @@ const sections = [
     body: [
       "Splendid Technology Ltd is a technology company registered in England and Wales, based in Leicester, UK. We deliver CRM, AI automation, workflow automation, and business systems solutions for growing SMEs.",
       "For the purposes of UK data protection law, Splendid Technology Ltd is the data controller responsible for your personal data.",
-      "Contact: info@splendidtechnology.co.uk | +44 7723 144910",
+      "Contact: info@velynxia.com | +44 7723 144910",
     ],
   },
   {
@@ -127,7 +127,7 @@ const sections = [
       "Right to object — object to processing based on legitimate interests or for direct marketing",
       "Rights related to automated decision-making — we do not make solely automated decisions that produce legal or significant effects",
     ],
-    note: "To exercise any of these rights, contact us at info@splendidtechnology.co.uk. We will respond within one calendar month.",
+    note: "To exercise any of these rights, contact us at info@velynxia.com. We will respond within one calendar month.",
   },
   {
     heading: "11. Keeping Your Data Secure",
@@ -141,7 +141,7 @@ const sections = [
     body: [
       "If you believe we have not handled your personal data lawfully, you have the right to lodge a complaint with the UK's supervisory authority:",
       "Information Commissioner's Office (ICO) | ico.org.uk | 0303 123 1113",
-      "We would, however, appreciate the opportunity to address your concern first — please contact us at info@splendidtechnology.co.uk.",
+      "We would, however, appreciate the opportunity to address your concern first — please contact us at info@velynxia.com.",
     ],
   },
   {
@@ -205,8 +205,8 @@ export default function PrivacyPolicyPage() {
         <p className="mt-1">Company No. 17245651 (Registered in England &amp; Wales)</p>
         <p className="mt-1">
           <strong className="text-black/70">Contact:</strong>{" "}
-          <a className="text-[#0b1f3a] hover:underline" href="mailto:info@splendidtechnology.co.uk">
-            info@splendidtechnology.co.uk
+          <a className="text-[#0b1f3a] hover:underline" href="mailto:info@velynxia.com">
+            info@velynxia.com
           </a>{" "}
           &nbsp;|&nbsp;{" "}
           <a className="text-[#0b1f3a] hover:underline" href="tel:+447723144910">

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
-  title: "JWeller Shopify Theme | Splendid Technology",
+  title: "JWeller Shopify Theme | Velynxia",
 };
 
 export default function JWellerShopifyThemeDetailsPage() {

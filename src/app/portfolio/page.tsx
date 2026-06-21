@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Portfolio | Splendid Technology",
+  title: "Portfolio | Velynxia",
   description:
     "Real CRM and AI automation platforms delivered by Splendid Technology for UK SMEs.",
 };

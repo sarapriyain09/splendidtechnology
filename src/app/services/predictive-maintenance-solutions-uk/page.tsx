@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Predictive Maintenance Solutions UK | Industrial SMEs | Splendid Technology",
+  title: "Predictive Maintenance Solutions UK | Industrial SMEs | Velynxia",
   description:
     "Predictive maintenance solutions for UK manufacturers and industrial SMEs: condition monitoring, anomaly alerts, maintenance planning, and reliability improvement.",
   keywords: [
@@ -61,10 +61,10 @@ export default function PredictiveMaintenanceSolutionsUKPage() {
     provider: {
       "@type": "Organization",
       name: "Splendid Technology Ltd",
-      url: "https://www.splendidtechnology.co.uk",
+      url: "https://www.velynxia.com",
     },
     areaServed: "GB",
-    url: "https://www.splendidtechnology.co.uk/services/predictive-maintenance-solutions-uk",
+    url: "https://www.velynxia.com/services/predictive-maintenance-solutions-uk",
   };
 
   return (

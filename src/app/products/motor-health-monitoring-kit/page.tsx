@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Motor Health Monitoring Kit | Splendid Technology",
+  title: "Motor Health Monitoring Kit | Velynxia",
   description:
     "A portable, affordable motor health monitoring kit for industrial SMEs. Measure vibration, current signature, temperature, and insulation health — without a permanent installation.",
   alternates: {

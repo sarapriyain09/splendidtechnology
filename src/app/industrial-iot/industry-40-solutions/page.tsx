@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Industry 4.0 Solutions for UK SMEs | Splendid Technology",
+  title: "Industry 4.0 Solutions for UK SMEs | Velynxia",
   description:
     "Affordable Industry 4.0 and smart factory solutions for UK small and medium manufacturers. Edge monitoring, live dashboards, and automation tools — without enterprise complexity.",
   keywords: [

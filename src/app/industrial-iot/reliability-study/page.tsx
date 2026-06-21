@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Motor Reliability Study Service | Splendid Technology UK",
+  title: "Motor Reliability Study Service | Velynxia UK",
   description:
     "On-site motor reliability studies for UK manufacturing and industrial SMEs. We assess your equipment, identify failure risks, and give you a clear, actionable reliability improvement plan.",
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: "/industrial-iot/reliability-study",
   },
   openGraph: {
-    title: "Motor Reliability Study Service | Splendid Technology UK",
+    title: "Motor Reliability Study Service | Velynxia UK",
     description:
       "On-site assessment of your motor fleet — failure risk ranking, condition data, MTBF baseline, and a practical reliability improvement plan.",
   },

@@ -37,8 +37,8 @@ export async function POST(request: Request) {
   }
 
   const { error } = await resend.emails.send({
-    from: "Splendid Technology Website <noreply@splendidtechnology.co.uk>",
-    to: ["info@splendidtechnology.co.uk"],
+    from: "Velynxia Website <noreply@velynxia.com>",
+    to: ["info@velynxia.com"],
     replyTo: email,
     subject: `New contact from ${name}`,
     text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,

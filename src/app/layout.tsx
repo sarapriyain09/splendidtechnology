@@ -8,6 +8,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { ChatWidget } from "@/components/ChatWidget";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
+import { getSiteUrl } from "@/lib/site-url";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -20,16 +21,6 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["600", "700"],
 });
-
-function getSiteUrl(): string {
-  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
-  if (explicit) return explicit;
-
-  const vercelUrl = process.env.VERCEL_URL;
-  if (vercelUrl) return `https://${vercelUrl}`;
-
-  return "http://localhost:3000";
-}
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -99,19 +90,19 @@ export default async function RootLayout({
     name: "Splendid Technology Ltd",
     url: siteUrl,
     logo: `${siteUrl}/images/brand/velynxia-Logo.png`,
-    email: "info@splendidtechnology.co.uk",
+    email: "info@velynxia.com",
     telephone: "+44 7723 144910",
     contactPoint: [
       {
         "@type": "ContactPoint",
         contactType: "sales",
-        email: "info@splendidtechnology.co.uk",
+        email: "info@velynxia.com",
         telephone: "+44 7723 144910",
         areaServed: "GB",
         availableLanguage: ["en-GB"],
       },
     ],
-    sameAs: ["https://www.splendidtechnology.co.uk"],
+    sameAs: ["https://www.velynxia.com"],
   };
 
   const localBusinessSchema = {
@@ -121,7 +112,7 @@ export default async function RootLayout({
     url: siteUrl,
     image: `${siteUrl}/images/brand/velynxia-Logo.png`,
     telephone: "+44 7723 144910",
-    email: "info@splendidtechnology.co.uk",
+    email: "info@velynxia.com",
     areaServed: {
       "@type": "Country",
       name: "United Kingdom",

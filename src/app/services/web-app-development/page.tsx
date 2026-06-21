@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Web & App Development Services UK | Splendid Technology",
+  title: "Web & App Development Services UK | Velynxia",
   description:
     "Professional Web & App Development for UK businesses — business websites, SaaS applications, customer portals, mobile apps, API integrations, and AI-powered solutions. Based in Leicester.",
   keywords: [

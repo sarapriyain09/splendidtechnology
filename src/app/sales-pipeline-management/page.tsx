@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sales Pipeline Management for SMEs | Splendid Technology",
+  title: "Sales Pipeline Management for SMEs | Velynxia",
   description:
     "Sales pipeline management for SMEs: define clear stages, improve follow-up consistency, and increase quote-to-order conversion.",
   alternates: {

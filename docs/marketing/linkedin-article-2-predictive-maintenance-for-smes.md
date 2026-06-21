@@ -92,5 +92,5 @@ That framing drives action and budget clarity.
 
 If you want a structured rollout path, these resources are relevant:
 
-- Industrial IoT for manufacturers UK: https://www.splendidtechnology.co.uk/services/industrial-iot-for-manufacturers-uk
-- Book a site assessment: https://www.splendidtechnology.co.uk/contact
+- Industrial IoT for manufacturers UK: https://www.velynxia.com/services/industrial-iot-for-manufacturers-uk
+- Book a site assessment: https://www.velynxia.com/contact

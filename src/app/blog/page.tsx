@@ -2,16 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
-
-function getSiteUrl(): string {
-  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
-  if (explicit) return explicit;
-
-  const vercelUrl = process.env.VERCEL_URL;
-  if (vercelUrl) return `https://${vercelUrl}`;
-
-  return "http://localhost:3000";
-}
+import { getSiteUrl } from "@/lib/site-url";
 
 const crmAuthorityLinks = [
   {
@@ -65,7 +56,7 @@ const blogClusters = [
 ];
 
 export const metadata: Metadata = {
-  title: "CRM and AI Automation Insights | Splendid Technology Blog",
+  title: "CRM and AI Automation Insights | Velynxia Blog",
   description:
     "Practical guides on CRM implementation, lead management, sales pipeline workflows, and AI automation for UK SMEs.",
   keywords: [
@@ -80,7 +71,7 @@ export const metadata: Metadata = {
     title: "CRM and AI Automation Insights",
     description:
       "Practical CRM, AI automation, sales automation, and customer management guides for growing businesses.",
-    url: "https://www.splendidtechnology.co.uk/blog",
+    url: "https://www.velynxia.com/blog",
   },
   alternates: {
     canonical: "/blog",

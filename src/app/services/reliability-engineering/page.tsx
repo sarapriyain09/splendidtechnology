@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Reliability Engineering Services UK | MTBF, FMEA, RAM | Splendid Technology",
+  title: "Reliability Engineering Services UK | MTBF, FMEA, RAM | Velynxia",
   description:
     "Expert Reliability Engineering services for UK industry — MTBF analysis, FMEA/FMECA, RAM studies, RCM, and asset performance analytics. Evidence-based decisions for maintenance and engineering teams.",
   keywords: [

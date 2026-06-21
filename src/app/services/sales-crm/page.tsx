@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "CRM Solutions for Sales Automation and Customer Management | Splendid Technology",
+  title: "CRM Solutions for Sales Automation and Customer Management | Velynxia",
   description:
     "CRM solutions for growing businesses focused on sales automation, customer management, and workflow automation.",
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "CRM Solutions for Sales Automation and Customer Management",
     description:
       "Build CRM systems for sales automation, customer management, and workflow execution.",
-    url: "https://www.splendidtechnology.co.uk/services/sales-crm",
+    url: "https://www.velynxia.com/services/sales-crm",
   },
 };
 
