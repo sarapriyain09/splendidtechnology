@@ -3,14 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Industrial IoT Proof of Concept | Velynxia",
+  title: "Industrial IoT Proof of Concept",
   description:
     "Early-stage Industrial IoT demonstration platform — edge monitoring on Raspberry Pi, AWS cloud analytics, real-time dashboards, and automated anomaly detection.",
   alternates: {
     canonical: "/proof-of-concept",
   },
   openGraph: {
-    title: "Industrial IoT Proof of Concept | Velynxia",
+    title: "Industrial IoT Proof of Concept",
     description:
       "Edge-based monitoring, cloud analytics, anomaly detection, and real-time dashboard visualisation — demonstrated on Raspberry Pi and AWS.",
   },

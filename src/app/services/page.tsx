@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "CRM and AI Automation Services for SMEs | Velynxia",
+  title: "CRM and AI Automation Services for SMEs",
   description:
     "Explore CRM and AI automation services for growing businesses focused on sales automation, customer management, and workflow automation.",
   keywords: [

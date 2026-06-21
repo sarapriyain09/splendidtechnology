@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Automation for SMEs UK | Velynxia",
+  title: "AI Automation for SMEs UK",
   description:
     "AI automation for UK SMEs: automate repetitive workflows, improve response times, and scale operations with practical implementation.",
   alternates: {

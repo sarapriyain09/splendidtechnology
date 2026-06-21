@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Reliability Engineering Services | UK Industrial SMEs | Velynxia",
+  title: "Reliability Engineering Services | UK Industrial SMEs",
   description:
     "Reliability engineering services for UK manufacturers and industrial SMEs: asset criticality, failure analysis, maintenance strategy, and reliability KPI visibility.",
   keywords: [

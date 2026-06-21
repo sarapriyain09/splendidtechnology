@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Automation Engineering Services UK | PLC, SCADA, HMI | Velynxia",
+  title: "Automation Engineering Services UK | PLC, SCADA, HMI",
   description:
     "Automation engineering services for UK industry: PLC programming, SCADA and HMI development, control system design, FAT support, commissioning, network architecture, and safety systems.",
   keywords: [

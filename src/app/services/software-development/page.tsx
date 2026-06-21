@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Software Development Services UK | Custom Business Software | Velynxia",
+  title: "Software Development Services UK | Custom Business Software",
   description:
     "Custom software development for UK businesses — accounting systems, asset management, ERP modules, workflow automation, and data reporting tools. Built around how your business works.",
   keywords: [

@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Digital Engineering Services UK | CRM, ERP, WMS | Velynxia",
+  title: "Digital Engineering Services UK | CRM, ERP, WMS",
   description:
     "Business systems services for UK businesses including CRM, ERP, warehouse management systems, operations workflows, and workflow automation.",
   keywords: [

@@ -27,7 +27,7 @@ export async function generateMetadata({
 
   const cityMeta: Record<string, CityMeta> = {
     leicester: {
-      title: "CRM Consultant Leicester | AI Automation and Workflow Systems | Velynxia",
+      title: "CRM Consultant Leicester | AI Automation and Workflow Systems",
       description:
         "Velynxia provides CRM consultancy, AI automation, and workflow systems for Leicester SMEs.",
       keywords: [
@@ -40,7 +40,7 @@ export async function generateMetadata({
       ],
     },
     birmingham: {
-      title: "CRM Consultant Birmingham | AI Automation and Workflow Systems | Velynxia",
+      title: "CRM Consultant Birmingham | AI Automation and Workflow Systems",
       description:
         "CRM consultancy and AI automation services for Birmingham SMEs, including pipeline workflows and integrations.",
       keywords: [
@@ -53,7 +53,7 @@ export async function generateMetadata({
       ],
     },
     manchester: {
-      title: "CRM Consultant Manchester | AI Automation and Workflow Systems | Velynxia",
+      title: "CRM Consultant Manchester | AI Automation and Workflow Systems",
       description:
         "CRM consultancy and AI automation services for Manchester SMEs, including sales pipeline workflows and integrations.",
       keywords: [
@@ -66,7 +66,7 @@ export async function generateMetadata({
       ],
     },
     london: {
-      title: "CRM Consultant London | AI Automation and Workflow Systems | Velynxia",
+      title: "CRM Consultant London | AI Automation and Workflow Systems",
       description:
         "Velynxia delivers CRM consultancy, AI automation, and workflow systems for London SMEs.",
       keywords: [

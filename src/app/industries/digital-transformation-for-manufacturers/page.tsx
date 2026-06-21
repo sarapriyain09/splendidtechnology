@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Digital Transformation for Manufacturers | UK SME Delivery | Velynxia",
+  title: "Digital Transformation for Manufacturers | UK SME Delivery",
   description:
     "Digital transformation for UK manufacturers: connect sales, operations, and asset workflows through practical phased implementation.",
   alternates: { canonical: "/industries/digital-transformation-for-manufacturers" },

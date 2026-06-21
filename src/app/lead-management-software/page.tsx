@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Lead Management Software UK | Velynxia",
+  title: "Lead Management Software UK",
   description:
     "Lead management software for UK SMEs to capture enquiries, assign owners, and improve conversion through consistent follow-up.",
   alternates: {

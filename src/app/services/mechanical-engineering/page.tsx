@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mechanical Engineering Services UK | CAD, FEA, Prototyping | Velynxia",
+  title: "Mechanical Engineering Services UK | CAD, FEA, Prototyping",
   description:
     "Mechanical engineering services for UK industry including CAD design, manufacturing drawings, FEA, reverse engineering, and prototyping support.",
   keywords: [

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "AI Automation for Sales and Customer Workflows | Velynxia",
+  title: "AI Automation for Sales and Customer Workflows",
   description:
     "AI automation services for growing businesses: AI assistant, workflow automation, email automation, SMS automation, reporting, and CRM integrations.",
   keywords: [

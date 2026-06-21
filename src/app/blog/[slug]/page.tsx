@@ -33,6 +33,7 @@ export async function generateMetadata({
       title: meta.title,
       description: meta.description,
       type: "article",
+      url: `/blog/${meta.slug}`,
       images: meta.featuredImage ? [{ url: meta.featuredImage }] : undefined,
     },
     twitter: {

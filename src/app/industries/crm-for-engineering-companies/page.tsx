@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "CRM for Engineering Companies | UK B2B Workflow CRM | Velynxia",
+  title: "CRM for Engineering Companies | UK B2B Workflow CRM",
   description:
     "CRM for engineering companies in the UK. Improve lead qualification, quote tracking, and account visibility across technical sales teams.",
   alternates: { canonical: "/industries/crm-for-engineering-companies" },

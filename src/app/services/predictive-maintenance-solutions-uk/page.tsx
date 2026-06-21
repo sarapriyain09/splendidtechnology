@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Predictive Maintenance Solutions UK | Industrial SMEs | Velynxia",
+  title: "Predictive Maintenance Solutions UK | Industrial SMEs",
   description:
     "Predictive maintenance solutions for UK manufacturers and industrial SMEs: condition monitoring, anomaly alerts, maintenance planning, and reliability improvement.",
   keywords: [

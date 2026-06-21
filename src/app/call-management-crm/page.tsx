@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Call Management CRM for UK SMEs | Velynxia",
+  title: "Call Management CRM for UK SMEs",
   description:
     "Call management CRM for UK SMEs to reduce missed calls, improve follow-up, and track customer conversations in one place.",
   alternates: {

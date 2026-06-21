@@ -5,7 +5,7 @@ import { CrmDemoForm } from "./CrmDemoForm";
 type Props = { searchParams: Promise<{ plan?: string }> };
 
 export const metadata: Metadata = {
-  title: "Request a Free CRM Demo | Velynxia",
+  title: "Request a Free CRM Demo",
   description:
     "Request free demo access to our Prospect-to-Quote CRM. We'll set up a personalised account on crm.velynxia.com tailored to your industry and sales process.",
   alternates: {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Request a Free CRM Demo | Velynxia",
+    title: "Request a Free CRM Demo",
     description:
       "Get a personalised demo account on crm.velynxia.com — set up to match your industry and sales workflow.",
     url: "https://www.velynxia.com/services/sales-crm/demo",

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: "/tools/mtbf",
   },
   openGraph: {
-    title: "MTBF Tool — Launching Soon | Velynxia",
+    title: "MTBF Tool — Launching Soon",
     description:
       "Track failure history, calculate MTBF, and optimise your maintenance intervals. Built for UK manufacturing and industrial SMEs.",
   },

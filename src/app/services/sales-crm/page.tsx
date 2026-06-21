@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "CRM Solutions for Sales Automation and Customer Management | Velynxia",
+  title: "CRM Solutions for Sales Automation and Customer Management",
   description:
     "CRM solutions for growing businesses focused on sales automation, customer management, and workflow automation.",
   keywords: [

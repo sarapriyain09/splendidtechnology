@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Products | Velynxia",
+  title: "Products",
   description:
     "Velynxia products — Splendid Accounting, Splendid Reliability, Splendid Monitor, Splendid Asset Manager, and the Motor Health Monitoring Kit for industrial SMEs.",
   keywords: [

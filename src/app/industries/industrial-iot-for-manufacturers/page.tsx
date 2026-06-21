@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Industrial IoT for Manufacturers | Condition Monitoring UK | Velynxia",
+  title: "Industrial IoT for Manufacturers | Condition Monitoring UK",
   description:
     "Industrial IoT for manufacturers in the UK: condition monitoring, predictive maintenance, and asset intelligence for better reliability decisions.",
   alternates: { canonical: "/industries/industrial-iot-for-manufacturers" },
