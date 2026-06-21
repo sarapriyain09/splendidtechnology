@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
-  title: "Book a CRM and AI Automation Call | Velynxia",
+  title: "Book a CRM and AI Automation Call",
   description:
     "Book a discovery call to discuss CRM implementation, AI automation, workflow systems, and integrations for your SME.",
   keywords: [
