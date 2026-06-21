@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "About Velynxia | CRM and AI Automation Partner",
+  title: "About | CRM and AI Automation Partner",
   description:
     "Learn how Velynxia helps SMEs grow with CRM implementation, AI automation, workflow systems, and practical business integrations.",
   alternates: {
