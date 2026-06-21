@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Portfolio | Velynxia",
   description:
-    "Real CRM and AI automation platforms delivered by Splendid Technology for UK SMEs.",
+    "Real CRM and AI automation platforms delivered by Velynxia for UK SMEs.",
 };
 
 const projects = [
@@ -89,7 +89,7 @@ export default function PortfolioPage() {
           <p className="mt-4 max-w-2xl text-lg text-slate-300">
             Real platforms, live in production. From CRM workflow systems to
             AI-enabled applications &mdash; each project delivered end-to-end by
-            Splendid Technology.
+            Velynxia.
           </p>
         </div>
       </section>

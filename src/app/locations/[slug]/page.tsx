@@ -29,7 +29,7 @@ export async function generateMetadata({
     leicester: {
       title: "CRM Consultant Leicester | AI Automation and Workflow Systems | Velynxia",
       description:
-        "Splendid Technology provides CRM consultancy, AI automation, and workflow systems for Leicester SMEs.",
+        "Velynxia provides CRM consultancy, AI automation, and workflow systems for Leicester SMEs.",
       keywords: [
         "crm consultant leicester",
         "crm implementation leicester",
@@ -68,7 +68,7 @@ export async function generateMetadata({
     london: {
       title: "CRM Consultant London | AI Automation and Workflow Systems | Velynxia",
       description:
-        "Splendid Technology delivers CRM consultancy, AI automation, and workflow systems for London SMEs.",
+        "Velynxia delivers CRM consultancy, AI automation, and workflow systems for London SMEs.",
       keywords: [
         "crm consultant london",
         "crm implementation london",
@@ -84,7 +84,7 @@ export async function generateMetadata({
 
   const title = featured
     ? featured.title
-    : `CRM and AI Automation in ${loc.name} (UK) | Splendid Technology`;
+    : `CRM and AI Automation in ${loc.name} (UK) | Velynxia`;
 
   const description = featured
     ? featured.description
@@ -153,7 +153,7 @@ export default async function LocationPage({
   const cityIntro: Record<string, { heading: string; para: string }> = {
     leicester: {
       heading: "CRM and AI automation partner in Leicester",
-      para: "Splendid Technology is Leicester-based. We help SMEs across Leicester and Leicestershire improve lead management, follow-up workflows, and business systems execution.",
+      para: "Velynxia is Leicester-based. We help SMEs across Leicester and Leicestershire improve lead management, follow-up workflows, and business systems execution.",
     },
     birmingham: {
       heading: "CRM and AI automation support for Birmingham",
@@ -172,22 +172,22 @@ export default async function LocationPage({
 
   const localSchemaByCity: Record<string, { name: string; description: string }> = {
     leicester: {
-      name: "CRM and AI Automation Consultant Leicester - Splendid Technology",
+      name: "CRM and AI Automation Consultant Leicester - Velynxia",
       description:
         "CRM consultancy and AI automation services for Leicester SMEs.",
     },
     birmingham: {
-      name: "CRM and AI Automation Consultant Birmingham - Splendid Technology",
+      name: "CRM and AI Automation Consultant Birmingham - Velynxia",
       description:
         "CRM consultancy and AI automation services for Birmingham SMEs.",
     },
     manchester: {
-      name: "CRM and AI Automation Consultant Manchester - Splendid Technology",
+      name: "CRM and AI Automation Consultant Manchester - Velynxia",
       description:
         "CRM consultancy and AI automation services for Manchester SMEs.",
     },
     london: {
-      name: "CRM and AI Automation Consultant London - Splendid Technology",
+      name: "CRM and AI Automation Consultant London - Velynxia",
       description:
         "CRM consultancy and AI automation services for London SMEs.",
     },
@@ -196,7 +196,7 @@ export default async function LocationPage({
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: localSchemaByCity[loc.slug]?.name ?? `Splendid Technology - ${loc.name}`,
+    name: localSchemaByCity[loc.slug]?.name ?? `Velynxia - ${loc.name}`,
     description:
       localSchemaByCity[loc.slug]?.description ??
       `Digital services for businesses in ${loc.name} and nearby UK areas.`,
@@ -210,7 +210,7 @@ export default async function LocationPage({
     telephone: "+44 7723 144910",
     provider: {
       "@type": "Organization",
-      name: "Splendid Technology Ltd",
+      name: "Velynxia",
       url: "https://www.velynxia.com",
     },
   };
@@ -226,7 +226,7 @@ export default async function LocationPage({
     },
     provider: {
       "@type": "Organization",
-      name: "Splendid Technology Ltd",
+      name: "Velynxia",
       url: "https://www.velynxia.com",
     },
     url: `https://www.velynxia.com/locations/${loc.slug}`,
@@ -294,7 +294,7 @@ export default async function LocationPage({
         <section className="space-y-3">
           <h2 className="text-xl font-semibold">Why choose a focused CRM and automation partner?</h2>
           <p className="text-sm leading-6 text-black/70">
-            Many providers offer generic digital services. Splendid Technology focuses on CRM and AI automation implementation for SMEs,
+            Many providers offer generic digital services. Velynxia focuses on CRM and AI automation implementation for SMEs,
             giving you a clearer roadmap, faster adoption, and stronger execution outcomes.
           </p>
           <ul className="list-disc space-y-2 pl-5 text-sm text-black/70">

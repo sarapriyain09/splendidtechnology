@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "About Velynxia | CRM and AI Automation Partner",
   description:
-    "Learn how Splendid Technology helps SMEs grow with CRM implementation, AI automation, workflow systems, and practical business integrations.",
+    "Learn how Velynxia helps SMEs grow with CRM implementation, AI automation, workflow systems, and practical business integrations.",
   alternates: {
     canonical: "/about",
   },
@@ -61,7 +61,7 @@ export default function AboutPage() {
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Splendid Technology Ltd",
+    name: "Velynxia",
     url: "https://www.velynxia.com/",
     description:
       "A CRM and AI Automation partner for SMEs, helping teams improve sales execution, workflows, and operations visibility.",
@@ -85,13 +85,13 @@ export default function AboutPage() {
       <section className="border-b border-[#dce8ff] bg-[radial-gradient(circle_at_20%_20%,#dbe9ff_0%,#f5f8ff_55%,#ecfff8_100%)] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="mx-auto w-full max-w-6xl">
           <p className="inline-flex rounded-full border border-[#b6cbff] bg-white/70 px-4 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#1147bf]">
-            About Splendid Technology
+            About Velynxia
           </p>
           <h1 className="mt-4 max-w-4xl text-balance text-4xl font-bold leading-tight text-[#0e1629] sm:text-5xl">
             We Help SMEs Grow with CRM and AI Automation Systems
           </h1>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-[#37486e]">
-            Splendid Technology is a CRM and AI Automation partner for SMEs. We design and implement connected systems that improve lead flow, follow-up discipline, and operational execution.
+            Velynxia is a CRM and AI Automation partner for SMEs. We design and implement connected systems that improve lead flow, follow-up discipline, and operational execution.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg">

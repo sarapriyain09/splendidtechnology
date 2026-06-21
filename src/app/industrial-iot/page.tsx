@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Industrial IoT & Predictive Maintenance | Velynxia UK",
   description:
-    "Splendid Technology delivers smart motor monitoring, predictive maintenance, Industry 4.0 solutions, and AI business process automation for UK manufacturers and industrial SMEs. Reduce downtime. Increase visibility.",
+    "Velynxia delivers smart motor monitoring, predictive maintenance, Industry 4.0 solutions, and AI business process automation for UK manufacturers and industrial SMEs. Reduce downtime. Increase visibility.",
   keywords: [
     "industrial iot uk",
     "smart motor monitoring uk",
@@ -80,7 +80,7 @@ export default function IndustrialIoTPage() {
         <div className="mx-auto w-full max-w-6xl flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="w-full max-w-xl">
             <p className="mb-4 inline-block rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-green-400">
-              Splendid Technology — Industrial Division
+              Velynxia — Industrial Division
             </p>
             <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
               Industrial IoT &amp; Smart Reliability Engineering
@@ -207,7 +207,7 @@ export default function IndustrialIoTPage() {
       {/* ── Why Splendid ── */}
       <section className="bg-white px-4 py-14 sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl rounded-2xl border border-[#0b3d91]/20 bg-[#0b1f3a]/5 p-8">
-          <h2 className="text-xl font-bold text-[#0b1f3a]">Why Splendid Technology</h2>
+          <h2 className="text-xl font-bold text-[#0b1f3a]">Why Velynxia</h2>
           <p className="mt-3 max-w-2xl text-sm leading-7 text-black/70">
             We are a UK engineering technology company serving manufacturers nationwide. We build
             custom systems — we don&apos;t sell generic off-the-shelf boxes. Our Industrial

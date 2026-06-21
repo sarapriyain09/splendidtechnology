@@ -65,7 +65,7 @@ export default function FounderPage() {
     jobTitle: "Founder",
     worksFor: {
       "@type": "Organization",
-      name: "Splendid Technology",
+      name: "Velynxia",
       url: "https://www.velynxia.com",
     },
     alumniOf: [
@@ -131,7 +131,7 @@ export default function FounderPage() {
           <p className="text-sm font-semibold uppercase tracking-widest text-green-400">Founder Profile</p>
           <h1 className="mt-2 text-4xl font-bold leading-tight sm:text-5xl">Rajagopalan Saravanan</h1>
           <p className="mt-4 max-w-4xl text-lg leading-8 text-slate-300">
-            Founder of Splendid Technology and engineering leader with 25+ years of international experience across
+            Founder of Velynxia and engineering leader with 25+ years of international experience across
             application engineering, services sales, Salesforce-enabled commercial workflows, customer management,
             rotating machines, asset management, and operations systems across India, France, the Netherlands,
             and the Czech Republic.
@@ -171,7 +171,7 @@ export default function FounderPage() {
           both continuous-process and customer-machine production environments.
         </p>
         <p className="mt-3 text-sm leading-7 text-slate-700">
-          Through Splendid Technology, he helps SMEs and industrial organisations improve commercial performance,
+          Through Velynxia, he helps SMEs and industrial organisations improve commercial performance,
           operational efficiency, and decision-making by connecting people, processes, and technology through practical
           CRM, AI automation, business systems, and workflow automation solutions.
         </p>
@@ -217,7 +217,7 @@ export default function FounderPage() {
 
       <section className="py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#0b1f3a]">Work With Splendid Technology</h2>
+          <h2 className="text-2xl font-bold text-[#0b1f3a]">Work With Velynxia</h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-700">
             If you are looking to improve enquiry-to-quote conversion, operational visibility, and customer workflow
             execution, our team can help you design and implement a practical roadmap.

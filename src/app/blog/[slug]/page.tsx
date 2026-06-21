@@ -67,11 +67,11 @@ export default async function BlogPostPage({
     image: meta.featuredImage ? [meta.featuredImage] : undefined,
     author: {
       "@type": "Organization",
-      name: "Splendid Technology Ltd",
+      name: "Velynxia",
     },
     publisher: {
       "@type": "Organization",
-      name: "Splendid Technology Ltd",
+      name: "Velynxia",
       url: siteUrl,
       logo: {
         "@type": "ImageObject",

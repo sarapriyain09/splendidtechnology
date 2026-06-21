@@ -44,7 +44,7 @@ export default function Home() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Splendid Technology Ltd",
+    name: "Velynxia",
     url: "https://www.velynxia.com/",
     logo: "https://www.velynxia.com/images/brand/velynxia-Logo.png",
     contactPoint: {
@@ -71,7 +71,7 @@ export default function Home() {
     },
     provider: {
       "@type": "Organization",
-      name: "Splendid Technology Ltd",
+      name: "Velynxia",
       url: "https://www.velynxia.com/",
     },
   };

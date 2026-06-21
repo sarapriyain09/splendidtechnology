@@ -87,7 +87,7 @@ export default async function RootLayout({
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Splendid Technology Ltd",
+    name: "Velynxia",
     url: siteUrl,
     logo: `${siteUrl}/images/brand/velynxia-Logo.png`,
     email: "info@velynxia.com",
@@ -108,7 +108,7 @@ export default async function RootLayout({
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Splendid Technology Ltd",
+    name: "Velynxia",
     url: siteUrl,
     image: `${siteUrl}/images/brand/velynxia-Logo.png`,
     telephone: "+44 7723 144910",

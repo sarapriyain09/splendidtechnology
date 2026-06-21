@@ -124,7 +124,7 @@ If your current sales process depends on inbox searches and memory, that is a si
 ### Get in Touch
 If you're exploring ways to improve lead management, customer follow-ups, and sales visibility, a CRM could be the next step for your business.
 
-At [Splendid Technology](https://www.velynxia.com/?utm_source=chatgpt.com), we help startups and growing businesses implement practical CRM solutions tailored to their processes and goals.
+At [Velynxia](https://www.velynxia.com/?utm_source=chatgpt.com), we help startups and growing businesses implement practical CRM solutions tailored to their processes and goals.
 
 Whether you're currently managing leads in spreadsheets or looking to streamline an existing sales process, we'd be happy to discuss your requirements.
 

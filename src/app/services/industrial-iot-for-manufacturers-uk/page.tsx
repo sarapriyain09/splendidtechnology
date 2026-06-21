@@ -77,7 +77,7 @@ export default function IndustrialIoTForManufacturersUKPage() {
     serviceType: "Industrial IoT and condition monitoring",
     provider: {
       "@type": "Organization",
-      name: "Splendid Technology Ltd",
+      name: "Velynxia",
       url: "https://www.velynxia.com",
     },
     areaServed: "GB",

@@ -58,7 +58,7 @@ The technical stack matters. Modern SaaS platforms built on Next.js, React, Node
 - **Analytics and reporting** — usage data, dashboards, exports.
 - **API integrations** — connecting your SaaS to the tools your customers already use.
 
-At Splendid Technology, we've built SaaS products for clients in logistics, industrial monitoring, and education — all starting from a clear problem statement and a realistic MVP scope.
+At Velynxia, we've built SaaS products for clients in logistics, industrial monitoring, and education — all starting from a clear problem statement and a realistic MVP scope.
 
 ---
 
@@ -90,7 +90,7 @@ If you're based in Leicester or Leicestershire, working with a local web develop
 - **Understanding of the local business landscape** — we work with East Midlands manufacturers, SMEs, and professional services firms.
 - **UK time zone** — no lag, no early-morning calls, no outsourcing to developers in different time zones.
 
-Splendid Technology is Leicester-based. We work with businesses across Leicester, Loughborough, Hinckley, Coventry, Derby, and Nottingham — and remotely with clients across the UK, including Birmingham and London.
+Velynxia is Leicester-based. We work with businesses across Leicester, Loughborough, Hinckley, Coventry, Derby, and Nottingham — and remotely with clients across the UK, including Birmingham and London.
 
 ---
 

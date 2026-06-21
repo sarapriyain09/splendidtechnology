@@ -168,7 +168,7 @@ The simplest starting point is a **single-site inspection**. A professional engi
 
 From there, you have full visibility of your motor fleet's health — and a prioritised list of which motors need attention, which need monitoring, and which are healthy.
 
-Splendid Technology provides portable motor condition monitoring and smart inspection services for UK SMEs. Our **[Smart Motor Reliability Inspection Kit](/industrial-iot/portable-diagnostic-kit)** delivers FFT vibration analysis, current signature analysis, temperature monitoring, and motor health scoring — on-site, immediately, with no capital commitment required to get started.
+Velynxia provides portable motor condition monitoring and smart inspection services for UK SMEs. Our **[Smart Motor Reliability Inspection Kit](/industrial-iot/portable-diagnostic-kit)** delivers FFT vibration analysis, current signature analysis, temperature monitoring, and motor health scoring — on-site, immediately, with no capital commitment required to get started.
 
 **[Book a motor health assessment →](/contact)**  
 **[View our Industrial IoT services →](/industrial-iot)**

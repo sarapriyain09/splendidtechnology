@@ -60,7 +60,7 @@ export default function ReliabilityEngineeringServicesPage() {
     serviceType: "Reliability engineering consulting",
     provider: {
       "@type": "Organization",
-      name: "Splendid Technology Ltd",
+      name: "Velynxia",
       url: "https://www.velynxia.com",
     },
     areaServed: "GB",

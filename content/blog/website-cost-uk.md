@@ -231,7 +231,7 @@ Yes. Even a simple site benefits from updates, backups, monitoring, and periodic
 
 ## Next step: get a clear estimate
 
-If you want a realistic price and timeline (based on your goals, pages, and integrations), contact Splendid Technology and share:
+If you want a realistic price and timeline (based on your goals, pages, and integrations), contact Velynxia and share:
 
 - what you’re building
 - your deadline

@@ -99,13 +99,13 @@ export default function BlogIndexPage() {
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Splendid Technology CRM and AI Automation Insights",
+    name: "Velynxia CRM and AI Automation Insights",
     url: `${siteUrl}/blog`,
     description:
       "Practical CRM and AI automation guides for UK SMEs focused on lead management and sales workflows.",
     publisher: {
       "@type": "Organization",
-      name: "Splendid Technology Ltd",
+      name: "Velynxia",
       url: siteUrl,
     },
   };

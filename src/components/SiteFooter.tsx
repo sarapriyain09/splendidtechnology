@@ -110,9 +110,9 @@ export function SiteFooter() {
 
         <div className="mt-10 border-t border-[#dbe6ff] pt-6 text-xs text-[#6a7897]">
           <p>
-            Velynxia is a Customer Growth Platform by Splendid Technology UK Ltd.
+            Velynxia is a Customer Growth Platform by Velynxia.
           </p>
-          <p className="mt-1">Copyright {new Date().getFullYear()} Splendid Technology UK Ltd. All rights reserved.</p>
+          <p className="mt-1">Copyright {new Date().getFullYear()} Velynxia. All rights reserved.</p>
         </div>
       </div>
     </footer>

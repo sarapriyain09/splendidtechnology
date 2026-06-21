@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Products | Velynxia",
   description:
-    "Splendid Technology products — Splendid Accounting, Splendid Reliability, Splendid Monitor, Splendid Asset Manager, and the Motor Health Monitoring Kit for industrial SMEs.",
+    "Velynxia products — Splendid Accounting, Splendid Reliability, Splendid Monitor, Splendid Asset Manager, and the Motor Health Monitoring Kit for industrial SMEs.",
   keywords: [
     "splendid accounting software",
     "splendid reliability software",
@@ -164,7 +164,7 @@ export default function ProductsPage() {
       <section className="bg-[#0b1f3a] px-4 py-16 text-white sm:px-6 lg:px-8">
         <div className="mx-auto w-full max-w-6xl">
           <p className="inline-block rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-green-400">
-            Splendid Technology — Products
+            Velynxia — Products
           </p>
           <h1 className="mt-4 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-5xl">
             Software Products Built for Real People and Engineering Businesses

@@ -53,7 +53,7 @@ export default async function EngineeringCaseStudyDetailPage({
     about: study.category,
     publisher: {
       "@type": "Organization",
-      name: "Splendid Technology Ltd",
+      name: "Velynxia",
       url: "https://www.velynxia.com",
     },
     mainEntityOfPage: `https://www.velynxia.com/engineering-case-studies/${study.slug}`,

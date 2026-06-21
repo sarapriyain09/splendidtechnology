@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Industries We Support | CRM and AI Automation for SMEs",
   description:
-    "Splendid Technology supports UK SMEs with CRM implementation, AI automation, workflow systems, and business integrations across multiple sectors.",
+    "Velynxia supports UK SMEs with CRM implementation, AI automation, workflow systems, and business integrations across multiple sectors.",
   keywords: [
     "crm for smes uk",
     "ai automation for smes uk",

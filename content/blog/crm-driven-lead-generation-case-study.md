@@ -121,7 +121,7 @@ The CRM provides:
 
 ## Next Step
 
-If your team wants to improve B2B lead generation through structured pipeline workflows and better decision-maker targeting, contact Splendid Technology to discuss a CRM implementation tailored to your process.
+If your team wants to improve B2B lead generation through structured pipeline workflows and better decision-maker targeting, contact Velynxia to discuss a CRM implementation tailored to your process.
 
 - Explore CRM solutions: [/services/sales-crm](/services/sales-crm)
 - Explore digital services: [/services](/services)

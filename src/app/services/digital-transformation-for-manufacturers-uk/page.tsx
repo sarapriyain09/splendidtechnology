@@ -77,7 +77,7 @@ export default function DigitalTransformationForManufacturersUKPage() {
     serviceType: "Digital transformation and workflow digitalisation",
     provider: {
       "@type": "Organization",
-      name: "Splendid Technology Ltd",
+      name: "Velynxia",
       url: "https://www.velynxia.com",
     },
     areaServed: "GB",

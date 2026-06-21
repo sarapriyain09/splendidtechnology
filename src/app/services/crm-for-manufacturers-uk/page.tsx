@@ -78,7 +78,7 @@ export default function CRMForManufacturersUKPage() {
     serviceType: "CRM implementation",
     provider: {
       "@type": "Organization",
-      name: "Splendid Technology Ltd",
+      name: "Velynxia",
       url: "https://www.velynxia.com",
     },
     areaServed: "GB",
