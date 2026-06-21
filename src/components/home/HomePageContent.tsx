@@ -59,14 +59,12 @@ const solutionCards = [
     title: "Automation",
     href: "/automation",
     description: "AI-powered workflows and productivity.",
-    comingSoon: true,
     items: ["Workflow Builder", "AI Assistant", "Meeting Summaries", "Email Generation", "Follow-up Recommendations"],
   },
   {
     title: "Analytics",
     href: "/analytics",
     description: "Measure and improve performance.",
-    comingSoon: true,
     items: ["Sales Analytics", "Campaign Analytics", "Call Analytics", "Revenue Forecasting", "Conversion Metrics"],
   },
 ];
@@ -100,10 +98,12 @@ const customerJourney = [
 ];
 
 const appPreviewByTitle: Record<string, string> = {
-  CRM: "/images/projects/CRM%20_updated-dash.png",
-  Sales: "/images/projects/sales.png",
-  CallCRM: "/images/projects/callcrm-mod.png",
-  Marketing: "/images/projects/marketing.png",
+  CRM: "/images/projects/Vel-CRM.png",
+  Sales: "/images/projects/Vel-Sales.png",
+  CallCRM: "/images/projects/Vel-CallCRM.png",
+  Marketing: "/images/projects/Vel-Marketing.png",
+  Automation: "/images/projects/Vel-Automation.png",
+  Analytics: "/images/projects/Vel-Analytics.png",
 };
 
 const sectionAnchors = [
@@ -178,7 +178,7 @@ export function HomePageContent() {
                 <p className="ml-3 text-xs font-semibold text-[#5e6d8f]">CRM Dashboard</p>
               </div>
               <Image
-                src="/images/projects/CRM%20_updated-dash.png"
+                src="/images/projects/Vel-CRM.png"
                 alt="CRM dashboard screenshot showing sidebar, activities, and task panels"
                 width={1280}
                 height={780}
@@ -255,7 +255,6 @@ export function HomePageContent() {
               <motion.article key={card.title} variants={cardFade} whileHover={{ y: -5 }} transition={{ duration: 0.2 }} className="rounded-2xl border border-[#dce8ff] bg-[linear-gradient(160deg,#ffffff_0%,#f4f9ff_100%)] p-5 shadow-sm sm:p-6">
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="text-xl font-bold text-[#122443]">{card.title}</h3>
-                  {card.comingSoon ? <span className="rounded-full border border-[#ffd6a8] bg-[#fff3e5] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-[#9b5a00]">Coming Soon</span> : null}
                 </div>
                 <p className="mt-2 text-sm text-[#425375]">{card.description}</p>
                 {appPreviewByTitle[card.title] ? (

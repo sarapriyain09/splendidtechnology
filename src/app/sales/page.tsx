@@ -24,7 +24,7 @@ export default function SalesPage() {
 
       <div className="mt-8 overflow-hidden rounded-2xl border border-[#dce8ff] bg-white">
         <Image
-          src="/images/projects/sales.png"
+          src="/images/projects/Vel-Sales.png"
           alt="Sales dashboard interface"
           width={1280}
           height={760}

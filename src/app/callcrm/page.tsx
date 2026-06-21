@@ -24,7 +24,7 @@ export default function CallCrmPage() {
 
       <div className="mt-8 overflow-hidden rounded-2xl border border-[#dce8ff] bg-white">
         <Image
-          src="/images/projects/callcrm-mod.png"
+          src="/images/projects/Vel-CallCRM.png"
           alt="CallCRM console interface"
           width={1280}
           height={760}

@@ -24,7 +24,7 @@ export default function CrmPage() {
 
       <div className="mt-8 overflow-hidden rounded-2xl border border-[#dce8ff] bg-white">
         <Image
-          src="/images/projects/CRM%20_updated-dash.png"
+          src="/images/projects/Vel-CRM.png"
           alt="CRM dashboard interface"
           width={1280}
           height={760}

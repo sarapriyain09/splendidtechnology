@@ -24,7 +24,7 @@ export default function MarketingPage() {
 
       <div className="mt-8 overflow-hidden rounded-2xl border border-[#dce8ff] bg-white">
         <Image
-          src="/images/projects/marketing.png"
+          src="/images/projects/Vel-Marketing.png"
           alt="Marketing dashboard interface"
           width={1280}
           height={760}

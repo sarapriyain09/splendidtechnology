@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -21,9 +22,19 @@ export default function AnalyticsPage() {
         Measure and improve performance with clear dashboards for revenue, conversion, campaign outcomes, and calls.
       </p>
 
+      <div className="mt-8 overflow-hidden rounded-2xl border border-[#dce8ff] bg-white">
+        <Image
+          src="/images/projects/Vel-Analytics.png"
+          alt="Analytics dashboard interface"
+          width={1280}
+          height={760}
+          className="h-auto w-full object-cover"
+          priority
+        />
+      </div>
+
       <section className="mt-8 rounded-2xl border border-[#ffd6a8] bg-[#fff7ef] p-6">
-        <p className="inline-flex rounded-full border border-[#ffd6a8] bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-[#9b5a00]">Coming Soon</p>
-        <h2 className="mt-4 text-xl font-bold text-[#713f00]">Planned Capabilities</h2>
+        <h2 className="text-xl font-bold text-[#713f00]">Planned Capabilities</h2>
         <ul className="mt-4 grid gap-2 sm:grid-cols-2">
           {features.map((item) => (
             <li key={item} className="rounded-lg border border-[#ffe0ba] bg-white px-3 py-2 text-sm text-[#6e4a1c]">

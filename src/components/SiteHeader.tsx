@@ -23,8 +23,8 @@ const platformItems: MenuItem[] = [
   { href: "/sales", label: "Sales", description: "Leads, opportunities, pipelines, and quotations" },
   { href: "/callcrm", label: "CallCRM", description: "Click-to-call, call logging, and follow-up sequences" },
   { href: "/marketing", label: "Marketing", description: "LinkedIn, email, SMS, forms, and campaigns" },
-  { href: "/automation", label: "Automation", description: "AI workflows, summaries, and recommendations", comingSoon: true },
-  { href: "/analytics", label: "Analytics", description: "Revenue, conversion, and performance insights", comingSoon: true },
+  { href: "/automation", label: "Automation", description: "AI workflows, summaries, and recommendations" },
+  { href: "/analytics", label: "Analytics", description: "Revenue, conversion, and performance insights" },
 ];
 
 function DesktopDropdown({ label, items }: { label: string; items: MenuItem[] }) {
@@ -46,9 +46,6 @@ function DesktopDropdown({ label, items }: { label: string; items: MenuItem[] })
           >
             <p className="flex items-center gap-2 text-sm font-semibold text-[#0f1f3b]">
               {item.label}
-              {item.comingSoon ? (
-                <span className="rounded-full border border-[#ffd6a8] bg-[#fff3e5] px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] text-[#9b5a00]">Soon</span>
-              ) : null}
             </p>
             {item.description ? <p className="mt-0.5 text-xs text-[#5e6d8f]">{item.description}</p> : null}
           </Link>
@@ -154,9 +151,6 @@ export function SiteHeader() {
                 className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-[#2d4168] hover:bg-[#f5f9ff]"
               >
                 {item.label}
-                {item.comingSoon ? (
-                  <span className="rounded-full border border-[#ffd6a8] bg-[#fff3e5] px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] text-[#9b5a00]">Soon</span>
-                ) : null}
               </Link>
             ))}
 
