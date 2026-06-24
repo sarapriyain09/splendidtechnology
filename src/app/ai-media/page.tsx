@@ -37,7 +37,7 @@ export default function AiMediaPage() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 className="text-2xl font-bold text-[#0e1629] sm:text-3xl">Studios</h2>
-            <p className="mt-2 text-sm leading-6 text-[#4a5a7a]">Choose a studio to explore capabilities and planned release tracks.</p>
+            <p className="mt-2 text-sm leading-6 text-[#4a5a7a]">Choose a studio to explore capabilities and start creating.</p>
           </div>
         </div>
 

@@ -30,35 +30,30 @@ export const aiMediaStudios: AiMediaStudio[] = [
     title: "Podcast Studio",
     description: "Plan episodes, generate show formats, and prepare AI-assisted podcast workflows.",
     icon: "🎧",
-    comingSoon: true,
   },
   {
     slug: "subtitle-studio",
     title: "Subtitle Studio",
     description: "Create timed captions and multilingual subtitles to improve accessibility and reach.",
     icon: "💬",
-    comingSoon: true,
   },
   {
     slug: "video-studio",
     title: "Video Studio",
     description: "Turn scripts into branded video drafts with scene suggestions and AI editing support.",
     icon: "🎬",
-    comingSoon: true,
   },
   {
     slug: "background-music-studio",
     title: "Background Music Studio",
     description: "Generate royalty-safe background music tailored to your campaign mood and format.",
     icon: "🎵",
-    comingSoon: true,
   },
   {
     slug: "avatar-studio",
     title: "Avatar Studio",
     description: "Create AI avatars for explainers, sales messages, onboarding, and support content.",
     icon: "🧑‍💻",
-    comingSoon: true,
   },
 ];
 

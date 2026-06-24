@@ -138,7 +138,7 @@ export function HomePageContent() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#46618f]">Velynxia Growth Platform &middot; Grow Faster. Sell Smarter.</p>
             <h1 className="mt-3 text-balance text-4xl font-bold leading-tight text-[#0e1629] sm:text-5xl lg:text-6xl">
-              Two Pillars, One Platform for Customer Growth and AI Media Creation
+              One Platform for Customer Growth and AI Media Creation
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-[#37486e]">
               Run your Growth Platform and AI Media Suite from one place. Manage customers, generate leads, and produce scripts, voiceovers, videos, podcasts, and AI avatar content faster.
