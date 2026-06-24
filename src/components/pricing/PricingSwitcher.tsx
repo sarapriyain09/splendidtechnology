@@ -9,8 +9,50 @@ import {
   type ProductTab,
 } from "@/lib/pricing";
 
+type CheckoutPlan = "crm" | "growth" | "creator" | "professional" | "business" | "enterprise";
+
+const growthCheckoutPlanByName: Record<string, CheckoutPlan | undefined> = {
+  CRM: "crm",
+  Growth: "growth",
+};
+
+const aiMediaCheckoutPlanByName: Record<string, CheckoutPlan | undefined> = {
+  Creator: "creator",
+  Professional: "professional",
+  Business: "business",
+  Enterprise: "enterprise",
+};
+
 export function PricingSwitcher() {
   const [activeTab, setActiveTab] = useState<ProductTab>("growth");
+  const [loadingPlan, setLoadingPlan] = useState<CheckoutPlan | null>(null);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
+
+  const startCheckout = async (plan: CheckoutPlan) => {
+    setCheckoutError(null);
+    setLoadingPlan(plan);
+
+    try {
+      const response = await fetch("/api/stripe/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ plan }),
+      });
+
+      const data = (await response.json().catch(() => null)) as { error?: string; url?: string } | null;
+
+      if (!response.ok || !data?.url) {
+        setCheckoutError(data?.error ?? "Unable to start checkout right now. Please try again.");
+        return;
+      }
+
+      window.location.href = data.url;
+    } catch {
+      setCheckoutError("Unable to start checkout right now. Please try again.");
+    } finally {
+      setLoadingPlan(null);
+    }
+  };
 
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
@@ -39,12 +81,26 @@ export function PricingSwitcher() {
         </div>
       </div>
 
-      {activeTab === "growth" ? <GrowthPricingContent /> : <AiMediaPricingContent />}
+      {checkoutError ? (
+        <p className="mt-4 rounded-xl border border-[#ffd9d2] bg-[#fff7f5] px-4 py-3 text-sm text-[#8f2f1f]">{checkoutError}</p>
+      ) : null}
+
+      {activeTab === "growth" ? (
+        <GrowthPricingContent loadingPlan={loadingPlan} onCheckout={startCheckout} />
+      ) : (
+        <AiMediaPricingContent loadingPlan={loadingPlan} onCheckout={startCheckout} />
+      )}
     </section>
   );
 }
 
-function GrowthPricingContent() {
+function GrowthPricingContent({
+  loadingPlan,
+  onCheckout,
+}: {
+  loadingPlan: CheckoutPlan | null;
+  onCheckout: (plan: CheckoutPlan) => Promise<void>;
+}) {
   return (
     <div className="mt-9">
       <div className="max-w-3xl">
@@ -57,10 +113,7 @@ function GrowthPricingContent() {
 
       <div className="mt-7 grid gap-4 lg:grid-cols-3">
         {growthPlatformPlans.map((plan) => (
-          <article
-            key={plan.name}
-            className="flex flex-col rounded-2xl border border-[#dce8ff] bg-[linear-gradient(165deg,#ffffff_0%,#f4f9ff_100%)] p-5"
-          >
+          <article key={plan.name} className="flex flex-col rounded-2xl border border-[#dce8ff] bg-[linear-gradient(165deg,#ffffff_0%,#f4f9ff_100%)] p-5">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#46618f]">{plan.name}</p>
             <h3 className="mt-2 text-3xl font-bold text-[#0f1f3b]">{plan.price}</h3>
 
@@ -86,12 +139,23 @@ function GrowthPricingContent() {
               ))}
             </ul>
 
-            <Link
-              href="/contact"
-              className="mt-6 inline-flex items-center justify-center rounded-full bg-[#1f6dff] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0f56dd]"
-            >
-              {plan.ctaLabel}
-            </Link>
+            {growthCheckoutPlanByName[plan.name] ? (
+              <button
+                type="button"
+                onClick={() => onCheckout(growthCheckoutPlanByName[plan.name] as CheckoutPlan)}
+                disabled={loadingPlan === growthCheckoutPlanByName[plan.name]}
+                className="mt-6 inline-flex items-center justify-center rounded-full bg-[#1f6dff] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#0f56dd] disabled:cursor-not-allowed disabled:bg-[#87adf3]"
+              >
+                {loadingPlan === growthCheckoutPlanByName[plan.name] ? "Redirecting..." : "Checkout"}
+              </button>
+            ) : (
+              <Link
+                href="/contact"
+                className="mt-6 inline-flex items-center justify-center rounded-full bg-[#1f6dff] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0f56dd]"
+              >
+                {plan.ctaLabel}
+              </Link>
+            )}
           </article>
         ))}
       </div>
@@ -99,7 +163,13 @@ function GrowthPricingContent() {
   );
 }
 
-function AiMediaPricingContent() {
+function AiMediaPricingContent({
+  loadingPlan,
+  onCheckout,
+}: {
+  loadingPlan: CheckoutPlan | null;
+  onCheckout: (plan: CheckoutPlan) => Promise<void>;
+}) {
   return (
     <div className="mt-9">
       <div className="max-w-4xl">
@@ -151,12 +221,14 @@ function AiMediaPricingContent() {
               {plan.support ? <p className="mt-1 font-semibold">{plan.support}</p> : null}
             </div>
 
-            <Link
-              href="/contact"
-              className="mt-6 inline-flex items-center justify-center rounded-full border border-[#cfe0ff] bg-white px-4 py-2 text-sm font-semibold text-[#2c4d87] hover:bg-[#f4f8ff]"
+            <button
+              type="button"
+              onClick={() => onCheckout(aiMediaCheckoutPlanByName[plan.name] as CheckoutPlan)}
+              disabled={loadingPlan === aiMediaCheckoutPlanByName[plan.name]}
+              className="mt-6 inline-flex items-center justify-center rounded-full border border-[#cfe0ff] bg-white px-4 py-2 text-sm font-semibold text-[#2c4d87] transition hover:bg-[#f4f8ff] disabled:cursor-not-allowed disabled:bg-[#eef3ff] disabled:text-[#7f8dab]"
             >
-              Talk to Sales
-            </Link>
+              {loadingPlan === aiMediaCheckoutPlanByName[plan.name] ? "Redirecting..." : "Start subscription"}
+            </button>
           </article>
         ))}
       </div>
