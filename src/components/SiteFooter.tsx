@@ -9,8 +9,6 @@ const footerGroups = {
     { href: "/automation", label: "Velynxia Automation" },
     { href: "/analytics", label: "Velynxia Analytics" },
     { href: "/ai-media", label: "AI Media Suite" },
-    { href: "/ai-media/voice-studio", label: "Voice Studio" },
-    { href: "/ai-media/script-studio", label: "Script Studio" },
   ],
   solutions: [
     { href: "/services/sales-crm", label: "CRM Solutions" },
