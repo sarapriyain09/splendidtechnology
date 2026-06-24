@@ -27,6 +27,18 @@ const platformItems: MenuItem[] = [
   { href: "/analytics", label: "Analytics", description: "Revenue, conversion, and performance insights" },
 ];
 
+const aiMediaItems: MenuItem[] = [
+  { href: "/ai-media", label: "AI Media Suite", description: "Scripts, voice, video, subtitles, and AI avatars" },
+  { href: "/ai-media/voice-studio", label: "Voice Studio", description: "AI voiceovers for campaigns and demos" },
+  { href: "/ai-media/script-studio", label: "Script Studio", description: "Script writing for media workflows" },
+  { href: "/ai-media/presentation-studio", label: "Presentation Studio", description: "Slide-ready presentation narratives" },
+  { href: "/ai-media/podcast-studio", label: "Podcast Studio", description: "Episode planning and podcast workflows" },
+  { href: "/ai-media/subtitle-studio", label: "Subtitle Studio", description: "Multilingual caption generation" },
+  { href: "/ai-media/video-studio", label: "Video Studio", description: "Script-to-video production assistance" },
+  { href: "/ai-media/background-music-studio", label: "Background Music Studio", description: "AI-generated background music" },
+  { href: "/ai-media/avatar-studio", label: "Avatar Studio", description: "AI avatars for explainers and outreach" },
+];
+
 function DesktopDropdown({ label, items }: { label: string; items: MenuItem[] }) {
   return (
     <div className="group relative">
@@ -91,6 +103,7 @@ export function SiteHeader() {
             Home
           </Link>
           <DesktopDropdown label="Platform" items={platformItems} />
+          <DesktopDropdown label="AI Media" items={aiMediaItems} />
           <DesktopDropdown label="Solutions" items={solutionItems} />
           <Link href="/industries" className="rounded-lg px-3 py-2 text-sm font-semibold text-[#223252] transition hover:bg-white/80">
             Industries
@@ -149,6 +162,18 @@ export function SiteHeader() {
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-[#2d4168] hover:bg-[#f5f9ff]"
+              >
+                {item.label}
+              </Link>
+            ))}
+
+            <p className="px-2 pt-3 text-[10px] font-bold uppercase tracking-widest text-[#e25f24]">AI Media</p>
+            {aiMediaItems.map((item) => (
+              <Link
+                key={item.href + item.label}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className="block rounded-lg px-2 py-2 text-sm text-[#2d4168] hover:bg-[#f5f9ff]"
               >
                 {item.label}
               </Link>

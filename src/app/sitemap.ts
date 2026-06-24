@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllBlogPosts } from "@/lib/blog";
+import { aiMediaStudios } from "@/lib/ai-media";
 import { getAllLocations } from "@/lib/locations";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -24,6 +25,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/contact`, lastModified },
     { url: `${base}/blog`, lastModified },
     { url: `${base}/locations`, lastModified },
+    { url: `${base}/ai-media`, lastModified },
+    ...aiMediaStudios.map((studio) => ({
+      url: `${base}/ai-media/${studio.slug}`,
+      lastModified,
+    })),
     // SEO landing pages
     { url: `${base}/crm-for-engineering-companies`, lastModified },
     { url: `${base}/lead-management-software`, lastModified },

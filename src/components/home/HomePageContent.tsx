@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { aiMediaStudios } from "@/lib/ai-media";
 
 const sectionFade = {
   hidden: { opacity: 0, y: 24 },
@@ -110,6 +111,7 @@ const sectionAnchors = [
   { label: "Hero", href: "#hero" },
   { label: "Need of CRM", href: "#need-of-crm" },
   { label: "Products", href: "#products" },
+  { label: "AI Media", href: "#ai-media-suite" },
   { label: "Journey", href: "#journey" },
   { label: "Why", href: "#why" },
   { label: "Demo", href: "#ready" },
@@ -136,10 +138,10 @@ export function HomePageContent() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#46618f]">Velynxia Growth Platform &middot; Grow Faster. Sell Smarter.</p>
             <h1 className="mt-3 text-balance text-4xl font-bold leading-tight text-[#0e1629] sm:text-5xl lg:text-6xl">
-              One Platform for Customer Growth
+              Two Pillars, One Platform for Customer Growth and AI Media Creation
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-[#37486e]">
-              Manage customers, generate leads, engage prospects, and accelerate revenue with integrated CRM, Sales, CallCRM, Marketing, and AI-powered automation.
+              Run your Growth Platform and AI Media Suite from one place. Manage customers, generate leads, and produce scripts, voiceovers, videos, podcasts, and AI avatar content faster.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg">
@@ -147,6 +149,9 @@ export function HomePageContent() {
               </Button>
               <Button asChild variant="outline" size="lg">
                 <Link href="#products">Explore Platform</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/ai-media">Explore AI Media</Link>
               </Button>
             </div>
             <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-[#4a5a7a]">
@@ -248,8 +253,8 @@ export function HomePageContent() {
 
       <motion.section id="products" variants={sectionFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="border-y border-[#dce8ff] bg-white/70 py-16 sm:py-18">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0e1629] sm:text-4xl">Products</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-[#4a5a7a]">Explore all six integrated products: CRM, Sales, CallCRM, Marketing, Automation, and Analytics.</p>
+          <h2 className="text-3xl font-bold text-[#0e1629] sm:text-4xl">Growth Platform</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-[#4a5a7a]">The first pillar of Velynxia: six integrated products across CRM, Sales, CallCRM, Marketing, Automation, and Analytics.</p>
           <motion.div variants={staggerWrap} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {solutionCards.map((card) => (
               <motion.article key={card.title} variants={cardFade} whileHover={{ y: -5 }} transition={{ duration: 0.2 }} className="rounded-2xl border border-[#dce8ff] bg-[linear-gradient(160deg,#ffffff_0%,#f4f9ff_100%)] p-5 shadow-sm sm:p-6">
@@ -292,6 +297,51 @@ export function HomePageContent() {
               </motion.article>
             ))}
           </motion.div>
+        </div>
+      </motion.section>
+
+      <motion.section id="ai-media-suite" variants={sectionFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-18 lg:px-8">
+        <div className="rounded-3xl border border-[#dce8ff] bg-[radial-gradient(circle_at_85%_12%,rgba(31,109,255,0.12),transparent_34%),linear-gradient(160deg,#ffffff_0%,#f5f9ff_100%)] p-6 sm:p-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#46618f]">Second Platform Pillar</p>
+          <h2 className="mt-2 text-3xl font-bold text-[#0e1629] sm:text-4xl">AI Media Suite</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-[#4a5a7a]">
+            Create scripts, voiceovers, presentations, podcasts, subtitles, videos, music and AI avatars from one platform.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <Button asChild>
+              <Link href="/ai-media">Open AI Media Suite</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/demo">Request Access</Link>
+            </Button>
+          </div>
+
+          <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {aiMediaStudios.map((studio) => (
+              <article key={studio.slug} className="rounded-2xl border border-[#dce8ff] bg-white p-4 shadow-sm">
+                <div className="flex items-start justify-between gap-3">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#d6e5ff] bg-[#f8fbff] text-base" aria-hidden="true">
+                    {studio.icon}
+                  </span>
+                  {studio.comingSoon ? (
+                    <span className="rounded-full border border-[#ffd8b0] bg-[#fff4e9] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#a85a1a]">
+                      Coming Soon
+                    </span>
+                  ) : null}
+                </div>
+                <h3 className="mt-3 text-base font-bold text-[#122443]">{studio.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#425375]">{studio.description}</p>
+                <div className="mt-4">
+                  <Link
+                    href={`/ai-media/${studio.slug}`}
+                    className="inline-flex items-center rounded-md border border-[#cfe0ff] bg-white px-3 py-1.5 text-xs font-semibold text-[#2c4d87] transition hover:bg-[#f4f8ff]"
+                  >
+                    Learn More
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </motion.section>
 
