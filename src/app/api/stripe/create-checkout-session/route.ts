@@ -4,20 +4,44 @@ import { getSiteUrl } from "@/lib/site-url";
 
 type CheckoutPlan = "crm" | "growth" | "creator" | "professional" | "business" | "enterprise";
 
-const priceLookupByPlan: Record<CheckoutPlan, string> = {
-  crm: process.env.STRIPE_LOOKUP_CRM ?? "velynxia_crm_monthly",
-  growth: process.env.STRIPE_LOOKUP_GROWTH ?? "velynxia_growth_monthly",
-  creator: process.env.STRIPE_LOOKUP_CREATOR ?? "velynxia_ai_creator_monthly",
-  professional: process.env.STRIPE_LOOKUP_PROFESSIONAL ?? "velynxia_ai_professional_monthly",
-  business: process.env.STRIPE_LOOKUP_BUSINESS ?? "velynxia_ai_business_monthly",
-  enterprise: process.env.STRIPE_LOOKUP_ENTERPRISE ?? "velynxia_ai_enterprise_monthly",
+const stripePriceConfigByPlan: Record<
+  CheckoutPlan,
+  {
+    lookupKey: string;
+    priceId?: string;
+  }
+> = {
+  crm: {
+    lookupKey: process.env.STRIPE_LOOKUP_CRM ?? "velynxia_crm_monthly",
+    priceId: process.env.STRIPE_PRICE_ID_CRM,
+  },
+  growth: {
+    lookupKey: process.env.STRIPE_LOOKUP_GROWTH ?? "velynxia_growth_monthly",
+    priceId: process.env.STRIPE_PRICE_ID_GROWTH,
+  },
+  creator: {
+    lookupKey: process.env.STRIPE_LOOKUP_CREATOR ?? "velynxia_ai_creator_monthly",
+    priceId: process.env.STRIPE_PRICE_ID_CREATOR,
+  },
+  professional: {
+    lookupKey: process.env.STRIPE_LOOKUP_PROFESSIONAL ?? "velynxia_ai_professional_monthly",
+    priceId: process.env.STRIPE_PRICE_ID_PROFESSIONAL,
+  },
+  business: {
+    lookupKey: process.env.STRIPE_LOOKUP_BUSINESS ?? "velynxia_ai_business_monthly",
+    priceId: process.env.STRIPE_PRICE_ID_BUSINESS,
+  },
+  enterprise: {
+    lookupKey: process.env.STRIPE_LOOKUP_ENTERPRISE ?? "velynxia_ai_enterprise_monthly",
+    priceId: process.env.STRIPE_PRICE_ID_ENTERPRISE,
+  },
 };
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripeClient = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 
 function isCheckoutPlan(value: string): value is CheckoutPlan {
-  return value in priceLookupByPlan;
+  return value in stripePriceConfigByPlan;
 }
 
 export async function POST(request: Request) {
@@ -32,19 +56,36 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid pricing plan." }, { status: 400 });
   }
 
-  const lookupKey = priceLookupByPlan[selectedPlan];
+  const stripeConfig = stripePriceConfigByPlan[selectedPlan];
+  const lookupKey = stripeConfig.lookupKey;
 
   try {
-    const prices = await stripeClient.prices.list({
-      lookup_keys: [lookupKey],
-      active: true,
-      limit: 1,
-      expand: ["data.product"],
-    });
+    let selectedPrice: Stripe.Price | null = null;
 
-    const selectedPrice = prices.data[0];
+    if (stripeConfig.priceId) {
+      const resolvedPrice = await stripeClient.prices.retrieve(stripeConfig.priceId);
+      if (resolvedPrice.active) {
+        selectedPrice = resolvedPrice;
+      }
+    }
+
     if (!selectedPrice) {
-      return NextResponse.json({ error: `No active price found for lookup key: ${lookupKey}` }, { status: 400 });
+      const prices = await stripeClient.prices.list({
+        lookup_keys: [lookupKey],
+        active: true,
+        limit: 1,
+        expand: ["data.product"],
+      });
+      selectedPrice = prices.data[0] ?? null;
+    }
+
+    if (!selectedPrice) {
+      return NextResponse.json(
+        {
+          error: `No active price found for plan '${selectedPlan}'. Configure STRIPE_PRICE_ID_${selectedPlan.toUpperCase()} or set lookup key '${lookupKey}' on an active Stripe price.`,
+        },
+        { status: 400 }
+      );
     }
 
     const siteUrl = getSiteUrl();
