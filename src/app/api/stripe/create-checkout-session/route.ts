@@ -9,31 +9,38 @@ const stripePriceConfigByPlan: Record<
   {
     lookupKey: string;
     priceId?: string;
+    productId?: string;
   }
 > = {
   crm: {
     lookupKey: process.env.STRIPE_LOOKUP_CRM ?? "velynxia_crm_monthly",
     priceId: process.env.STRIPE_PRICE_ID_CRM,
+    productId: process.env.STRIPE_PRODUCT_ID_CRM,
   },
   growth: {
     lookupKey: process.env.STRIPE_LOOKUP_GROWTH ?? "velynxia_growth_monthly",
     priceId: process.env.STRIPE_PRICE_ID_GROWTH,
+    productId: process.env.STRIPE_PRODUCT_ID_GROWTH,
   },
   creator: {
     lookupKey: process.env.STRIPE_LOOKUP_CREATOR ?? "velynxia_ai_creator_monthly",
     priceId: process.env.STRIPE_PRICE_ID_CREATOR,
+    productId: process.env.STRIPE_PRODUCT_ID_CREATOR,
   },
   professional: {
     lookupKey: process.env.STRIPE_LOOKUP_PROFESSIONAL ?? "velynxia_ai_professional_monthly",
     priceId: process.env.STRIPE_PRICE_ID_PROFESSIONAL,
+    productId: process.env.STRIPE_PRODUCT_ID_PROFESSIONAL,
   },
   business: {
     lookupKey: process.env.STRIPE_LOOKUP_BUSINESS ?? "velynxia_ai_business_monthly",
     priceId: process.env.STRIPE_PRICE_ID_BUSINESS,
+    productId: process.env.STRIPE_PRODUCT_ID_BUSINESS,
   },
   enterprise: {
     lookupKey: process.env.STRIPE_LOOKUP_ENTERPRISE ?? "velynxia_ai_enterprise_monthly",
     priceId: process.env.STRIPE_PRICE_ID_ENTERPRISE,
+    productId: process.env.STRIPE_PRODUCT_ID_ENTERPRISE,
   },
 };
 
@@ -79,10 +86,24 @@ export async function POST(request: Request) {
       selectedPrice = prices.data[0] ?? null;
     }
 
+    if (!selectedPrice && stripeConfig.productId) {
+      const productPrices = await stripeClient.prices.list({
+        product: stripeConfig.productId,
+        active: true,
+        type: "recurring",
+        limit: 100,
+      });
+
+      selectedPrice =
+        productPrices.data.find((price) => price.recurring?.interval === "month") ??
+        productPrices.data[0] ??
+        null;
+    }
+
     if (!selectedPrice) {
       return NextResponse.json(
         {
-          error: `No active price found for plan '${selectedPlan}'. Configure STRIPE_PRICE_ID_${selectedPlan.toUpperCase()} or set lookup key '${lookupKey}' on an active Stripe price.`,
+          error: `No active price found for plan '${selectedPlan}'. Configure STRIPE_PRICE_ID_${selectedPlan.toUpperCase()}, STRIPE_PRODUCT_ID_${selectedPlan.toUpperCase()}, or set lookup key '${lookupKey}' on an active Stripe price.`,
         },
         { status: 400 }
       );
