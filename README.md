@@ -164,6 +164,49 @@ If you later add environment variables (email provider keys, etc.), configure th
 - The contact form currently logs submissions on the server and returns success; it does not send email yet.
 - The chat window posts to `/api/chat`. To forward chat messages into your CRM, set `CRM_WEBHOOK_URL`.
 
+## Stripe + Pi provisioning automation
+
+Pricing checkout is wired through Stripe and supports post-payment provisioning to apps running on Raspberry Pi.
+
+### Required environment variables (Vercel)
+
+- `STRIPE_SECRET_KEY`
+- `STRIPE_WEBHOOK_SECRET`
+- `NEXT_PUBLIC_SITE_URL`
+
+For plan resolution, configure at least one strategy per plan:
+
+- `STRIPE_PRICE_ID_*` (recommended)
+- `STRIPE_PRODUCT_ID_*`
+- `STRIPE_LOOKUP_*`
+
+The app checks in this order: Price ID -> lookup key -> Product ID.
+
+### Pi provisioning webhook variables (Vercel)
+
+- `PI_PROVISIONING_WEBHOOK_URL` (Cloudflare Tunnel URL that reaches your Pi provisioning service)
+- `PI_PROVISIONING_WEBHOOK_TOKEN` (shared secret sent as Bearer token)
+- `PI_PROVISIONING_TIMEOUT_MS` (optional, default 10000)
+
+### Stripe webhook route
+
+- Endpoint: `/api/stripe/webhook`
+- Event used: `checkout.session.completed`
+
+After a successful subscription checkout, the webhook sends this payload to your Pi provisioning service:
+
+- `stripeEventId`
+- `stripeSessionId`
+- `stripeCustomerId`
+- `stripeSubscriptionId`
+- `customerEmail`
+- `customerName`
+- `plan`
+- `targetApp` (`growth` or `aimedia`)
+- `paidAt`
+
+The webhook includes `X-Idempotency-Key` set to Stripe session ID to help deduplicate provisioning jobs on the Pi side.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

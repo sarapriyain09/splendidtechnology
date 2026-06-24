@@ -4,6 +4,8 @@ import { getSiteUrl } from "@/lib/site-url";
 
 type CheckoutPlan = "crm" | "growth" | "creator" | "professional" | "business" | "enterprise";
 
+type TargetApp = "growth" | "aimedia";
+
 const stripePriceConfigByPlan: Record<
   CheckoutPlan,
   {
@@ -46,6 +48,10 @@ const stripePriceConfigByPlan: Record<
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripeClient = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
+
+function getTargetApp(plan: CheckoutPlan): TargetApp {
+  return plan === "crm" || plan === "growth" ? "growth" : "aimedia";
+}
 
 function isCheckoutPlan(value: string): value is CheckoutPlan {
   return value in stripePriceConfigByPlan;
@@ -110,12 +116,18 @@ export async function POST(request: Request) {
     }
 
     const siteUrl = getSiteUrl();
+    const targetApp = getTargetApp(selectedPlan);
 
     const session = await stripeClient.checkout.sessions.create({
       mode: "subscription",
       line_items: [{ price: selectedPrice.id, quantity: 1 }],
       allow_promotion_codes: true,
       billing_address_collection: "auto",
+      customer_creation: "always",
+      metadata: {
+        plan: selectedPlan,
+        targetApp,
+      },
       success_url: `${siteUrl}/pricing?checkout=success&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteUrl}/pricing?checkout=cancelled`,
     });
