@@ -1,0 +1,37 @@
+from app.models.base import Base
+from app.models.entities import (
+    Avatar,
+    AvatarTraining,
+    BrandAsset,
+    Export,
+    Job,
+    Media,
+    Project,
+    Scene,
+    Template,
+    TrainingLog,
+    Upload,
+    Usage,
+    User,
+    Video,
+    VoiceProfile,
+)
+
+__all__ = [
+    "Avatar",
+    "AvatarTraining",
+    "Base",
+    "BrandAsset",
+    "Export",
+    "Job",
+    "Media",
+    "Project",
+    "Scene",
+    "Template",
+    "TrainingLog",
+    "Upload",
+    "Usage",
+    "User",
+    "Video",
+    "VoiceProfile",
+]

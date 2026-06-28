@@ -1,0 +1,20 @@
+# Replace placeholders below with real GitHub usernames, for example:
+# @your-org-owner @shiva-github-id
+
+# Default ownership for the whole repository
+* @sarapriyain09 @Machspeed12
+
+# AI platform strategy and planning docs
+docs/strategy/ @sarapriyain09 @Machspeed12
+
+# GitHub workflows, templates, and governance
+.github/ @sarapriyain09 @Machspeed12
+
+# Applications
+apps/aimediasuit/ @sarapriyain09 @Machspeed12
+apps/growth-platform/ @sarapriyain09 @Machspeed12
+apps/website/ @sarapriyain09 @Machspeed12
+
+# Deployment scripts and operations docs
+scripts/ @sarapriyain09 @Machspeed12
+docs/ops/ @sarapriyain09 @Machspeed12

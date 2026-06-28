@@ -1,5 +1,21 @@
 Splendid Technology website (starter build) using Next.js + Tailwind.
 
+## Repository layout (staged)
+
+- `apps/website` -> main velynxia.com website source
+- `apps/growth-platform` -> app.velynxia.com growth shell source
+
+Deployment scripts:
+
+- Website to Pi: `scripts/deploy-pi.ps1`
+- Growth platform to Pi: `scripts/deploy-pi-growth-platform.ps1`
+
+Migration notes: `docs/ops/apps-folder-migration.md`
+
+Contributor onboarding: `docs/ops/contributor-onboarding.md`
+
+AI platform roadmap: `docs/strategy/velynxia-ai-media-suite-phased-development-plan.md`
+
 ## SEO keyword strategy (UK + Leicester)
 
 This is a practical keyword set designed for UK intent + service intent + quick wins.
@@ -187,6 +203,27 @@ The app checks in this order: Price ID -> lookup key -> Product ID.
 - `PI_PROVISIONING_WEBHOOK_URL` (Cloudflare Tunnel URL that reaches your Pi provisioning service)
 - `PI_PROVISIONING_WEBHOOK_TOKEN` (shared secret sent as Bearer token)
 - `PI_PROVISIONING_TIMEOUT_MS` (optional, default 10000)
+
+### App permission sync variables (Vercel)
+
+- `APP_PERMISSION_SYNC_URL` (default: `https://app.velynxia.com/api/licensing/payment-sync`)
+- `APP_PERMISSION_SYNC_SECRET` (must match `VELYNXIA_PAYMENT_SYNC_SECRET` in app-growth)
+
+Stripe webhook now syncs paid users directly to app permissions using this payload:
+
+- `email`
+- `plan` (mapped to app license tiers)
+- `status` (`paid`)
+
+Plan mapping used by default:
+
+- `creator -> Starter`
+- `professional -> Growth`
+- `business -> Professional`
+- `enterprise -> Enterprise`
+
+If direct app sync fails and legacy Pi provisioning variables are configured,
+the webhook falls back to the old provisioning endpoint.
 
 ### Stripe webhook route
 

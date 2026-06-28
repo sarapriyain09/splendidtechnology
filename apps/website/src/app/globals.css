@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  color-scheme: light;
+  --background: #edf1f8;
+  --foreground: #15223f;
+  --surface: #ffffff;
+  --surface-soft: #f7f9ff;
+  --surface-hover: #eef3ff;
+  --primary: #2662ea;
+  --primary-strong: #1147bf;
+  --accent: #18a592;
+  --ink-muted: #5f6d90;
+  --text: var(--foreground);
+  --muted: var(--ink-muted);
+  --border: rgba(36, 63, 120, 0.16);
+  --header: rgba(255, 255, 255, 0.75);
+  --orb: rgba(72, 111, 224, 0.16);
+  --orb-2: rgba(49, 164, 156, 0.12);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #0a0d14;
+  --foreground: #e8edff;
+  --surface: #131929;
+  --surface-soft: #181f31;
+  --surface-hover: #1e263a;
+  --primary: #2f6df6;
+  --primary-strong: #2558c7;
+  --accent: #27b6a9;
+  --ink-muted: #98a3c7;
+  --text: var(--foreground);
+  --muted: var(--ink-muted);
+  --border: rgba(154, 169, 214, 0.2);
+  --header: rgba(12, 15, 23, 0.75);
+  --orb: rgba(53, 94, 222, 0.22);
+  --orb-2: rgba(52, 181, 177, 0.16);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-manrope);
+  --font-heading: var(--font-space-grotesk);
+}
+
+body {
+  background: radial-gradient(circle at 20% 10%, var(--orb), transparent 35%),
+    radial-gradient(circle at 80% 20%, var(--orb-2), transparent 30%),
+    var(--background);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+* {
+  text-rendering: geometricPrecision;
+}

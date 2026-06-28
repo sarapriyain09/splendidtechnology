@@ -2,9 +2,9 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { getSiteUrl } from "@/lib/site-url";
 
-type CheckoutPlan = "crm" | "growth" | "creator" | "professional" | "business" | "enterprise";
+type CheckoutPlan = "creator" | "professional" | "business" | "enterprise";
 
-type TargetApp = "growth" | "aimedia";
+type TargetApp = "aimedia";
 
 const stripePriceConfigByPlan: Record<
   CheckoutPlan,
@@ -14,16 +14,6 @@ const stripePriceConfigByPlan: Record<
     productId?: string;
   }
 > = {
-  crm: {
-    lookupKey: process.env.STRIPE_LOOKUP_CRM ?? "velynxia_crm_monthly",
-    priceId: process.env.STRIPE_PRICE_ID_CRM,
-    productId: process.env.STRIPE_PRODUCT_ID_CRM,
-  },
-  growth: {
-    lookupKey: process.env.STRIPE_LOOKUP_GROWTH ?? "velynxia_growth_monthly",
-    priceId: process.env.STRIPE_PRICE_ID_GROWTH,
-    productId: process.env.STRIPE_PRODUCT_ID_GROWTH,
-  },
   creator: {
     lookupKey: process.env.STRIPE_LOOKUP_CREATOR ?? "velynxia_ai_creator_monthly",
     priceId: process.env.STRIPE_PRICE_ID_CREATOR,
@@ -49,8 +39,8 @@ const stripePriceConfigByPlan: Record<
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripeClient = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 
-function getTargetApp(plan: CheckoutPlan): TargetApp {
-  return plan === "crm" || plan === "growth" ? "growth" : "aimedia";
+function getTargetApp(): TargetApp {
+  return "aimedia";
 }
 
 function isCheckoutPlan(value: string): value is CheckoutPlan {
@@ -116,7 +106,7 @@ export async function POST(request: Request) {
     }
 
     const siteUrl = getSiteUrl();
-    const targetApp = getTargetApp(selectedPlan);
+    const targetApp = getTargetApp();
 
     const session = await stripeClient.checkout.sessions.create({
       mode: "subscription",

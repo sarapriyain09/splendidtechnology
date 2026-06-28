@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0a0d14;
+  --header: rgba(12, 15, 23, 0.75);
+  --surface: #131929;
+  --surface-soft: #181f31;
+  --surface-hover: #1e263a;
+  --text: #e8edff;
+  --muted: #98a3c7;
+  --border: rgba(154, 169, 214, 0.2);
+  --accent: #2f6df6;
+  --orb: rgba(53, 94, 222, 0.22);
+  --orb-2: rgba(52, 181, 177, 0.16);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --page: #edf1f8;
+  --header: rgba(255, 255, 255, 0.75);
+  --surface: #ffffff;
+  --surface-soft: #f7f9ff;
+  --surface-hover: #eef3ff;
+  --text: #15223f;
+  --muted: #5f6d90;
+  --border: rgba(36, 63, 120, 0.16);
+  --accent: #2662ea;
+  --orb: rgba(72, 111, 224, 0.16);
+  --orb-2: rgba(49, 164, 156, 0.12);
+}
+
+body {
+  background: var(--page);
+  color: var(--text);
+  @apply antialiased;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) transparent;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-sora), var(--font-space), sans-serif;
+}
