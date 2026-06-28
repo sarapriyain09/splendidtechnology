@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { format } from "date-fns";
 import toast from "react-hot-toast";
 import type {
+  VideoGenerateResponse,
   VideoAspectRatio,
   VideoHistoryItem,
   VideoMusicTrack,
@@ -15,26 +16,6 @@ import type {
 
 type StudioTab = "create" | "my-videos" | "templates" | "history";
 type HistoryFilter = "all" | "favorites";
-
-type GenerateVideoResponse = {
-  id: string;
-  title: string;
-  outputText: string;
-  sceneCount: number;
-  includeVoiceover: boolean;
-  outputUrl: string | null;
-  isFavorite: boolean;
-  status: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED";
-  createdAt: string;
-  generatedAt: string;
-  meta: {
-    topic: string;
-    audience: string;
-    style: VideoStyle;
-    aspectRatio: VideoAspectRatio;
-    durationSec: number;
-  };
-};
 
 type RenderVideoResponse = {
   outputUrl: string;
@@ -61,6 +42,23 @@ type AssetGenerateResponse = {
   id: string;
   imageUrl: string;
   provider: "gemini";
+};
+
+type AssetImportResponse = {
+  imageUrl: string;
+  sourceUrl: string;
+};
+
+type MusicUploadResponse = {
+  audioUrl: string;
+  size: number;
+  fileName: string;
+};
+
+type AssetUploadResponse = {
+  imageUrl: string;
+  size: number;
+  mimeType: string;
 };
 
 type Template = {
@@ -107,6 +105,97 @@ const templates: Template[] = [
   },
 ];
 
+const VIDEO_STUDIO_DRAFT_KEY = "aimedia-video-studio-draft-v1";
+const VIDEO_STUDIO_SCENE_SNAPSHOT_KEY = "aimedia-video-scene-snapshot-v1";
+
+type VideoStudioDraft = {
+  title: string;
+  topic: string;
+  audience: string;
+  style: VideoStyle;
+  aspectRatio: VideoAspectRatio;
+  durationSec: number;
+  prompt: string;
+  includeVoiceover: boolean;
+  scenes: VideoSceneItem[];
+  editablePlan: string;
+  musicTrack: VideoMusicTrack;
+  uploadedMusicUrl: string;
+  uploadedMusicName: string;
+  musicVolume: number;
+  voiceVolume: number;
+  quality: "1080p" | "720p";
+  includeSubtitles: boolean;
+  voice: VoiceType;
+  speed: number;
+  speechLeadInSec: number;
+  speechTailSec: number;
+  includeThumbnailSlide: boolean;
+  thumbnailTitle: string;
+  thumbnailSubtitle: string;
+  thumbnailDuration: number;
+  includeThankYouSlide: boolean;
+  thankYouTitle: string;
+  thankYouNote: string;
+  thankYouDuration: number;
+  brandLogoDataUrl: string;
+  brandLogoName: string;
+};
+
+type SceneSnapshotMap = Record<string, VideoSceneItem[]>;
+
+function sanitizeSceneSnapshot(input: unknown): VideoSceneItem[] {
+  if (!Array.isArray(input)) {
+    return [];
+  }
+
+  return input
+    .map((scene, index) => {
+      const item = scene as Partial<VideoSceneItem>;
+      return {
+        sceneNumber: index + 1,
+        duration: typeof item.duration === "number" ? Math.max(1, Math.min(60, Math.floor(item.duration))) : 6,
+        caption: typeof item.caption === "string" ? item.caption : "",
+        voiceover: typeof item.voiceover === "string" ? item.voiceover : "",
+        image: typeof item.image === "string" ? item.image : "",
+        transition: item.transition ?? "cut",
+        voiceVolume: typeof item.voiceVolume === "number" ? Math.max(0, Math.min(200, item.voiceVolume)) : 100,
+        musicVolume: typeof item.musicVolume === "number" ? Math.max(0, Math.min(200, item.musicVolume)) : 100,
+      };
+    })
+    .filter((scene) => Number.isFinite(scene.duration));
+}
+
+function readSceneSnapshotMap(): SceneSnapshotMap {
+  try {
+    const raw = window.localStorage.getItem(VIDEO_STUDIO_SCENE_SNAPSHOT_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw) as Record<string, unknown>;
+    const map: SceneSnapshotMap = {};
+    Object.entries(parsed).forEach(([key, value]) => {
+      map[key] = sanitizeSceneSnapshot(value);
+    });
+    return map;
+  } catch {
+    return {};
+  }
+}
+
+function writeSceneSnapshot(videoId: string, scenes: VideoSceneItem[]) {
+  try {
+    const current = readSceneSnapshotMap();
+    current[videoId] = sanitizeSceneSnapshot(scenes);
+    window.localStorage.setItem(VIDEO_STUDIO_SCENE_SNAPSHOT_KEY, JSON.stringify(current));
+  } catch {
+    // Ignore local storage failures.
+  }
+}
+
+function readSceneSnapshot(videoId: string): VideoSceneItem[] {
+  const current = readSceneSnapshotMap();
+  return sanitizeSceneSnapshot(current[videoId]);
+}
+
 async function fetchJson<T>(url: string, options?: RequestInit) {
   const response = await fetch(url, {
     ...options,
@@ -135,7 +224,11 @@ function parseScenesFromPlan(outputText: string): VideoSceneItem[] {
 
   for (const line of lines) {
     const raw = line.trim();
-    const sceneHeader = raw.match(/^Scene\s+(\d+)\s*:/i);
+    const normalized = raw
+      .replace(/^[-*#>\s]+/, "")
+      .replace(/^\*\*(.+)\*\*$/, "$1")
+      .replace(/^__(.+)__$/, "$1");
+    const sceneHeader = normalized.match(/^Scene\s*(\d+)\b\s*[:\-.]?/i);
     if (sceneHeader) {
       if (current) {
         scenes.push(current);
@@ -147,6 +240,8 @@ function parseScenesFromPlan(outputText: string): VideoSceneItem[] {
         voiceover: "",
         image: "",
         transition: "cut",
+        voiceVolume: 100,
+        musicVolume: 100,
       };
       continue;
     }
@@ -179,6 +274,8 @@ function parseScenesFromPlan(outputText: string): VideoSceneItem[] {
         voiceover: "",
         image: "",
         transition: "cut",
+        voiceVolume: 100,
+        musicVolume: 100,
       },
     ];
   }
@@ -229,11 +326,16 @@ export function VideoStudioClient() {
       voiceover: "",
       image: "",
       transition: "cut",
+      voiceVolume: 100,
+      musicVolume: 100,
     },
   ]);
-  const [activeSceneTab, setActiveSceneTab] = useState<number | "build">(1);
-  const [musicTrack, setMusicTrack] = useState<VideoMusicTrack>("none");
-  const [musicVolume, setMusicVolume] = useState(35);
+  const [activeSceneTab, setActiveSceneTab] = useState<number | "thumbnail" | "thankyou" | "build">(1);
+  const [musicTrack, setMusicTrack] = useState<VideoMusicTrack>("corporate");
+  const [uploadedMusicUrl, setUploadedMusicUrl] = useState("");
+  const [uploadedMusicName, setUploadedMusicName] = useState("");
+  const [musicUploadLoading, setMusicUploadLoading] = useState(false);
+  const [musicVolume, setMusicVolume] = useState(55);
   const [voiceVolume, setVoiceVolume] = useState(100);
   const [quality, setQuality] = useState<"1080p" | "720p">("720p");
   const [includeSubtitles, setIncludeSubtitles] = useState(false);
@@ -241,16 +343,31 @@ export function VideoStudioClient() {
   const [speed, setSpeed] = useState(1);
   const [speechLeadInSec, setSpeechLeadInSec] = useState(0.35);
   const [speechTailSec, setSpeechTailSec] = useState(0.7);
+  const [includeThumbnailSlide, setIncludeThumbnailSlide] = useState(true);
+  const [thumbnailTitle, setThumbnailTitle] = useState("Your Video Title");
+  const [thumbnailSubtitle, setThumbnailSubtitle] = useState("Presented by Velynxia");
+  const [thumbnailDuration, setThumbnailDuration] = useState(4);
+  const [includeThankYouSlide, setIncludeThankYouSlide] = useState(true);
+  const [thankYouTitle, setThankYouTitle] = useState("Thank You");
+  const [thankYouNote, setThankYouNote] = useState("Thank you for watching");
+  const [thankYouDuration, setThankYouDuration] = useState(4);
+  const [brandLogoDataUrl, setBrandLogoDataUrl] = useState("");
+  const [brandLogoName, setBrandLogoName] = useState("");
+  const [brandLogoLoading, setBrandLogoLoading] = useState(false);
   const [renderLoading, setRenderLoading] = useState(false);
   const [renderedUrl, setRenderedUrl] = useState<string | null>(null);
   const [assetLoadingScene, setAssetLoadingScene] = useState<number | null>(null);
+  const [assetUploadLoadingScene, setAssetUploadLoadingScene] = useState<number | null>(null);
   const [voicePreviewLoadingScene, setVoicePreviewLoadingScene] = useState<number | null>(null);
   const [sceneVoicePreview, setSceneVoicePreview] = useState<Record<number, string>>({});
   const [sceneVideoPreviewLoadingScene, setSceneVideoPreviewLoadingScene] = useState<number | null>(null);
   const [sceneVideoPreview, setSceneVideoPreview] = useState<Record<number, string>>({});
+  const [brandScenePreviewLoading, setBrandScenePreviewLoading] = useState<"thumbnail" | "thankyou" | null>(null);
+  const [thumbnailScenePreviewUrl, setThumbnailScenePreviewUrl] = useState<string | null>(null);
+  const [thankYouScenePreviewUrl, setThankYouScenePreviewUrl] = useState<string | null>(null);
 
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<GenerateVideoResponse | null>(null);
+  const [result, setResult] = useState<VideoGenerateResponse | null>(null);
   const [editablePlan, setEditablePlan] = useState("");
   const [history, setHistory] = useState<VideoHistoryItem[]>([]);
   const [stats, setStats] = useState<VideoStatistics>({
@@ -258,6 +375,8 @@ export function VideoStudioClient() {
     mostUsedStyle: "N/A",
     recentVideos: 0,
   });
+
+  const [isDraftHydrated, setIsDraftHydrated] = useState(false);
 
   const refreshAll = async () => {
     const [newHistory, newStats] = await Promise.all([
@@ -274,7 +393,151 @@ export function VideoStudioClient() {
   }, []);
 
   useEffect(() => {
-    if (activeSceneTab === "build") {
+    try {
+      const raw = window.localStorage.getItem(VIDEO_STUDIO_DRAFT_KEY);
+      if (!raw) {
+        setIsDraftHydrated(true);
+        return;
+      }
+
+      const parsed = JSON.parse(raw) as Partial<VideoStudioDraft>;
+
+      if (typeof parsed.title === "string") setTitle(parsed.title);
+      if (typeof parsed.topic === "string") setTopic(parsed.topic);
+      if (typeof parsed.audience === "string") setAudience(parsed.audience);
+      if (parsed.style) setStyle(parsed.style);
+      if (parsed.aspectRatio) setAspectRatio(parsed.aspectRatio);
+      if (typeof parsed.durationSec === "number") setDurationSec(parsed.durationSec);
+      if (typeof parsed.prompt === "string") setPrompt(parsed.prompt);
+      if (typeof parsed.includeVoiceover === "boolean") setIncludeVoiceover(parsed.includeVoiceover);
+      if (typeof parsed.editablePlan === "string") setEditablePlan(parsed.editablePlan);
+      if (parsed.musicTrack) setMusicTrack(parsed.musicTrack);
+      if (typeof parsed.uploadedMusicUrl === "string") setUploadedMusicUrl(parsed.uploadedMusicUrl);
+      if (typeof parsed.uploadedMusicName === "string") setUploadedMusicName(parsed.uploadedMusicName);
+      if (typeof parsed.musicVolume === "number") setMusicVolume(parsed.musicVolume);
+      if (typeof parsed.voiceVolume === "number") setVoiceVolume(parsed.voiceVolume);
+      if (parsed.quality) setQuality(parsed.quality);
+      if (typeof parsed.includeSubtitles === "boolean") setIncludeSubtitles(parsed.includeSubtitles);
+      if (parsed.voice) setVoice(parsed.voice);
+      if (typeof parsed.speed === "number") setSpeed(parsed.speed);
+      if (typeof parsed.speechLeadInSec === "number") setSpeechLeadInSec(parsed.speechLeadInSec);
+      if (typeof parsed.speechTailSec === "number") setSpeechTailSec(parsed.speechTailSec);
+      if (typeof parsed.includeThumbnailSlide === "boolean") setIncludeThumbnailSlide(parsed.includeThumbnailSlide);
+      if (typeof parsed.thumbnailTitle === "string") setThumbnailTitle(parsed.thumbnailTitle);
+      if (typeof parsed.thumbnailSubtitle === "string") setThumbnailSubtitle(parsed.thumbnailSubtitle);
+      if (typeof parsed.thumbnailDuration === "number") setThumbnailDuration(parsed.thumbnailDuration);
+      if (typeof parsed.includeThankYouSlide === "boolean") setIncludeThankYouSlide(parsed.includeThankYouSlide);
+      if (typeof parsed.thankYouTitle === "string") setThankYouTitle(parsed.thankYouTitle);
+      if (typeof parsed.thankYouNote === "string") setThankYouNote(parsed.thankYouNote);
+      if (typeof parsed.thankYouDuration === "number") setThankYouDuration(parsed.thankYouDuration);
+      if (typeof parsed.brandLogoDataUrl === "string") setBrandLogoDataUrl(parsed.brandLogoDataUrl);
+      if (typeof parsed.brandLogoName === "string") setBrandLogoName(parsed.brandLogoName);
+
+      if (Array.isArray(parsed.scenes) && parsed.scenes.length > 0) {
+        const sanitized = parsed.scenes
+          .map((scene, index) => ({
+            sceneNumber: index + 1,
+            duration: typeof scene.duration === "number" ? Math.max(1, Math.min(60, Math.floor(scene.duration))) : 6,
+            caption: typeof scene.caption === "string" ? scene.caption : "",
+            voiceover: typeof scene.voiceover === "string" ? scene.voiceover : "",
+            image: typeof scene.image === "string" ? scene.image : "",
+            transition: scene.transition ?? "cut",
+          }))
+          .filter((scene) => Number.isFinite(scene.duration));
+
+        if (sanitized.length > 0) {
+          setScenes(sanitized);
+          setActiveSceneTab(sanitized[0]?.sceneNumber ?? 1);
+        }
+      }
+    } catch {
+      // Ignore corrupt local draft and continue with defaults.
+    } finally {
+      setIsDraftHydrated(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isDraftHydrated) {
+      return;
+    }
+
+    const draft: VideoStudioDraft = {
+      title,
+      topic,
+      audience,
+      style,
+      aspectRatio,
+      durationSec,
+      prompt,
+      includeVoiceover,
+      scenes,
+      editablePlan,
+      musicTrack,
+      uploadedMusicUrl,
+      uploadedMusicName,
+      musicVolume,
+      voiceVolume,
+      quality,
+      includeSubtitles,
+      voice,
+      speed,
+      speechLeadInSec,
+      speechTailSec,
+      includeThumbnailSlide,
+      thumbnailTitle,
+      thumbnailSubtitle,
+      thumbnailDuration,
+      includeThankYouSlide,
+      thankYouTitle,
+      thankYouNote,
+      thankYouDuration,
+      brandLogoDataUrl,
+      brandLogoName,
+    };
+
+    try {
+      window.localStorage.setItem(VIDEO_STUDIO_DRAFT_KEY, JSON.stringify(draft));
+    } catch {
+      // Ignore storage quota issues.
+    }
+  }, [
+    isDraftHydrated,
+    title,
+    topic,
+    audience,
+    style,
+    aspectRatio,
+    durationSec,
+    prompt,
+    includeVoiceover,
+    scenes,
+    editablePlan,
+    musicTrack,
+    uploadedMusicUrl,
+    uploadedMusicName,
+    musicVolume,
+    voiceVolume,
+    quality,
+    includeSubtitles,
+    voice,
+    speed,
+    speechLeadInSec,
+    speechTailSec,
+    includeThumbnailSlide,
+    thumbnailTitle,
+    thumbnailSubtitle,
+    thumbnailDuration,
+    includeThankYouSlide,
+    thankYouTitle,
+    thankYouNote,
+    thankYouDuration,
+    brandLogoDataUrl,
+    brandLogoName,
+  ]);
+
+  useEffect(() => {
+    if (activeSceneTab === "build" || activeSceneTab === "thumbnail" || activeSceneTab === "thankyou") {
       return;
     }
 
@@ -341,6 +604,8 @@ export function VideoStudioClient() {
         voiceover: template.prompt,
         image: "",
         transition: "cut",
+        voiceVolume: 100,
+        musicVolume: 100,
       },
     ]);
     setActiveTab("create");
@@ -393,7 +658,24 @@ export function VideoStudioClient() {
     setPrompt(item.prompt);
     setIncludeVoiceover(item.includeVoiceover);
     setEditablePlan(item.outputText);
-    setScenes(parseScenesFromPlan(item.outputText));
+    const parsedScenes = parseScenesFromPlan(item.outputText);
+    const snapshotScenes = readSceneSnapshot(item.id);
+    const mergedScenes =
+      snapshotScenes.length > 0
+        ? parsedScenes.map((scene) => {
+            const saved = snapshotScenes.find((row) => row.sceneNumber === scene.sceneNumber);
+            return saved
+              ? {
+                  ...scene,
+                  duration: saved.duration || scene.duration,
+                  image: saved.image || scene.image,
+                  transition: saved.transition || scene.transition,
+                }
+              : scene;
+          })
+        : parsedScenes;
+
+    setScenes(mergedScenes);
     setRenderedUrl(item.outputUrl);
     setResult({
       id: item.id,
@@ -412,6 +694,10 @@ export function VideoStudioClient() {
         style: item.style,
         aspectRatio: item.aspectRatio,
         durationSec: item.durationSec,
+        ai: {
+          provider: "fallback",
+          model: "history",
+        },
       },
     });
     setActiveTab("create");
@@ -436,7 +722,7 @@ export function VideoStudioClient() {
 
     setLoading(true);
     try {
-      const generated = await fetchJson<GenerateVideoResponse>("/api/media/video/generate", {
+      const generated = await fetchJson<VideoGenerateResponse>("/api/media/video/generate", {
         method: "POST",
         body: JSON.stringify({
           title,
@@ -493,17 +779,120 @@ export function VideoStudioClient() {
   };
 
   const renderVideo = async () => {
-    if (scenes.length === 0) {
+    const getEffectiveScenes = () => {
+      const parsedFromPlan = editablePlan.trim() ? parseScenesFromPlan(editablePlan) : [];
+      if (parsedFromPlan.length <= scenes.length) {
+        return scenes;
+      }
+
+      // Keep user-selected image/duration/transition values where scene numbers match.
+      const merged = parsedFromPlan.map((scene) => {
+        const existing = scenes.find((item) => item.sceneNumber === scene.sceneNumber);
+        if (!existing) {
+          return scene;
+        }
+
+        return {
+          ...scene,
+          duration: existing.duration || scene.duration,
+          image: existing.image || scene.image,
+          transition: existing.transition || scene.transition,
+          voiceVolume: existing.voiceVolume ?? scene.voiceVolume ?? 100,
+          musicVolume: existing.musicVolume ?? scene.musicVolume ?? 100,
+        };
+      });
+
+      toast(`Detected ${merged.length} scenes from plan. Using full scene list for render.`);
+      return merged;
+    };
+
+    const baseScenes = getEffectiveScenes();
+
+    const buildScenesForRender = async () => {
+      const output: VideoSceneItem[] = [];
+
+      if (includeThumbnailSlide) {
+        const topCaption = [thumbnailTitle.trim(), thumbnailSubtitle.trim()].filter(Boolean).join("\n");
+        const topImage = await composeBrandSlideImage(thumbnailTitle.trim(), thumbnailSubtitle.trim());
+        output.push({
+          sceneNumber: 1,
+          duration: Math.max(2, thumbnailDuration || 4),
+          caption: topCaption || "Welcome",
+          voiceover: topCaption || "Welcome",
+          image: topImage,
+          transition: "fade",
+          voiceVolume: 100,
+          musicVolume: 100,
+        });
+      }
+
+      for (const scene of baseScenes) {
+        output.push({
+          ...scene,
+          sceneNumber: output.length + 1,
+          voiceVolume: 100,
+          musicVolume: 100,
+        });
+      }
+
+      if (includeThankYouSlide) {
+        const endCaption = [thankYouTitle.trim(), thankYouNote.trim()].filter(Boolean).join("\n");
+        const endImage = await composeBrandSlideImage(thankYouTitle.trim(), thankYouNote.trim());
+        output.push({
+          sceneNumber: output.length + 1,
+          duration: Math.max(2, thankYouDuration || 4),
+          caption: endCaption || "Thank You",
+          voiceover: endCaption || "Thank you",
+          image: endImage,
+          transition: "fade",
+          voiceVolume: 100,
+          musicVolume: 100,
+        });
+      }
+
+      return output;
+    };
+
+    const localizeScenesForRender = async (inputScenes: VideoSceneItem[]) => {
+      return await Promise.all(
+        inputScenes.map(async (scene) => {
+          const image = await localizeSceneImageForRender(scene.image);
+          if (image === scene.image) {
+            return scene;
+          }
+
+          return {
+            ...scene,
+            image,
+          };
+        }),
+      );
+    };
+
+    const renderScenes = await buildScenesForRender();
+    const renderPayloadScenes = await localizeScenesForRender(renderScenes);
+
+    if (renderScenes.length === 0) {
       toast.error("Add at least one scene.");
       return;
     }
 
-    const isHeavyRender = scenes.length >= 8;
-    const effectiveQuality = isHeavyRender && quality === "1080p" ? "720p" : quality;
-    const effectiveIncludeSubtitles = isHeavyRender && includeSubtitles ? false : includeSubtitles;
+    if (musicTrack === "uploaded" && !uploadedMusicUrl.trim()) {
+      toast.error("Upload an MP3 first for uploaded music.");
+      return;
+    }
 
-    if (effectiveQuality !== quality || effectiveIncludeSubtitles !== includeSubtitles) {
-      toast("Applied reliability mode for heavy build: 720p and subtitles off.");
+    const isHeavyRender = renderScenes.length >= 8;
+    const effectiveQuality = isHeavyRender && quality === "1080p" ? "720p" : quality;
+    const effectiveIncludeSubtitles = includeSubtitles;
+    const effectiveMusicTrack = getEffectiveMusicTrack();
+
+    if (effectiveQuality !== quality) {
+      toast("Applied reliability mode for heavy build: 720p (subtitles preserved).");
+    }
+
+    if (musicTrack === "none") {
+      toast("Music was set to none. Auto-applied corporate track from scene 1.");
     }
 
     setRenderLoading(true);
@@ -512,7 +901,7 @@ export function VideoStudioClient() {
         method: "POST",
         body: JSON.stringify({
           videoId: result?.id,
-          scenes,
+          scenes: renderPayloadScenes,
           aspectRatio,
           quality: effectiveQuality,
           includeSubtitles: effectiveIncludeSubtitles,
@@ -520,19 +909,56 @@ export function VideoStudioClient() {
           speed,
           speechLeadInSec,
           speechTailSec,
-          musicTrack,
+          musicTrack: effectiveMusicTrack,
+          uploadedMusicUrl,
           voiceVolume,
           musicVolume,
         }),
       });
 
       setRenderedUrl(response.outputUrl);
+      if (result?.id) {
+        writeSceneSnapshot(result.id, renderScenes);
+      }
       toast.success("Video rendered successfully.");
       await refreshAll();
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Video rendering failed.");
     } finally {
       setRenderLoading(false);
+    }
+  };
+
+  const handleBrandLogoSelection = async (file: File) => {
+    const readFileAsDataUrl = async (selectedFile: File) => {
+      return await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (typeof reader.result === "string") {
+            resolve(reader.result);
+            return;
+          }
+          reject(new Error("Could not read logo file."));
+        };
+        reader.onerror = () => reject(new Error("Failed to read logo file."));
+        reader.readAsDataURL(selectedFile);
+      });
+    };
+
+    setBrandLogoLoading(true);
+    try {
+      const maxBytes = 8 * 1024 * 1024;
+      if (file.size > maxBytes) {
+        throw new Error("Logo is too large. Please choose up to 8MB.");
+      }
+      const dataUrl = await readFileAsDataUrl(file);
+      setBrandLogoDataUrl(dataUrl);
+      setBrandLogoName(file.name || "logo");
+      toast.success("Logo selected from local computer.");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Logo selection failed.");
+    } finally {
+      setBrandLogoLoading(false);
     }
   };
 
@@ -556,7 +982,12 @@ export function VideoStudioClient() {
         return;
       }
 
-      updateScene(scene.sceneNumber, { image: response.items[0].sourceUrl });
+      const imported = await fetchJson<AssetImportResponse>("/api/media/video/assets/import", {
+        method: "POST",
+        body: JSON.stringify({ sourceUrl: response.items[0].sourceUrl }),
+      });
+
+      updateScene(scene.sceneNumber, { image: imported.imageUrl });
       toast.success(`Scene ${scene.sceneNumber} image set from ${response.items[0].provider}.`);
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Asset search failed.");
@@ -620,41 +1051,414 @@ export function VideoStudioClient() {
     }
   };
 
+  const getEffectiveMusicTrack = () => {
+    if (musicTrack !== "none") {
+      return musicTrack;
+    }
+
+    return "corporate" as VideoMusicTrack;
+  };
+
+  const getSlideCanvasSize = () => {
+    if (aspectRatio === "9:16") {
+      return { width: 900, height: 1600 };
+    }
+    if (aspectRatio === "1:1") {
+      return { width: 1200, height: 1200 };
+    }
+    return { width: 1600, height: 900 };
+  };
+
+  const loadImageElement = async (src: string) => {
+    return await new Promise<HTMLImageElement>((resolve, reject) => {
+      const image = new Image();
+      image.onload = () => resolve(image);
+      image.onerror = () => reject(new Error("Could not load logo image."));
+      image.src = src;
+    });
+  };
+
+  const composeBrandSlideImage = async (headline: string, subline: string) => {
+    const { width, height } = getSlideCanvasSize();
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+      return brandLogoDataUrl || "/velynxia-Logo.png";
+    }
+
+    const gradient = ctx.createLinearGradient(0, 0, width, height);
+    gradient.addColorStop(0, "#0b132b");
+    gradient.addColorStop(1, "#132a4d");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
+
+    const logoSrc = brandLogoDataUrl || "/velynxia-Logo.png";
+    try {
+      const logo = await loadImageElement(logoSrc);
+      const maxW = Math.round(width * 0.42);
+      const maxH = Math.round(height * 0.34);
+      const scale = Math.min(maxW / logo.width, maxH / logo.height, 1);
+      const drawW = Math.max(1, Math.round(logo.width * scale));
+      const drawH = Math.max(1, Math.round(logo.height * scale));
+      const x = Math.round((width - drawW) / 2);
+      const y = Math.round((height - drawH) / 2 - height * 0.03);
+      ctx.drawImage(logo, x, y, drawW, drawH);
+    } catch {
+      // Continue with text-only slide when logo cannot be drawn.
+    }
+
+    const drawTextBlock = (text: string, y: number, size: number, color: string) => {
+      if (!text.trim()) return;
+      ctx.font = `700 ${size}px Arial`;
+      ctx.fillStyle = color;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(text.trim(), width / 2, y);
+    };
+
+    drawTextBlock(headline, Math.round(height * 0.16), Math.round(width * 0.035), "#f8fafc");
+    drawTextBlock(subline, Math.round(height * 0.84), Math.round(width * 0.022), "#dbeafe");
+
+    return canvas.toDataURL("image/jpeg", 0.9);
+  };
+
+  const localizeSceneImageForRender = async (imageValue: string) => {
+    const value = imageValue.trim();
+    if (!value || value.startsWith("data:image/") || /^https?:\/\//i.test(value)) {
+      return value;
+    }
+
+    if (!value.startsWith("/media/image/")) {
+      return value;
+    }
+
+    try {
+      const response = await fetch(value);
+      if (!response.ok) {
+        return value;
+      }
+
+      const blob = await response.blob();
+      return await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (typeof reader.result === "string") {
+            resolve(reader.result);
+            return;
+          }
+          reject(new Error("Could not encode scene image."));
+        };
+        reader.onerror = () => reject(new Error("Could not read scene image."));
+        reader.readAsDataURL(blob);
+      });
+    } catch {
+      return value;
+    }
+  };
+
+  const renderSingleScenePreview = async (scene: VideoSceneItem) => {
+    const renderSafeScene: VideoSceneItem = {
+      ...scene,
+      image: await localizeSceneImageForRender(scene.image),
+    };
+
+    const effectiveMusicTrack = getEffectiveMusicTrack();
+
+    const response = await fetchJson<RenderVideoResponse>("/api/media/video/render", {
+      method: "POST",
+      body: JSON.stringify({
+        scenes: [
+          {
+            sceneNumber: 1,
+            duration: Math.max(1, renderSafeScene.duration || 6),
+            caption: renderSafeScene.caption,
+            voiceover: renderSafeScene.voiceover,
+            image: renderSafeScene.image,
+            transition: "cut",
+            voiceVolume: renderSafeScene.voiceVolume ?? 100,
+            musicVolume: renderSafeScene.musicVolume ?? 100,
+          },
+        ],
+        aspectRatio,
+        quality,
+        includeSubtitles,
+        voice,
+        speed,
+        speechLeadInSec,
+        speechTailSec,
+        musicTrack: effectiveMusicTrack,
+        uploadedMusicUrl,
+        voiceVolume,
+        musicVolume,
+      }),
+    });
+
+    return response.outputUrl;
+  };
+
   const previewSceneVideo = async (scene: VideoSceneItem) => {
+    if (musicTrack === "uploaded" && !uploadedMusicUrl.trim()) {
+      toast.error("Upload an MP3 first for uploaded music.");
+      return;
+    }
+
     setSceneVideoPreviewLoadingScene(scene.sceneNumber);
     try {
-      const response = await fetchJson<RenderVideoResponse>("/api/media/video/render", {
-        method: "POST",
-        body: JSON.stringify({
-          scenes: [
-            {
-              sceneNumber: 1,
-              duration: scene.duration,
-              caption: scene.caption,
-              voiceover: scene.voiceover,
-              image: scene.image,
-              transition: "cut",
-            },
-          ],
-          aspectRatio,
-          quality,
-          includeSubtitles,
-          voice,
-          speed,
-          speechLeadInSec,
-          speechTailSec,
-          musicTrack,
-          voiceVolume,
-          musicVolume,
-        }),
-      });
-
-      setSceneVideoPreview((prev) => ({ ...prev, [scene.sceneNumber]: response.outputUrl }));
+      const outputUrl = await renderSingleScenePreview(scene);
+      setSceneVideoPreview((prev) => ({ ...prev, [scene.sceneNumber]: outputUrl }));
       toast.success(`Scene ${scene.sceneNumber} preview is ready.`);
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Scene preview failed.");
     } finally {
       setSceneVideoPreviewLoadingScene(null);
+    }
+  };
+
+  const previewThumbnailScene = async () => {
+    if (!includeThumbnailSlide) {
+      toast.error("Enable Thumbnail First Slide first.");
+      return;
+    }
+
+    setBrandScenePreviewLoading("thumbnail");
+    try {
+      const caption = [thumbnailTitle.trim(), thumbnailSubtitle.trim()].filter(Boolean).join("\n") || "Welcome";
+      const image = await composeBrandSlideImage(thumbnailTitle.trim(), thumbnailSubtitle.trim());
+      const outputUrl = await renderSingleScenePreview({
+        sceneNumber: 1,
+        duration: Math.max(2, thumbnailDuration || 4),
+        caption,
+        voiceover: caption,
+        image,
+        transition: "cut",
+      });
+
+      setThumbnailScenePreviewUrl(outputUrl);
+      toast.success("Thumbnail scene preview ready.");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Thumbnail preview failed.");
+    } finally {
+      setBrandScenePreviewLoading(null);
+    }
+  };
+
+  const previewThankYouScene = async () => {
+    if (!includeThankYouSlide) {
+      toast.error("Enable Thank You Last Slide first.");
+      return;
+    }
+
+    setBrandScenePreviewLoading("thankyou");
+    try {
+      const caption = [thankYouTitle.trim(), thankYouNote.trim()].filter(Boolean).join("\n") || "Thank you";
+      const image = await composeBrandSlideImage(thankYouTitle.trim(), thankYouNote.trim());
+      const outputUrl = await renderSingleScenePreview({
+        sceneNumber: 1,
+        duration: Math.max(2, thankYouDuration || 4),
+        caption,
+        voiceover: caption,
+        image,
+        transition: "cut",
+      });
+
+      setThankYouScenePreviewUrl(outputUrl);
+      toast.success("Thank you scene preview ready.");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Thank you preview failed.");
+    } finally {
+      setBrandScenePreviewLoading(null);
+    }
+  };
+
+  const optimizeLocalImage = async (file: File) => {
+    const maxDimension = 1600;
+    const targetType = "image/jpeg";
+    const targetQuality = 0.86;
+
+    try {
+      const dataUrl = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (typeof reader.result === "string") {
+            resolve(reader.result);
+            return;
+          }
+          reject(new Error("Could not read local image."));
+        };
+        reader.onerror = () => reject(new Error("Failed to read local image."));
+        reader.readAsDataURL(file);
+      });
+
+      const image = await new Promise<HTMLImageElement>((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error("Could not decode image."));
+        img.src = dataUrl;
+      });
+
+      const scale = Math.min(1, maxDimension / Math.max(image.width, image.height));
+      const width = Math.max(1, Math.round(image.width * scale));
+      const height = Math.max(1, Math.round(image.height * scale));
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) {
+        return file;
+      }
+
+      ctx.drawImage(image, 0, 0, width, height);
+
+      const blob = await new Promise<Blob | null>((resolve) => {
+        canvas.toBlob((value) => resolve(value), targetType, targetQuality);
+      });
+
+      if (!blob) {
+        return file;
+      }
+
+      return new File([blob], file.name.replace(/\.[^.]+$/, "") + ".jpg", { type: targetType });
+    } catch {
+      return file;
+    }
+  };
+
+  const uploadLocalSceneImage = async (scene: VideoSceneItem, file: File) => {
+    setAssetUploadLoadingScene(scene.sceneNumber);
+    try {
+      const optimized = await optimizeLocalImage(file);
+      const formData = new FormData();
+      formData.append("file", optimized, optimized.name || `scene-${scene.sceneNumber}.jpg`);
+
+      const response = await fetch("/api/media/video/assets/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const err = (await response.json().catch(() => ({ error: "Upload failed." }))) as { error?: string };
+        throw new Error(err.error ?? "Upload failed.");
+      }
+
+      const payload = (await response.json()) as AssetUploadResponse;
+      updateScene(scene.sceneNumber, { image: payload.imageUrl });
+      toast.success(`Scene ${scene.sceneNumber} image uploaded (optimized).`);
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Image upload failed.");
+    } finally {
+      setAssetUploadLoadingScene(null);
+    }
+  };
+
+  const openSceneImageFromLocalDrive = async (scene: VideoSceneItem, file: File) => {
+    setAssetUploadLoadingScene(scene.sceneNumber);
+    try {
+      const optimized = await optimizeLocalImage(file);
+
+      // Prefer upload so render payload stays small and faster than sending large data URLs.
+      try {
+        const formData = new FormData();
+        formData.append("file", optimized, optimized.name || `scene-${scene.sceneNumber}.jpg`);
+
+        const uploadResponse = await fetch("/api/media/video/assets/upload", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (uploadResponse.ok) {
+          const payload = (await uploadResponse.json()) as AssetUploadResponse;
+          updateScene(scene.sceneNumber, { image: payload.imageUrl });
+          toast.success(`Scene ${scene.sceneNumber} image opened from local drive.`);
+          return;
+        }
+      } catch {
+        // Fallback to data URL below if upload endpoint is unavailable.
+      }
+
+      const dataUrl = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (typeof reader.result === "string") {
+            resolve(reader.result);
+            return;
+          }
+          reject(new Error("Could not read local image."));
+        };
+        reader.onerror = () => reject(new Error("Failed to read local image."));
+        reader.readAsDataURL(optimized);
+      });
+
+      updateScene(scene.sceneNumber, { image: dataUrl });
+      toast.success(`Scene ${scene.sceneNumber} image loaded from local drive.`);
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Could not open local image.");
+    } finally {
+      setAssetUploadLoadingScene(null);
+    }
+  };
+
+  const downloadSceneImage = async (scene: VideoSceneItem) => {
+    const src = getScenePreviewSrc(scene.image);
+    if (!src) {
+      toast.error("No downloadable image available for this scene.");
+      return;
+    }
+
+    try {
+      const response = await fetch(src);
+      if (!response.ok) {
+        throw new Error("Failed to fetch image for download.");
+      }
+
+      const blob = await response.blob();
+      const extByMime: Record<string, string> = {
+        "image/png": "png",
+        "image/jpeg": "jpg",
+        "image/webp": "webp",
+        "image/gif": "gif",
+      };
+      const ext = extByMime[blob.type] ?? "png";
+      const objectUrl = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = objectUrl;
+      anchor.download = `scene-${scene.sceneNumber}-${Date.now()}.${ext}`;
+      anchor.click();
+      URL.revokeObjectURL(objectUrl);
+      toast.success(`Scene ${scene.sceneNumber} image saved.`);
+    } catch {
+      window.open(src, "_blank", "noopener,noreferrer");
+      toast("Opened image in new tab for manual save.");
+    }
+  };
+
+  const uploadMusicTrack = async (file: File) => {
+    setMusicUploadLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", file, file.name || "uploaded-music.mp3");
+
+      const response = await fetch("/api/media/video/music/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const err = (await response.json().catch(() => ({ error: "Music upload failed." }))) as { error?: string };
+        throw new Error(err.error ?? "Music upload failed.");
+      }
+
+      const payload = (await response.json()) as MusicUploadResponse;
+      setUploadedMusicUrl(payload.audioUrl);
+      setUploadedMusicName(payload.fileName || "uploaded-music.mp3");
+      setMusicTrack("uploaded");
+      toast.success("Music uploaded. Uploaded track selected.");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Music upload failed.");
+    } finally {
+      setMusicUploadLoading(false);
     }
   };
 
@@ -799,7 +1603,14 @@ export function VideoStudioClient() {
             <div className="space-y-3 rounded-2xl border border-white/10 bg-white/5 p-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-semibold">Output</h2>
-                {result ? <span className="text-xs text-amber-200">{result.sceneCount} scenes</span> : null}
+                {result ? (
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-amber-200">{result.sceneCount} scenes</span>
+                    <span className="rounded-full border border-cyan-300/30 bg-cyan-500/10 px-2 py-1 text-[11px] text-cyan-100">
+                      {result.meta.ai.provider} - {result.meta.ai.model}
+                    </span>
+                  </div>
+                ) : null}
               </div>
               <textarea
                 value={editablePlan}
@@ -840,6 +1651,16 @@ export function VideoStudioClient() {
               </div>
 
               <div className="flex flex-wrap gap-2 rounded-xl border border-white/10 bg-slate-950/40 p-2">
+                <button
+                  onClick={() => setActiveSceneTab("thumbnail")}
+                  className={`rounded-lg px-3 py-1.5 text-xs transition ${
+                    activeSceneTab === "thumbnail"
+                      ? "bg-amber-500/20 text-amber-100"
+                      : "text-slate-300 hover:bg-white/10"
+                  }`}
+                >
+                  Thumbnail (First)
+                </button>
                 {scenes.map((scene) => (
                   <button
                     key={scene.sceneNumber}
@@ -854,6 +1675,16 @@ export function VideoStudioClient() {
                   </button>
                 ))}
                 <button
+                  onClick={() => setActiveSceneTab("thankyou")}
+                  className={`rounded-lg px-3 py-1.5 text-xs transition ${
+                    activeSceneTab === "thankyou"
+                      ? "bg-amber-500/20 text-amber-100"
+                      : "text-slate-300 hover:bg-white/10"
+                  }`}
+                >
+                  Thank You (Last)
+                </button>
+                <button
                   onClick={() => setActiveSceneTab("build")}
                   className={`ml-auto rounded-lg px-3 py-1.5 text-xs transition ${
                     activeSceneTab === "build" ? "bg-emerald-500/20 text-emerald-100" : "text-slate-300 hover:bg-white/10"
@@ -863,7 +1694,169 @@ export function VideoStudioClient() {
                 </button>
               </div>
 
-              {activeSceneTab !== "build" ? (() => {
+              {activeSceneTab === "thumbnail" ? (
+                <div className="rounded-xl border border-white/10 bg-slate-950/40 p-3">
+                  <div className="mb-2 flex items-center justify-between">
+                    <p className="text-sm font-semibold">Thumbnail Scene (First)</p>
+                    <label className="flex items-center gap-2 text-xs text-slate-300">
+                      <input
+                        type="checkbox"
+                        checked={includeThumbnailSlide}
+                        onChange={(event) => setIncludeThumbnailSlide(event.target.checked)}
+                      />
+                      Include in final video
+                    </label>
+                  </div>
+
+                  <div className="grid gap-2 md:grid-cols-3">
+                    <input
+                      value={thumbnailTitle}
+                      onChange={(event) => setThumbnailTitle(event.target.value)}
+                      placeholder="Thumbnail heading"
+                      className="rounded border border-white/15 bg-slate-900/70 px-2 py-1.5 text-sm"
+                    />
+                    <input
+                      value={thumbnailSubtitle}
+                      onChange={(event) => setThumbnailSubtitle(event.target.value)}
+                      placeholder="Thumbnail subheading"
+                      className="rounded border border-white/15 bg-slate-900/70 px-2 py-1.5 text-sm"
+                    />
+                    <input
+                      type="number"
+                      min={2}
+                      max={12}
+                      value={thumbnailDuration}
+                      onChange={(event) => setThumbnailDuration(Math.max(2, Number(event.target.value) || 4))}
+                      className="rounded border border-white/15 bg-slate-900/70 px-2 py-1.5 text-sm"
+                      title="Thumbnail duration (seconds)"
+                    />
+                  </div>
+
+                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                    <label className="inline-flex cursor-pointer items-center rounded border border-cyan-300/30 px-2 py-1 text-xs text-cyan-100 hover:bg-cyan-500/10">
+                      {brandLogoLoading ? "Loading Logo..." : "Change Logo For Thumbnail/Thank You"}
+                      <input
+                        type="file"
+                        accept="image/png,image/jpeg,image/webp,image/gif"
+                        className="hidden"
+                        disabled={brandLogoLoading}
+                        onChange={(event) => {
+                          const file = event.target.files?.[0];
+                          if (file) {
+                            void handleBrandLogoSelection(file);
+                          }
+                          event.target.value = "";
+                        }}
+                      />
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => void previewThumbnailScene()}
+                      disabled={brandScenePreviewLoading === "thumbnail"}
+                      className="rounded border border-amber-300/30 px-2 py-1 text-xs text-amber-100 hover:bg-amber-500/10 disabled:opacity-50"
+                    >
+                      {brandScenePreviewLoading === "thumbnail" ? "Rendering Preview..." : "Preview Thumbnail Scene"}
+                    </button>
+                  </div>
+
+                  {thumbnailScenePreviewUrl ? (
+                    <div className="mt-2 rounded-lg border border-amber-300/20 bg-amber-500/10 p-2">
+                      <p className="mb-1 text-[11px] uppercase tracking-[0.12em] text-amber-100/80">Thumbnail Scene Preview</p>
+                      <video controls className="w-full rounded-md" src={thumbnailScenePreviewUrl} />
+                      <a
+                        className="mt-2 block rounded border border-amber-300/30 px-2 py-1 text-center text-xs text-amber-100 hover:bg-amber-500/20"
+                        href={thumbnailScenePreviewUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        download="thumbnail-scene-preview.mp4"
+                      >
+                        Download Thumbnail Scene
+                      </a>
+                    </div>
+                  ) : null}
+                </div>
+              ) : activeSceneTab === "thankyou" ? (
+                <div className="rounded-xl border border-white/10 bg-slate-950/40 p-3">
+                  <div className="mb-2 flex items-center justify-between">
+                    <p className="text-sm font-semibold">Thank You Scene (Last)</p>
+                    <label className="flex items-center gap-2 text-xs text-slate-300">
+                      <input
+                        type="checkbox"
+                        checked={includeThankYouSlide}
+                        onChange={(event) => setIncludeThankYouSlide(event.target.checked)}
+                      />
+                      Include in final video
+                    </label>
+                  </div>
+
+                  <div className="grid gap-2 md:grid-cols-3">
+                    <input
+                      value={thankYouTitle}
+                      onChange={(event) => setThankYouTitle(event.target.value)}
+                      placeholder="Final scene heading"
+                      className="rounded border border-white/15 bg-slate-900/70 px-2 py-1.5 text-sm"
+                    />
+                    <input
+                      value={thankYouNote}
+                      onChange={(event) => setThankYouNote(event.target.value)}
+                      placeholder="Final scene note"
+                      className="rounded border border-white/15 bg-slate-900/70 px-2 py-1.5 text-sm"
+                    />
+                    <input
+                      type="number"
+                      min={2}
+                      max={12}
+                      value={thankYouDuration}
+                      onChange={(event) => setThankYouDuration(Math.max(2, Number(event.target.value) || 4))}
+                      className="rounded border border-white/15 bg-slate-900/70 px-2 py-1.5 text-sm"
+                      title="Thank you duration (seconds)"
+                    />
+                  </div>
+
+                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                    <label className="inline-flex cursor-pointer items-center rounded border border-cyan-300/30 px-2 py-1 text-xs text-cyan-100 hover:bg-cyan-500/10">
+                      {brandLogoLoading ? "Loading Logo..." : "Change Logo For Thumbnail/Thank You"}
+                      <input
+                        type="file"
+                        accept="image/png,image/jpeg,image/webp,image/gif"
+                        className="hidden"
+                        disabled={brandLogoLoading}
+                        onChange={(event) => {
+                          const file = event.target.files?.[0];
+                          if (file) {
+                            void handleBrandLogoSelection(file);
+                          }
+                          event.target.value = "";
+                        }}
+                      />
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => void previewThankYouScene()}
+                      disabled={brandScenePreviewLoading === "thankyou"}
+                      className="rounded border border-emerald-300/30 px-2 py-1 text-xs text-emerald-100 hover:bg-emerald-500/10 disabled:opacity-50"
+                    >
+                      {brandScenePreviewLoading === "thankyou" ? "Rendering Preview..." : "Preview Thank You Scene"}
+                    </button>
+                  </div>
+
+                  {thankYouScenePreviewUrl ? (
+                    <div className="mt-2 rounded-lg border border-emerald-300/20 bg-emerald-500/10 p-2">
+                      <p className="mb-1 text-[11px] uppercase tracking-[0.12em] text-emerald-100/80">Thank You Scene Preview</p>
+                      <video controls className="w-full rounded-md" src={thankYouScenePreviewUrl} />
+                      <a
+                        className="mt-2 block rounded border border-emerald-300/30 px-2 py-1 text-center text-xs text-emerald-100 hover:bg-emerald-500/20"
+                        href={thankYouScenePreviewUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        download="thank-you-scene-preview.mp4"
+                      >
+                        Download Thank You Scene
+                      </a>
+                    </div>
+                  ) : null}
+                </div>
+              ) : activeSceneTab !== "build" ? (() => {
                 const scene = scenes.find((item) => item.sceneNumber === activeSceneTab) ?? scenes[0];
                 if (!scene) {
                   return null;
@@ -882,6 +1875,49 @@ export function VideoStudioClient() {
                       >
                         Remove
                       </button>
+                    </div>
+
+                    <div className="mb-3 rounded-lg border border-white/10 bg-slate-900/50 p-2">
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.1em] text-slate-300">Scene Music</p>
+                      <div className="grid gap-2 md:grid-cols-3">
+                        <select
+                          value={musicTrack}
+                          onChange={(event) => setMusicTrack(event.target.value as VideoMusicTrack)}
+                          className="rounded border border-white/15 bg-slate-900/70 px-2 py-1.5 text-xs"
+                        >
+                          <option value="none">No music (auto uses corporate in render)</option>
+                          <option value="corporate">Corporate</option>
+                          <option value="ambient">Ambient</option>
+                          <option value="motivational">Motivational</option>
+                          <option value="upbeat">Upbeat</option>
+                          <option value="uploaded">Uploaded MP3</option>
+                        </select>
+                        <label className="inline-flex cursor-pointer items-center justify-center rounded border border-indigo-300/30 px-2 py-1.5 text-xs text-indigo-100 hover:bg-indigo-500/10">
+                          {musicUploadLoading ? "Uploading MP3..." : "Upload Music (MP3)"}
+                          <input
+                            type="file"
+                            accept="audio/mpeg,.mp3"
+                            className="hidden"
+                            disabled={musicUploadLoading}
+                            onChange={(event) => {
+                              const file = event.target.files?.[0];
+                              if (file) {
+                                void uploadMusicTrack(file);
+                              }
+                              event.target.value = "";
+                            }}
+                          />
+                        </label>
+                        <div className="text-xs text-slate-300">
+                          Track: <span className="font-semibold capitalize">{musicTrack}</span>
+                        </div>
+                      </div>
+                      {uploadedMusicUrl ? (
+                        <div className="mt-2 rounded border border-indigo-300/20 bg-indigo-500/10 p-2">
+                          <p className="truncate text-xs text-indigo-100">Using: {uploadedMusicName || "uploaded-music.mp3"}</p>
+                          <audio controls className="mt-1 w-full" src={uploadedMusicUrl} />
+                        </div>
+                      ) : null}
                     </div>
 
                     <div className="grid gap-2 md:grid-cols-4">
@@ -930,6 +1966,31 @@ export function VideoStudioClient() {
                       className="mt-2 w-full rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 text-sm outline-none"
                     />
 
+                    <div className="mt-2 grid gap-2 md:grid-cols-2">
+                      <div className="rounded border border-white/10 bg-slate-900/40 p-2">
+                        <label className="block text-xs text-slate-300">Scene Voice Volume ({Math.round(scene.voiceVolume ?? 100)}%)</label>
+                        <input
+                          type="range"
+                          min={0}
+                          max={200}
+                          value={scene.voiceVolume ?? 100}
+                          onChange={(event) => updateScene(scene.sceneNumber, { voiceVolume: Number(event.target.value) })}
+                          className="mt-1 w-full"
+                        />
+                      </div>
+                      <div className="rounded border border-white/10 bg-slate-900/40 p-2">
+                        <label className="block text-xs text-slate-300">Scene Music Volume ({Math.round(scene.musicVolume ?? 100)}%)</label>
+                        <input
+                          type="range"
+                          min={0}
+                          max={200}
+                          value={scene.musicVolume ?? 100}
+                          onChange={(event) => updateScene(scene.sceneNumber, { musicVolume: Number(event.target.value) })}
+                          className="mt-1 w-full"
+                        />
+                      </div>
+                    </div>
+
                     <div className="mt-2 flex flex-wrap items-center gap-2">
                       <button
                         onClick={() => void previewSceneVideo(scene)}
@@ -954,10 +2015,49 @@ export function VideoStudioClient() {
                       </button>
                       <button
                         onClick={() => void autoFillSceneImage(scene)}
-                        disabled={assetLoadingScene === scene.sceneNumber}
+                        disabled={assetLoadingScene === scene.sceneNumber || assetUploadLoadingScene === scene.sceneNumber}
                         className="rounded border border-cyan-300/30 px-2 py-1 text-xs text-cyan-100 hover:bg-cyan-500/10 disabled:opacity-50"
                       >
                         {assetLoadingScene === scene.sceneNumber ? "Searching..." : "Auto Image (Pexels/Pixabay)"}
+                      </button>
+                      <label className="cursor-pointer rounded border border-lime-300/30 px-2 py-1 text-xs text-lime-100 hover:bg-lime-500/10">
+                        {assetUploadLoadingScene === scene.sceneNumber ? "Opening..." : "Open From Local Drive"}
+                        <input
+                          type="file"
+                          accept="image/png,image/jpeg,image/webp,image/gif"
+                          className="hidden"
+                          disabled={assetUploadLoadingScene === scene.sceneNumber}
+                          onChange={(event) => {
+                            const file = event.target.files?.[0];
+                            if (file) {
+                              void openSceneImageFromLocalDrive(scene, file);
+                            }
+                            event.target.value = "";
+                          }}
+                        />
+                      </label>
+                      <label className="cursor-pointer rounded border border-indigo-300/30 px-2 py-1 text-xs text-indigo-100 hover:bg-indigo-500/10">
+                        {assetUploadLoadingScene === scene.sceneNumber ? "Uploading..." : "Browse + Upload Image"}
+                        <input
+                          type="file"
+                          accept="image/png,image/jpeg,image/webp,image/gif"
+                          className="hidden"
+                          disabled={assetUploadLoadingScene === scene.sceneNumber}
+                          onChange={(event) => {
+                            const file = event.target.files?.[0];
+                            if (file) {
+                              void uploadLocalSceneImage(scene, file);
+                            }
+                            event.target.value = "";
+                          }}
+                        />
+                      </label>
+                      <button
+                        onClick={() => void downloadSceneImage(scene)}
+                        disabled={!scene.image}
+                        className="rounded border border-fuchsia-300/30 px-2 py-1 text-xs text-fuchsia-100 hover:bg-fuchsia-500/10 disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        Save Image Locally
                       </button>
                       {scene.image ? <span className="truncate text-xs text-slate-400">{scene.image}</span> : null}
                     </div>
@@ -982,6 +2082,15 @@ export function VideoStudioClient() {
                       <div className="mt-2 rounded-lg border border-emerald-300/20 bg-emerald-500/10 p-2">
                         <p className="mb-1 text-[11px] uppercase tracking-[0.12em] text-emerald-100/80">Voice Preview</p>
                         <audio controls className="w-full" src={sceneVoicePreview[scene.sceneNumber]} />
+                        <a
+                          className="mt-2 block rounded border border-emerald-300/30 px-2 py-1 text-center text-xs text-emerald-100 hover:bg-emerald-500/20"
+                          href={sceneVoicePreview[scene.sceneNumber]}
+                          target="_blank"
+                          rel="noreferrer"
+                          download={`scene-${scene.sceneNumber}-voice.mp3`}
+                        >
+                          Download Voice Preview
+                        </a>
                       </div>
                     ) : null}
 
@@ -989,6 +2098,15 @@ export function VideoStudioClient() {
                       <div className="mt-2 rounded-lg border border-amber-300/20 bg-amber-500/10 p-2">
                         <p className="mb-1 text-[11px] uppercase tracking-[0.12em] text-amber-100/80">Scene Preview (Slide + Voice + Music)</p>
                         <video controls className="w-full rounded-md" src={sceneVideoPreview[scene.sceneNumber]} />
+                        <a
+                          className="mt-2 block rounded border border-amber-300/30 px-2 py-1 text-center text-xs text-amber-100 hover:bg-amber-500/20"
+                          href={sceneVideoPreview[scene.sceneNumber]}
+                          target="_blank"
+                          rel="noreferrer"
+                          download={`scene-${scene.sceneNumber}-preview.mp4`}
+                        >
+                          Download Scene Preview
+                        </a>
                       </div>
                     ) : null}
                   </div>
@@ -1001,12 +2119,34 @@ export function VideoStudioClient() {
                 <div className="rounded-xl border border-white/10 bg-slate-950/40 p-3">
                   <p className="text-sm font-semibold">Background Music</p>
                   <div className="mt-2 space-y-2 text-sm text-slate-200">
-                    {(["none", "corporate", "ambient", "motivational", "upbeat"] as VideoMusicTrack[]).map((track) => (
+                    {(["none", "corporate", "ambient", "motivational", "upbeat", "uploaded"] as VideoMusicTrack[]).map((track) => (
                       <label key={track} className="flex items-center gap-2">
                         <input type="radio" checked={musicTrack === track} onChange={() => setMusicTrack(track)} />
                         <span className="capitalize">{track}</span>
                       </label>
                     ))}
+                    <label className="mt-2 inline-flex cursor-pointer items-center rounded border border-indigo-300/30 px-2 py-1 text-xs text-indigo-100 hover:bg-indigo-500/10">
+                      {musicUploadLoading ? "Uploading MP3..." : "Upload Music (MP3)"}
+                      <input
+                        type="file"
+                        accept="audio/mpeg,.mp3"
+                        className="hidden"
+                        disabled={musicUploadLoading}
+                        onChange={(event) => {
+                          const file = event.target.files?.[0];
+                          if (file) {
+                            void uploadMusicTrack(file);
+                          }
+                          event.target.value = "";
+                        }}
+                      />
+                    </label>
+                    {uploadedMusicUrl ? (
+                      <div className="rounded border border-indigo-300/20 bg-indigo-500/10 p-2 text-xs text-indigo-100">
+                        <p className="truncate">Using: {uploadedMusicName || "uploaded-music.mp3"}</p>
+                        <audio controls className="mt-2 w-full" src={uploadedMusicUrl} />
+                      </div>
+                    ) : null}
                   </div>
                 </div>
 
@@ -1064,6 +2204,155 @@ export function VideoStudioClient() {
                     <p className="text-[11px] text-slate-400">Timing: voice starts after lead-in, and slide remains after speech tail for smoother transitions.</p>
                   </div>
                 </div>
+                  </div>
+
+                  <div className="grid gap-3 md:grid-cols-2">
+                    <div className="rounded-xl border border-white/10 bg-slate-950/40 p-3 md:col-span-2">
+                      <p className="text-sm font-semibold">Brand Logo (Local File)</p>
+                      <p className="mt-1 text-xs text-slate-400">Used in the middle of Thumbnail and Thank You slides.</p>
+                      <div className="mt-2 flex flex-wrap items-center gap-2">
+                        <label className="inline-flex cursor-pointer items-center rounded border border-cyan-300/30 px-2 py-1 text-xs text-cyan-100 hover:bg-cyan-500/10">
+                          {brandLogoLoading ? "Loading Logo..." : "Select Logo From Local Computer"}
+                          <input
+                            type="file"
+                            accept="image/png,image/jpeg,image/webp,image/gif"
+                            className="hidden"
+                            disabled={brandLogoLoading}
+                            onChange={(event) => {
+                              const file = event.target.files?.[0];
+                              if (file) {
+                                void handleBrandLogoSelection(file);
+                              }
+                              event.target.value = "";
+                            }}
+                          />
+                        </label>
+                        {brandLogoDataUrl ? (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setBrandLogoDataUrl("");
+                              setBrandLogoName("");
+                            }}
+                            className="rounded border border-rose-300/30 px-2 py-1 text-xs text-rose-100 hover:bg-rose-500/10"
+                          >
+                            Remove Logo
+                          </button>
+                        ) : null}
+                        <span className="text-xs text-slate-300">{brandLogoName || "Using default Velynxia logo"}</span>
+                      </div>
+                      {brandLogoDataUrl ? (
+                        <div className="mt-2 rounded border border-white/10 bg-black/20 p-2">
+                          <img src={brandLogoDataUrl} alt="Brand logo preview" className="mx-auto max-h-24 rounded-md object-contain" />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div className="rounded-xl border border-white/10 bg-slate-950/40 p-3">
+                      <label className="mb-2 flex items-center gap-2 text-sm font-semibold">
+                        <input
+                          type="checkbox"
+                          checked={includeThumbnailSlide}
+                          onChange={(event) => setIncludeThumbnailSlide(event.target.checked)}
+                        />
+                        Thumbnail First Slide
+                      </label>
+                      <div className="grid gap-2 text-sm">
+                        <input
+                          value={thumbnailTitle}
+                          onChange={(event) => setThumbnailTitle(event.target.value)}
+                          placeholder="Thumbnail heading"
+                          className="rounded border border-white/15 bg-slate-900/70 px-2 py-1.5"
+                        />
+                        <input
+                          value={thumbnailSubtitle}
+                          onChange={(event) => setThumbnailSubtitle(event.target.value)}
+                          placeholder="Thumbnail subheading"
+                          className="rounded border border-white/15 bg-slate-900/70 px-2 py-1.5"
+                        />
+                        <input
+                          type="number"
+                          min={2}
+                          max={12}
+                          value={thumbnailDuration}
+                          onChange={(event) => setThumbnailDuration(Math.max(2, Number(event.target.value) || 4))}
+                          className="rounded border border-white/15 bg-slate-900/70 px-2 py-1.5"
+                          title="Thumbnail duration (seconds)"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => void previewThumbnailScene()}
+                          disabled={brandScenePreviewLoading === "thumbnail"}
+                          className="rounded border border-cyan-300/30 px-2 py-1.5 text-xs text-cyan-100 hover:bg-cyan-500/10 disabled:opacity-50"
+                        >
+                          {brandScenePreviewLoading === "thumbnail" ? "Rendering..." : "Preview Thumbnail Scene"}
+                        </button>
+                        {thumbnailScenePreviewUrl ? (
+                          <a
+                            className="rounded border border-cyan-300/30 px-2 py-1.5 text-center text-xs text-cyan-100 hover:bg-cyan-500/20"
+                            href={thumbnailScenePreviewUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            download="thumbnail-scene-preview.mp4"
+                          >
+                            Download Thumbnail Scene
+                          </a>
+                        ) : null}
+                      </div>
+                    </div>
+
+                    <div className="rounded-xl border border-white/10 bg-slate-950/40 p-3">
+                      <label className="mb-2 flex items-center gap-2 text-sm font-semibold">
+                        <input
+                          type="checkbox"
+                          checked={includeThankYouSlide}
+                          onChange={(event) => setIncludeThankYouSlide(event.target.checked)}
+                        />
+                        Thank You Last Slide
+                      </label>
+                      <div className="grid gap-2 text-sm">
+                        <input
+                          value={thankYouTitle}
+                          onChange={(event) => setThankYouTitle(event.target.value)}
+                          placeholder="Final slide heading"
+                          className="rounded border border-white/15 bg-slate-900/70 px-2 py-1.5"
+                        />
+                        <input
+                          value={thankYouNote}
+                          onChange={(event) => setThankYouNote(event.target.value)}
+                          placeholder="Final slide note"
+                          className="rounded border border-white/15 bg-slate-900/70 px-2 py-1.5"
+                        />
+                        <input
+                          type="number"
+                          min={2}
+                          max={12}
+                          value={thankYouDuration}
+                          onChange={(event) => setThankYouDuration(Math.max(2, Number(event.target.value) || 4))}
+                          className="rounded border border-white/15 bg-slate-900/70 px-2 py-1.5"
+                          title="Thank you slide duration (seconds)"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => void previewThankYouScene()}
+                          disabled={brandScenePreviewLoading === "thankyou"}
+                          className="rounded border border-emerald-300/30 px-2 py-1.5 text-xs text-emerald-100 hover:bg-emerald-500/10 disabled:opacity-50"
+                        >
+                          {brandScenePreviewLoading === "thankyou" ? "Rendering..." : "Preview Thank You Scene"}
+                        </button>
+                        {thankYouScenePreviewUrl ? (
+                          <a
+                            className="rounded border border-emerald-300/30 px-2 py-1.5 text-center text-xs text-emerald-100 hover:bg-emerald-500/20"
+                            href={thankYouScenePreviewUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            download="thank-you-scene-preview.mp4"
+                          >
+                            Download Thank You Scene
+                          </a>
+                        ) : null}
+                      </div>
+                    </div>
                   </div>
 
                   <div className="rounded-xl border border-white/10 bg-slate-950/40 p-3">

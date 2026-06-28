@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-label="Office background">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1f46" />
+      <stop offset="100%" stop-color="#1f4d8f" />
+    </linearGradient>
+    <linearGradient id="desk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#233b68" />
+      <stop offset="100%" stop-color="#132646" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)" />
+  <rect x="0" y="760" width="1920" height="320" fill="url(#desk)" />
+  <rect x="1320" y="180" width="460" height="300" rx="22" fill="#95b8ec" opacity="0.4" />
+  <rect x="140" y="210" width="560" height="44" rx="22" fill="#9dc3ff" opacity="0.18" />
+  <rect x="140" y="280" width="680" height="30" rx="15" fill="#9dc3ff" opacity="0.14" />
+  <rect x="140" y="328" width="460" height="30" rx="15" fill="#9dc3ff" opacity="0.1" />
+</svg>

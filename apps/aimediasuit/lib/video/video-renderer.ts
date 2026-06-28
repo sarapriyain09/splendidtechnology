@@ -1,10 +1,13 @@
+import { createWriteStream } from "node:fs";
 import { mkdtemp, mkdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { spawn } from "node:child_process";
+import { once } from "node:events";
 import { VoiceProviderFactory } from "@/lib/providers/voice-provider-factory";
+import { readAudioByPublicPath } from "@/lib/storage/audio-storage";
 import { readImageByPublicPath } from "@/lib/storage/image-storage";
-import { saveVideoFile } from "@/lib/storage/video-storage";
+import { saveVideoFileFromPath } from "@/lib/storage/video-storage";
 import type { VoiceType } from "@/types/media";
 
 export type RenderScene = {
@@ -13,6 +16,8 @@ export type RenderScene = {
   caption: string;
   voiceover: string;
   image: string;
+  voiceVolume?: number;
+  musicVolume?: number;
   transition: "cut" | "fade" | "crossfade" | "slideleft" | "slideright" | "zoomin" | "zoomout" | "flash";
 };
 
@@ -25,12 +30,15 @@ export type RenderOptions = {
   speechLeadInSec: number;
   speechTailSec: number;
   includeSubtitles: boolean;
-  musicTrack: "none" | "corporate" | "motivational" | "ambient" | "upbeat";
+  musicTrack: "none" | "corporate" | "motivational" | "ambient" | "upbeat" | "uploaded";
+  uploadedMusicUrl?: string;
   voiceVolume: number;
   musicVolume: number;
 };
 
-const musicTrackFiles: Record<Exclude<RenderOptions["musicTrack"], "none">, string> = {
+type PresetMusicTrack = Exclude<RenderOptions["musicTrack"], "none" | "uploaded">;
+
+const musicTrackFiles: Record<PresetMusicTrack, string> = {
   corporate: "corporate.mp3",
   motivational: "motivational.mp3",
   ambient: "ambient.mp3",
@@ -40,50 +48,173 @@ const musicTrackFiles: Record<Exclude<RenderOptions["musicTrack"], "none">, stri
 const VIDEO_FPS = 24;
 const X264_PRESET = "ultrafast";
 const X264_CRF = "28";
+const MAX_CAPTURED_OUTPUT_LINES = 500;
 
-function runCommand(command: string, args: string[], cwd?: string) {
-  return new Promise<void>((resolve, reject) => {
-    const child = spawn(command, args, { cwd, stdio: ["ignore", "pipe", "pipe"] });
-    let stderr = "";
+class TailLineBuffer {
+  private readonly maxLines: number;
+  private readonly lines: string[] = [];
+  private partial = "";
 
-    child.stderr.on("data", (chunk) => {
-      stderr += chunk.toString();
-    });
+  constructor(maxLines: number) {
+    this.maxLines = maxLines;
+  }
 
-    child.on("error", reject);
-    child.on("exit", (code) => {
-      if (code === 0) {
-        resolve();
-      } else {
-        reject(new Error(stderr || `${command} exited with code ${code}`));
+  append(chunk: Buffer | string) {
+    const incoming = typeof chunk === "string" ? chunk : chunk.toString("utf8");
+    if (!incoming) {
+      return;
+    }
+
+    const normalized = incoming.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+    const combined = this.partial + normalized;
+    const segments = combined.split("\n");
+    this.partial = segments.pop() ?? "";
+
+    for (const segment of segments) {
+      this.lines.push(segment);
+      if (this.lines.length > this.maxLines) {
+        this.lines.shift();
       }
-    });
-  });
+    }
+  }
+
+  toString() {
+    const output = this.partial ? [...this.lines, this.partial] : [...this.lines];
+    return output.join("\n").trim();
+  }
 }
 
-function runCommandWithOutput(command: string, args: string[], cwd?: string) {
-  return new Promise<{ stdout: string; stderr: string }>((resolve, reject) => {
-    const child = spawn(command, args, { cwd, stdio: ["ignore", "pipe", "pipe"] });
-    let stdout = "";
-    let stderr = "";
+type ProcessCapture = {
+  stdout: string;
+  stderr: string;
+};
 
-    child.stdout.on("data", (chunk) => {
-      stdout += chunk.toString();
-    });
+function buildProcessError(command: string, exitCode: number | null, stderrTail: string, stdoutTail: string) {
+  const header = `${command} exited with code ${exitCode ?? "unknown"}`;
+  const details = stderrTail || stdoutTail;
+  return details ? `${header}\n${details}` : header;
+}
 
-    child.stderr.on("data", (chunk) => {
-      stderr += chunk.toString();
-    });
+async function runProcess(command: string, args: string[], cwd?: string, logFilePath?: string) {
+  const child = spawn(command, args, { cwd, stdio: ["ignore", "pipe", "pipe"] });
+  const stdoutTail = new TailLineBuffer(MAX_CAPTURED_OUTPUT_LINES);
+  const stderrTail = new TailLineBuffer(MAX_CAPTURED_OUTPUT_LINES);
+  const logStream = logFilePath ? createWriteStream(logFilePath, { flags: "a" }) : null;
 
-    child.on("error", reject);
-    child.on("exit", (code) => {
-      if (code === 0) {
-        resolve({ stdout, stderr });
-      } else {
-        reject(new Error(stderr || `${command} exited with code ${code}`));
-      }
-    });
+  if (logStream) {
+    logStream.write(`\n--- ${new Date().toISOString()} ${command} ${args.join(" ")} ---\n`);
+  }
+
+  child.stdout.on("data", (chunk) => {
+    stdoutTail.append(chunk);
+    if (logStream) {
+      logStream.write(chunk);
+    }
   });
+
+  child.stderr.on("data", (chunk) => {
+    stderrTail.append(chunk);
+    if (logStream) {
+      logStream.write(chunk);
+    }
+  });
+
+  const outcome = await Promise.race([
+    once(child, "exit").then(([code]) => ({ type: "exit" as const, code: code as number | null })),
+    once(child, "error").then(([error]) => ({ type: "error" as const, error: error as Error })),
+  ]);
+
+  if (logStream) {
+    const logOutcome = outcome.type === "exit" ? outcome.code ?? "unknown" : `error: ${outcome.error.message}`;
+    logStream.write(`\n--- process result: ${logOutcome} ---\n`);
+    await new Promise<void>((resolve) => {
+      logStream.end(() => resolve());
+    });
+  }
+
+  if (outcome.type === "error") {
+    throw outcome.error;
+  }
+
+  return {
+    exitCode: outcome.code,
+    stdoutTail: stdoutTail.toString(),
+    stderrTail: stderrTail.toString(),
+  };
+}
+
+async function runCommand(command: string, args: string[], cwd?: string, logFilePath?: string) {
+  const result = await runProcess(command, args, cwd, logFilePath);
+  if (result.exitCode !== 0) {
+    throw new Error(buildProcessError(command, result.exitCode, result.stderrTail, result.stdoutTail));
+  }
+}
+
+async function runCommandWithOutput(command: string, args: string[], cwd?: string, logFilePath?: string) {
+  const result = await runProcess(command, args, cwd, logFilePath);
+  if (result.exitCode !== 0) {
+    throw new Error(buildProcessError(command, result.exitCode, result.stderrTail, result.stdoutTail));
+  }
+
+  return {
+    stdout: result.stdoutTail,
+    stderr: result.stderrTail,
+  } satisfies ProcessCapture;
+}
+
+function commandLogPath(workingDir: string, name: string, sceneIndex?: number) {
+  const safe = name.replace(/[^a-z0-9-_]/gi, "-").toLowerCase();
+  return join(workingDir, sceneIndex ? `${safe}-scene-${sceneIndex}.log` : `${safe}.log`);
+}
+
+async function runFfmpeg(workingDir: string, name: string, args: string[], sceneIndex?: number) {
+  await runCommand("ffmpeg", args, undefined, commandLogPath(workingDir, name, sceneIndex));
+}
+
+async function runFfprobe(workingDir: string, name: string, args: string[]) {
+  return runCommandWithOutput("ffprobe", args, undefined, commandLogPath(workingDir, name));
+}
+
+async function runFastProbe(command: string, args: string[]) {
+  const result = await runProcess(command, args);
+  if (result.exitCode !== 0) {
+    throw new Error(buildProcessError(command, result.exitCode, result.stderrTail, result.stdoutTail));
+  }
+
+  return result;
+}
+
+async function hasBinary(command: string, versionArg = "-version") {
+  try {
+    await runFastProbe(command, [versionArg]);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function parsePositiveNumber(value: string) {
+  const firstLine = value.split(/\r?\n/).find((line) => line.trim().length > 0) ?? "";
+  const parsed = Number.parseFloat(firstLine.trim());
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+}
+
+async function getProbeDurationSec(workingDir: string, sourcePath: string, logName: string) {
+  try {
+    const { stdout } = await runFfprobe(workingDir, logName, [
+      "-v",
+      "error",
+      "-show_entries",
+      "format=duration",
+      "-of",
+      "default=noprint_wrappers=1:nokey=1",
+      sourcePath,
+    ]);
+
+    return parsePositiveNumber(stdout);
+  } catch {
+    return null;
+  }
 }
 
 function getResolution(aspectRatio: RenderOptions["aspectRatio"], quality: RenderOptions["quality"]) {
@@ -96,19 +227,6 @@ function getResolution(aspectRatio: RenderOptions["aspectRatio"], quality: Rende
   }
 
   return quality === "1080p" ? { width: 1920, height: 1080 } : { width: 1280, height: 720 };
-}
-
-function mapTransitionToXfade(transition: RenderScene["transition"]) {
-  if (transition === "slideleft") return "slideleft";
-  if (transition === "slideright") return "slideright";
-  if (transition === "flash") return "fadeblack";
-  return "fade";
-}
-
-function getTransitionDuration(transition: RenderScene["transition"]) {
-  if (transition === "cut") return 0;
-  if (transition === "flash") return 0.2;
-  return 0.4;
 }
 
 function getImageMotionFilter(scene: RenderScene, width: number, height: number, fps: number, duration: number) {
@@ -132,6 +250,7 @@ function normalizeVoiceText(inputText: string) {
 
 async function normalizeVoiceTrack(inputPath: string, outputPath: string) {
   try {
+    const logPath = `${outputPath}.ffmpeg.log`;
     await runCommand("ffmpeg", [
       "-y",
       "-i",
@@ -143,15 +262,15 @@ async function normalizeVoiceTrack(inputPath: string, outputPath: string) {
       "-q:a",
       "2",
       outputPath,
-    ]);
+    ], undefined, logPath);
     return outputPath;
   } catch {
     return inputPath;
   }
 }
 
-async function generateSilentVoiceTrack(outputPath: string, durationSec: number) {
-  await runCommand("ffmpeg", [
+async function generateSilentVoiceTrack(outputPath: string, durationSec: number, workingDir: string, sceneIndex: number) {
+  await runFfmpeg(workingDir, "scene-silent-voice", [
     "-y",
     "-f",
     "lavfi",
@@ -164,26 +283,12 @@ async function generateSilentVoiceTrack(outputPath: string, durationSec: number)
     "-q:a",
     "4",
     outputPath,
-  ]);
+  ], sceneIndex);
 }
 
-async function getAudioDurationSec(inputPath: string) {
-  try {
-    const { stdout } = await runCommandWithOutput("ffprobe", [
-      "-v",
-      "error",
-      "-show_entries",
-      "format=duration",
-      "-of",
-      "default=noprint_wrappers=1:nokey=1",
-      inputPath,
-    ]);
-
-    const value = Number.parseFloat(stdout.trim());
-    return Number.isFinite(value) && value > 0 ? value : null;
-  } catch {
-    return null;
-  }
+async function getAudioDurationSec(inputPath: string, workingDir: string, sceneIndex?: number) {
+  const logName = sceneIndex ? `scene-duration-${sceneIndex}` : "audio-duration";
+  return getProbeDurationSec(workingDir, inputPath, logName);
 }
 
 async function writeSubtitlesFile(filePath: string, scenes: RenderScene[], durationsSec?: number[]) {
@@ -239,8 +344,22 @@ async function downloadIfUrl(input: string, outputPath: string) {
     }
   }
 
+  if (input.startsWith("/")) {
+    const relative = input.replace(/^\/+/, "");
+    if (!relative.includes("..")) {
+      const publicPath = join(process.cwd(), "public", relative);
+      try {
+        const bytes = await readFile(publicPath);
+        await writeFile(outputPath, bytes);
+        return outputPath;
+      } catch {
+        // Continue and try URL-based loading path.
+      }
+    }
+  }
+
   if (!/^https?:\/\//i.test(input)) {
-    return input;
+    throw new Error("Unsupported scene image path. Use Browse Local Image, /media/image URL, data:image payload, or https URL.");
   }
 
   const response = await fetch(input);
@@ -280,43 +399,28 @@ async function resolveWritableMusicDir() {
   return null;
 }
 
-async function getMediaDurationSec(inputPath: string) {
-  try {
-    const { stdout } = await runCommandWithOutput("ffprobe", [
-      "-v",
-      "error",
-      "-show_entries",
-      "format=duration",
-      "-of",
-      "default=noprint_wrappers=1:nokey=1",
-      inputPath,
-    ]);
-
-    const value = Number.parseFloat(stdout.trim());
-    return Number.isFinite(value) && value > 0 ? value : null;
-  } catch {
-    return null;
-  }
+async function getMediaDurationSec(inputPath: string, workingDir: string) {
+  return getProbeDurationSec(workingDir, inputPath, "media-duration");
 }
 
-function buildFallbackMusicSource(track: Exclude<RenderOptions["musicTrack"], "none">) {
+function buildFallbackMusicSource(track: PresetMusicTrack) {
   if (track === "ambient") {
-    return "anoisesrc=color=pink:amplitude=0.05";
+    return "anoisesrc=color=pink:amplitude=0.22";
   }
 
   if (track === "motivational") {
-    return "sine=f=196:r=44100,asplit=2[a][b];[a]tremolo=f=5:d=0.6[a1];[b]sine=f=293.66:r=44100,volume=0.35[b1];[a1][b1]amix=inputs=2";
+    return "sine=f=196:r=44100[a0];sine=f=293.66:r=44100,volume=0.35[a1];[a0][a1]amix=inputs=2";
   }
 
   if (track === "upbeat") {
-    return "sine=f=220:r=44100,asplit=2[a][b];[a]tremolo=f=8:d=0.65[a1];[b]sine=f=329.63:r=44100,volume=0.45[b1];[a1][b1]amix=inputs=2";
+    return "sine=f=220:r=44100[a0];sine=f=329.63:r=44100,volume=0.45[a1];[a0][a1]amix=inputs=2";
   }
 
   return "sine=f=164.81:r=44100";
 }
 
 async function ensureMusicTrackPath(
-  track: Exclude<RenderOptions["musicTrack"], "none">,
+  track: PresetMusicTrack,
   workingDir: string,
   videoPath: string,
 ) {
@@ -327,9 +431,9 @@ async function ensureMusicTrackPath(
   }
 
   const fallbackPath = join(workingDir, `${track}-fallback.mp3`);
-  const duration = Math.max(8, Math.ceil((await getMediaDurationSec(videoPath)) ?? 20));
+  const duration = Math.max(8, Math.ceil((await getMediaDurationSec(videoPath, workingDir)) ?? 20));
 
-  await runCommand("ffmpeg", [
+  await runFfmpeg(workingDir, `music-${track}-fallback`, [
     "-y",
     "-f",
     "lavfi",
@@ -338,7 +442,7 @@ async function ensureMusicTrackPath(
     "-t",
     String(duration),
     "-af",
-    "highpass=f=80,lowpass=f=7000,volume=0.28",
+    "highpass=f=80,lowpass=f=9000,volume=0.9",
     "-c:a",
     "libmp3lame",
     "-q:a",
@@ -349,11 +453,74 @@ async function ensureMusicTrackPath(
   return fallbackPath;
 }
 
+async function resolveUploadedMusicPath(uploadedMusicUrl: string, workingDir: string) {
+  const input = uploadedMusicUrl.trim();
+  if (!input) {
+    throw new Error("Uploaded music URL is empty.");
+  }
+
+  const outputPath = join(workingDir, "uploaded-music.mp3");
+
+  if (input.startsWith("/media/audio/")) {
+    const relative = input.replace(/^\/media\/audio\//, "");
+    const segments = relative.split("/").filter(Boolean);
+    if (segments.length === 0) {
+      throw new Error("Invalid uploaded music path.");
+    }
+
+    const { file } = await readAudioByPublicPath(segments);
+    await writeFile(outputPath, file);
+    return outputPath;
+  }
+
+  if (!/^https?:\/\//i.test(input)) {
+    throw new Error("Uploaded music must be a /media/audio URL or https URL.");
+  }
+
+  const response = await fetch(input);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch uploaded music: ${response.status}`);
+  }
+
+  const bytes = Buffer.from(await response.arrayBuffer());
+  await writeFile(outputPath, bytes);
+  return outputPath;
+}
+
+function buildPerSceneMusicExpr(scenes: RenderScene[], effectiveSceneDurations: number[]) {
+  if (scenes.length === 0) {
+    return "1";
+  }
+
+  let cursor = 0;
+  const segments = scenes.map((scene, index) => {
+    const duration = Math.max(1, effectiveSceneDurations[index] ?? scene.duration ?? 1);
+    const start = Number(cursor.toFixed(3));
+    const end = Number((cursor + duration).toFixed(3));
+    cursor += duration;
+    const gain = Math.max(0, (scene.musicVolume ?? 100) / 100);
+    return { start, end, gain };
+  });
+
+  let expr = `${segments[segments.length - 1].gain}`;
+  for (let i = segments.length - 2; i >= 0; i -= 1) {
+    const segment = segments[i];
+    expr = `if(between(t,${segment.start},${segment.end}),${segment.gain},${expr})`;
+  }
+
+  return expr;
+}
+
+export function escapeFfmpegFilterPath(inputPath: string) {
+  return inputPath
+    .replace(/\\/g, "/")
+    .replace(/:/g, "\\:")
+    .replace(/'/g, "\\'")
+    .replace(/,/g, "\\,");
+}
+
 export async function renderVideo(options: RenderOptions) {
-  const hasFfmpeg = await runCommand("ffmpeg", ["-version"]).then(
-    () => true,
-    () => false,
-  );
+  const hasFfmpeg = await hasBinary("ffmpeg");
 
   if (!hasFfmpeg) {
     throw new Error("FFmpeg is not installed on the server.");
@@ -388,11 +555,11 @@ export async function renderVideo(options: RenderOptions) {
         await writeFile(voicePath, voiceMp3);
       } catch {
         // Continue rendering with silent narration timing when TTS is unavailable (e.g. billing issues).
-        await generateSilentVoiceTrack(voicePath, fallbackVoiceDuration);
+        await generateSilentVoiceTrack(voicePath, fallbackVoiceDuration, workingDir, sceneIndex);
       }
 
       const normalizedVoicePath = await normalizeVoiceTrack(voicePath, join(workingDir, `scene-${sceneIndex}.clean.mp3`));
-      const measuredVoiceSec = await getAudioDurationSec(normalizedVoicePath);
+      const measuredVoiceSec = await getAudioDurationSec(normalizedVoicePath, workingDir, sceneIndex);
       const estimatedVoiceSec = Math.max(1, voiceText.length / 14);
 
       const leadInSec = Math.max(0, options.speechLeadInSec ?? 0);
@@ -402,7 +569,13 @@ export async function renderVideo(options: RenderOptions) {
       effectiveSceneDurations.push(duration);
       const leadInMs = Math.round(leadInSec * 1000);
 
-      const localImagePath = await downloadIfUrl(scene.image || "", imagePath).catch(() => "");
+      const hasSceneImage = Boolean(scene.image?.trim());
+      const localImagePath = hasSceneImage
+        ? await downloadIfUrl(scene.image || "", imagePath).catch((error) => {
+            const message = error instanceof Error ? error.message : "Unknown image loading error.";
+            throw new Error(`Scene ${sceneIndex} image could not be loaded: ${message}`);
+          })
+        : "";
       const fadeDuration = Math.min(0.35, Math.max(0, duration - 0.15));
       const shouldFade = scene.transition !== "cut";
       const fps = VIDEO_FPS;
@@ -411,9 +584,11 @@ export async function renderVideo(options: RenderOptions) {
         ? `${imageMotionFilter},fade=t=in:st=0:d=${fadeDuration},fade=t=out:st=${Math.max(0, duration - fadeDuration)}:d=${fadeDuration}`
         : imageMotionFilter;
       const sceneAudioFilter = `${leadInMs > 0 ? `adelay=${leadInMs}|${leadInMs},` : ""}apad,atrim=0:${duration}`;
+      const sceneVoiceGain = Math.max(0, (scene.voiceVolume ?? 100) / 100);
+      const sceneAudioFilterWithVolume = `volume=${sceneVoiceGain},${sceneAudioFilter}`;
 
       if (localImagePath) {
-        await runCommand("ffmpeg", [
+        await runFfmpeg(workingDir, "scene-video-image", [
           "-y",
           "-loop",
           "1",
@@ -426,7 +601,7 @@ export async function renderVideo(options: RenderOptions) {
           "-vf",
           sceneVideoFilter,
           "-af",
-          sceneAudioFilter,
+          sceneAudioFilterWithVolume,
           "-t",
           String(duration),
           "-c:v",
@@ -440,9 +615,9 @@ export async function renderVideo(options: RenderOptions) {
           "-c:a",
           "aac",
           videoPath,
-        ]);
+        ], sceneIndex);
       } else {
-        await runCommand("ffmpeg", [
+        await runFfmpeg(workingDir, "scene-video-color", [
           "-y",
           "-f",
           "lavfi",
@@ -455,7 +630,9 @@ export async function renderVideo(options: RenderOptions) {
             ? `fade=t=in:st=0:d=${fadeDuration},fade=t=out:st=${Math.max(0, duration - fadeDuration)}:d=${fadeDuration},format=yuv420p`
             : "format=yuv420p",
           "-af",
-          sceneAudioFilter,
+          sceneAudioFilterWithVolume,
+          "-r",
+          String(fps),
           "-c:v",
           "libx264",
           "-preset",
@@ -467,102 +644,51 @@ export async function renderVideo(options: RenderOptions) {
           "-c:a",
           "aac",
           videoPath,
-        ]);
+        ], sceneIndex);
       }
 
       sceneVideos.push(videoPath);
     }
 
-    const hasRichTransitions = sceneVideos.length > 1 && options.scenes.some((scene) => scene.transition !== "cut");
     const joinedPath = join(workingDir, "joined.mp4");
+    const concatArgs = sceneVideos.flatMap((file) => ["-i", file]);
+    const concatInputs = sceneVideos.map((_, index) => `[${index}:v][${index}:a]`).join("");
+    const concatFilter = `${concatInputs}concat=n=${sceneVideos.length}:v=1:a=1[vout][aout]`;
 
-    if (!hasRichTransitions) {
-      const concatPath = join(workingDir, "concat.txt");
-      const concatContents = sceneVideos.map((file) => `file '${file.replace(/'/g, "'\\''")}'`).join("\n");
-      await writeFile(concatPath, concatContents, "utf-8");
-
-      await runCommand("ffmpeg", [
-        "-y",
-        "-f",
-        "concat",
-        "-safe",
-        "0",
-        "-i",
-        concatPath,
-        "-c",
-        "copy",
-        joinedPath,
-      ]);
-    } else {
-      const transitionArgs = sceneVideos.flatMap((file) => ["-i", file]);
-      const videoOps: string[] = [];
-      const audioOps: string[] = [];
-
-      let currentVideoLabel = "[0:v]";
-      let currentAudioLabel = "[0:a]";
-      let timeline = Math.max(1, effectiveSceneDurations[0] ?? options.scenes[0]?.duration ?? 1);
-
-      for (let i = 1; i < sceneVideos.length; i += 1) {
-        const nextVideoLabel = `[${i}:v]`;
-        const nextAudioLabel = `[${i}:a]`;
-        const outVideoLabel = `[v${i}]`;
-        const outAudioLabel = `[a${i}]`;
-        const transition = options.scenes[i]?.transition ?? "crossfade";
-        const duration = Math.max(0, getTransitionDuration(transition));
-
-        if (duration <= 0 || transition === "cut") {
-          videoOps.push(`${currentVideoLabel}${nextVideoLabel}concat=n=2:v=1:a=0${outVideoLabel}`);
-          audioOps.push(`${currentAudioLabel}${nextAudioLabel}concat=n=2:v=0:a=1${outAudioLabel}`);
-          timeline += Math.max(1, effectiveSceneDurations[i] ?? options.scenes[i]?.duration ?? 1);
-        } else {
-          const xfadeType = mapTransitionToXfade(transition);
-          const offset = Math.max(0, timeline - duration);
-          videoOps.push(
-            `${currentVideoLabel}${nextVideoLabel}xfade=transition=${xfadeType}:duration=${duration}:offset=${offset}${outVideoLabel}`,
-          );
-          audioOps.push(`${currentAudioLabel}${nextAudioLabel}acrossfade=d=${duration}:c1=tri:c2=tri${outAudioLabel}`);
-          timeline += Math.max(1, effectiveSceneDurations[i] ?? options.scenes[i]?.duration ?? 1) - duration;
-        }
-
-        currentVideoLabel = outVideoLabel;
-        currentAudioLabel = outAudioLabel;
-      }
-
-      const filterComplex = [...videoOps, ...audioOps].join(";");
-      await runCommand("ffmpeg", [
-        "-y",
-        ...transitionArgs,
-        "-filter_complex",
-        filterComplex,
-        "-map",
-        currentVideoLabel,
-        "-map",
-        currentAudioLabel,
-        "-c:v",
-        "libx264",
-        "-preset",
-        X264_PRESET,
-        "-crf",
-        X264_CRF,
-        "-pix_fmt",
-        "yuv420p",
-        "-c:a",
-        "aac",
-        joinedPath,
-      ]);
-    }
+    await runFfmpeg(workingDir, "concat-scenes", [
+      "-y",
+      ...concatArgs,
+      "-filter_complex",
+      concatFilter,
+      "-map",
+      "[vout]",
+      "-map",
+      "[aout]",
+      "-c:v",
+      "libx264",
+      "-preset",
+      X264_PRESET,
+      "-crf",
+      X264_CRF,
+      "-pix_fmt",
+      "yuv420p",
+      "-c:a",
+      "aac",
+      joinedPath,
+    ]);
 
     let currentPath = joinedPath;
     if (options.includeSubtitles) {
       const subtitlePath = join(workingDir, "output.srt");
       await writeSubtitlesFile(subtitlePath, options.scenes, effectiveSceneDurations);
       const subtitledPath = join(workingDir, "subtitled.mp4");
-      await runCommand("ffmpeg", [
+      const escapedSubtitlePath = escapeFfmpegFilterPath(subtitlePath);
+      await runFfmpeg(workingDir, "burn-subtitles", [
         "-y",
         "-i",
         currentPath,
         "-vf",
-        `subtitles=${subtitlePath}`,
+        `subtitles='${escapedSubtitlePath}'`,
         "-c:v",
         "libx264",
         "-preset",
@@ -577,9 +703,22 @@ export async function renderVideo(options: RenderOptions) {
     }
 
     if (options.musicTrack !== "none") {
-      const musicPath = await ensureMusicTrackPath(options.musicTrack, workingDir, currentPath);
+      let musicPath: string;
+      if (options.musicTrack === "uploaded") {
+        try {
+          musicPath = await resolveUploadedMusicPath(options.uploadedMusicUrl ?? "", workingDir);
+        } catch {
+          // If uploaded file is missing, keep final build reliable with a preset fallback track.
+          musicPath = await ensureMusicTrackPath("corporate", workingDir, currentPath);
+        }
+      } else {
+        musicPath = await ensureMusicTrackPath(options.musicTrack, workingDir, currentPath);
+      }
       const mixedPath = join(workingDir, "mixed.mp4");
-      await runCommand("ffmpeg", [
+      const musicGain = Math.max(0, options.musicVolume / 100);
+      const voiceGain = Math.max(0, options.voiceVolume / 100);
+      const perSceneMusicExpr = buildPerSceneMusicExpr(options.scenes, effectiveSceneDurations);
+      const mixWithPerSceneFilter = [
         "-y",
         "-stream_loop",
         "-1",
@@ -588,7 +727,7 @@ export async function renderVideo(options: RenderOptions) {
         "-i",
         currentPath,
         "-filter_complex",
-        `[0:a]volume=${Math.max(0, options.musicVolume / 100)}[m];[1:a]volume=${Math.max(0, options.voiceVolume / 100)}[v];[m][v]amix=inputs=2:duration=shortest:dropout_transition=2[aout]`,
+        `[0:a]volume='(${musicGain})*(${perSceneMusicExpr})':eval=frame[m];[1:a]volume=${voiceGain}:eval=frame[v];[m][v]amix=inputs=2:duration=shortest:dropout_transition=2:normalize=0,alimiter=limit=0.97[aout]`,
         "-map",
         "1:v:0",
         "-map",
@@ -599,12 +738,38 @@ export async function renderVideo(options: RenderOptions) {
         "aac",
         "-shortest",
         mixedPath,
-      ]);
+      ];
+
+      try {
+        await runFfmpeg(workingDir, "mix-music-per-scene", mixWithPerSceneFilter);
+      } catch {
+        // Fallback for ffmpeg builds that cannot parse complex expression-based volume filters.
+        await runFfmpeg(workingDir, "mix-music-fallback", [
+          "-y",
+          "-stream_loop",
+          "-1",
+          "-i",
+          musicPath,
+          "-i",
+          currentPath,
+          "-filter_complex",
+          `[0:a]volume=${musicGain}[m];[1:a]volume=${voiceGain}[v];[m][v]amix=inputs=2:duration=shortest:dropout_transition=2:normalize=0,alimiter=limit=0.97[aout]`,
+          "-map",
+          "1:v:0",
+          "-map",
+          "[aout]",
+          "-c:v",
+          "copy",
+          "-c:a",
+          "aac",
+          "-shortest",
+          mixedPath,
+        ]);
+      }
       currentPath = mixedPath;
     }
 
-    const finalBuffer = await readFile(currentPath);
-    const { urlPath } = await saveVideoFile(finalBuffer);
+    const { urlPath } = await saveVideoFileFromPath(currentPath);
 
     return {
       outputUrl: urlPath,

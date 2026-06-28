@@ -1,0 +1,337 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ModuleType {
+  VOICE
+  SCRIPT
+  PODCAST
+  SUBTITLE
+  BACKGROUND_MUSIC
+  VIDEO
+  AVATAR
+}
+
+enum GenerationStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum CloneStatus {
+  UPLOADING
+  PENDING
+  PROCESSING
+  TRAINING
+  READY
+  FAILED
+}
+
+enum VoiceType {
+  alloy
+  ash
+  ballad
+  coral
+  echo
+  sage
+  shimmer
+}
+
+enum ScriptGoal {
+  social
+  ad
+  youtube
+  email
+  sales
+}
+
+enum ScriptTone {
+  professional
+  friendly
+  bold
+  educational
+  storytelling
+}
+
+enum ScriptLength {
+  short
+  medium
+  long
+}
+
+enum PodcastFormat {
+  interview
+  solo
+  panel
+  storytelling
+}
+
+enum PodcastTone {
+  professional
+  conversational
+  energetic
+  educational
+}
+
+enum PodcastLength {
+  short
+  medium
+  long
+}
+
+enum PresentationGoal {
+  pitch
+  training
+  webinar
+  sales
+  report
+}
+
+enum PresentationTone {
+  professional
+  persuasive
+  educational
+  storytelling
+}
+
+enum PresentationLength {
+  short
+  medium
+  long
+}
+
+enum SubtitleFormat {
+  srt
+  vtt
+  captions
+}
+
+enum SubtitleTone {
+  verbatim
+  readable
+  engaging
+}
+
+model MediaGeneration {
+  id         String           @id @default(uuid()) @db.Uuid
+  userId     String           @db.Uuid
+  moduleType ModuleType
+  title      String
+  inputText  String
+  voice      VoiceType
+  speed      Decimal          @db.Decimal(3, 2)
+  duration   Int?
+  outputUrl  String?
+  status     GenerationStatus @default(PENDING)
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+
+  @@index([userId, moduleType, createdAt])
+}
+
+model ScriptGeneration {
+  id           String           @id @default(uuid()) @db.Uuid
+  userId       String           @db.Uuid
+  title        String
+  prompt       String
+  outputText   String
+  goal         ScriptGoal
+  tone         ScriptTone
+  length       ScriptLength
+  audience     String
+  callToAction String?
+  isFavorite   Boolean          @default(false)
+  status       GenerationStatus @default(COMPLETED)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+
+  @@index([userId, createdAt])
+}
+
+model PodcastGeneration {
+  id         String           @id @default(uuid()) @db.Uuid
+  userId     String           @db.Uuid
+  title      String
+  topic      String
+  audience   String
+  format     PodcastFormat
+  tone       PodcastTone
+  length     PodcastLength
+  hosts      String[]
+  outline    String           @default("")
+  prompt     String
+  script     String
+  outputUrl  String?
+  duration   Int?
+  segmentCount Int            @default(0)
+  segments   Json?
+  isFavorite Boolean          @default(false)
+  status     GenerationStatus @default(COMPLETED)
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+
+  @@index([userId, createdAt])
+}
+
+model PresentationGeneration {
+  id                 String             @id @default(uuid()) @db.Uuid
+  userId             String             @db.Uuid
+  title              String
+  goal               PresentationGoal
+  tone               PresentationTone
+  length             PresentationLength
+  audience           String
+  topic              String
+  prompt             String
+  outputText         String
+  slideCount         Int                @default(0)
+  includeSpeakerNotes Boolean           @default(true)
+  visualStyle        String?
+  imagePrompt        String?
+  images             Json?
+  subtitleSourceLanguage String?
+  subtitleTargetLanguages String[]      @default([])
+  subtitleCues       Json?
+  subtitleTranslations Json?
+  voiceoverText      String?
+  voiceover          Json?
+  isFavorite         Boolean            @default(false)
+  status             GenerationStatus   @default(COMPLETED)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  comments           PresentationComment[]
+  versions           PresentationVersion[]
+
+  @@index([userId, createdAt])
+}
+
+model PresentationComment {
+  id             String               @id @default(uuid()) @db.Uuid
+  presentationId String               @db.Uuid
+  presentation   PresentationGeneration @relation(fields: [presentationId], references: [id], onDelete: Cascade)
+  author         String
+  content        String
+  createdAt      DateTime             @default(now())
+
+  @@index([presentationId, createdAt])
+}
+
+model PresentationVersion {
+  id             String               @id @default(uuid()) @db.Uuid
+  presentationId String               @db.Uuid
+  presentation   PresentationGeneration @relation(fields: [presentationId], references: [id], onDelete: Cascade)
+  versionNumber  Int
+  note           String?
+  snapshotText   String
+  createdAt      DateTime             @default(now())
+
+  @@unique([presentationId, versionNumber])
+  @@index([presentationId, createdAt])
+}
+
+model SubtitleGeneration {
+  id                String           @id @default(uuid()) @db.Uuid
+  userId            String           @db.Uuid
+  title             String
+  topic             String
+  language          String
+  format            SubtitleFormat
+  tone              SubtitleTone
+  sourceText        String
+  outputText        String
+  cueCount          Int              @default(0)
+  includeTimestamps Boolean          @default(true)
+  isFavorite        Boolean          @default(false)
+  status            GenerationStatus @default(COMPLETED)
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  @@index([userId, createdAt])
+}
+
+model VideoGeneration {
+  id               String           @id @default(uuid()) @db.Uuid
+  userId           String           @db.Uuid
+  title            String
+  topic            String
+  audience         String
+  style            String
+  aspectRatio      String
+  durationSec      Int              @default(60)
+  prompt           String
+  outputText       String
+  sceneCount       Int              @default(0)
+  includeVoiceover Boolean          @default(true)
+  outputUrl        String?
+  isFavorite       Boolean          @default(false)
+  status           GenerationStatus @default(COMPLETED)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@index([userId, createdAt])
+}
+
+model AvatarClone {
+  id              String        @id @default(uuid()) @db.Uuid
+  userId          String        @db.Uuid
+  name            String
+  status          CloneStatus   @default(UPLOADING)
+  photoFolder     String
+  trainingVideo   String?
+  avatarModelPath String?
+  previewImage    String?
+  language        String
+  accent          String?
+  speakingSpeed   Decimal?      @db.Decimal(3, 2)
+  gender          String?
+  defaultBackground String?
+  category        String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  projects        CloneProject[]
+
+  @@index([userId, createdAt])
+}
+
+model VoiceClone {
+  id             String        @id @default(uuid()) @db.Uuid
+  userId         String        @db.Uuid
+  name           String
+  audioFolder    String
+  voiceModelPath String?
+  duration       Int
+  language       String
+  status         CloneStatus   @default(UPLOADING)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  projects       CloneProject[]
+
+  @@index([userId, createdAt])
+}
+
+model CloneProject {
+  id            String      @id @default(uuid()) @db.Uuid
+  userId        String      @db.Uuid
+  avatarCloneId String      @db.Uuid
+  voiceCloneId  String      @db.Uuid
+  script        String
+  background    String?
+  music         String?
+  subtitle      Boolean     @default(true)
+  outputVideo   String?
+  status        CloneStatus @default(PENDING)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  avatarClone   AvatarClone @relation(fields: [avatarCloneId], references: [id], onDelete: Cascade)
+  voiceClone    VoiceClone  @relation(fields: [voiceCloneId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@index([avatarCloneId, createdAt])
+  @@index([voiceCloneId, createdAt])
+}

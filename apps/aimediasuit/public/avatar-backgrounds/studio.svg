@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-label="Studio background">
+  <defs>
+    <radialGradient id="spot" cx="50%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#5f7fd5" />
+      <stop offset="100%" stop-color="#1d2548" />
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="#141c36" />
+  <rect width="1920" height="1080" fill="url(#spot)" opacity="0.9" />
+  <ellipse cx="540" cy="170" rx="280" ry="70" fill="#c6d7ff" opacity="0.22" />
+  <ellipse cx="1380" cy="180" rx="280" ry="70" fill="#c6d7ff" opacity="0.18" />
+  <rect x="0" y="760" width="1920" height="320" fill="#0d1328" opacity="0.88" />
+</svg>
