@@ -16,6 +16,11 @@ Project planning and stage tracking:
 - Added browser e2e coverage for discovery save persistence and saved/unsaved row actionability behavior.
 - Added CI workflow for Product Intelligence pull requests to run backend pytest and frontend Playwright checks.
 - Updated backend timestamp defaults to timezone-aware UTC and added regression coverage to keep that behavior stable.
+- Added discovery bulk-save endpoint `POST /api/v1/database/save-bulk` with per-item results and aggregate counts.
+- Added multi-select discovery UX with row checkboxes, select-all for visible unsaved rows, and `Save Selected (N)` action.
+- Enhanced Saved Records UX with filter/search, summary metric cards, row highlighting, and a details side panel.
+- Added dedicated Playwright coverage for bulk-save selection flow and post-save lock behavior.
+- Added scoped git hygiene for local generated artifacts via `apps/product-intelligence-ai/.gitignore`.
 
 ## Scope Covered
 
