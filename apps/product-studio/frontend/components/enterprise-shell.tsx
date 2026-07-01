@@ -1,0 +1,1 @@
+export { EnterpriseShell } from "@/components/layout/enterprise-shell";
