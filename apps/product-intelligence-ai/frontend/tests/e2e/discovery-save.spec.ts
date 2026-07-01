@@ -88,3 +88,43 @@ test("discovery keeps saved rows locked while unsaved rows stay actionable", asy
     await expect(firstSavedButton).toBeDisabled();
   }
 });
+
+test("bulk save saves selected unsaved rows and locks them", async ({ page }) => {
+  await page.goto("/");
+
+  await expect(page.getByRole("heading", { name: "Discovery Workbench" })).toBeVisible();
+
+  const bulkSaveButton = page.getByRole("button", { name: /Save Selected \(\d+\)/ });
+  await expect(bulkSaveButton).toBeDisabled();
+
+  await page.getByRole("button", { name: "Search" }).click();
+
+  const unsavedRows = page
+    .locator("tbody tr")
+    .filter({ has: page.getByRole("button", { name: /^Save$/ }) });
+  const unsavedCount = await unsavedRows.count();
+
+  if (unsavedCount === 0) {
+    await expect(page.getByRole("button", { name: /^Saved$/ }).first()).toBeVisible();
+    await expect(bulkSaveButton).toBeDisabled();
+    return;
+  }
+
+  const targetCount = Math.min(2, unsavedCount);
+
+  for (let i = 0; i < targetCount; i += 1) {
+    const row = unsavedRows.nth(i);
+    await row.locator('input[type="checkbox"][aria-label^="Select "]').check();
+  }
+
+  await expect(page.getByRole("button", { name: new RegExp(`Save Selected \\(${targetCount}\\)`) })).toBeEnabled();
+  await page.getByRole("button", { name: new RegExp(`Save Selected \\(${targetCount}\\)`) }).click();
+
+  await expect(page.getByText(new RegExp(`Bulk save complete: ${targetCount} new, 0 existing\\.`))).toBeVisible();
+
+  await expect(page.getByRole("button", { name: /^Save$/ })).toHaveCount(Math.max(0, unsavedCount - targetCount));
+  const savedButtons = page.getByRole("button", { name: /^Saved$/ });
+  await expect(savedButtons.first()).toBeVisible();
+  await expect(savedButtons.first()).toBeDisabled();
+  await expect(page.getByRole("button", { name: /Save Selected \(0\)/ })).toBeDisabled();
+});
