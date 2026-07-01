@@ -5,6 +5,18 @@ AI-powered product research platform for Amazon UK/EU/US and B2B markets.
 Project planning and stage tracking:
 - [PROJECT_PLAN_AND_STATUS.md](PROJECT_PLAN_AND_STATUS.md)
 
+## Release Notes
+
+### 2026-07-01
+
+- Added idempotent Product DB save flow at `POST /api/v1/database/save` with stable response contract fields: `id`, `created`, `already_exists`.
+- Added normalized uniqueness behavior for save keys (tenant + source + product + market) to prevent duplicate records from case/whitespace variants.
+- Added saved-state lookup endpoint `POST /api/v1/database/saved-status` and frontend badge persistence so saved rows remain visibly `Saved` after reload/search.
+- Added Alembic migration scaffolding and initial `saved_discovery_records` migration for deterministic schema setup.
+- Added browser e2e coverage for discovery save persistence and saved/unsaved row actionability behavior.
+- Added CI workflow for Product Intelligence pull requests to run backend pytest and frontend Playwright checks.
+- Updated backend timestamp defaults to timezone-aware UTC and added regression coverage to keep that behavior stable.
+
 ## Scope Covered
 
 - Product Discovery with structured data output
