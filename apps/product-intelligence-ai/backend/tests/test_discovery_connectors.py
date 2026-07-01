@@ -2,6 +2,7 @@ import pytest
 from httpx import ASGITransport, AsyncClient
 
 from app.main import app
+from app.services.discovery_connectors import DiscoveryConnectorService
 
 
 REQUIRED_HEADERS = {
@@ -90,3 +91,73 @@ async def test_discovery_import_normalizes_user_records() -> None:
     assert len(payload) == 1
     assert payload[0]["title"] == "Flat Pack Monitor Stand"
     assert payload[0]["source"] == "user_upload"
+
+
+@pytest.mark.anyio
+async def test_discovery_search_uses_configured_catalog_connector() -> None:
+    class StubCatalogConnector:
+        def load_catalog(self) -> list[dict]:
+            return [
+                {
+                    "source": "amazon_public_api",
+                    "title": "Configured Connector Stand",
+                    "price": 29.9,
+                    "rating": 4.8,
+                    "reviews": 51,
+                    "brand": "Connector Brand",
+                    "dimensions": "30x20x5 cm",
+                    "weight_kg": 1.0,
+                    "category": "desk_organization",
+                    "markets": ["amazon_uk"],
+                }
+            ]
+
+    DiscoveryConnectorService.configure_catalog_connector(StubCatalogConnector())
+    try:
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+            response = await client.post(
+                "/api/v1/discovery/search",
+                headers=REQUIRED_HEADERS,
+                json={
+                    "keyword": "configured",
+                    "market": "amazon_uk",
+                    "min_price": 0,
+                    "max_price": 50,
+                    "sources": ["amazon_public_api"],
+                },
+            )
+    finally:
+        DiscoveryConnectorService.reset_catalog_connector()
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert len(payload) == 1
+    assert payload[0]["title"] == "Configured Connector Stand"
+    assert response.headers.get("X-Total-Count") == "1"
+
+
+@pytest.mark.anyio
+async def test_discovery_search_handles_empty_catalog_connector() -> None:
+    class EmptyCatalogConnector:
+        def load_catalog(self) -> list[dict]:
+            return []
+
+    DiscoveryConnectorService.configure_catalog_connector(EmptyCatalogConnector())
+    try:
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+            response = await client.post(
+                "/api/v1/discovery/search",
+                headers=REQUIRED_HEADERS,
+                json={
+                    "keyword": "stand",
+                    "market": "amazon_uk",
+                    "min_price": 0,
+                    "max_price": 100,
+                },
+            )
+    finally:
+        DiscoveryConnectorService.reset_catalog_connector()
+
+    assert response.status_code == 200
+    assert response.json() == []
+    assert response.headers.get("X-Total-Count") == "0"

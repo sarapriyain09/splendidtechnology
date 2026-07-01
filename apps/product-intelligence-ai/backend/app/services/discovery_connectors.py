@@ -1,47 +1,59 @@
+import json
+from pathlib import Path
+from typing import Any, Protocol
+
 from app.schemas import DiscoveryImportItem, ProductCandidate, ProductDiscoveryQuery
 
 
-class DiscoveryConnectorService:
-    """Compliant connector service using public metadata and user-provided records."""
+class CatalogConnector(Protocol):
+    def load_catalog(self) -> list[dict[str, Any]]:
+        ...
 
-    _PUBLIC_CATALOG: list[dict] = [
-        {
-            "source": "amazon_public_api",
-            "title": "Monitor Stand Premium Model",
-            "price": 39.99,
-            "rating": 4.1,
-            "reviews": 1180,
-            "brand": "Generic",
-            "dimensions": "42x18x8 cm",
-            "weight_kg": 1.25,
-            "category": "desk_organization",
-            "markets": ["amazon_uk", "amazon_eu", "amazon_us"],
-        },
-        {
-            "source": "etsy_public_api",
-            "title": "Handmade Desk Organizer",
-            "price": 44.50,
-            "rating": 4.6,
-            "reviews": 230,
-            "brand": "Independent Maker",
-            "dimensions": "40x16x8 cm",
-            "weight_kg": 1.10,
-            "category": "desk_organization",
-            "markets": ["amazon_uk", "b2b"],
-        },
-        {
-            "source": "alibaba_public_api",
-            "title": "Bamboo Laptop Stand Adjustable",
-            "price": 26.00,
-            "rating": 4.3,
-            "reviews": 540,
-            "brand": "Factory Direct",
-            "dimensions": "28x24x5 cm",
-            "weight_kg": 0.95,
-            "category": "laptop_accessories",
-            "markets": ["amazon_uk", "amazon_eu", "amazon_us", "b2b"],
-        },
-    ]
+
+class JsonFileCatalogConnector:
+    def __init__(self, file_path: Path) -> None:
+        self._file_path = file_path
+        self._cached: list[dict[str, Any]] | None = None
+
+    def load_catalog(self) -> list[dict[str, Any]]:
+        if self._cached is not None:
+            return self._cached
+
+        if not self._file_path.exists():
+            self._cached = []
+            return self._cached
+
+        with self._file_path.open("r", encoding="utf-8") as handle:
+            payload = json.load(handle)
+
+        if not isinstance(payload, list):
+            self._cached = []
+            return self._cached
+
+        self._cached = [row for row in payload if isinstance(row, dict)]
+        return self._cached
+
+
+def _default_catalog_path() -> Path:
+    return Path(__file__).resolve().parent / "data" / "public_catalog.json"
+
+
+class DiscoveryConnectorService:
+    """Compliant connector service with pluggable catalog providers."""
+
+    _catalog_connector: CatalogConnector = JsonFileCatalogConnector(_default_catalog_path())
+
+    @classmethod
+    def configure_catalog_connector(cls, connector: CatalogConnector) -> None:
+        cls._catalog_connector = connector
+
+    @classmethod
+    def reset_catalog_connector(cls) -> None:
+        cls._catalog_connector = JsonFileCatalogConnector(_default_catalog_path())
+
+    @classmethod
+    def _catalog_rows(cls) -> list[dict[str, Any]]:
+        return cls._catalog_connector.load_catalog()
 
     @staticmethod
     def _source_allowed(candidate_source: str, requested_sources: list[str]) -> bool:
@@ -75,33 +87,51 @@ class DiscoveryConnectorService:
         category = (query.category or "").strip().lower()
 
         matches: list[ProductCandidate] = []
-        for candidate in DiscoveryConnectorService._PUBLIC_CATALOG:
-            title_match = keyword in candidate["title"].lower()
+        for candidate in DiscoveryConnectorService._catalog_rows():
+            source = str(candidate.get("source", "")).strip()
+            title = str(candidate.get("title", "")).strip()
+            markets = candidate.get("markets", [])
+            category_value = str(candidate.get("category", "")).strip()
+            price = float(candidate.get("price", 0))
+            rating = float(candidate.get("rating", 0))
+            reviews = int(candidate.get("reviews", 0))
+            brand = candidate.get("brand")
+            dimensions = candidate.get("dimensions")
+            weight_kg_raw = candidate.get("weight_kg")
+            weight_kg = float(weight_kg_raw) if weight_kg_raw is not None else None
+
+            if not source or not title:
+                continue
+
+            if not isinstance(markets, list):
+                continue
+
+            title_match = keyword in title.lower()
             if keyword and not title_match:
                 continue
 
-            if category and category != candidate["category"].lower():
+            if category and category != category_value.lower():
                 continue
 
-            if not (query.min_price <= candidate["price"] <= query.max_price):
+            if not (query.min_price <= price <= query.max_price):
                 continue
 
-            if query.market not in candidate["markets"]:
+            if query.market not in markets:
                 continue
 
-            if not DiscoveryConnectorService._source_allowed(candidate["source"], query.sources):
+            if not DiscoveryConnectorService._source_allowed(source, query.sources):
                 continue
 
             matches.append(
                 ProductCandidate(
-                    source=candidate["source"],
-                    title=candidate["title"],
-                    price=candidate["price"],
-                    rating=candidate["rating"],
-                    reviews=candidate["reviews"],
-                    brand=candidate["brand"],
-                    dimensions=candidate["dimensions"],
-                    weight_kg=candidate["weight_kg"],
+                    source=source,
+                    title=title,
+                    price=price,
+                    rating=rating,
+                    reviews=reviews,
+                    brand=str(brand) if brand is not None else None,
+                    dimensions=str(dimensions) if dimensions is not None else None,
+                    weight_kg=weight_kg,
                 )
             )
 

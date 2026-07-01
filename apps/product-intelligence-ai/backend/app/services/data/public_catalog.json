@@ -1,0 +1,38 @@
+[
+  {
+    "source": "amazon_public_api",
+    "title": "Monitor Stand Premium Model",
+    "price": 39.99,
+    "rating": 4.1,
+    "reviews": 1180,
+    "brand": "Generic",
+    "dimensions": "42x18x8 cm",
+    "weight_kg": 1.25,
+    "category": "desk_organization",
+    "markets": ["amazon_uk", "amazon_eu", "amazon_us"]
+  },
+  {
+    "source": "etsy_public_api",
+    "title": "Handmade Desk Organizer",
+    "price": 44.5,
+    "rating": 4.6,
+    "reviews": 230,
+    "brand": "Independent Maker",
+    "dimensions": "40x16x8 cm",
+    "weight_kg": 1.1,
+    "category": "desk_organization",
+    "markets": ["amazon_uk", "b2b"]
+  },
+  {
+    "source": "alibaba_public_api",
+    "title": "Bamboo Laptop Stand Adjustable",
+    "price": 26.0,
+    "rating": 4.3,
+    "reviews": 540,
+    "brand": "Factory Direct",
+    "dimensions": "28x24x5 cm",
+    "weight_kg": 0.95,
+    "category": "laptop_accessories",
+    "markets": ["amazon_uk", "amazon_eu", "amazon_us", "b2b"]
+  }
+]
