@@ -102,6 +102,26 @@ class SaveAnalysisResponse(BaseModel):
     already_exists: bool
 
 
+class BulkSaveAnalysisRequest(BaseModel):
+    items: list[SaveAnalysisRequest] = Field(default_factory=list)
+
+
+class BulkSaveAnalysisItemResponse(BaseModel):
+    id: int
+    source: str
+    product_name: str
+    market: str
+    created: bool
+    already_exists: bool
+
+
+class BulkSaveAnalysisResponse(BaseModel):
+    total: int
+    created_count: int
+    already_exists_count: int
+    items: list[BulkSaveAnalysisItemResponse] = Field(default_factory=list)
+
+
 class SavedDiscoveryLookupItem(BaseModel):
     source: str
     title: str

@@ -12,8 +12,8 @@ test("discovery save persists after reload", async ({ page }) => {
     .filter({ has: page.getByRole("button", { name: /^Save$/ }) })
     .first();
   await expect(row).toBeVisible();
-  const title = (await row.locator("td").nth(0).innerText()).trim();
-  const source = (await row.locator("td").nth(1).innerText()).trim();
+  const title = (await row.locator("td").nth(1).innerText()).trim();
+  const source = (await row.locator("td").nth(2).innerText()).trim();
 
   await row.getByRole("button", { name: /^Save$/ }).click();
   const savedRow = page
@@ -33,7 +33,7 @@ test("discovery save persists after reload", async ({ page }) => {
     .filter({ has: page.locator("td", { hasText: title }) })
     .first();
   await expect(persistedRow).toBeVisible();
-  await expect(persistedRow.locator("td").nth(1)).toContainText(source);
+  await expect(persistedRow.locator("td").nth(2)).toContainText(source);
   await expect(persistedRow.getByRole("button", { name: /^Saved$/ })).toBeDisabled();
   await expect(persistedRow.locator("span", { hasText: /^Saved$/ })).toBeVisible();
 });
@@ -54,8 +54,8 @@ test("discovery keeps saved rows locked while unsaved rows stay actionable", asy
       .filter({ has: page.getByRole("button", { name: /^Save$/ }) })
       .first();
     await expect(row).toBeVisible();
-    const title = (await row.locator("td").nth(0).innerText()).trim();
-    const source = (await row.locator("td").nth(1).innerText()).trim();
+    const title = (await row.locator("td").nth(1).innerText()).trim();
+    const source = (await row.locator("td").nth(2).innerText()).trim();
 
     await row.getByRole("button", { name: /^Save$/ }).click();
     const justSavedRow = page
@@ -74,7 +74,7 @@ test("discovery keeps saved rows locked while unsaved rows stay actionable", asy
       .filter({ has: page.locator("td", { hasText: title }) })
       .first();
     await expect(savedRow).toBeVisible();
-    await expect(savedRow.locator("td").nth(1)).toContainText(source);
+    await expect(savedRow.locator("td").nth(2)).toContainText(source);
     await expect(savedRow.getByRole("button", { name: /^Saved$/ })).toBeDisabled();
     await expect(savedRow.locator("span", { hasText: /^Saved$/ })).toBeVisible();
 

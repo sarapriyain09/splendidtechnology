@@ -11,6 +11,7 @@ import {
   fetchDiscoveryProducts,
   fetchSavedAnalyses,
   fetchSavedDiscoveryRowKeys,
+  saveProductAnalysesBulk,
   saveProductAnalysis,
 } from "@/lib/api";
 
@@ -39,9 +40,18 @@ export function DiscoveryWorkbench() {
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [saveMessageTone, setSaveMessageTone] = useState<"success" | "error">("success");
   const [savedRowKeys, setSavedRowKeys] = useState<Set<string>>(new Set());
+  const [selectedRowKeys, setSelectedRowKeys] = useState<Set<string>>(new Set());
+  const [bulkSaving, setBulkSaving] = useState(false);
   const [savedAnalyses, setSavedAnalyses] = useState<SavedAnalysisItem[]>([]);
   const [savedListBusy, setSavedListBusy] = useState(false);
   const [deletingAnalysisId, setDeletingAnalysisId] = useState<number | null>(null);
+
+  const visibleCandidates = result?.items ?? [];
+  const selectableRowKeys = visibleCandidates
+    .map((item) => getRowKey(item))
+    .filter((rowKey) => !savedRowKeys.has(rowKey));
+  const selectedSelectableCount = selectableRowKeys.filter((rowKey) => selectedRowKeys.has(rowKey)).length;
+  const allVisibleSelectableSelected = selectableRowKeys.length > 0 && selectedSelectableCount === selectableRowKeys.length;
 
   const totalPages = useMemo(() => {
     if (!result) return 1;
@@ -62,6 +72,7 @@ export function DiscoveryWorkbench() {
         }))
       );
       setSavedRowKeys(savedKeys);
+      setSelectedRowKeys(new Set());
     } catch (err) {
       setError(err instanceof Error ? err.message : "Search failed");
     } finally {
@@ -136,12 +147,77 @@ export function DiscoveryWorkbench() {
           ? `Saved ${item.title} as record #${saved.id}.`
           : `${item.title} is already saved as record #${saved.id}.`
       );
+      setSelectedRowKeys((prev) => {
+        const next = new Set(prev);
+        next.delete(rowKey);
+        return next;
+      });
       await loadSavedAnalyses();
     } catch (err) {
       setSaveMessageTone("error");
       setSaveMessage(err instanceof Error ? err.message : "Save failed");
     } finally {
       setSavingKey(null);
+    }
+  }
+
+  function toggleSelection(rowKey: string) {
+    setSelectedRowKeys((prev) => {
+      const next = new Set(prev);
+      if (next.has(rowKey)) {
+        next.delete(rowKey);
+      } else {
+        next.add(rowKey);
+      }
+      return next;
+    });
+  }
+
+  function toggleSelectAllVisible() {
+    setSelectedRowKeys((prev) => {
+      const next = new Set(prev);
+      if (allVisibleSelectableSelected) {
+        selectableRowKeys.forEach((rowKey) => next.delete(rowKey));
+      } else {
+        selectableRowKeys.forEach((rowKey) => next.add(rowKey));
+      }
+      return next;
+    });
+  }
+
+  async function saveSelectedCandidates() {
+    const selectedItems = visibleCandidates.filter((item) => {
+      const rowKey = getRowKey(item);
+      return selectedRowKeys.has(rowKey) && !savedRowKeys.has(rowKey);
+    });
+
+    if (!selectedItems.length) {
+      return;
+    }
+
+    setBulkSaving(true);
+    setSaveMessage(null);
+    try {
+      const response = await saveProductAnalysesBulk(selectedItems.map((item) => toSavePayload(item)));
+      const selectedKeys = selectedItems.map((item) => getRowKey(item));
+      setSavedRowKeys((prev) => {
+        const next = new Set(prev);
+        selectedKeys.forEach((rowKey) => next.add(rowKey));
+        return next;
+      });
+      setSelectedRowKeys((prev) => {
+        const next = new Set(prev);
+        selectedKeys.forEach((rowKey) => next.delete(rowKey));
+        return next;
+      });
+      setSaveMessageTone("success");
+      setSaveMessage(`Bulk save complete: ${response.created_count} new, ${response.already_exists_count} existing.`);
+      await loadSavedAnalyses();
+    } catch (err) {
+      setSaveMessageTone("error");
+      setSaveMessage(err instanceof Error ? err.message : "Bulk save failed");
+    } finally {
+      setBulkSaving(false);
     }
   }
 
@@ -269,12 +345,29 @@ export function DiscoveryWorkbench() {
         <button className="rounded border border-slate-300 px-2 py-1" type="button" onClick={() => onSortChange("reviews", "desc")}>Top Reviews</button>
         <button className="rounded border border-slate-300 px-2 py-1" type="button" onClick={() => onSortChange("price", "asc")}>Price Low-High</button>
         <button className="rounded border border-slate-300 px-2 py-1" type="button" onClick={() => onSortChange("rating", "desc")}>Rating High-Low</button>
+        <button
+          className="rounded border border-emerald-300 bg-emerald-50 px-2 py-1 font-medium text-emerald-700 disabled:opacity-50"
+          type="button"
+          onClick={() => saveSelectedCandidates()}
+          disabled={bulkSaving || selectedSelectableCount === 0}
+        >
+          {bulkSaving ? "Saving Selected..." : `Save Selected (${selectedSelectableCount})`}
+        </button>
       </div>
 
       <div className="mt-4 overflow-x-auto rounded-xl border border-slate-200">
         <table className="min-w-full text-left text-sm">
           <thead className="bg-slate-50 text-slate-700">
             <tr>
+              <th className="px-3 py-2">
+                <input
+                  type="checkbox"
+                  aria-label="Select all visible unsaved rows"
+                  checked={allVisibleSelectableSelected}
+                  onChange={() => toggleSelectAllVisible()}
+                  disabled={busy || !selectableRowKeys.length}
+                />
+              </th>
               <th className="px-3 py-2">Title</th>
               <th className="px-3 py-2">Source</th>
               <th className="px-3 py-2">Price</th>
@@ -291,6 +384,15 @@ export function DiscoveryWorkbench() {
 
               return (
               <tr key={rowKey} className="border-t border-slate-100">
+                <td className="px-3 py-2">
+                  <input
+                    type="checkbox"
+                    aria-label={`Select ${item.title}`}
+                    checked={selectedRowKeys.has(rowKey)}
+                    onChange={() => toggleSelection(rowKey)}
+                    disabled={busy || bulkSaving || isSaved || isSaving}
+                  />
+                </td>
                 <td className="px-3 py-2">{item.title}</td>
                 <td className="px-3 py-2">{item.source}</td>
                 <td className="px-3 py-2">{item.price}</td>
@@ -314,7 +416,7 @@ export function DiscoveryWorkbench() {
             })}
             {!busy && (result?.items.length ?? 0) === 0 ? (
               <tr>
-                <td className="px-3 py-3 text-slate-500" colSpan={6}>
+                <td className="px-3 py-3 text-slate-500" colSpan={7}>
                   Run search to see discovery results.
                 </td>
               </tr>

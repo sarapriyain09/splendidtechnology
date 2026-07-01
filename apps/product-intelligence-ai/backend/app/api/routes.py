@@ -9,6 +9,9 @@ from app.core.request_context import RequestContext, require_request_context
 from app.db.models import ProductAnalysis, SavedDiscoveryRecord
 from app.db.session import get_db
 from app.schemas import (
+    BulkSaveAnalysisItemResponse,
+    BulkSaveAnalysisRequest,
+    BulkSaveAnalysisResponse,
     CompetitionRequest,
     DeleteSavedAnalysisResponse,
     DiscoveryImportRequest,
@@ -33,6 +36,56 @@ router = APIRouter()
 
 def _normalize_key_part(value: str) -> str:
     return value.strip().lower()
+
+
+def _save_or_get_analysis(
+    payload: SaveAnalysisRequest,
+    *,
+    tenant_id: str,
+    db: Session,
+) -> SaveAnalysisResponse:
+    source_normalized = _normalize_key_part(payload.source)
+    product_name_normalized = _normalize_key_part(payload.product_name)
+    market_normalized = _normalize_key_part(payload.market)
+
+    existing = (
+        db.query(SavedDiscoveryRecord)
+        .filter(
+            SavedDiscoveryRecord.tenant_id == tenant_id,
+            SavedDiscoveryRecord.source_normalized == source_normalized,
+            SavedDiscoveryRecord.product_name_normalized == product_name_normalized,
+            SavedDiscoveryRecord.market_normalized == market_normalized,
+        )
+        .first()
+    )
+
+    if existing:
+        return SaveAnalysisResponse(id=existing.analysis_id, created=False, already_exists=True)
+
+    entry = ProductAnalysis(
+        product_name=payload.product_name,
+        market=payload.market,
+        opportunity_score=payload.opportunity_score,
+        estimated_profit_percent=payload.estimated_profit_percent,
+        competition_score=payload.competition_score,
+    )
+    db.add(entry)
+    db.flush()
+
+    db.add(
+        SavedDiscoveryRecord(
+            tenant_id=tenant_id,
+            source=payload.source,
+            product_name=payload.product_name,
+            market=payload.market,
+            source_normalized=source_normalized,
+            product_name_normalized=product_name_normalized,
+            market_normalized=market_normalized,
+            analysis_id=entry.id,
+        )
+    )
+
+    return SaveAnalysisResponse(id=entry.id, created=True, already_exists=False)
 
 
 def _agent_result_or_empty(payload: dict[str, Any]) -> dict[str, Any]:
@@ -414,49 +467,45 @@ def save_analysis(
     ctx: RequestContext = Depends(require_request_context),
     db: Session = Depends(get_db),
 ) -> SaveAnalysisResponse:
-    source_normalized = _normalize_key_part(payload.source)
-    product_name_normalized = _normalize_key_part(payload.product_name)
-    market_normalized = _normalize_key_part(payload.market)
-
-    existing = (
-        db.query(SavedDiscoveryRecord)
-        .filter(
-            SavedDiscoveryRecord.tenant_id == ctx.tenant_id,
-            SavedDiscoveryRecord.source_normalized == source_normalized,
-            SavedDiscoveryRecord.product_name_normalized == product_name_normalized,
-            SavedDiscoveryRecord.market_normalized == market_normalized,
-        )
-        .first()
-    )
-
-    if existing:
-        return SaveAnalysisResponse(id=existing.analysis_id, created=False, already_exists=True)
-
-    entry = ProductAnalysis(
-        product_name=payload.product_name,
-        market=payload.market,
-        opportunity_score=payload.opportunity_score,
-        estimated_profit_percent=payload.estimated_profit_percent,
-        competition_score=payload.competition_score,
-    )
-    db.add(entry)
-    db.flush()
-
-    db.add(
-        SavedDiscoveryRecord(
-            tenant_id=ctx.tenant_id,
-            source=payload.source,
-            product_name=payload.product_name,
-            market=payload.market,
-            source_normalized=source_normalized,
-            product_name_normalized=product_name_normalized,
-            market_normalized=market_normalized,
-            analysis_id=entry.id,
-        )
-    )
+    result = _save_or_get_analysis(payload, tenant_id=ctx.tenant_id, db=db)
     db.commit()
-    db.refresh(entry)
-    return SaveAnalysisResponse(id=entry.id, created=True, already_exists=False)
+    return result
+
+
+@router.post("/database/save-bulk")
+def save_analysis_bulk(
+    payload: BulkSaveAnalysisRequest,
+    ctx: RequestContext = Depends(require_request_context),
+    db: Session = Depends(get_db),
+) -> BulkSaveAnalysisResponse:
+    if not payload.items:
+        return BulkSaveAnalysisResponse(total=0, created_count=0, already_exists_count=0, items=[])
+
+    item_results: list[BulkSaveAnalysisItemResponse] = []
+    for item in payload.items:
+        result = _save_or_get_analysis(item, tenant_id=ctx.tenant_id, db=db)
+        item_results.append(
+            BulkSaveAnalysisItemResponse(
+                id=result.id,
+                source=item.source,
+                product_name=item.product_name,
+                market=item.market,
+                created=result.created,
+                already_exists=result.already_exists,
+            )
+        )
+
+    db.commit()
+
+    created_count = sum(1 for item in item_results if item.created)
+    already_exists_count = sum(1 for item in item_results if item.already_exists)
+
+    return BulkSaveAnalysisResponse(
+        total=len(item_results),
+        created_count=created_count,
+        already_exists_count=already_exists_count,
+        items=item_results,
+    )
 
 
 @router.post("/database/saved-status")

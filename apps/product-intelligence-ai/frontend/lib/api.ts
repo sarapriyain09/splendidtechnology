@@ -55,6 +55,22 @@ export type SaveAnalysisResponse = {
   already_exists: boolean;
 };
 
+export type BulkSaveAnalysisItem = {
+  id: number;
+  source: string;
+  product_name: string;
+  market: string;
+  created: boolean;
+  already_exists: boolean;
+};
+
+export type BulkSaveAnalysisResponse = {
+  total: number;
+  created_count: number;
+  already_exists_count: number;
+  items: BulkSaveAnalysisItem[];
+};
+
 export type SavedDiscoveryLookupItem = {
   source: string;
   title: string;
@@ -137,6 +153,24 @@ export async function saveProductAnalysis(payload: SaveAnalysisRequest): Promise
   }
 
   return response.json() as Promise<SaveAnalysisResponse>;
+}
+
+export async function saveProductAnalysesBulk(payloads: SaveAnalysisRequest[]): Promise<BulkSaveAnalysisResponse> {
+  const response = await fetch(`${API_BASE_URL}/database/save-bulk`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...buildContextHeaders(),
+    },
+    body: JSON.stringify({ items: payloads }),
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to bulk save product analyses");
+  }
+
+  return response.json() as Promise<BulkSaveAnalysisResponse>;
 }
 
 export async function fetchSavedDiscoveryRowKeys(items: SavedDiscoveryLookupItem[]): Promise<Set<string>> {

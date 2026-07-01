@@ -124,6 +124,98 @@ async def test_saved_status_returns_only_matching_saved_row_keys() -> None:
 
 
 @pytest.mark.anyio
+async def test_database_save_bulk_returns_created_and_existing_counts() -> None:
+    init_db()
+    title_a = f"Bulk Stand A {uuid.uuid4()}"
+    title_b = f"Bulk Stand B {uuid.uuid4()}"
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        first_bulk = await client.post(
+            "/api/v1/database/save-bulk",
+            headers=REQUIRED_HEADERS,
+            json={
+                "items": [
+                    {
+                        "product_name": title_a,
+                        "source": "amazon_public_api",
+                        "market": "amazon_uk",
+                        "opportunity_score": 82,
+                        "estimated_profit_percent": 35,
+                        "competition_score": 44,
+                    },
+                    {
+                        "product_name": title_b,
+                        "source": "etsy_public_api",
+                        "market": "amazon_uk",
+                        "opportunity_score": 74,
+                        "estimated_profit_percent": 27,
+                        "competition_score": 56,
+                    },
+                ]
+            },
+        )
+        second_bulk = await client.post(
+            "/api/v1/database/save-bulk",
+            headers=REQUIRED_HEADERS,
+            json={
+                "items": [
+                    {
+                        "product_name": title_a,
+                        "source": "amazon_public_api",
+                        "market": "amazon_uk",
+                        "opportunity_score": 82,
+                        "estimated_profit_percent": 35,
+                        "competition_score": 44,
+                    },
+                    {
+                        "product_name": title_b,
+                        "source": "etsy_public_api",
+                        "market": "amazon_uk",
+                        "opportunity_score": 74,
+                        "estimated_profit_percent": 27,
+                        "competition_score": 56,
+                    },
+                ]
+            },
+        )
+
+    assert first_bulk.status_code == 200
+    assert second_bulk.status_code == 200
+
+    first_payload = first_bulk.json()
+    second_payload = second_bulk.json()
+
+    assert first_payload["total"] == 2
+    assert first_payload["created_count"] == 2
+    assert first_payload["already_exists_count"] == 0
+    assert all(item["created"] is True for item in first_payload["items"])
+
+    assert second_payload["total"] == 2
+    assert second_payload["created_count"] == 0
+    assert second_payload["already_exists_count"] == 2
+    assert all(item["already_exists"] is True for item in second_payload["items"])
+
+
+@pytest.mark.anyio
+async def test_database_save_bulk_empty_payload_is_valid() -> None:
+    init_db()
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        response = await client.post(
+            "/api/v1/database/save-bulk",
+            headers=REQUIRED_HEADERS,
+            json={"items": []},
+        )
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "total": 0,
+        "created_count": 0,
+        "already_exists_count": 0,
+        "items": [],
+    }
+
+
+@pytest.mark.anyio
 async def test_database_save_normalizes_idempotency_key_fields() -> None:
     init_db()
     unique_title = f"Portable Stand {uuid.uuid4()}"
