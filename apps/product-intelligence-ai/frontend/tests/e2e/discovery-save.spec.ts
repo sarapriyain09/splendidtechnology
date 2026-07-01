@@ -128,3 +128,48 @@ test("bulk save saves selected unsaved rows and locks them", async ({ page }) =>
   await expect(savedButtons.first()).toBeDisabled();
   await expect(page.getByRole("button", { name: /Save Selected \(0\)/ })).toBeDisabled();
 });
+
+test("saved records supports filter, details view, and remove", async ({ page }) => {
+  await page.goto("/");
+
+  await expect(page.getByRole("heading", { name: "Discovery Workbench" })).toBeVisible();
+  await page.getByRole("button", { name: "Search" }).click();
+
+  const discoveryRow = page
+    .locator("tbody tr")
+    .filter({ has: page.getByRole("button", { name: /^Save$/ }) })
+    .first();
+
+  await expect(discoveryRow).toBeVisible();
+  const title = (await discoveryRow.locator("td").nth(1).innerText()).trim();
+
+  await discoveryRow.getByRole("button", { name: /^Save$/ }).click();
+  await expect(page.getByText(new RegExp(`Saved ${title} as record #\\d+\\.`))).toBeVisible();
+
+  await page.getByRole("button", { name: "Refresh Saved" }).click();
+
+  const savedFilterInput = page.getByLabel("Filter saved records");
+  await savedFilterInput.fill(title);
+
+  const savedRow = page
+    .locator("tbody tr")
+    .filter({ has: page.locator("td", { hasText: title }) })
+    .filter({ has: page.getByRole("button", { name: "Details" }) })
+    .first();
+  await expect(savedRow).toBeVisible();
+  const savedRecordId = (await savedRow.locator("td").nth(0).innerText()).trim();
+
+  await savedRow.getByRole("button", { name: "Details" }).click();
+  const savedDetailsPanel = page.locator("aside", { hasText: "Saved Details" });
+  await expect(savedDetailsPanel).toContainText(`Product: ${title}`);
+
+  await page.getByRole("button", { name: /^Remove #\d+$/ }).click();
+  await expect(page.getByText(/Removed saved record #\d+\./)).toBeVisible();
+
+  await expect(
+    page
+      .locator("tbody tr")
+      .filter({ has: page.locator("td", { hasText: savedRecordId }) })
+      .filter({ has: page.getByRole("button", { name: "Details" }) })
+  ).toHaveCount(0);
+});
