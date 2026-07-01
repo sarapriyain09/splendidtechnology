@@ -197,6 +197,80 @@ async def test_database_save_bulk_returns_created_and_existing_counts() -> None:
 
 
 @pytest.mark.anyio
+async def test_database_save_bulk_item_mapping_for_mixed_existing_and_new_records() -> None:
+    init_db()
+    existing_title = f"Bulk Existing {uuid.uuid4()}"
+    new_title = f"Bulk New {uuid.uuid4()}"
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        existing_response = await client.post(
+            "/api/v1/database/save",
+            headers=REQUIRED_HEADERS,
+            json={
+                "product_name": existing_title,
+                "source": "amazon_public_api",
+                "market": "amazon_uk",
+                "opportunity_score": 81,
+                "estimated_profit_percent": 34,
+                "competition_score": 45,
+            },
+        )
+        existing_id = existing_response.json()["id"]
+
+        bulk_response = await client.post(
+            "/api/v1/database/save-bulk",
+            headers=REQUIRED_HEADERS,
+            json={
+                "items": [
+                    {
+                        "product_name": existing_title,
+                        "source": "amazon_public_api",
+                        "market": "amazon_uk",
+                        "opportunity_score": 81,
+                        "estimated_profit_percent": 34,
+                        "competition_score": 45,
+                    },
+                    {
+                        "product_name": new_title,
+                        "source": "etsy_public_api",
+                        "market": "amazon_uk",
+                        "opportunity_score": 75,
+                        "estimated_profit_percent": 29,
+                        "competition_score": 55,
+                    },
+                ]
+            },
+        )
+
+    assert existing_response.status_code == 200
+    assert bulk_response.status_code == 200
+
+    payload = bulk_response.json()
+    assert payload["total"] == 2
+    assert payload["created_count"] == 1
+    assert payload["already_exists_count"] == 1
+
+    first_item = payload["items"][0]
+    second_item = payload["items"][1]
+
+    # Item contracts should map back to corresponding submitted payload order and identity.
+    assert first_item["source"] == "amazon_public_api"
+    assert first_item["product_name"] == existing_title
+    assert first_item["market"] == "amazon_uk"
+    assert first_item["created"] is False
+    assert first_item["already_exists"] is True
+    assert first_item["id"] == existing_id
+
+    assert second_item["source"] == "etsy_public_api"
+    assert second_item["product_name"] == new_title
+    assert second_item["market"] == "amazon_uk"
+    assert second_item["created"] is True
+    assert second_item["already_exists"] is False
+    assert isinstance(second_item["id"], int)
+    assert second_item["id"] != existing_id
+
+
+@pytest.mark.anyio
 async def test_database_save_bulk_empty_payload_is_valid() -> None:
     init_db()
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
