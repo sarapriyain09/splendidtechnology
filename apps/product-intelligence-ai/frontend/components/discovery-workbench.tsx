@@ -45,6 +45,8 @@ export function DiscoveryWorkbench() {
   const [savedAnalyses, setSavedAnalyses] = useState<SavedAnalysisItem[]>([]);
   const [savedListBusy, setSavedListBusy] = useState(false);
   const [deletingAnalysisId, setDeletingAnalysisId] = useState<number | null>(null);
+  const [savedFilter, setSavedFilter] = useState("");
+  const [selectedSavedAnalysisId, setSelectedSavedAnalysisId] = useState<number | null>(null);
 
   const visibleCandidates = result?.items ?? [];
   const selectableRowKeys = visibleCandidates
@@ -57,6 +59,59 @@ export function DiscoveryWorkbench() {
     if (!result) return 1;
     return Math.max(1, Math.ceil(result.totalCount / result.pageSize));
   }, [result]);
+
+  const filteredSavedAnalyses = useMemo(() => {
+    const keyword = savedFilter.trim().toLowerCase();
+    if (!keyword) {
+      return savedAnalyses;
+    }
+
+    return savedAnalyses.filter((item) => {
+      return (
+        item.product_name.toLowerCase().includes(keyword)
+        || item.source.toLowerCase().includes(keyword)
+        || item.market.toLowerCase().includes(keyword)
+        || String(item.id).includes(keyword)
+      );
+    });
+  }, [savedAnalyses, savedFilter]);
+
+  const selectedSavedAnalysis = useMemo(() => {
+    if (!savedAnalyses.length) {
+      return null;
+    }
+
+    const selected = savedAnalyses.find((item) => item.id === selectedSavedAnalysisId);
+    return selected ?? savedAnalyses[0];
+  }, [savedAnalyses, selectedSavedAnalysisId]);
+
+  const savedSummary = useMemo(() => {
+    if (!savedAnalyses.length) {
+      return {
+        count: 0,
+        avgOpportunity: 0,
+        avgProfit: 0,
+        avgCompetition: 0,
+      };
+    }
+
+    const totals = savedAnalyses.reduce(
+      (acc, item) => {
+        acc.opportunity += item.opportunity_score;
+        acc.profit += item.estimated_profit_percent;
+        acc.competition += item.competition_score;
+        return acc;
+      },
+      { opportunity: 0, profit: 0, competition: 0 }
+    );
+
+    return {
+      count: savedAnalyses.length,
+      avgOpportunity: Math.round(totals.opportunity / savedAnalyses.length),
+      avgProfit: Math.round(totals.profit / savedAnalyses.length),
+      avgCompetition: Math.round(totals.competition / savedAnalyses.length),
+    };
+  }, [savedAnalyses]);
 
   async function runSearch(nextQuery: DiscoverySearchQuery) {
     setBusy(true);
@@ -226,6 +281,16 @@ export function DiscoveryWorkbench() {
     try {
       const rows = await fetchSavedAnalyses();
       setSavedAnalyses(rows);
+      if (!rows.length) {
+        setSelectedSavedAnalysisId(null);
+      } else {
+        setSelectedSavedAnalysisId((prev) => {
+          if (prev && rows.some((item) => item.id === prev)) {
+            return prev;
+          }
+          return rows[0].id;
+        });
+      }
     } catch (err) {
       setSaveMessageTone("error");
       setSaveMessage(err instanceof Error ? err.message : "Failed to load saved analyses");
@@ -245,6 +310,7 @@ export function DiscoveryWorkbench() {
       }
 
       setSavedAnalyses((prev) => prev.filter((row) => row.id !== item.id));
+      setSelectedSavedAnalysisId((prev) => (prev === item.id ? null : prev));
       setSavedRowKeys((prev) => {
         const next = new Set(prev);
         next.delete(`${item.source}-${item.product_name}`);
@@ -450,17 +516,46 @@ export function DiscoveryWorkbench() {
       <div className="mt-8 rounded-xl border border-slate-200 bg-slate-50/60 p-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h3 className="text-sm font-semibold text-slate-900">Saved Records</h3>
-          <button
-            type="button"
-            className="rounded border border-slate-300 bg-white px-3 py-1 text-xs font-medium text-slate-700 disabled:opacity-50"
-            onClick={() => loadSavedAnalyses()}
-            disabled={savedListBusy}
-          >
-            {savedListBusy ? "Loading..." : "Refresh Saved"}
-          </button>
+          <div className="flex flex-wrap items-center gap-2">
+            <input
+              className="rounded border border-slate-300 bg-white px-2 py-1 text-xs text-slate-700"
+              value={savedFilter}
+              onChange={(e) => setSavedFilter(e.target.value)}
+              placeholder="Filter saved"
+              aria-label="Filter saved records"
+            />
+            <button
+              type="button"
+              className="rounded border border-slate-300 bg-white px-3 py-1 text-xs font-medium text-slate-700 disabled:opacity-50"
+              onClick={() => loadSavedAnalyses()}
+              disabled={savedListBusy}
+            >
+              {savedListBusy ? "Loading..." : "Refresh Saved"}
+            </button>
+          </div>
         </div>
 
-        <div className="mt-3 overflow-x-auto rounded-lg border border-slate-200 bg-white">
+        <div className="mt-3 grid gap-2 text-xs sm:grid-cols-4">
+          <div className="rounded-lg border border-slate-200 bg-white px-3 py-2">
+            <p className="text-slate-500">Saved Count</p>
+            <p className="font-semibold text-slate-900">{savedSummary.count}</p>
+          </div>
+          <div className="rounded-lg border border-slate-200 bg-white px-3 py-2">
+            <p className="text-slate-500">Avg Opportunity</p>
+            <p className="font-semibold text-slate-900">{savedSummary.avgOpportunity}</p>
+          </div>
+          <div className="rounded-lg border border-slate-200 bg-white px-3 py-2">
+            <p className="text-slate-500">Avg Profit %</p>
+            <p className="font-semibold text-slate-900">{savedSummary.avgProfit}%</p>
+          </div>
+          <div className="rounded-lg border border-slate-200 bg-white px-3 py-2">
+            <p className="text-slate-500">Avg Competition</p>
+            <p className="font-semibold text-slate-900">{savedSummary.avgCompetition}</p>
+          </div>
+        </div>
+
+        <div className="mt-3 grid gap-3 lg:grid-cols-5">
+          <div className="overflow-x-auto rounded-lg border border-slate-200 bg-white lg:col-span-3">
           <table className="min-w-full text-left text-xs">
             <thead className="bg-slate-50 text-slate-700">
               <tr>
@@ -473,34 +568,75 @@ export function DiscoveryWorkbench() {
               </tr>
             </thead>
             <tbody>
-              {savedAnalyses.map((item) => (
-                <tr key={item.id} className="border-t border-slate-100">
+              {filteredSavedAnalyses.map((item) => (
+                <tr
+                  key={item.id}
+                  className={`border-t border-slate-100 ${selectedSavedAnalysis?.id === item.id ? "bg-emerald-50/50" : ""}`}
+                >
                   <td className="px-3 py-2">#{item.id}</td>
                   <td className="px-3 py-2">{item.product_name}</td>
                   <td className="px-3 py-2">{item.source}</td>
                   <td className="px-3 py-2">{item.market}</td>
                   <td className="px-3 py-2">{item.opportunity_score}</td>
                   <td className="px-3 py-2">
-                    <button
-                      type="button"
-                      className="rounded border border-red-200 px-2 py-1 text-xs font-medium text-red-700 disabled:opacity-50"
-                      onClick={() => removeSavedAnalysis(item)}
-                      disabled={deletingAnalysisId === item.id}
-                    >
-                      {deletingAnalysisId === item.id ? "Removing..." : "Remove"}
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        className="rounded border border-slate-300 px-2 py-1 text-xs font-medium text-slate-700"
+                        onClick={() => setSelectedSavedAnalysisId(item.id)}
+                      >
+                        Details
+                      </button>
+                      <button
+                        type="button"
+                        className="rounded border border-red-200 px-2 py-1 text-xs font-medium text-red-700 disabled:opacity-50"
+                        onClick={() => removeSavedAnalysis(item)}
+                        disabled={deletingAnalysisId === item.id}
+                      >
+                        {deletingAnalysisId === item.id ? "Removing..." : "Remove"}
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
-              {!savedAnalyses.length ? (
+              {!filteredSavedAnalyses.length ? (
                 <tr>
                   <td className="px-3 py-3 text-slate-500" colSpan={6}>
-                    No saved records loaded yet. Click Refresh Saved.
+                    {savedAnalyses.length ? "No records match this filter." : "No saved records loaded yet. Click Refresh Saved."}
                   </td>
                 </tr>
               ) : null}
             </tbody>
           </table>
+          </div>
+
+          <aside className="rounded-lg border border-slate-200 bg-white p-3 text-xs lg:col-span-2">
+            <h4 className="font-semibold text-slate-900">Saved Details</h4>
+            {selectedSavedAnalysis ? (
+              <div className="mt-2 space-y-2 text-slate-700">
+                <p><span className="font-medium text-slate-900">Record:</span> #{selectedSavedAnalysis.id}</p>
+                <p><span className="font-medium text-slate-900">Product:</span> {selectedSavedAnalysis.product_name}</p>
+                <p><span className="font-medium text-slate-900">Source:</span> {selectedSavedAnalysis.source}</p>
+                <p><span className="font-medium text-slate-900">Market:</span> {selectedSavedAnalysis.market}</p>
+                <div className="rounded border border-slate-200 bg-slate-50 p-2">
+                  <p className="font-medium text-slate-900">Scoring Snapshot</p>
+                  <p className="mt-1">Opportunity: {selectedSavedAnalysis.opportunity_score}</p>
+                  <p>Estimated Profit: {selectedSavedAnalysis.estimated_profit_percent}%</p>
+                  <p>Competition: {selectedSavedAnalysis.competition_score}</p>
+                </div>
+                <button
+                  type="button"
+                  className="rounded border border-red-200 px-2 py-1 font-medium text-red-700 disabled:opacity-50"
+                  onClick={() => removeSavedAnalysis(selectedSavedAnalysis)}
+                  disabled={deletingAnalysisId === selectedSavedAnalysis.id}
+                >
+                  {deletingAnalysisId === selectedSavedAnalysis.id ? "Removing..." : `Remove #${selectedSavedAnalysis.id}`}
+                </button>
+              </div>
+            ) : (
+              <p className="mt-2 text-slate-500">No saved record selected yet.</p>
+            )}
+          </aside>
         </div>
       </div>
     </section>
