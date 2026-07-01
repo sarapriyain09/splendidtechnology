@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from typing import Any, Protocol
 
+from app.core.config import Settings
 from app.schemas import DiscoveryImportItem, ProductCandidate, ProductDiscoveryQuery
 
 
@@ -42,6 +43,20 @@ class DiscoveryConnectorService:
     """Compliant connector service with pluggable catalog providers."""
 
     _catalog_connector: CatalogConnector = JsonFileCatalogConnector(_default_catalog_path())
+
+    @classmethod
+    def configure_from_settings(cls, settings: Settings) -> None:
+        provider = settings.discovery_catalog_provider.strip().lower()
+        catalog_path = Path(settings.discovery_catalog_file).expanduser()
+        if not catalog_path.is_absolute():
+            catalog_path = Path(__file__).resolve().parent / catalog_path
+
+        if provider == "json_file":
+            cls._catalog_connector = JsonFileCatalogConnector(catalog_path)
+            return
+
+        # Fallback to the default local catalog if provider value is unknown.
+        cls._catalog_connector = JsonFileCatalogConnector(_default_catalog_path())
 
     @classmethod
     def configure_catalog_connector(cls, connector: CatalogConnector) -> None:
@@ -88,17 +103,21 @@ class DiscoveryConnectorService:
 
         matches: list[ProductCandidate] = []
         for candidate in DiscoveryConnectorService._catalog_rows():
-            source = str(candidate.get("source", "")).strip()
-            title = str(candidate.get("title", "")).strip()
-            markets = candidate.get("markets", [])
-            category_value = str(candidate.get("category", "")).strip()
-            price = float(candidate.get("price", 0))
-            rating = float(candidate.get("rating", 0))
-            reviews = int(candidate.get("reviews", 0))
-            brand = candidate.get("brand")
-            dimensions = candidate.get("dimensions")
-            weight_kg_raw = candidate.get("weight_kg")
-            weight_kg = float(weight_kg_raw) if weight_kg_raw is not None else None
+            try:
+                source = str(candidate.get("source", "")).strip()
+                title = str(candidate.get("title", "")).strip()
+                markets = candidate.get("markets", [])
+                category_value = str(candidate.get("category", "")).strip()
+                price = float(candidate.get("price", 0))
+                rating = float(candidate.get("rating", 0))
+                reviews = int(candidate.get("reviews", 0))
+                brand = candidate.get("brand")
+                dimensions = candidate.get("dimensions")
+                weight_kg_raw = candidate.get("weight_kg")
+                weight_kg = float(weight_kg_raw) if weight_kg_raw is not None else None
+            except (TypeError, ValueError):
+                # Ignore malformed rows from external connectors and keep the response stable.
+                continue
 
             if not source or not title:
                 continue

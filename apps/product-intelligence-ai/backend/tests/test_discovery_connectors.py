@@ -1,6 +1,7 @@
 import pytest
 from httpx import ASGITransport, AsyncClient
 
+from app.core.config import get_settings
 from app.main import app
 from app.services.discovery_connectors import DiscoveryConnectorService
 
@@ -161,3 +162,65 @@ async def test_discovery_search_handles_empty_catalog_connector() -> None:
     assert response.status_code == 200
     assert response.json() == []
     assert response.headers.get("X-Total-Count") == "0"
+
+
+@pytest.mark.anyio
+async def test_discovery_search_skips_malformed_catalog_rows() -> None:
+    class MixedCatalogConnector:
+        def load_catalog(self) -> list[dict]:
+            return [
+                {
+                    "source": "amazon_public_api",
+                    "title": "Valid Stand Candidate",
+                    "price": 33.5,
+                    "rating": 4.4,
+                    "reviews": 60,
+                    "brand": "Valid",
+                    "dimensions": "31x20x7 cm",
+                    "weight_kg": 1.1,
+                    "category": "desk_organization",
+                    "markets": ["amazon_uk"],
+                },
+                {
+                    "source": "amazon_public_api",
+                    "title": "Broken Price Candidate",
+                    "price": "not-a-number",
+                    "rating": 4.2,
+                    "reviews": 10,
+                    "category": "desk_organization",
+                    "markets": ["amazon_uk"],
+                },
+            ]
+
+    DiscoveryConnectorService.configure_catalog_connector(MixedCatalogConnector())
+    try:
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+            response = await client.post(
+                "/api/v1/discovery/search",
+                headers=REQUIRED_HEADERS,
+                json={
+                    "keyword": "candidate",
+                    "market": "amazon_uk",
+                    "min_price": 0,
+                    "max_price": 100,
+                },
+            )
+    finally:
+        DiscoveryConnectorService.reset_catalog_connector()
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert len(payload) == 1
+    assert payload[0]["title"] == "Valid Stand Candidate"
+
+
+def test_discovery_connector_settings_default_file_path_is_relative_to_service_dir() -> None:
+    settings = get_settings()
+    DiscoveryConnectorService.configure_from_settings(settings)
+
+    connector = DiscoveryConnectorService._catalog_connector
+    assert hasattr(connector, "_file_path")
+    normalized_path = str(connector._file_path).replace("\\", "/")
+    assert normalized_path.endswith("app/services/data/public_catalog.json")
+
+    DiscoveryConnectorService.reset_catalog_connector()

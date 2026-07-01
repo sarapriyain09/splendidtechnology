@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import router as api_router
 from app.core.config import get_settings
 from app.db.session import init_db
+from app.services.discovery_connectors import DiscoveryConnectorService
 
 settings = get_settings()
 
@@ -15,6 +16,7 @@ settings = get_settings()
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     init_db()
+    DiscoveryConnectorService.configure_from_settings(settings)
     yield
 
 

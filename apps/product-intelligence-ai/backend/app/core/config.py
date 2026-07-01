@@ -11,6 +11,8 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+psycopg://postgres:postgres@localhost:5432/velynxia_product_intelligence"
     agent_platform_base_url: str = "http://localhost:8020"
     cors_origins: str = "http://localhost:3020,http://localhost:3000"
+    discovery_catalog_provider: str = "json_file"
+    discovery_catalog_file: str = "data/public_catalog.json"
 
     @property
     def cors_origin_list(self) -> list[str]:

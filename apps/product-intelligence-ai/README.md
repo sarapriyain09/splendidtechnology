@@ -105,11 +105,28 @@ Backend URL: `http://localhost:8011`
 
 ## Next Implementation Steps
 
-1. Replace placeholder discovery data with compliant connector services.
+1. Add additional compliant discovery providers (beyond local catalog-file connector) behind the connector abstraction.
 2. Wire review and opportunity modules to `services/agent-platform` prompt keys.
 3. Add auth, tenant scoping, correlation IDs, and role checks per app adapter standard.
 4. Add Alembic migrations and normalized product/review/cost tables.
 5. Implement PDF report generator and export endpoints.
+
+## Discovery Connector Configuration
+
+Discovery search is now provider-driven and defaults to a JSON catalog-file connector.
+
+Backend environment variables:
+
+- `DISCOVERY_CATALOG_PROVIDER` (`json_file` by default)
+- `DISCOVERY_CATALOG_FILE` (relative to `backend/app/services/` unless absolute path)
+
+Default catalog data file:
+
+- `backend/app/services/data/public_catalog.json`
+
+Example backend env file:
+
+- `backend/.env.example`
 
 ## Agent Platform Prompt Keys
 
