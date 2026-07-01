@@ -4,6 +4,9 @@ import path from "path";
 const frontendDir = __dirname;
 const backendDir = path.resolve(__dirname, "../backend");
 const backendRunner = path.resolve(__dirname, "../backend/scripts/run_e2e_backend.py");
+const localRepoPython = path.resolve(__dirname, "../../../.venv/Scripts/python.exe");
+const pythonExecutable =
+  process.env.PYTHON_EXECUTABLE ?? (process.platform === "win32" ? localRepoPython : "python3");
 
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -27,7 +30,7 @@ export default defineConfig({
   webServer: [
     {
       cwd: backendDir,
-      command: `d:\\Splendid-Technology\\Velynxia\\.venv\\Scripts\\python.exe "${backendRunner}"`,
+      command: `${pythonExecutable} "${backendRunner}"`,
       url: "http://localhost:8011/api/v1/health",
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
