@@ -61,6 +61,16 @@ export type SavedDiscoveryLookupItem = {
   market: string;
 };
 
+export type SavedAnalysisItem = {
+  id: number;
+  product_name: string;
+  source: string;
+  market: string;
+  opportunity_score: number;
+  estimated_profit_percent: number;
+  competition_score: number;
+};
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8011/api/v1";
 
 function buildContextHeaders(): HeadersInit {
@@ -150,4 +160,34 @@ export async function fetchSavedDiscoveryRowKeys(items: SavedDiscoveryLookupItem
 
   const payload = (await response.json()) as { saved_row_keys: string[] };
   return new Set<string>(payload.saved_row_keys ?? []);
+}
+
+export async function fetchSavedAnalyses(): Promise<SavedAnalysisItem[]> {
+  const response = await fetch(`${API_BASE_URL}/database/saved`, {
+    method: "GET",
+    headers: buildContextHeaders(),
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to load saved analyses");
+  }
+
+  const payload = (await response.json()) as { items: SavedAnalysisItem[] };
+  return payload.items ?? [];
+}
+
+export async function deleteSavedAnalysis(analysisId: number): Promise<boolean> {
+  const response = await fetch(`${API_BASE_URL}/database/saved/${analysisId}`, {
+    method: "DELETE",
+    headers: buildContextHeaders(),
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to delete saved analysis");
+  }
+
+  const payload = (await response.json()) as { deleted: boolean };
+  return payload.deleted;
 }

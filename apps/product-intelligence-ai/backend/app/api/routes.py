@@ -10,6 +10,7 @@ from app.db.models import ProductAnalysis, SavedDiscoveryRecord
 from app.db.session import get_db
 from app.schemas import (
     CompetitionRequest,
+    DeleteSavedAnalysisResponse,
     DiscoveryImportRequest,
     ManufacturingCostRequest,
     OpportunityRequest,
@@ -19,6 +20,8 @@ from app.schemas import (
     ReviewAnalysisRequest,
     SaveAnalysisRequest,
     SaveAnalysisResponse,
+    SavedAnalysisItemResponse,
+    SavedAnalysisListResponse,
     SavedDiscoveryLookupRequest,
     SavedDiscoveryLookupResponse,
 )
@@ -508,3 +511,59 @@ def saved_discovery_status(
             saved_row_keys.append(row_key)
 
     return SavedDiscoveryLookupResponse(saved_row_keys=saved_row_keys)
+
+
+@router.get("/database/saved")
+def list_saved_analyses(
+    ctx: RequestContext = Depends(require_request_context),
+    db: Session = Depends(get_db),
+) -> SavedAnalysisListResponse:
+    rows = (
+        db.query(SavedDiscoveryRecord, ProductAnalysis)
+        .join(ProductAnalysis, ProductAnalysis.id == SavedDiscoveryRecord.analysis_id)
+        .filter(SavedDiscoveryRecord.tenant_id == ctx.tenant_id)
+        .order_by(SavedDiscoveryRecord.created_at.desc())
+        .all()
+    )
+
+    items = [
+        SavedAnalysisItemResponse(
+            id=analysis.id,
+            product_name=saved.product_name,
+            source=saved.source,
+            market=saved.market,
+            opportunity_score=analysis.opportunity_score,
+            estimated_profit_percent=analysis.estimated_profit_percent,
+            competition_score=analysis.competition_score,
+        )
+        for saved, analysis in rows
+    ]
+
+    return SavedAnalysisListResponse(items=items)
+
+
+@router.delete("/database/saved/{analysis_id}")
+def delete_saved_analysis(
+    analysis_id: int,
+    ctx: RequestContext = Depends(require_request_context),
+    db: Session = Depends(get_db),
+) -> DeleteSavedAnalysisResponse:
+    saved_record = (
+        db.query(SavedDiscoveryRecord)
+        .filter(
+            SavedDiscoveryRecord.tenant_id == ctx.tenant_id,
+            SavedDiscoveryRecord.analysis_id == analysis_id,
+        )
+        .first()
+    )
+
+    if not saved_record:
+        return DeleteSavedAnalysisResponse(deleted=False)
+
+    db.delete(saved_record)
+    analysis = db.query(ProductAnalysis).filter(ProductAnalysis.id == analysis_id).first()
+    if analysis:
+        db.delete(analysis)
+
+    db.commit()
+    return DeleteSavedAnalysisResponse(deleted=True)

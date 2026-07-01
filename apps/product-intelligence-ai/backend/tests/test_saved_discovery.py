@@ -163,6 +163,67 @@ async def test_database_save_normalizes_idempotency_key_fields() -> None:
     assert first_payload["id"] == second_payload["id"]
 
 
+@pytest.mark.anyio
+async def test_saved_list_returns_tenant_saved_analyses() -> None:
+    init_db()
+    unique_title = f"Listed Stand {uuid.uuid4()}"
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        save_response = await client.post(
+            "/api/v1/database/save",
+            headers=REQUIRED_HEADERS,
+            json={
+                "product_name": unique_title,
+                "source": "amazon_public_api",
+                "market": "amazon_uk",
+                "opportunity_score": 79,
+                "estimated_profit_percent": 32,
+                "competition_score": 47,
+            },
+        )
+        list_response = await client.get("/api/v1/database/saved", headers=REQUIRED_HEADERS)
+
+    assert save_response.status_code == 200
+    assert list_response.status_code == 200
+    payload = list_response.json()
+    assert payload["items"]
+
+    first_item = payload["items"][0]
+    assert first_item["product_name"] == unique_title
+    assert first_item["source"] == "amazon_public_api"
+    assert first_item["market"] == "amazon_uk"
+
+
+@pytest.mark.anyio
+async def test_delete_saved_analysis_removes_record_and_analysis() -> None:
+    init_db()
+    unique_title = f"Delete Stand {uuid.uuid4()}"
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        save_response = await client.post(
+            "/api/v1/database/save",
+            headers=REQUIRED_HEADERS,
+            json={
+                "product_name": unique_title,
+                "source": "etsy_public_api",
+                "market": "amazon_uk",
+                "opportunity_score": 76,
+                "estimated_profit_percent": 29,
+                "competition_score": 53,
+            },
+        )
+        saved_id = save_response.json()["id"]
+
+        delete_response = await client.delete(f"/api/v1/database/saved/{saved_id}", headers=REQUIRED_HEADERS)
+        list_response = await client.get("/api/v1/database/saved", headers=REQUIRED_HEADERS)
+
+    assert save_response.status_code == 200
+    assert delete_response.status_code == 200
+    assert delete_response.json() == {"deleted": True}
+    assert list_response.status_code == 200
+    assert all(item["id"] != saved_id for item in list_response.json()["items"])
+
+
 def test_created_at_defaults_are_timezone_aware_utc() -> None:
     product_default = ProductAnalysis.__table__.c.created_at.default
     saved_record_default = SavedDiscoveryRecord.__table__.c.created_at.default

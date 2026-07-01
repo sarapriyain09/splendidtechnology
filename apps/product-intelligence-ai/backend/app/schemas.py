@@ -114,3 +114,21 @@ class SavedDiscoveryLookupRequest(BaseModel):
 
 class SavedDiscoveryLookupResponse(BaseModel):
     saved_row_keys: list[str] = Field(default_factory=list)
+
+
+class SavedAnalysisItemResponse(BaseModel):
+    id: int
+    product_name: str
+    source: str
+    market: str
+    opportunity_score: float
+    estimated_profit_percent: float
+    competition_score: float
+
+
+class SavedAnalysisListResponse(BaseModel):
+    items: list[SavedAnalysisItemResponse] = Field(default_factory=list)
+
+
+class DeleteSavedAnalysisResponse(BaseModel):
+    deleted: bool

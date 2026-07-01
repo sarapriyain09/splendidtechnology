@@ -2,7 +2,17 @@
 
 import { FormEvent, useMemo, useState } from "react";
 
-import { DiscoverySearchQuery, DiscoverySearchResult, ProductCandidate, fetchDiscoveryProducts, fetchSavedDiscoveryRowKeys, saveProductAnalysis } from "@/lib/api";
+import {
+  DiscoverySearchQuery,
+  DiscoverySearchResult,
+  ProductCandidate,
+  SavedAnalysisItem,
+  deleteSavedAnalysis,
+  fetchDiscoveryProducts,
+  fetchSavedAnalyses,
+  fetchSavedDiscoveryRowKeys,
+  saveProductAnalysis,
+} from "@/lib/api";
 
 const MARKET_OPTIONS = ["amazon_uk", "amazon_eu", "amazon_us", "b2b"];
 const SOURCE_OPTIONS = ["amazon_public_api", "etsy_public_api", "alibaba_public_api"];
@@ -29,6 +39,9 @@ export function DiscoveryWorkbench() {
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [saveMessageTone, setSaveMessageTone] = useState<"success" | "error">("success");
   const [savedRowKeys, setSavedRowKeys] = useState<Set<string>>(new Set());
+  const [savedAnalyses, setSavedAnalyses] = useState<SavedAnalysisItem[]>([]);
+  const [savedListBusy, setSavedListBusy] = useState(false);
+  const [deletingAnalysisId, setDeletingAnalysisId] = useState<number | null>(null);
 
   const totalPages = useMemo(() => {
     if (!result) return 1;
@@ -123,11 +136,51 @@ export function DiscoveryWorkbench() {
           ? `Saved ${item.title} as record #${saved.id}.`
           : `${item.title} is already saved as record #${saved.id}.`
       );
+      await loadSavedAnalyses();
     } catch (err) {
       setSaveMessageTone("error");
       setSaveMessage(err instanceof Error ? err.message : "Save failed");
     } finally {
       setSavingKey(null);
+    }
+  }
+
+  async function loadSavedAnalyses() {
+    setSavedListBusy(true);
+    try {
+      const rows = await fetchSavedAnalyses();
+      setSavedAnalyses(rows);
+    } catch (err) {
+      setSaveMessageTone("error");
+      setSaveMessage(err instanceof Error ? err.message : "Failed to load saved analyses");
+    } finally {
+      setSavedListBusy(false);
+    }
+  }
+
+  async function removeSavedAnalysis(item: SavedAnalysisItem) {
+    setDeletingAnalysisId(item.id);
+    try {
+      const deleted = await deleteSavedAnalysis(item.id);
+      if (!deleted) {
+        setSaveMessageTone("error");
+        setSaveMessage(`No saved record found for #${item.id}.`);
+        return;
+      }
+
+      setSavedAnalyses((prev) => prev.filter((row) => row.id !== item.id));
+      setSavedRowKeys((prev) => {
+        const next = new Set(prev);
+        next.delete(`${item.source}-${item.product_name}`);
+        return next;
+      });
+      setSaveMessageTone("success");
+      setSaveMessage(`Removed saved record #${item.id}.`);
+    } catch (err) {
+      setSaveMessageTone("error");
+      setSaveMessage(err instanceof Error ? err.message : "Failed to remove saved analysis");
+    } finally {
+      setDeletingAnalysisId(null);
     }
   }
 
@@ -289,6 +342,63 @@ export function DiscoveryWorkbench() {
           >
             Next
           </button>
+        </div>
+      </div>
+
+      <div className="mt-8 rounded-xl border border-slate-200 bg-slate-50/60 p-4">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <h3 className="text-sm font-semibold text-slate-900">Saved Records</h3>
+          <button
+            type="button"
+            className="rounded border border-slate-300 bg-white px-3 py-1 text-xs font-medium text-slate-700 disabled:opacity-50"
+            onClick={() => loadSavedAnalyses()}
+            disabled={savedListBusy}
+          >
+            {savedListBusy ? "Loading..." : "Refresh Saved"}
+          </button>
+        </div>
+
+        <div className="mt-3 overflow-x-auto rounded-lg border border-slate-200 bg-white">
+          <table className="min-w-full text-left text-xs">
+            <thead className="bg-slate-50 text-slate-700">
+              <tr>
+                <th className="px-3 py-2">ID</th>
+                <th className="px-3 py-2">Product</th>
+                <th className="px-3 py-2">Source</th>
+                <th className="px-3 py-2">Market</th>
+                <th className="px-3 py-2">Score</th>
+                <th className="px-3 py-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {savedAnalyses.map((item) => (
+                <tr key={item.id} className="border-t border-slate-100">
+                  <td className="px-3 py-2">#{item.id}</td>
+                  <td className="px-3 py-2">{item.product_name}</td>
+                  <td className="px-3 py-2">{item.source}</td>
+                  <td className="px-3 py-2">{item.market}</td>
+                  <td className="px-3 py-2">{item.opportunity_score}</td>
+                  <td className="px-3 py-2">
+                    <button
+                      type="button"
+                      className="rounded border border-red-200 px-2 py-1 text-xs font-medium text-red-700 disabled:opacity-50"
+                      onClick={() => removeSavedAnalysis(item)}
+                      disabled={deletingAnalysisId === item.id}
+                    >
+                      {deletingAnalysisId === item.id ? "Removing..." : "Remove"}
+                    </button>
+                  </td>
+                </tr>
+              ))}
+              {!savedAnalyses.length ? (
+                <tr>
+                  <td className="px-3 py-3 text-slate-500" colSpan={6}>
+                    No saved records loaded yet. Click Refresh Saved.
+                  </td>
+                </tr>
+              ) : null}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
