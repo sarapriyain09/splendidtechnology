@@ -1,0 +1,46 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Accounting: Backend (FastAPI)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "app.main:app",
+        "--reload",
+        "--port",
+        "8010"
+      ],
+      "cwd": "${workspaceFolder}/apps/workspace/modules/accounting/backend",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "jinja": true,
+      "justMyCode": true
+    },
+    {
+      "name": "Accounting: Frontend Dev Server",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
+      "cwd": "${workspaceFolder}/apps/workspace/modules/accounting/frontend"
+    },
+    {
+      "name": "Accounting: Frontend (Chrome)",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost:3015",
+      "webRoot": "${workspaceFolder}/apps/workspace/modules/accounting/frontend",
+      "preLaunchTask": "Accounting: Frontend Dev Server"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Accounting: Full Stack",
+      "configurations": [
+        "Accounting: Backend (FastAPI)",
+        "Accounting: Frontend (Chrome)"
+      ],
+      "stopAll": true
+    }
+  ]
+}

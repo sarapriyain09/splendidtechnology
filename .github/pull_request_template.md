@@ -25,6 +25,13 @@ Closes #
 - [ ] Linked issue acceptance criteria met
 - [ ] Definition of done checklist reviewed
 
+## Accounting Standards Gate (Complete if this PR touches apps/workspace/modules/accounting)
+
+- [ ] I reviewed and complied with apps/workspace/modules/accounting/ACCOUNTING_STANDARDS.md
+- [ ] I completed apps/workspace/modules/accounting/PR_IMPLEMENTATION_CHECKLIST.md for this change
+- [ ] No direct balance mutation was introduced; ledger/journal rules are preserved
+- [ ] Multi-tenant and audit requirements were verified for accounting changes
+
 ## Security and Ops
 
 - [ ] No secrets committed

@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: light;
+  --bg-0: #f7f4ea;
+  --bg-1: #dce9f9;
+  --bg-2: #d9efe2;
+  --ink: #102a43;
+  --ink-soft: #3d566e;
+  --shell: #112033;
+  --shell-border: #27384f;
+  --shell-text: #d4e4fb;
+  --panel: rgba(255, 255, 255, 0.82);
+  --panel-strong: #ffffff;
+  --panel-border: rgba(16, 42, 67, 0.14);
+  --active: #1f5fbf;
+  --active-soft: rgba(31, 95, 191, 0.18);
+  --ok: #0f766e;
+  --warn: #b45309;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-0: #08111d;
+  --bg-1: #0f172a;
+  --bg-2: #12263a;
+  --ink: #d8e7ff;
+  --ink-soft: #9cb7d6;
+  --shell: #07101b;
+  --shell-border: #1d2a3e;
+  --shell-text: #c5daf9;
+  --panel: rgba(10, 21, 34, 0.82);
+  --panel-strong: #0f1f30;
+  --panel-border: rgba(156, 183, 214, 0.2);
+  --active: #4894ff;
+  --active-soft: rgba(72, 148, 255, 0.24);
+  --ok: #14b8a6;
+  --warn: #f59e0b;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  color: var(--ink);
+  font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 8% 10%, rgba(255, 184, 108, 0.28) 0, transparent 32%),
+    radial-gradient(circle at 92% 14%, rgba(56, 189, 248, 0.26) 0, transparent 28%),
+    linear-gradient(165deg, var(--bg-0) 0%, var(--bg-1) 52%, var(--bg-2) 100%);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Rockwell", "Book Antiqua", "Palatino Linotype", serif;
+  letter-spacing: 0.01em;
+}
+
+.workspace-scroll {
+  scrollbar-width: auto;
+}
+
+.workspace-scroll::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+.workspace-scroll::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.65);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.workspace-scroll::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.12);
+}
+
+.fade-up {
+  animation: fadeUp 420ms ease both;
+}
+
+.stagger-1 {
+  animation-delay: 60ms;
+}
+
+.stagger-2 {
+  animation-delay: 120ms;
+}
+
+.stagger-3 {
+  animation-delay: 180ms;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1100px) {
+  body {
+    overflow: auto;
+  }
+}

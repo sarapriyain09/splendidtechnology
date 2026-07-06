@@ -1,0 +1,11 @@
+app: avatar-studio
+agents:
+  - id: script-agent
+    purpose: prepare script and scene suggestions
+    tools: [media.scripts.generate, media.projects.read]
+  - id: training-agent
+    purpose: manage avatar training sessions
+    tools: [avatar.training.start, avatar.training.status, storage.read]
+  - id: publishing-agent
+    purpose: package and publish final media outputs
+    tools: [media.exports.create, storage.read, api.publish]

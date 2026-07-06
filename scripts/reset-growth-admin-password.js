@@ -1,5 +1,5 @@
-const { PrismaClient } = require("../apps/growth-platform/node_modules/@prisma/client");
-const bcrypt = require("../apps/growth-platform/node_modules/bcryptjs");
+const { PrismaClient } = require("../apps/growth/node_modules/@prisma/client");
+const bcrypt = require("../apps/growth/node_modules/bcryptjs");
 
 async function main() {
   const prisma = new PrismaClient();

@@ -1,0 +1,11 @@
+app: growth-platform
+agents:
+  - id: prospecting-agent
+    purpose: discover and qualify prospects
+    tools: [crm.contacts.search, crm.leads.create, email.send]
+  - id: followup-agent
+    purpose: schedule and send follow-ups
+    tools: [crm.activities.create, email.send, calendar.events.create]
+  - id: proposal-agent
+    purpose: draft and personalize proposals
+    tools: [docs.generate, crm.opportunities.read, accounting.pricing.read]

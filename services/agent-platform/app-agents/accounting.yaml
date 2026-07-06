@@ -1,0 +1,11 @@
+app: accounting
+agents:
+  - id: reconciliation-agent
+    purpose: suggest bank reconciliation matches
+    tools: [accounting.transactions.read, accounting.reconciliation.suggest]
+  - id: vat-review-agent
+    purpose: review VAT coding anomalies
+    tools: [accounting.vat.report.read, accounting.journals.read]
+  - id: reminder-agent
+    purpose: remind customers on due invoices
+    tools: [accounting.invoices.read, email.send]

@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": "11111111-1111-1111-1111-111111111111",
+      "email": "admin@velynxia.com",
+      "name": "Admin",
+      "role": "ADMIN",
+      "passwordHash": "scrypt$ab999cc5a6b43c09d4318468951b1e0e$e7c91c4b33dddae3c8086856e9647dc0de48d42203eba5f836c3be7885fd435094e245b8547057f999140ac7a19c89752e40f1e4db6793fee74ca64235392788",
+      "isActive": true,
+      "createdAt": "2026-06-28T12:11:43.298Z",
+      "updatedAt": "2026-06-28T12:11:43.298Z"
+    }
+  ]
+}

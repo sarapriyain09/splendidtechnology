@@ -1,9 +1,29 @@
 Splendid Technology website (starter build) using Next.js + Tailwind.
 
-## Repository layout (staged)
+## Repository layout (committed target)
 
-- `apps/website` -> main velynxia.com website source
-- `apps/growth-platform` -> app.velynxia.com growth shell source
+```
+apps/
+├── website
+├── workspace
+├── admin
+├── engineering
+├── commerce
+├── growth
+└── media
+```
+
+Platform intent:
+
+- `apps/website`: public website and customer entry points.
+- `apps/workspace`: internal operations workspace hosting cross-functional business modules.
+- `apps/admin`: cross-platform governance and administration surface.
+- `apps/engineering`: AI-powered engineering simulation platform (torsional first, then broader rotating machinery modules).
+- `apps/commerce`: product-first commerce operating system and product workspace modules.
+- `apps/growth`: sales and marketing operating system (CRM, sales, customer success, automation).
+- `apps/media`: AI-native media platform (video, avatar, voice, image, subtitle, presentation, assets).
+
+All additional capabilities should be implemented as modules under these parent apps.
 
 Deployment scripts:
 
@@ -15,6 +35,8 @@ Migration notes: `docs/ops/apps-folder-migration.md`
 Contributor onboarding: `docs/ops/contributor-onboarding.md`
 
 AI platform roadmap: `docs/strategy/velynxia-ai-media-suite-phased-development-plan.md`
+
+Portfolio staged strategy: `docs/strategy/velynxia-three-business-staged-strategy.md`
 
 ## SEO keyword strategy (UK + Leicester)
 

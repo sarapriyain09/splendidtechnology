@@ -14,3 +14,7 @@ Each file below is a copy-ready GitHub issue body for one phase.
 - [Phase 8](./phase-08-github-issue.md)
 - [Phase 9](./phase-09-github-issue.md)
 - [Phase 10](./phase-10-github-issue.md)
+
+Three-business portfolio issue pack:
+
+- [Three-Business Phases](./three-business/README.md)

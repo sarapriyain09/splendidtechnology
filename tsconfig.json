@@ -19,7 +19,17 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@velynxia/ui/*": ["./packages/ui/*"],
+      "@velynxia/auth/*": ["./packages/auth/*"],
+      "@velynxia/database/*": ["./packages/database/*"],
+      "@velynxia/api-client/*": ["./packages/api-client/*"],
+      "@velynxia/shared/*": ["./packages/shared/*"],
+      "@velynxia/ai-core/*": ["./packages/ai-core/*"],
+      "@velynxia/engineering-core/*": ["./packages/engineering-core/*"],
+      "@velynxia/commerce-core/*": ["./packages/commerce-core/*"],
+      "@velynxia/media-core/*": ["./packages/media-core/*"],
+      "@velynxia/growth-core/*": ["./packages/growth-core/*"]
     }
   },
   "include": [

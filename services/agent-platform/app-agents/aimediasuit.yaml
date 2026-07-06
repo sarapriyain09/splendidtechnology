@@ -1,0 +1,11 @@
+app: aimediasuit
+agents:
+  - id: script-agent
+    purpose: draft scripts from campaign goals
+    tools: [content.brief.read, llm.generate, storage.write]
+  - id: video-agent
+    purpose: assemble video pipeline jobs
+    tools: [media.render.start, media.assets.read, storage.write]
+  - id: publishing-agent
+    purpose: publish approved content to channels
+    tools: [social.publish, cms.publish, analytics.events.write]
