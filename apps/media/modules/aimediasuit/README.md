@@ -272,6 +272,11 @@ Storage:
 
 - Local filesystem
 
+Feature flags:
+
+- `ENABLE_AVATAR_STUDIO=true` enables Avatar Studio in production dashboard routes.
+- If not set in production, the route renders a rollout notice instead of the studio UI.
+
 ## Voice Studio Features
 
 - Text input (max 5000 characters)

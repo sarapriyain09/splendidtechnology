@@ -8,6 +8,7 @@ import { PresentationUploader } from "@/components/presentation/presentation-upl
 import { ProjectGrid } from "@/components/project/project-grid";
 import { ProjectList } from "@/components/project/project-list";
 import { TrainingWizard } from "@/components/training/training-wizard";
+import { VoiceStudioPanel } from "@/components/voice/voice-studio-panel";
 import { ExportDialog } from "@/components/video/export-dialog";
 import { Timeline } from "@/components/video/timeline";
 import { VideoForm } from "@/components/video/video-form";
@@ -117,7 +118,7 @@ export function Workspace() {
       {workspace === "presentation-studio" && <PresentationUploader />}
       {workspace === "projects" && <ProjectsWorkspace />}
 
-      {workspace === "voice-studio" && <PlaceholderWorkspace title="Voice Studio" />}
+      {workspace === "voice-studio" && <VoiceStudioPanel />}
       {workspace === "screen-recorder" && <PlaceholderWorkspace title="Screen Recorder" />}
       {workspace === "scene-builder" && <PlaceholderWorkspace title="Scene Builder" />}
       {workspace === "media-library" && <PlaceholderWorkspace title="Media Library" />}

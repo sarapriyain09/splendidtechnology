@@ -191,6 +191,30 @@ Resumable upload flow:
 - `GET /health` (legacy/internal checks)
 - `GET /api/health` (public API checks)
 
+## Production endpoint matrix
+
+For `https://avatar.velynxia.com`, Nginx proxies only `/api/*` to FastAPI and all other paths to Next.js.
+
+Public (browser) URLs:
+
+- `GET /api/health` -> FastAPI health check
+- `GET /api/projects` -> FastAPI project APIs
+- `GET /api/avatars` -> FastAPI avatar APIs
+- `GET /api/training/*` -> FastAPI training APIs
+- `GET /api/chat/*` -> FastAPI chat APIs
+- `GET /` -> Next.js frontend
+
+Internal FastAPI service URLs (direct app container or localhost:8000):
+
+- `GET /health`
+- `GET /docs`
+- `GET /openapi.json`
+
+Notes:
+
+- On the public domain, `/health`, `/docs`, and `/openapi.json` are expected to return 404 unless explicitly routed by reverse proxy.
+- Keep external checks pointed to `/api/health`.
+
 ## Smoke test
 
 Run the deployment smoke test from the repo root:

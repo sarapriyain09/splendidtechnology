@@ -22,6 +22,30 @@ type ProjectsResponse = {
   projects: ProjectApiItem[];
 };
 
+export type PromptResult = {
+  prompt: string;
+  project: {
+    id: string;
+    name: string;
+  };
+  scene: {
+    id: string;
+    title: string;
+  };
+  script: {
+    title: string;
+    script: string;
+    hook?: string;
+    cta?: string;
+  };
+  video: {
+    provider: string;
+    status: string;
+    videoJobId?: string;
+    avatarId?: string;
+  };
+};
+
 function getApiBaseUrl(): string {
   const configured = process.env.NEXT_PUBLIC_API_BASE_URL?.trim() || "http://localhost:8000";
   const normalized = configured.replace(/\/+$/, "");
@@ -33,6 +57,22 @@ async function fetchJson<T>(path: string): Promise<T> {
   if (!response.ok) {
     throw new Error(`Request failed (${response.status}) for ${path}`);
   }
+  return (await response.json()) as T;
+}
+
+async function postJson<T>(path: string, body: unknown): Promise<T> {
+  const response = await fetch(`${getApiBaseUrl()}${path}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Request failed (${response.status}) for ${path}`);
+  }
+
   return (await response.json()) as T;
 }
 
@@ -78,4 +118,12 @@ export async function fetchProjects(): Promise<Project[]> {
     status: mapProjectStatus(item.status),
     updatedAt: "recently",
   }));
+}
+
+export async function runPrompt(prompt: string, avatarId?: string): Promise<PromptResult> {
+  const payload: { prompt: string; avatar_id?: string } = { prompt };
+  if (avatarId) {
+    payload.avatar_id = avatarId;
+  }
+  return postJson<PromptResult>("/chat/prompt", payload);
 }
