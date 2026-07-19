@@ -1,11 +1,14 @@
 import asyncio
 import hashlib
+import json
+from pathlib import Path
 
 from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.db.session import SessionLocal
+from app.config import settings
 from app.models import Job, Project, Scene, Video
 from app.providers.factory import create_ai_provider, create_avatar_provider, create_voice_provider
 from app.services.db.project_service import add_scene, create_project, upsert_scene_settings
@@ -43,14 +46,44 @@ def _split_job_ref(ref_id: str) -> tuple[str, str] | None:
     return render_ref, token
 
 
-def _serialize_video_response(video: Video, provider: str, video_job_id: str) -> dict[str, str]:
-    return {
+def _render_meta_file_path(project_id: str, video_id: str) -> Path:
+    root = Path(settings.storage_root)
+    return root / "projects" / project_id / "render-meta" / f"{video_id}.json"
+
+
+def _persist_render_meta(project_id: str, video_id: str, telemetry: dict[str, object] | None) -> None:
+    if not telemetry:
+        return
+    target = _render_meta_file_path(project_id, video_id)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(json.dumps(telemetry), encoding="utf-8")
+
+
+def _load_render_meta(project_id: str, video_id: str) -> dict[str, object] | None:
+    path = _render_meta_file_path(project_id, video_id)
+    if not path.exists():
+        return None
+    try:
+        parsed = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+    if isinstance(parsed, dict):
+        return parsed
+    return None
+
+
+def _serialize_video_response(video: Video, provider: str, video_job_id: str) -> dict[str, object]:
+    payload: dict[str, object] = {
         "id": video.id,
         "status": video.status,
         "provider": provider,
         "videoJobId": video_job_id,
         "outputUrl": video.output_url,
     }
+    telemetry = _load_render_meta(video.project_id, video.id)
+    if telemetry is not None:
+        payload["renderExecution"] = telemetry
+    return payload
 
 
 def _extract_idempotency_token(render_ref: str) -> str:
@@ -314,6 +347,11 @@ class AIOrchestrator:
                 db.add(reservation)
                 db.commit()
                 db.refresh(video)
+                _persist_render_meta(
+                    project_id=project.id,
+                    video_id=video.id,
+                    telemetry=render_result.get("renderExecution") if isinstance(render_result, dict) else None,
+                )
 
                 reservation.ref_id = _build_job_ref(render_ref, video.id)
                 db.add(reservation)
@@ -452,6 +490,11 @@ class AIOrchestrator:
             db.add(video)
             db.commit()
             db.refresh(video)
+            _persist_render_meta(
+                project_id=project.id,
+                video_id=video.id,
+                telemetry=render_result.get("renderExecution") if isinstance(render_result, dict) else None,
+            )
 
             self.render_service.apply_project_status(project, render_status, bool(render_result.get("videoUrl")))
 

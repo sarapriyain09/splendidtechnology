@@ -48,7 +48,7 @@ def test_render_with_same_idempotency_key_replays_existing_result(monkeypatch) -
             script: str,
             avatar_id: str,
             render_plan: list[dict] | None = None,
-        ) -> dict[str, str]:
+        ) -> dict[str, object]:
             call_counter["count"] += 1
             captured_render_plan["value"] = render_plan or []
             return {
@@ -56,6 +56,11 @@ def test_render_with_same_idempotency_key_replays_existing_result(monkeypatch) -
                 "status": "completed",
                 "videoJobId": f"job-{call_counter['count']}",
                 "videoUrl": f"https://example.test/video-{call_counter['count']}.mp4",
+                "renderExecution": {
+                    "attemptCount": 1,
+                    "fallbackUsed": False,
+                    "durationMs": 42,
+                },
             }
 
     def fake_orchestrator_init(self) -> None:
@@ -103,6 +108,11 @@ def test_render_with_same_idempotency_key_replays_existing_result(monkeypatch) -
         status_payload = status_response.json()
         assert status_payload["status"] in {"QUEUED", "PROCESSING", "COMPLETED", "FAILED"}
         assert status_payload["idempotencyKey"] == first_payload["idempotencyKey"]
+        if "video" in status_payload:
+            execution = status_payload["video"].get("renderExecution")
+            assert isinstance(execution, dict)
+            assert execution.get("attemptCount") == 1
+            assert execution.get("fallbackUsed") is False
 
     if second_payload.get("replayed"):
         assert "video" in second_payload

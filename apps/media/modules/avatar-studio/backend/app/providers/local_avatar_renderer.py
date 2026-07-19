@@ -203,7 +203,7 @@ def render_lipsync_avatar_video(
         output_path=output_path,
     )
 
-    completed = _ffmpeg_executor.execute(ffmpeg_command)
+    completed, execution = _ffmpeg_executor.execute_with_telemetry(ffmpeg_command)
 
     if voice_path.exists():
         try:
@@ -232,6 +232,7 @@ def render_lipsync_avatar_video(
         "videoUrl": video_url,
         "script": script,
         "renderProfile": profile,
+        "renderExecution": execution.to_dict(),
         "lipSync": {
             "mode": "local-viseme-timeline",
             "segmentCount": len(viseme_segments),
@@ -269,7 +270,7 @@ def render_avatar_video(
         output_path=output_path,
     )
 
-    completed = _ffmpeg_executor.execute(ffmpeg_command, portrait_fallback_filter_chain)
+    completed, execution = _ffmpeg_executor.execute_with_telemetry(ffmpeg_command, portrait_fallback_filter_chain)
 
     if voice_path.exists():
         try:
@@ -298,4 +299,5 @@ def render_avatar_video(
         "videoUrl": video_url,
         "script": script,
         "renderProfile": profile,
+        "renderExecution": execution.to_dict(),
     }
