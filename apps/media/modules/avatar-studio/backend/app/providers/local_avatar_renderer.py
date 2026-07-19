@@ -2,13 +2,16 @@ from __future__ import annotations
 
 import os
 import re
-import subprocess
 import wave
 from pathlib import Path
 from uuid import uuid4
 
 from app.config import settings
 from app.providers.ffmpeg_command_builder import build_avatar_ffmpeg_command, build_lipsync_ffmpeg_command
+from app.services.render_executor import FfmpegRenderExecutor
+
+
+_ffmpeg_executor = FfmpegRenderExecutor()
 
 
 def _escape_ps_single_quoted(value: str) -> str:
@@ -200,7 +203,7 @@ def render_lipsync_avatar_video(
         output_path=output_path,
     )
 
-    completed = subprocess.run(ffmpeg_command, capture_output=True, text=True, check=False)
+    completed = _ffmpeg_executor.execute(ffmpeg_command)
 
     if voice_path.exists():
         try:
@@ -266,14 +269,7 @@ def render_avatar_video(
         output_path=output_path,
     )
 
-    completed = subprocess.run(ffmpeg_command, capture_output=True, text=True, check=False)
-
-    if completed.returncode != 0 and portrait_fallback_filter_chain:
-        # If animated portrait expressions are unsupported by local ffmpeg, retry with a static clean portrait.
-        fallback_command = list(ffmpeg_command)
-        vf_index = fallback_command.index("-vf") + 1
-        fallback_command[vf_index] = portrait_fallback_filter_chain
-        completed = subprocess.run(fallback_command, capture_output=True, text=True, check=False)
+    completed = _ffmpeg_executor.execute(ffmpeg_command, portrait_fallback_filter_chain)
 
     if voice_path.exists():
         try:

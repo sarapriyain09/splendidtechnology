@@ -103,6 +103,7 @@ Status values:
 
 ## Recent changes
 
+- 2026-07-19: Extracted FFmpeg execution and retry logic into a dedicated render executor service with unit tests for retry/failure behavior.
 - 2026-07-19: Isolated FFmpeg command construction into a dedicated command builder module and added direct command-contract tests.
 - 2026-07-19: Added deterministic idempotency-based render output basename propagation (render service -> render plan metadata -> local renderer) and added render service unit tests.
 - 2026-07-19: Started PR4 render pipeline separation by extracting render-plan assembly and render execution/status mapping into a dedicated render service, then validated timeline idempotency and avatar tests.
