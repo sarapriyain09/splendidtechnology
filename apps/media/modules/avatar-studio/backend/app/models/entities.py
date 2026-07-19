@@ -84,8 +84,29 @@ class Scene(UUIDMixin, TimestampMixin, Base):
     narration: Mapped[str] = mapped_column(Text, default="")
     duration_seconds: Mapped[int] = mapped_column(Integer, default=10)
     background: Mapped[str] = mapped_column(String(120), default="office")
+    image_url: Mapped[str] = mapped_column(Text, default="")
+    voice_audio_url: Mapped[str] = mapped_column(Text, default="")
+    music: Mapped[str] = mapped_column(String(50), default="none")
 
     project: Mapped[Project] = relationship(back_populates="scenes")
+    settings: Mapped["SceneSettings | None"] = relationship(
+        back_populates="scene",
+        cascade="all, delete-orphan",
+        uselist=False,
+    )
+
+
+class SceneSettings(UUIDMixin, TimestampMixin, Base):
+    __tablename__ = "scene_settings"
+
+    scene_id: Mapped[str] = mapped_column(ForeignKey("scenes.id"), index=True, unique=True)
+    camera: Mapped[str] = mapped_column(String(60), default="static")
+    transition: Mapped[str] = mapped_column(String(60), default="cut")
+    caption_style: Mapped[str] = mapped_column(String(60), default="default")
+    voice: Mapped[str] = mapped_column(String(80), default="default")
+    assets_json: Mapped[str] = mapped_column(Text, default="[]")
+
+    scene: Mapped[Scene] = relationship(back_populates="settings")
 
 
 class Media(UUIDMixin, TimestampMixin, Base):

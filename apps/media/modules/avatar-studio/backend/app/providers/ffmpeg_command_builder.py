@@ -3,6 +3,61 @@ from __future__ import annotations
 from pathlib import Path
 
 
+def _drawtext_font_option() -> str:
+    # On Windows, drawtext may fail if Fontconfig is unavailable. Use a known system font file.
+    candidates = [
+        Path("C:/Windows/Fonts/segoeui.ttf"),
+        Path("C:/Windows/Fonts/arial.ttf"),
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            escaped_path = str(candidate).replace("\\", "/").replace(":", r"\:")
+            return f"fontfile='{escaped_path}':"
+    return ""
+
+
+def _escape_drawtext_text(value: str) -> str:
+    sanitized = (value or "").replace("\\", r"\\")
+    sanitized = sanitized.replace("'", r"\'")
+    sanitized = sanitized.replace(":", r"\:")
+    sanitized = sanitized.replace("%", r"\%")
+    return sanitized
+
+
+def _build_caption_drawtext(caption_text: str) -> str:
+    escaped = _escape_drawtext_text(caption_text)
+    font_option = _drawtext_font_option()
+    return (
+        "drawtext="
+        f"{font_option}"
+        f"text='{escaped}':"
+        "x=(w-text_w)/2:"
+        "y=h-120:"
+        "fontsize=34:"
+        "fontcolor=white:"
+        "box=1:"
+        "boxcolor=0x00000099:"
+        "boxborderw=8"
+    )
+
+
+def _build_brand_drawtext(branding_text: str) -> str:
+    escaped = _escape_drawtext_text(branding_text)
+    font_option = _drawtext_font_option()
+    return (
+        "drawtext="
+        f"{font_option}"
+        f"text='{escaped}':"
+        "x=w-text_w-28:"
+        "y=24:"
+        "fontsize=22:"
+        "fontcolor=0x38bdf8:"
+        "box=1:"
+        "boxcolor=0x0f172acc:"
+        "boxborderw=6"
+    )
+
+
 def build_lipsync_ffmpeg_command(
     *,
     portrait_path: Path | None,
@@ -12,6 +67,8 @@ def build_lipsync_ffmpeg_command(
     camera_style: str,
     transition_style: str,
     asset_count: int,
+    caption_text: str,
+    branding_text: str,
     viseme_segments: list[tuple[float, float, float]],
     output_path: Path,
 ) -> list[str]:
@@ -96,6 +153,8 @@ def build_lipsync_ffmpeg_command(
             motion,
             "eq=contrast=1.03:saturation=1.04:brightness=0.01",
             *mouth_filters,
+            _build_caption_drawtext(caption_text),
+            _build_brand_drawtext(branding_text),
             f"drawbox=x=0:y=714:w=1280:h={asset_overlay_height}:color=0x38bdf8@0.35:t=fill",
         ]
     else:
@@ -109,6 +168,8 @@ def build_lipsync_ffmpeg_command(
             "drawbox=x=545:y=230:w=190:h=26:color=0x93c5fd@0.75:t=fill",
             "drawbox=x=430:y=620:w=420:h=6:color=0x38bdf8@1:t=fill",
             *mouth_filters,
+            _build_caption_drawtext(caption_text),
+            _build_brand_drawtext(branding_text),
             f"drawbox=x=0:y=714:w=1280:h={asset_overlay_height}:color=0x38bdf8@0.35:t=fill",
         ]
     filter_chain = ",".join(filter_parts) + transition_effect
@@ -144,6 +205,8 @@ def build_avatar_ffmpeg_command(
     camera_style: str,
     transition_style: str,
     asset_count: int,
+    caption_text: str,
+    branding_text: str,
     output_path: Path,
 ) -> tuple[list[str], str]:
     ffmpeg_command = ["ffmpeg", "-y"]
@@ -183,6 +246,8 @@ def build_avatar_ffmpeg_command(
             "color=0x2b1212@0.28:t=fill,"
             "drawbox=x=585:y='464-2*abs(sin(t*8.5))':w=110:h='2+10*abs(sin(t*8.5))':"
             "color=0x000000@0.18:t=fill,"
+            f"{_build_caption_drawtext(caption_text)},"
+            f"{_build_brand_drawtext(branding_text)},"
             f"drawbox=x=0:y=714:w=1280:h={asset_overlay_height}:color=0x38bdf8@0.35:t=fill"
             f"{transition_effect}"
         )
@@ -200,6 +265,8 @@ def build_avatar_ffmpeg_command(
             "drawbox=x='540+20*sin(t*1.2)':y=220:w=200:h=320:color=0x1e293b@0.45:t=fill,"
             "drawbox=x='590+20*sin(t*1.2)':y=120:w=100:h=100:color=0x334155@0.45:t=fill,"
             "drawbox=x=430:y=560:w=420:h=6:color=0x38bdf8@1:t=fill,"
+            f"{_build_caption_drawtext(caption_text)},"
+            f"{_build_brand_drawtext(branding_text)},"
             f"drawbox=x=0:y=714:w=1280:h={asset_overlay_height}:color=0x38bdf8@0.35:t=fill"
             f"{transition_overlay}"
         )

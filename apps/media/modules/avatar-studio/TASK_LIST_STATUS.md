@@ -81,11 +81,11 @@ Status values:
 
 ## Immediate next 5 tasks
 
-1. Extend scene planner heuristics for richer scene-role specific assets/backgrounds and domain templates.
-2. Add async job model for render tasks (pending/running/completed/failed).
-3. Expose job progress API and wire frontend polling.
-4. Implement lip-sync adapter interface and stub local runner.
-5. Integrate Wav2Lip or MuseTalk execution stage into render pipeline.
+1. Add async job model for render tasks (pending/running/completed/failed).
+2. Expose job progress API and wire frontend polling.
+3. Implement lip-sync adapter interface and stub local runner.
+4. Integrate Wav2Lip or MuseTalk execution stage into render pipeline.
+5. Expand timeline editor controls for caption style, voice preset, transition, and assets editing.
 
 ## Risks and blockers
 
@@ -103,6 +103,25 @@ Status values:
 
 ## Recent changes
 
+- 2026-07-19: Completed Phase 4 upload matrix validation through training resumable APIs (JPG, PNG, WAV, MP3), each with completed chunk ingestion, persisted storage URL, and completion log entries.
+- 2026-07-19: Fixed local avatar renderer runtime NameError by importing subprocess for voice synthesis execution path; strict outage probe now returns failed + strictMode=true + no fallback payload.
+- 2026-07-19: Enhanced neural animation request quality contract with natural-face motion options (lip sync strength, expression intensity, head motion scale, blink cadence, neck stabilization, transition awareness) and added test assertions.
+- 2026-07-19: Enabled automatic neural animation provider selection when endpoint is configured, added readiness-aware strict/fallback behavior, and added explicit caption plus branding overlays in FFmpeg render command builders.
+- 2026-07-19: Added Avatar Studio frontend unit-test harness (Vitest + Testing Library) and a Timeline SceneCard regression test that verifies full metadata patch payloads are sent on save.
+- 2026-07-19: Split Avatar Studio backend CI into a fast preset-contract/planner check job plus a dependent full backend pytest gate for quicker signal on config drift.
+- 2026-07-19: Added GitHub Actions workflow for Avatar Studio backend CI to run pytest on backend changes and on frontend scene preset config changes so cross-layer contract checks run in PRs.
+- 2026-07-19: Expanded frontend-backend scene preset contract coverage to include option vocab and baseline defaults (music/camera/transition/caption/voice), plus backend constants to keep planner fallbacks aligned.
+- 2026-07-19: Added a backend contract test that parses frontend scene config and asserts domain detection order, domain keyword sets, and role-duration presets remain aligned across frontend and backend.
+- 2026-07-19: Centralized backend scene planner domain detection keywords/order and role-duration presets into a shared config module, then refactored planner inference to consume those constants.
+- 2026-07-19: Moved scene-domain keyword detection order/sets and role-duration presets into shared frontend config, then refactored scene default inference to consume these constants for easier tuning.
+- 2026-07-19: Centralized scene option/default vocabulary into shared frontend config and wired timeline UI plus studio API fallbacks to the same constants to prevent preset drift.
+- 2026-07-19: Added timeline scene editor controls for camera, transition, caption style, voice preset, and comma-separated assets; save path now persists the full scene metadata contract.
+- 2026-07-19: Aligned manual timeline Add Scene defaults with planner presets via shared frontend helper (domain/role-aware duration/background/voice/caption/assets) and extended scene API/type contracts for camera/transition/caption/voice/assets plus project prompt context.
+- 2026-07-19: Expanded next-phase planner templates with domain/role duration defaults and voice presets (social, commerce, finance, industrial), with regression-safe planner test coverage.
+- 2026-07-19: Started next phase by enriching scene planner domain heuristics (social/commerce/finance/saas/industrial) with role-aware backgrounds, assets, and caption style defaults; added planner coverage for commerce and finance prompts.
+- 2026-07-19: Added strict queued-render failure lifecycle sequence test coverage to assert deterministic stage order (queued -> preparing -> rendering -> failed) and final progress=100 for failed jobs.
+- 2026-07-19: Added strict queued-render lifecycle sequence test coverage to assert deterministic stage order (queued -> preparing -> rendering -> persisting -> completed) and final progress=100.
+- 2026-07-19: Added deterministic stage-based progress mapping for async render jobs (queued 10, preparing 25, rendering 70, persisting 90, completed/failed 100) and wired explicit lifecycle stages in worker/sync flows.
 - 2026-07-19: Started Phase 5 by adding file-backed render job metadata with stage/error/timestamps in render status API and wiring stage/error display in timeline progress UI.
 - 2026-07-19: Exposed render telemetry in timeline render UI cards (attempt count, fallback used, duration) and updated frontend render payload typings.
 - 2026-07-19: Added structured render telemetry (attemptCount, fallbackUsed, durationMs) from FFmpeg executor and persisted it via orchestrator to per-video metadata files under storage/projects/{projectId}/render-meta.

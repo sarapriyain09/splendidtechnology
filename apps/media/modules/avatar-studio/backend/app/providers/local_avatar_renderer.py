@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import re
+import subprocess
 import wave
 from pathlib import Path
 from uuid import uuid4
@@ -169,6 +170,33 @@ def _resolve_render_output_basename(render_plan: list[dict] | None) -> str | Non
     return None
 
 
+def _build_caption_text(script: str) -> str:
+    compact = " ".join(script.split())
+    if not compact:
+        return ""
+    sentence = compact.split(".")[0].strip()
+    if not sentence:
+        sentence = compact
+    return sentence[:96]
+
+
+def _build_branding_text(render_plan: list[dict] | None) -> str:
+    if render_plan:
+        for scene in render_plan:
+            if not isinstance(scene, dict):
+                continue
+            raw_assets = scene.get("assets")
+            if not isinstance(raw_assets, list):
+                continue
+            for item in raw_assets:
+                normalized = str(item).strip()
+                if normalized.lower().startswith("brand:"):
+                    brand = normalized.split(":", 1)[1].strip()
+                    if brand:
+                        return brand[:42]
+    return "Velynxia"
+
+
 def render_lipsync_avatar_video(
     script: str,
     provider_name: str,
@@ -190,6 +218,8 @@ def render_lipsync_avatar_video(
     camera_style = str(profile.get("camera") or "medium")
     transition_style = str(profile.get("transition") or "cut")
     asset_count = int(profile.get("asset_count") or 0)
+    caption_text = _build_caption_text(script)
+    branding_text = _build_branding_text(render_plan)
     viseme_segments = _build_viseme_segments(script, duration_seconds)
     ffmpeg_command = build_lipsync_ffmpeg_command(
         portrait_path=portrait_path,
@@ -199,6 +229,8 @@ def render_lipsync_avatar_video(
         camera_style=camera_style,
         transition_style=transition_style,
         asset_count=asset_count,
+        caption_text=caption_text,
+        branding_text=branding_text,
         viseme_segments=viseme_segments,
         output_path=output_path,
     )
@@ -260,6 +292,8 @@ def render_avatar_video(
     camera_style = str(profile.get("camera") or "medium")
     transition_style = str(profile.get("transition") or "cut")
     asset_count = int(profile.get("asset_count") or 0)
+    caption_text = _build_caption_text(script)
+    branding_text = _build_branding_text(render_plan)
     ffmpeg_command, portrait_fallback_filter_chain = build_avatar_ffmpeg_command(
         portrait_path=portrait_path,
         voice_path=voice_path,
@@ -267,6 +301,8 @@ def render_avatar_video(
         camera_style=camera_style,
         transition_style=transition_style,
         asset_count=asset_count,
+        caption_text=caption_text,
+        branding_text=branding_text,
         output_path=output_path,
     )
 

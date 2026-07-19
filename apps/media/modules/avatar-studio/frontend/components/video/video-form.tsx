@@ -16,7 +16,7 @@ export function VideoForm() {
     queryKey: ["studio", "avatars"],
     queryFn: fetchAvatars,
   });
-  const { selectedAvatarId, setSelectedAvatarId } = useWorkspaceStore();
+  const { selectedAvatarId, setSelectedAvatarId, setSelectedProjectId } = useWorkspaceStore();
   const [voice] = useState(DEFAULT_GLOBAL_VOICE);
   const [language, setLanguage] = useState("");
   const [background, setBackground] = useState("");
@@ -27,6 +27,7 @@ export function VideoForm() {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<PromptResult | null>(null);
+  const [audioTestMessage, setAudioTestMessage] = useState<string | null>(null);
 
   const avatars = avatarsQuery.data ?? [];
 
@@ -76,6 +77,7 @@ export function VideoForm() {
     try {
       const response = await runPrompt(structuredPrompt, selectedAvatarId);
       setResult(response);
+      setSelectedProjectId(response.project.id);
       setProgress(100);
     } catch (requestError) {
       const message = requestError instanceof Error ? requestError.message : "Failed to generate video.";
@@ -84,6 +86,31 @@ export function VideoForm() {
       setProgress(0);
     } finally {
       setIsSubmitting(false);
+    }
+  }
+
+  async function handleAudioTest() {
+    try {
+      const audioContext = new (window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+
+      oscillator.type = "sine";
+      oscillator.frequency.value = 880;
+      gain.gain.value = 0.12;
+
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+
+      oscillator.start();
+      oscillator.stop(audioContext.currentTime + 0.8);
+
+      setAudioTestMessage("Played audio test tone. If you could not hear it, check browser/site/system sound settings.");
+      oscillator.onended = () => {
+        void audioContext.close();
+      };
+    } catch {
+      setAudioTestMessage("Audio test failed to play. Browser audio output may be blocked.");
     }
   }
 
@@ -207,10 +234,20 @@ export function VideoForm() {
         {isSubmitting ? "Generating..." : "Generate Video"}
       </button>
 
+      <button
+        type="button"
+        onClick={handleAudioTest}
+        className="ml-2 rounded-xl border border-[color:var(--border)] px-4 py-2 text-sm font-medium text-[color:var(--text)]"
+      >
+        Play Audio Test
+      </button>
+
+      {audioTestMessage && <p className="text-xs text-[color:var(--muted)]">{audioTestMessage}</p>}
+
       {(isSubmitting || progress > 0) && (
         <div className="space-y-1">
           <div className="flex items-center justify-between text-xs text-[color:var(--muted)]">
-            <span>{isSubmitting ? "Rendering progress" : "Completed"}</span>
+            <span>{isSubmitting ? "Rendering progress" : "Request submitted"}</span>
             <span>{progress}%</span>
           </div>
           <div className="h-2 w-full overflow-hidden rounded-full bg-[color:var(--surface-soft)]">
@@ -225,11 +262,32 @@ export function VideoForm() {
       {error && <p className="text-sm text-red-500">{error}</p>}
 
       {result && (
-        <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-3 text-sm text-[color:var(--text)]">
+        <div className="space-y-3 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-3 text-sm text-[color:var(--text)]">
           <p className="font-medium">Video request submitted</p>
           <p className="mt-1 text-[color:var(--muted)]">
             Project: {result.project.name} | Scene: {result.scene.title} | Video: {result.video.status}
           </p>
+          {result.video.videoUrl ? (
+            <div className="space-y-2">
+              <video
+                className="w-full rounded-lg border border-[color:var(--border)] bg-black"
+                controls
+                src={result.video.videoUrl}
+              />
+              <a
+                href={result.video.videoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex rounded-lg border border-[color:var(--border)] px-3 py-2 text-xs font-medium text-[color:var(--text)]"
+              >
+                Open video in new tab
+              </a>
+            </div>
+          ) : (
+            <p className="text-xs text-[color:var(--muted)]">
+              Video is still processing. No playable URL is available yet.
+            </p>
+          )}
         </div>
       )}
     </section>

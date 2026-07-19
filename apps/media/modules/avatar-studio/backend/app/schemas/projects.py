@@ -12,6 +12,10 @@ class SceneOut(BaseModel):
     title: str
     narration: str
     duration_seconds: int
+    background: str
+    image_url: str
+    voice_audio_url: str
+    music: str
 
 
 class ProjectOut(BaseModel):

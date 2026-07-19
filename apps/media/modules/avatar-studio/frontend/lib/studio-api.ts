@@ -6,7 +6,11 @@ import type {
   Scene,
   SceneCreateInput,
   SceneUpdateInput,
+  TrainingEnqueueResult,
+  TrainingStartResult,
+  TrainingStatusResult,
 } from "@/types/studio";
+import { SCENE_DEFAULTS } from "@/lib/scene-config";
 
 type AvatarApiItem = {
   id: string;
@@ -21,6 +25,7 @@ type AvatarApiItem = {
 type ProjectApiItem = {
   id: string;
   name: string;
+  prompt?: string;
   status: string;
 };
 
@@ -46,6 +51,11 @@ type SceneApiItem = {
   imageUrl?: string;
   voiceAudioUrl?: string;
   music?: string;
+  camera?: string;
+  transition?: string;
+  captionStyle?: string;
+  voice?: string;
+  assets?: string[];
 };
 
 type ScenesResponse = {
@@ -183,7 +193,12 @@ function mapScene(item: SceneApiItem): Scene {
     background: item.background,
     imageUrl: item.imageUrl ?? "",
     voiceAudioUrl: item.voiceAudioUrl ?? "",
-    music: item.music ?? "none",
+    music: item.music ?? SCENE_DEFAULTS.music,
+    camera: item.camera ?? SCENE_DEFAULTS.camera,
+    transition: item.transition ?? SCENE_DEFAULTS.transition,
+    captionStyle: item.captionStyle ?? SCENE_DEFAULTS.captionStyle,
+    voice: item.voice ?? SCENE_DEFAULTS.voice,
+    assets: item.assets ?? [],
   };
 }
 
@@ -253,6 +268,7 @@ export async function fetchProjects(): Promise<Project[]> {
   return payload.projects.map((item) => ({
     id: item.id,
     name: item.name,
+    prompt: item.prompt,
     status: mapProjectStatus(item.status),
     updatedAt: "recently",
   }));
@@ -279,7 +295,12 @@ export async function createProjectScene(projectId: string, input: SceneCreateIn
     background: input.background ?? "office",
     image_url: input.imageUrl ?? "",
     voice_audio_url: input.voiceAudioUrl ?? "",
-    music: input.music ?? "none",
+    music: input.music ?? SCENE_DEFAULTS.music,
+    camera: input.camera ?? SCENE_DEFAULTS.camera,
+    transition: input.transition ?? SCENE_DEFAULTS.transition,
+    caption_style: input.captionStyle ?? SCENE_DEFAULTS.captionStyle,
+    voice: input.voice ?? SCENE_DEFAULTS.voice,
+    assets: input.assets ?? [],
   });
   return mapScene(payload);
 }
@@ -294,6 +315,11 @@ export async function updateProjectScene(projectId: string, sceneId: string, inp
     voice_audio_url: input.voiceAudioUrl,
     music: input.music,
     order_index: input.orderIndex,
+    camera: input.camera,
+    transition: input.transition,
+    caption_style: input.captionStyle,
+    voice: input.voice,
+    assets: input.assets,
   });
   return mapScene(payload);
 }
@@ -311,4 +337,19 @@ export async function renderProjectFromScenes(
 
 export async function fetchRenderJobStatus(projectId: string, jobId: string): Promise<RenderJobStatus> {
   return fetchJson<RenderJobStatus>(`/timeline/${projectId}/render/${jobId}`);
+}
+
+export async function startAvatarTraining(avatarName: string, mode: string = "clone"): Promise<TrainingStartResult> {
+  return postJson<TrainingStartResult>("/training/start", {
+    avatar_name: avatarName,
+    mode,
+  });
+}
+
+export async function enqueueAvatarTraining(trainingId: string): Promise<TrainingEnqueueResult> {
+  return postJson<TrainingEnqueueResult>(`/training/${trainingId}/enqueue`, {});
+}
+
+export async function fetchAvatarTrainingStatus(trainingId: string): Promise<TrainingStatusResult> {
+  return fetchJson<TrainingStatusResult>(`/training/${trainingId}/status`);
 }

@@ -4,6 +4,7 @@ from fastapi.testclient import TestClient
 
 from app.main import app
 from app.routers import timeline
+from app.services import orchestrator as orchestrator_module
 from app.services.render_service import RenderService
 
 
@@ -88,6 +89,8 @@ def test_render_with_same_idempotency_key_replays_existing_result(monkeypatch) -
     assert first_payload["idempotencyKey"]
     assert first_payload.get("jobId") is not None
     assert isinstance(first_payload.get("stage"), str)
+    assert first_payload["stage"] in {"queued", "preparing", "rendering", "persisting", "completed", "failed"}
+    assert isinstance(first_payload.get("progressPercent"), int)
 
     second_response = client.post(
         f"/api/timeline/{project_id}/render",
@@ -110,6 +113,16 @@ def test_render_with_same_idempotency_key_replays_existing_result(monkeypatch) -
         assert status_payload["status"] in {"QUEUED", "PROCESSING", "COMPLETED", "FAILED"}
         assert status_payload["idempotencyKey"] == first_payload["idempotencyKey"]
         assert isinstance(status_payload.get("stage"), str)
+        stage_progress = {
+            "queued": 10,
+            "preparing": 25,
+            "rendering": 70,
+            "persisting": 90,
+            "completed": 100,
+            "failed": 100,
+        }
+        if status_payload.get("stage") in stage_progress:
+            assert status_payload.get("progressPercent") == stage_progress[str(status_payload.get("stage"))]
         if status_payload["status"] == "FAILED":
             assert isinstance(status_payload.get("error"), str)
         if "video" in status_payload:
@@ -127,3 +140,121 @@ def test_render_with_same_idempotency_key_replays_existing_result(monkeypatch) -
     first_scene = render_plan[0]
     assert first_scene.get("camera") == "static"
     assert first_scene.get("transition") == "cut"
+
+
+def test_queued_render_stage_sequence_is_deterministic(monkeypatch) -> None:
+    stage_events: list[str] = []
+    original_persist = orchestrator_module._persist_render_job_meta
+
+    class _FakeAvatarProvider:
+        async def generate_video(
+            self,
+            script: str,
+            avatar_id: str,
+            render_plan: list[dict] | None = None,
+        ) -> dict[str, object]:
+            return {
+                "provider": "heygen",
+                "status": "completed",
+                "videoJobId": "job-sequence",
+                "videoUrl": "https://example.test/video-sequence.mp4",
+                "renderExecution": {
+                    "attemptCount": 1,
+                    "fallbackUsed": False,
+                    "durationMs": 55,
+                },
+            }
+
+    def fake_orchestrator_init(self) -> None:
+        self.ai_provider = None
+        self.voice_provider = None
+        self.scene_planner = None
+        self.avatar_provider = _FakeAvatarProvider()
+        self.render_service = RenderService(self.avatar_provider)
+
+    def persist_spy(project_id: str, job_id: str, payload: dict[str, object]) -> None:
+        stage = payload.get("stage")
+        if isinstance(stage, str) and stage:
+            stage_events.append(stage)
+        original_persist(project_id, job_id, payload)
+
+    monkeypatch.setattr(timeline.AIOrchestrator, "__init__", fake_orchestrator_init)
+    monkeypatch.setattr(orchestrator_module, "_persist_render_job_meta", persist_spy)
+
+    project_id = _create_project_with_scene()
+    idempotency_key = f"stage-seq-{uuid4().hex}"
+
+    response = client.post(
+        f"/api/timeline/{project_id}/render",
+        json={
+            "avatar_id": "avatar-demo",
+            "idempotency_key": idempotency_key,
+        },
+    )
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload.get("jobId")
+
+    expected_sequence = ["queued", "preparing", "rendering", "persisting", "completed"]
+    assert stage_events[: len(expected_sequence)] == expected_sequence
+
+    status_response = client.get(f"/api/timeline/{project_id}/render/{payload['jobId']}")
+    assert status_response.status_code == 200
+    status_payload = status_response.json()
+    assert status_payload.get("stage") == "completed"
+    assert status_payload.get("progressPercent") == 100
+
+
+def test_queued_render_failure_stage_sequence_is_deterministic(monkeypatch) -> None:
+    stage_events: list[str] = []
+    original_persist = orchestrator_module._persist_render_job_meta
+
+    class _FailingAvatarProvider:
+        async def generate_video(
+            self,
+            script: str,
+            avatar_id: str,
+            render_plan: list[dict] | None = None,
+        ) -> dict[str, object]:
+            raise RuntimeError("simulated-render-failure")
+
+    def fake_orchestrator_init(self) -> None:
+        self.ai_provider = None
+        self.voice_provider = None
+        self.scene_planner = None
+        self.avatar_provider = _FailingAvatarProvider()
+        self.render_service = RenderService(self.avatar_provider)
+
+    def persist_spy(project_id: str, job_id: str, payload: dict[str, object]) -> None:
+        stage = payload.get("stage")
+        if isinstance(stage, str) and stage:
+            stage_events.append(stage)
+        original_persist(project_id, job_id, payload)
+
+    monkeypatch.setattr(timeline.AIOrchestrator, "__init__", fake_orchestrator_init)
+    monkeypatch.setattr(orchestrator_module, "_persist_render_job_meta", persist_spy)
+
+    project_id = _create_project_with_scene()
+    idempotency_key = f"stage-fail-seq-{uuid4().hex}"
+
+    response = client.post(
+        f"/api/timeline/{project_id}/render",
+        json={
+            "avatar_id": "avatar-demo",
+            "idempotency_key": idempotency_key,
+        },
+    )
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload.get("jobId")
+
+    expected_sequence = ["queued", "preparing", "rendering", "failed"]
+    assert stage_events[: len(expected_sequence)] == expected_sequence
+
+    status_response = client.get(f"/api/timeline/{project_id}/render/{payload['jobId']}")
+    assert status_response.status_code == 200
+    status_payload = status_response.json()
+    assert status_payload.get("status") == "FAILED"
+    assert status_payload.get("stage") == "failed"
+    assert status_payload.get("progressPercent") == 100
+    assert isinstance(status_payload.get("error"), str)

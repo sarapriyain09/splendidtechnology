@@ -49,8 +49,7 @@ The backend auto-creates these directories on startup.
 4. When `APP_ENV=production`, startup fails fast unless these are set with non-placeholder values:
    - `DATABASE_URL`
    - `JWT_SECRET` (minimum 32 chars)
-   - `OPENAI_API_KEY`
-   - `HEYGEN_API_KEY`
+   - provider key based on `AVATAR_PROVIDER` (`GEMINI_API_KEY` for Gemini mode)
 5. Backend setup:
 
    ```bash
@@ -74,6 +73,24 @@ The backend auto-creates these directories on startup.
 
 - Frontend: `http://localhost:3000`
 - Backend docs: `http://localhost:8000/docs`
+
+## Enable Real Provider Mode (Local, Gemini Only)
+
+1. Open `backend/.env`.
+2. Set these values:
+   - `AVATAR_PROVIDER=gemini`
+   - `GEMINI_API_KEY`
+3. Optional: keep `HEYGEN_API_KEY` empty if you do not want HeyGen usage.
+4. Recommended for local playback reliability:
+   - `APP_BASE_URL=http://127.0.0.1:8000`
+5. Validate readiness:
+
+```bash
+cd backend
+python check_provider_ready.py
+```
+
+When readiness passes, prompt+render uses Gemini-driven image + local narration render instead of fallback.
 
 ## PM2 process management
 
@@ -220,13 +237,13 @@ Notes:
 Run the deployment smoke test from the repo root:
 
 ```bash
-python apps/avatar-studio/scripts/smoke_test.py
+python apps/media/modules/avatar-studio/scripts/smoke_test.py
 ```
 
 Optional target override:
 
 ```bash
-AVATAR_BASE_URL=https://avatar.velynxia.com python apps/avatar-studio/scripts/smoke_test.py
+AVATAR_BASE_URL=https://avatar.velynxia.com python apps/media/modules/avatar-studio/scripts/smoke_test.py
 ```
 
 ## Project structure
@@ -238,47 +255,15 @@ AVATAR_BASE_URL=https://avatar.velynxia.com python apps/avatar-studio/scripts/sm
 - `scripts/` operational scripts
 - `ecosystem.config.js` PM2 services
 
-   ```bash
-   docker compose up --build
-   ```
+## How to use with Copilot
 
-3. Open:
-- Frontend: `http://localhost:3008`
-- Backend docs: `http://localhost:8008/docs`
-- MinIO Console: `http://localhost:9001`
+Use these prompt documents when asking Copilot to implement or refactor Avatar Studio:
 
-4. Run database migration:
+- `COPILOT_MASTER_TASK.md` for full product vision and end-state architecture.
+- `COPILOT_EXECUTION_PROMPT.md` for iterative, PR-sized implementation steps with acceptance criteria.
 
-   ```bash
-   docker compose exec backend alembic upgrade head
-   ```
+Suggested flow:
 
-## Architecture
-
-The application uses a provider interface in backend services:
-
-- `AvatarProvider`
-- `VoiceProvider`
-- `ScriptProvider`
-- `VideoProvider`
-
-Initial default provider is HeyGen for avatar/video and OpenAI for script.
-
-## Training API (Phase 3)
-
-- `POST /api/training/start`
-- `POST /api/training/{training_id}/enqueue`
-- `GET /api/training/{training_id}/status`
-- `GET /api/training/{training_id}/logs`
-
-Resumable upload flow:
-
-- `POST /api/training/{training_id}/uploads/init`
-- `POST /api/training/{training_id}/uploads/chunk` (multipart)
-- `POST /api/training/{training_id}/uploads/complete`
-
-## Folders
-
-- `frontend/` Next.js app
-- `backend/` FastAPI app + Celery tasks
-- `docker-compose.yml` all local infra
+1. Start with `COPILOT_MASTER_TASK.md` to set architecture goals.
+2. Execute work in increments using `COPILOT_EXECUTION_PROMPT.md`.
+3. Validate each increment with backend API checks and render output verification.

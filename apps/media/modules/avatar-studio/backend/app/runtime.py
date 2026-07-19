@@ -5,6 +5,16 @@ from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
 from app.config import settings
+from app.observability.request_context import correlation_id_var, request_id_var, tenant_id_var, user_id_var
+
+
+class RequestContextFilter(logging.Filter):
+    def filter(self, record: logging.LogRecord) -> bool:
+        record.correlation_id = correlation_id_var.get()
+        record.request_id = request_id_var.get()
+        record.tenant_id = tenant_id_var.get()
+        record.user_id = user_id_var.get()
+        return True
 
 
 def ensure_runtime_directories() -> dict[str, Path]:
@@ -49,7 +59,12 @@ def configure_logging() -> None:
         return
 
     root_logger.setLevel(logging.INFO)
-    formatter = logging.Formatter("%(asctime)s %(levelname)s [%(name)s] %(message)s")
+    formatter = logging.Formatter(
+        "%(asctime)s %(levelname)s [%(name)s] "
+        "[correlation_id=%(correlation_id)s request_id=%(request_id)s tenant_id=%(tenant_id)s user_id=%(user_id)s] "
+        "%(message)s"
+    )
+    context_filter = RequestContextFilter()
 
     file_handler = RotatingFileHandler(
         backend_log_file,
@@ -58,9 +73,11 @@ def configure_logging() -> None:
         encoding="utf-8",
     )
     file_handler.setFormatter(formatter)
+    file_handler.addFilter(context_filter)
 
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(formatter)
+    console_handler.addFilter(context_filter)
 
     root_logger.addHandler(file_handler)
     root_logger.addHandler(console_handler)

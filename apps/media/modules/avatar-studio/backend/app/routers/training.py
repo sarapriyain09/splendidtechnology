@@ -27,7 +27,8 @@ minio_storage = MinioStorage()
 def post_training_start(payload: TrainingStartRequest, db: Session = Depends(get_db)) -> dict[str, str]:
     ensure_default_user(db)
     training = start_training(db, DEFAULT_USER_ID, payload.avatar_name, payload.mode)
-    return {"jobId": training.id, "status": training.status, "avatarName": training.avatar_name}
+    enqueue_training_job(training.id)
+    return {"jobId": training.id, "status": "ENQUEUED", "avatarName": training.avatar_name}
 
 
 @router.get("/")
@@ -73,6 +74,9 @@ def enqueue_training(training_id: str, db: Session = Depends(get_db)) -> dict[st
     training = db.get(AvatarTraining, training_id)
     if not training:
         raise HTTPException(status_code=404, detail="Training not found")
+
+    if training.status in {"RUNNING", "COMPLETED"}:
+        return {"trainingId": training_id, "status": training.status}
 
     enqueue_training_job(training_id)
     return {"trainingId": training_id, "status": "ENQUEUED"}

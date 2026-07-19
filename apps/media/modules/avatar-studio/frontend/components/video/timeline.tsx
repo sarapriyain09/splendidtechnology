@@ -3,16 +3,24 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
+  SCENE_CAMERA_OPTIONS,
+  SCENE_CAPTION_STYLE_OPTIONS,
+  SCENE_DEFAULTS,
+  SCENE_MUSIC_OPTIONS,
+  SCENE_TRANSITION_OPTIONS,
+  SCENE_VOICE_PRESET_OPTIONS,
+} from "@/lib/scene-config";
+import {
   createProjectScene,
   fetchRenderJobStatus,
   fetchProjectScenes,
   renderProjectFromScenes,
   updateProjectScene,
 } from "@/lib/studio-api";
+import { buildSceneDefaults } from "@/lib/scene-defaults";
+import { useProjectsQuery } from "@/lib/studio-queries";
 import { useWorkspaceStore } from "@/stores/workspace-store";
 import type { RenderExecutionTelemetry, Scene } from "@/types/studio";
-
-const MUSIC_OPTIONS = ["none", "ambient", "cinematic", "corporate", "energetic"];
 
 function createRenderAttemptKey(): string {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
@@ -29,7 +37,13 @@ function SceneCard({
   onSave: (sceneId: string, patch: Partial<Scene>) => Promise<void>;
 }) {
   const [draft, setDraft] = useState(scene);
+  const [assetsInput, setAssetsInput] = useState(scene.assets.join(", "));
   const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    setDraft(scene);
+    setAssetsInput(scene.assets.join(", "));
+  }, [scene]);
 
   async function save() {
     setSaving(true);
@@ -111,12 +125,81 @@ function SceneCard({
         value={draft.music}
         onChange={(event) => setDraft((prev) => ({ ...prev, music: event.target.value }))}
       >
-        {MUSIC_OPTIONS.map((music) => (
+        {SCENE_MUSIC_OPTIONS.map((music) => (
           <option key={music} value={music}>
             {music}
           </option>
         ))}
       </select>
+
+      <div className="grid gap-2 md:grid-cols-2">
+        <select
+          className="w-full rounded-lg border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-3 py-2 text-sm outline-none"
+          value={draft.camera}
+          onChange={(event) => setDraft((prev) => ({ ...prev, camera: event.target.value }))}
+        >
+          {SCENE_CAMERA_OPTIONS.map((camera) => (
+            <option key={camera} value={camera}>
+              {camera}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className="w-full rounded-lg border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-3 py-2 text-sm outline-none"
+          value={draft.transition}
+          onChange={(event) => setDraft((prev) => ({ ...prev, transition: event.target.value }))}
+        >
+          {SCENE_TRANSITION_OPTIONS.map((transition) => (
+            <option key={transition} value={transition}>
+              {transition}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="grid gap-2 md:grid-cols-2">
+        <select
+          className="w-full rounded-lg border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-3 py-2 text-sm outline-none"
+          value={draft.captionStyle}
+          onChange={(event) => setDraft((prev) => ({ ...prev, captionStyle: event.target.value }))}
+        >
+          {SCENE_CAPTION_STYLE_OPTIONS.map((captionStyle) => (
+            <option key={captionStyle} value={captionStyle}>
+              {captionStyle}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className="w-full rounded-lg border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-3 py-2 text-sm outline-none"
+          value={draft.voice}
+          onChange={(event) => setDraft((prev) => ({ ...prev, voice: event.target.value }))}
+        >
+          {SCENE_VOICE_PRESET_OPTIONS.map((voice) => (
+            <option key={voice} value={voice}>
+              {voice}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <input
+        className="w-full rounded-lg border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-3 py-2 text-sm outline-none"
+        value={assetsInput}
+        onChange={(event) => {
+          const next = event.target.value;
+          setAssetsInput(next);
+          setDraft((prev) => ({
+            ...prev,
+            assets: next
+              .split(",")
+              .map((item) => item.trim())
+              .filter((item) => item.length > 0),
+          }));
+        }}
+        placeholder="Assets (comma separated, e.g. brand-logo.png, product-grid.png)"
+      />
     </article>
   );
 }
@@ -124,6 +207,7 @@ function SceneCard({
 export function Timeline() {
   const queryClient = useQueryClient();
   const { selectedProjectId, selectedAvatarId } = useWorkspaceStore();
+  const projectsQuery = useProjectsQuery();
   const isMountedRef = useRef(true);
   const selectedProjectIdRef = useRef<string | null>(selectedProjectId);
   const renderPollTokenRef = useRef(0);
@@ -192,6 +276,11 @@ export function Timeline() {
         voiceAudioUrl: patch.voiceAudioUrl,
         music: patch.music,
         orderIndex: patch.orderIndex,
+        camera: patch.camera,
+        transition: patch.transition,
+        captionStyle: patch.captionStyle,
+        voice: patch.voice,
+        assets: patch.assets,
       });
     },
     onSuccess: () => {
@@ -206,14 +295,21 @@ export function Timeline() {
       }
       const current = scenesQuery.data ?? [];
       const nextIndex = current.length + 1;
+      const currentProject = (projectsQuery.data ?? []).find((project) => project.id === selectedProjectId);
+      const defaults = buildSceneDefaults(currentProject?.prompt ?? "", nextIndex);
       return createProjectScene(selectedProjectId, {
         title: `Scene ${nextIndex}`,
         narration: "",
-        durationSeconds: 10,
-        background: "office",
+        durationSeconds: defaults.durationSeconds,
+        background: defaults.background,
         imageUrl: "",
         voiceAudioUrl: "",
-        music: "none",
+        music: SCENE_DEFAULTS.music,
+        camera: defaults.camera,
+        transition: defaults.transition,
+        captionStyle: defaults.captionStyle,
+        voice: defaults.voice,
+        assets: defaults.assets,
       });
     },
     onSuccess: () => {

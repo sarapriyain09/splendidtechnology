@@ -160,6 +160,21 @@ def _status_to_progress(status: str) -> int:
     return 0
 
 
+def _stage_to_progress(stage: str) -> int:
+    normalized = stage.strip().lower()
+    if normalized == "queued":
+        return 10
+    if normalized == "preparing":
+        return 25
+    if normalized == "rendering":
+        return 70
+    if normalized == "persisting":
+        return 90
+    if normalized in {"completed", "failed"}:
+        return 100
+    return 0
+
+
 def _find_existing_video_for_render_ref(db: Session, actor_user_id: str, project_id: str, render_ref: str) -> Video | None:
     stmt = (
         select(Job)
@@ -231,13 +246,14 @@ class AIOrchestrator:
         video: Video | None = None,
     ) -> dict[str, object]:
         job_meta = _load_render_job_meta(project_id, job.id) if job.id else None
+        stage = str((job_meta or {}).get("stage") or _default_stage_for_status(job.status))
         payload: dict[str, object] = {
             "jobId": job.id,
             "status": job.status,
-            "progressPercent": _status_to_progress(job.status),
+            "progressPercent": _stage_to_progress(stage),
             "idempotencyKey": _extract_idempotency_token(render_ref),
             "sceneCount": scene_count,
-            "stage": str((job_meta or {}).get("stage") or _default_stage_for_status(job.status)),
+            "stage": stage,
         }
         if isinstance(job_meta, dict):
             if isinstance(job_meta.get("error"), str) and str(job_meta.get("error")).strip():
@@ -381,13 +397,20 @@ class AIOrchestrator:
                 project.id,
                 reservation.id,
                 {
-                    "stage": "rendering",
+                    "stage": "preparing",
                     "startedAt": reservation.created_at.isoformat(),
                     "updatedAt": reservation.updated_at.isoformat(),
                 },
             )
 
             try:
+                _persist_render_job_meta(
+                    project.id,
+                    reservation.id,
+                    {
+                        "stage": "rendering",
+                    },
+                )
                 render_result = await self.render_service.generate_video(
                     combined_script=combined_script,
                     selected_avatar_id=selected_avatar_id,
@@ -396,6 +419,13 @@ class AIOrchestrator:
                     idempotency_token=idempotency_token,
                 )
                 render_status = str(render_result.get("status", "queued")).upper()
+                _persist_render_job_meta(
+                    project.id,
+                    reservation.id,
+                    {
+                        "stage": "persisting",
+                    },
+                )
                 video = Video(
                     project_id=project.id,
                     status=render_status,
@@ -568,6 +598,15 @@ class AIOrchestrator:
             selected_avatar_id = str(context["selected_avatar_id"])
             render_ref = str(context["render_ref"])
 
+            _persist_render_job_meta(
+                project.id,
+                job.id,
+                {
+                    "stage": "preparing",
+                    "updatedAt": job.updated_at.isoformat(),
+                },
+            )
+
             job.status = "PROCESSING"
             db.add(job)
             db.commit()
@@ -588,6 +627,13 @@ class AIOrchestrator:
                 idempotency_token=str(context["idempotency_token"]),
             )
             render_status = str(render_result.get("status", "queued")).upper()
+            _persist_render_job_meta(
+                project.id,
+                job.id,
+                {
+                    "stage": "persisting",
+                },
+            )
             video = Video(
                 project_id=project.id,
                 status=render_status,

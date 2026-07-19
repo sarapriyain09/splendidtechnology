@@ -1,0 +1,82 @@
+name: Avatar Studio Backend CI
+
+on:
+  pull_request:
+    paths:
+      - "apps/media/modules/avatar-studio/backend/**"
+      - "apps/media/modules/avatar-studio/frontend/lib/scene-config.ts"
+      - ".github/workflows/avatar-studio-backend-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  preset-contract-fast:
+    name: Preset Contract Fast Checks
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/media/modules/avatar-studio/backend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install backend dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Run preset contract and planner checks
+        run: python -m pytest -q tests/test_scene_preset_contract.py tests/test_scene_planner.py
+
+  timeline-lifecycle-fast:
+    name: Timeline Lifecycle Fast Checks
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/media/modules/avatar-studio/backend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install backend dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Run timeline lifecycle checks
+        run: python -m pytest -q tests/test_timeline_idempotency.py
+
+  backend-tests:
+    name: Backend Pytest (Full)
+    needs:
+      - preset-contract-fast
+      - timeline-lifecycle-fast
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/media/modules/avatar-studio/backend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install backend dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Run backend tests
+        run: python -m pytest -q

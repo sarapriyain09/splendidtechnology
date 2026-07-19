@@ -13,7 +13,7 @@ export function VoiceStudioPanel() {
     queryFn: fetchAvatars,
   });
 
-  const avatars = avatarsQuery.data ?? [];
+  const avatars = useMemo(() => avatarsQuery.data ?? [], [avatarsQuery.data]);
   const selectedAvatar = useMemo(
     () => avatars.find((avatar) => avatar.id === selectedAvatarId),
     [avatars, selectedAvatarId],

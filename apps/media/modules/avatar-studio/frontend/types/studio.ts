@@ -33,6 +33,7 @@ export type Avatar = {
 export type Project = {
   id: string;
   name: string;
+  prompt?: string;
   status: "draft" | "completed" | "archived";
   updatedAt: string;
 };
@@ -47,6 +48,11 @@ export type Scene = {
   imageUrl: string;
   voiceAudioUrl: string;
   music: string;
+  camera: string;
+  transition: string;
+  captionStyle: string;
+  voice: string;
+  assets: string[];
 };
 
 export type SceneCreateInput = {
@@ -57,6 +63,11 @@ export type SceneCreateInput = {
   imageUrl?: string;
   voiceAudioUrl?: string;
   music?: string;
+  camera?: string;
+  transition?: string;
+  captionStyle?: string;
+  voice?: string;
+  assets?: string[];
 };
 
 export type SceneUpdateInput = Partial<SceneCreateInput> & {
@@ -104,6 +115,25 @@ export type RenderJobStatus = {
   sceneCount: number;
   idempotencyKey?: string;
   video?: RenderVideoPayload;
+};
+
+export type TrainingStartResult = {
+  jobId: string;
+  status: "ENQUEUED" | "QUEUED" | "RUNNING" | "COMPLETED" | "FAILED";
+  avatarName: string;
+};
+
+export type TrainingEnqueueResult = {
+  trainingId: string;
+  status: "ENQUEUED" | "QUEUED" | "RUNNING" | "COMPLETED" | "FAILED";
+};
+
+export type TrainingStatusResult = {
+  id: string;
+  avatarName: string;
+  stage: string;
+  progress: number;
+  status: "QUEUED" | "RUNNING" | "COMPLETED" | "FAILED";
 };
 
 export const MENU_ITEMS: Array<{ id: WorkspaceId; label: string }> = [
