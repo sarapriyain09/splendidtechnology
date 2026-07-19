@@ -63,6 +63,21 @@ export type SceneUpdateInput = Partial<SceneCreateInput> & {
   orderIndex?: number;
 };
 
+export type RenderExecutionTelemetry = {
+  attemptCount: number;
+  fallbackUsed: boolean;
+  durationMs: number;
+};
+
+export type RenderVideoPayload = {
+  id: string;
+  status: string;
+  outputUrl: string;
+  provider?: string;
+  videoJobId?: string;
+  renderExecution?: RenderExecutionTelemetry;
+};
+
 export type ProjectRenderResult = {
   jobId: string;
   status: string;
@@ -71,13 +86,7 @@ export type ProjectRenderResult = {
   idempotencyKey?: string;
   replayed?: boolean;
   runInBackground?: boolean;
-  video?: {
-    id: string;
-    status: string;
-    outputUrl: string;
-    provider?: string;
-    videoJobId?: string;
-  };
+  video?: RenderVideoPayload;
 };
 
 export type RenderJobStatus = {
@@ -86,13 +95,7 @@ export type RenderJobStatus = {
   progressPercent: number;
   sceneCount: number;
   idempotencyKey?: string;
-  video?: {
-    id: string;
-    status: string;
-    outputUrl: string;
-    provider?: string;
-    videoJobId?: string;
-  };
+  video?: RenderVideoPayload;
 };
 
 export const MENU_ITEMS: Array<{ id: WorkspaceId; label: string }> = [

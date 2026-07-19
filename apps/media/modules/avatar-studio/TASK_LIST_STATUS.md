@@ -103,6 +103,7 @@ Status values:
 
 ## Recent changes
 
+- 2026-07-19: Exposed render telemetry in timeline render UI cards (attempt count, fallback used, duration) and updated frontend render payload typings.
 - 2026-07-19: Added structured render telemetry (attemptCount, fallbackUsed, durationMs) from FFmpeg executor and persisted it via orchestrator to per-video metadata files under storage/projects/{projectId}/render-meta.
 - 2026-07-19: Extracted FFmpeg execution and retry logic into a dedicated render executor service with unit tests for retry/failure behavior.
 - 2026-07-19: Isolated FFmpeg command construction into a dedicated command builder module and added direct command-contract tests.
