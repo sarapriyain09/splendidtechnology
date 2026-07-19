@@ -82,6 +82,10 @@ export type ProjectRenderResult = {
   jobId: string;
   status: string;
   progressPercent: number;
+  stage?: string;
+  error?: string;
+  startedAt?: string;
+  updatedAt?: string;
   sceneCount: number;
   idempotencyKey?: string;
   replayed?: boolean;
@@ -93,6 +97,10 @@ export type RenderJobStatus = {
   jobId: string;
   status: string;
   progressPercent: number;
+  stage?: string;
+  error?: string;
+  startedAt?: string;
+  updatedAt?: string;
   sceneCount: number;
   idempotencyKey?: string;
   video?: RenderVideoPayload;

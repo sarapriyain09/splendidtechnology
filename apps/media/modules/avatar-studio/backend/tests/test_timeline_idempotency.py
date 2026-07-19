@@ -87,6 +87,7 @@ def test_render_with_same_idempotency_key_replays_existing_result(monkeypatch) -
     assert first_payload["replayed"] is False
     assert first_payload["idempotencyKey"]
     assert first_payload.get("jobId") is not None
+    assert isinstance(first_payload.get("stage"), str)
 
     second_response = client.post(
         f"/api/timeline/{project_id}/render",
@@ -108,6 +109,9 @@ def test_render_with_same_idempotency_key_replays_existing_result(monkeypatch) -
         status_payload = status_response.json()
         assert status_payload["status"] in {"QUEUED", "PROCESSING", "COMPLETED", "FAILED"}
         assert status_payload["idempotencyKey"] == first_payload["idempotencyKey"]
+        assert isinstance(status_payload.get("stage"), str)
+        if status_payload["status"] == "FAILED":
+            assert isinstance(status_payload.get("error"), str)
         if "video" in status_payload:
             execution = status_payload["video"].get("renderExecution")
             assert isinstance(execution, dict)

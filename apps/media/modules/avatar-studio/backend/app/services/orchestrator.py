@@ -51,6 +51,11 @@ def _render_meta_file_path(project_id: str, video_id: str) -> Path:
     return root / "projects" / project_id / "render-meta" / f"{video_id}.json"
 
 
+def _render_job_meta_file_path(project_id: str, job_id: str) -> Path:
+    root = Path(settings.storage_root)
+    return root / "projects" / project_id / "render-jobs" / f"{job_id}.json"
+
+
 def _persist_render_meta(project_id: str, video_id: str, telemetry: dict[str, object] | None) -> None:
     if not telemetry:
         return
@@ -70,6 +75,40 @@ def _load_render_meta(project_id: str, video_id: str) -> dict[str, object] | Non
     if isinstance(parsed, dict):
         return parsed
     return None
+
+
+def _persist_render_job_meta(project_id: str, job_id: str, payload: dict[str, object]) -> None:
+    target = _render_job_meta_file_path(project_id, job_id)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    current = _load_render_job_meta(project_id, job_id) or {}
+    merged = {**current, **payload}
+    target.write_text(json.dumps(merged), encoding="utf-8")
+
+
+def _load_render_job_meta(project_id: str, job_id: str) -> dict[str, object] | None:
+    path = _render_job_meta_file_path(project_id, job_id)
+    if not path.exists():
+        return None
+    try:
+        parsed = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+    if isinstance(parsed, dict):
+        return parsed
+    return None
+
+
+def _default_stage_for_status(status: str) -> str:
+    normalized = status.strip().upper()
+    if normalized == "QUEUED":
+        return "queued"
+    if normalized == "PROCESSING":
+        return "rendering"
+    if normalized == "COMPLETED":
+        return "completed"
+    if normalized == "FAILED":
+        return "failed"
+    return "unknown"
 
 
 def _serialize_video_response(video: Video, provider: str, video_job_id: str) -> dict[str, object]:
@@ -184,14 +223,29 @@ class AIOrchestrator:
         }
 
     @staticmethod
-    def _serialize_render_job(job: Job, render_ref: str, scene_count: int, video: Video | None = None) -> dict[str, object]:
+    def _serialize_render_job(
+        job: Job,
+        render_ref: str,
+        scene_count: int,
+        project_id: str,
+        video: Video | None = None,
+    ) -> dict[str, object]:
+        job_meta = _load_render_job_meta(project_id, job.id) if job.id else None
         payload: dict[str, object] = {
             "jobId": job.id,
             "status": job.status,
             "progressPercent": _status_to_progress(job.status),
             "idempotencyKey": _extract_idempotency_token(render_ref),
             "sceneCount": scene_count,
+            "stage": str((job_meta or {}).get("stage") or _default_stage_for_status(job.status)),
         }
+        if isinstance(job_meta, dict):
+            if isinstance(job_meta.get("error"), str) and str(job_meta.get("error")).strip():
+                payload["error"] = str(job_meta.get("error"))
+            if isinstance(job_meta.get("startedAt"), str):
+                payload["startedAt"] = str(job_meta.get("startedAt"))
+            if isinstance(job_meta.get("updatedAt"), str):
+                payload["updatedAt"] = str(job_meta.get("updatedAt"))
         if video is not None:
             payload["video"] = _serialize_video_response(video, "cached", "")
         return payload
@@ -323,6 +377,15 @@ class AIOrchestrator:
             db.add(reservation)
             db.commit()
             db.refresh(reservation)
+            _persist_render_job_meta(
+                project.id,
+                reservation.id,
+                {
+                    "stage": "rendering",
+                    "startedAt": reservation.created_at.isoformat(),
+                    "updatedAt": reservation.updated_at.isoformat(),
+                },
+            )
 
             try:
                 render_result = await self.render_service.generate_video(
@@ -347,6 +410,15 @@ class AIOrchestrator:
                 db.add(reservation)
                 db.commit()
                 db.refresh(video)
+                _persist_render_job_meta(
+                    project.id,
+                    reservation.id,
+                    {
+                        "stage": "completed" if render_status == "COMPLETED" else _default_stage_for_status(render_status),
+                        "error": str(render_result.get("error") or "") if render_status == "FAILED" else "",
+                        "updatedAt": reservation.updated_at.isoformat(),
+                    },
+                )
                 _persist_render_meta(
                     project_id=project.id,
                     video_id=video.id,
@@ -372,6 +444,15 @@ class AIOrchestrator:
                 reservation.status = "FAILED"
                 db.add(reservation)
                 db.commit()
+                _persist_render_job_meta(
+                    project.id,
+                    reservation.id,
+                    {
+                        "stage": "failed",
+                        "error": "Render execution failed",
+                        "updatedAt": reservation.updated_at.isoformat(),
+                    },
+                )
                 raise
 
     async def enqueue_render_project_from_scenes(
@@ -402,7 +483,7 @@ class AIOrchestrator:
                 ref_id=_build_job_ref(render_ref, existing_video.id),
             )
             return {
-                **self._serialize_render_job(synthetic_job, render_ref, scene_count, video=existing_video),
+                **self._serialize_render_job(synthetic_job, render_ref, scene_count, project.id, video=existing_video),
                 "replayed": True,
                 "runInBackground": False,
             }
@@ -410,7 +491,7 @@ class AIOrchestrator:
         existing_job = _find_latest_job_for_render_ref(db, actor_user_id, render_ref)
         if existing_job is not None and existing_job.status in {"QUEUED", "PROCESSING"}:
             return {
-                **self._serialize_render_job(existing_job, render_ref, scene_count),
+                **self._serialize_render_job(existing_job, render_ref, scene_count, project.id),
                 "replayed": False,
                 "runInBackground": False,
             }
@@ -426,9 +507,18 @@ class AIOrchestrator:
         db.add(project)
         db.commit()
         db.refresh(queued_job)
+        _persist_render_job_meta(
+            project.id,
+            queued_job.id,
+            {
+                "stage": "queued",
+                "startedAt": queued_job.created_at.isoformat(),
+                "updatedAt": queued_job.updated_at.isoformat(),
+            },
+        )
 
         return {
-            **self._serialize_render_job(queued_job, render_ref, scene_count),
+            **self._serialize_render_job(queued_job, render_ref, scene_count, project.id),
             "replayed": False,
             "runInBackground": True,
             "backgroundContext": {
@@ -461,6 +551,15 @@ class AIOrchestrator:
                 job.status = "FAILED"
                 db.add(job)
                 db.commit()
+                _persist_render_job_meta(
+                    project_id,
+                    job.id,
+                    {
+                        "stage": "failed",
+                        "error": "Project has no scenes",
+                        "updatedAt": job.updated_at.isoformat(),
+                    },
+                )
                 return
 
             context = self._build_render_context(project, scenes, avatar_id, idempotency_key)
@@ -472,6 +571,14 @@ class AIOrchestrator:
             job.status = "PROCESSING"
             db.add(job)
             db.commit()
+            _persist_render_job_meta(
+                project.id,
+                job.id,
+                {
+                    "stage": "rendering",
+                    "updatedAt": job.updated_at.isoformat(),
+                },
+            )
 
             render_result = await self.render_service.generate_video(
                 combined_script=combined_script,
@@ -503,12 +610,30 @@ class AIOrchestrator:
             db.add(project)
             db.add(job)
             db.commit()
+            _persist_render_job_meta(
+                project.id,
+                job.id,
+                {
+                    "stage": "completed" if render_status == "COMPLETED" else _default_stage_for_status(render_status),
+                    "error": str(render_result.get("error") or "") if render_status == "FAILED" else "",
+                    "updatedAt": job.updated_at.isoformat(),
+                },
+            )
         except Exception:
             failed_job = db.get(Job, job_id)
             if failed_job is not None:
                 failed_job.status = "FAILED"
                 db.add(failed_job)
                 db.commit()
+                _persist_render_job_meta(
+                    project_id,
+                    failed_job.id,
+                    {
+                        "stage": "failed",
+                        "error": "Render worker failed",
+                        "updatedAt": failed_job.updated_at.isoformat(),
+                    },
+                )
         finally:
             db.close()
 
@@ -541,4 +666,4 @@ class AIOrchestrator:
             if candidate and candidate.project_id == project_id:
                 video = candidate
 
-        return self._serialize_render_job(job, render_ref, scene_count, video=video)
+        return self._serialize_render_job(job, render_ref, scene_count, project_id, video=video)

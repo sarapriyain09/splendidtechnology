@@ -132,7 +132,9 @@ export function Timeline() {
   const [renderIdempotencyKey, setRenderIdempotencyKey] = useState<string>("");
   const [renderWasReplayed, setRenderWasReplayed] = useState(false);
   const [renderStatus, setRenderStatus] = useState<string>("");
+  const [renderStage, setRenderStage] = useState<string>("");
   const [renderProgress, setRenderProgress] = useState<number>(0);
+  const [renderJobError, setRenderJobError] = useState<string>("");
   const [activeRenderJobId, setActiveRenderJobId] = useState<string>("");
   const [lastRenderInputKey, setLastRenderInputKey] = useState<string>("");
   const [isRenderSubmitting, setIsRenderSubmitting] = useState(false);
@@ -154,7 +156,9 @@ export function Timeline() {
     setRenderIdempotencyKey("");
     setRenderWasReplayed(false);
     setRenderStatus("");
+    setRenderStage("");
     setRenderProgress(0);
+    setRenderJobError("");
     setActiveRenderJobId("");
     setIsRenderSubmitting(false);
     setRenderExecution(null);
@@ -229,7 +233,9 @@ export function Timeline() {
       setRenderIdempotencyKey(result.idempotencyKey || "");
       setRenderWasReplayed(Boolean(result.replayed));
       setRenderStatus(result.status || "");
+      setRenderStage(result.stage || "");
       setRenderProgress(result.progressPercent || 0);
+      setRenderJobError(result.error || "");
       setActiveRenderJobId(result.jobId || "");
       if (result.video?.outputUrl) {
         setRenderUrl(result.video.outputUrl);
@@ -247,7 +253,9 @@ export function Timeline() {
       setRenderIdempotencyKey("");
       setRenderWasReplayed(false);
       setRenderStatus("");
+      setRenderStage("");
       setRenderProgress(0);
+      setRenderJobError("");
       setActiveRenderJobId("");
       setRenderExecution(null);
     },
@@ -266,7 +274,9 @@ export function Timeline() {
       }
 
       setRenderStatus(status.status || "");
+      setRenderStage(status.stage || "");
       setRenderProgress(status.progressPercent || 0);
+      setRenderJobError(status.error || "");
 
       if (status.idempotencyKey) {
         setRenderIdempotencyKey(status.idempotencyKey);
@@ -429,6 +439,8 @@ export function Timeline() {
           <p className="text-xs font-medium text-[color:var(--text)]">Render in progress</p>
           <p className="text-xs text-[color:var(--muted)]">Job: {activeRenderJobId}</p>
           <p className="text-xs text-[color:var(--muted)]">Status: {renderStatus || "QUEUED"}</p>
+          {renderStage && <p className="text-xs text-[color:var(--muted)]">Stage: {renderStage}</p>}
+          {renderJobError && <p className="text-xs text-red-500">Error: {renderJobError}</p>}
           <div className="h-2 w-full overflow-hidden rounded-full bg-[color:var(--surface-soft)]">
             <div
               className="h-full bg-[color:var(--accent)] transition-all duration-300"
