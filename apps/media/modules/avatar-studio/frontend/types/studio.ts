@@ -26,6 +26,7 @@ export type Avatar = {
   language: string;
   voice: string;
   status: "ready" | "training" | "draft";
+  imageUrl: string;
   updatedAt: string;
 };
 
@@ -34,6 +35,64 @@ export type Project = {
   name: string;
   status: "draft" | "completed" | "archived";
   updatedAt: string;
+};
+
+export type Scene = {
+  id: string;
+  orderIndex: number;
+  title: string;
+  narration: string;
+  durationSeconds: number;
+  background: string;
+  imageUrl: string;
+  voiceAudioUrl: string;
+  music: string;
+};
+
+export type SceneCreateInput = {
+  title: string;
+  narration: string;
+  durationSeconds?: number;
+  background?: string;
+  imageUrl?: string;
+  voiceAudioUrl?: string;
+  music?: string;
+};
+
+export type SceneUpdateInput = Partial<SceneCreateInput> & {
+  orderIndex?: number;
+};
+
+export type ProjectRenderResult = {
+  jobId: string;
+  status: string;
+  progressPercent: number;
+  sceneCount: number;
+  idempotencyKey?: string;
+  replayed?: boolean;
+  runInBackground?: boolean;
+  video?: {
+    id: string;
+    status: string;
+    outputUrl: string;
+    provider?: string;
+    videoJobId?: string;
+  };
+};
+
+export type RenderJobStatus = {
+  jobId: string;
+  status: string;
+  progressPercent: number;
+  sceneCount: number;
+  idempotencyKey?: string;
+  video?: {
+    id: string;
+    status: string;
+    outputUrl: string;
+    provider?: string;
+    videoJobId?: string;
+  };
 };
 
 export const MENU_ITEMS: Array<{ id: WorkspaceId; label: string }> = [
